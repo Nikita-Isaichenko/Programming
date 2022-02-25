@@ -4,7 +4,9 @@
 </p>
 
 <p align="center">
-    <img src="https://img.shields.io/github/followers/Nikita_Isaichenko"/></a>
+    <img src="https://img.shields.io/github/followers/
+Nikita-Isaichenko
+"/></a>
     <img src="https://img.shields.io/badge/author-Nikita-blue"/></a>
 </p>
 
