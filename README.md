@@ -4,12 +4,10 @@
 </p>
 
 <p align="center">
-    <img src="https://img.shields.io/github/followers/
-Nikita-Isaichenko
-"/></a>
-    <img src="https://img.shields.io/badge/author-Nikita-blue"/></a>
+    <img src="https://img.shields.io/github/followers/Nikita-Isaichenko"/></a>
+    <img src="https://img.shields.io/badge/author-Nikita-Yellow"/></a>
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com/?lines=Welcome!&font=Fira%20Code&center=true&width=380&height=50">
+  <img src="https://readme-typing-svg.herokuapp.com/?lines=Greeting_anime_lovers&font=Fira%20Code&center=true&width=380&height=50">
 </p>
