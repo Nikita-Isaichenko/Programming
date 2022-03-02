@@ -42,13 +42,13 @@
             this.WeekdayTitleLabel = new System.Windows.Forms.Label();
             this.ParseButton = new System.Windows.Forms.Button();
             this.EnumerationGroupBox = new System.Windows.Forms.GroupBox();
+            this.SeasonPictureBox = new System.Windows.Forms.PictureBox();
             this.IntValueTextBox = new System.Windows.Forms.TextBox();
             this.EnumListBox = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.ValueListBox = new System.Windows.Forms.ListBox();
-            this.SeasonPictureBox = new System.Windows.Forms.PictureBox();
             this.EnumsControl.SuspendLayout();
             this.Enums.SuspendLayout();
             this.SeasonHandleGroupBox.SuspendLayout();
@@ -183,6 +183,14 @@
             this.EnumerationGroupBox.TabStop = false;
             this.EnumerationGroupBox.Text = "Enumeration";
             // 
+            // SeasonPictureBox
+            // 
+            this.SeasonPictureBox.Location = new System.Drawing.Point(335, 71);
+            this.SeasonPictureBox.Name = "SeasonPictureBox";
+            this.SeasonPictureBox.Size = new System.Drawing.Size(305, 160);
+            this.SeasonPictureBox.TabIndex = 6;
+            this.SeasonPictureBox.TabStop = false;
+            // 
             // IntValueTextBox
             // 
             this.IntValueTextBox.Location = new System.Drawing.Point(335, 45);
@@ -235,14 +243,6 @@
             this.ValueListBox.TabIndex = 1;
             this.ValueListBox.SelectedIndexChanged += new System.EventHandler(this.ValueListBox_SelectedIndexChanged);
             // 
-            // SeasonPictureBox
-            //             
-            this.SeasonPictureBox.Location = new System.Drawing.Point(335, 71);
-            this.SeasonPictureBox.Name = "SeasonPictureBox";
-            this.SeasonPictureBox.Size = new System.Drawing.Size(305, 160);
-            this.SeasonPictureBox.TabIndex = 6;
-            this.SeasonPictureBox.TabStop = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -251,7 +251,7 @@
             this.Controls.Add(this.EnumsControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
-            this.Text = "MaimForm";
+            this.Text = "MainForm";
             this.EnumsControl.ResumeLayout(false);
             this.Enums.ResumeLayout(false);
             this.SeasonHandleGroupBox.ResumeLayout(false);

@@ -87,5 +87,13 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="res\Autumn.jpg" />
+    <Content Include="res\Spring.jpg" />
+    <Content Include="res\Summer.jpg" />
+    <Content Include="res\to_do_list_icon-icons.com_76974.ico" />
+    <Content Include="res\Winter.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

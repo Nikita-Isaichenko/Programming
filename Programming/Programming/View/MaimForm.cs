@@ -23,7 +23,8 @@ namespace Programming.View
             {
                 SeasonComboBox.Items.Add(valueSeason);
             }
-            EnumListBox.SelectedIndex = 0;
+            EnumListBox.SelectedIndex = 0;           
+
         }
 
         private void EnumListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -85,17 +86,20 @@ namespace Programming.View
             switch (SeasonComboBox.SelectedItem)
             {
                 case Season.Winter:
-
-                    
+                    SeasonPictureBox.Image = Properties.Resources.Winter;
                     break;
                 case Season.Spring:
-                    
+                    SeasonPictureBox.Image = Properties.Resources.Spring;
                     break;
                 case Season.Autumn:
+                    SeasonPictureBox.Image = Properties.Resources.Autumn;
                     break;
                 case Season.Summer:
+                    SeasonPictureBox.Image = Properties.Resources.Summer;
                     break;
             }
         }
+
+        
     }
 }
