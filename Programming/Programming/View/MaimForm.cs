@@ -9,6 +9,7 @@ namespace Programming.View
     public partial class MaimForm : Form
     {
         public Array value;
+        Weekday weekday;
         
         public MaimForm()
         {
@@ -59,6 +60,19 @@ namespace Programming.View
         {
             IntValueTextBox.Clear();
             IntValueTextBox.Text = ((int) ValueListBox.SelectedItem).ToString();
+        }
+
+        private void ParseButton_Click(object sender, EventArgs e)
+        {
+            string text = TextBoxParsing.Text;
+            if (Enum.TryParse(text, out weekday))
+            {
+                WeekdayOutputLabel.Text = $"Это день недели ({text} = {(int)Enum.Parse(typeof(Weekday), text)})";
+            }
+            else
+            {
+                WeekdayOutputLabel.Text = "Нет такого дня недели";
+            }
         }
     }
 }

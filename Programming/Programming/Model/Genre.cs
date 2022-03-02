@@ -2,7 +2,7 @@
 {
     public enum Genre 
     {
-        Сomedy = 5,
+        Сomedy,
         Drama,
         Thriller,
         Actionmovie,

@@ -42,7 +42,7 @@
             this.ParseButton = new System.Windows.Forms.Button();
             this.WeekdayTitleLabel = new System.Windows.Forms.Label();
             this.WeekdayOutputLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TextBoxParsing = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.Enums.SuspendLayout();
             this.WeekdayParsingBox.SuspendLayout();
@@ -73,7 +73,7 @@
             // 
             // WeekdayParsingBox
             // 
-            this.WeekdayParsingBox.Controls.Add(this.textBox1);
+            this.WeekdayParsingBox.Controls.Add(this.TextBoxParsing);
             this.WeekdayParsingBox.Controls.Add(this.WeekdayOutputLabel);
             this.WeekdayParsingBox.Controls.Add(this.WeekdayTitleLabel);
             this.WeekdayParsingBox.Controls.Add(this.ParseButton);
@@ -159,6 +159,7 @@
             this.ParseButton.TabIndex = 0;
             this.ParseButton.Text = "Parse";
             this.ParseButton.UseVisualStyleBackColor = true;
+            this.ParseButton.Click += new System.EventHandler(this.ParseButton_Click);
             // 
             // WeekdayTitleLabel
             // 
@@ -174,16 +175,16 @@
             this.WeekdayOutputLabel.AutoSize = true;
             this.WeekdayOutputLabel.Location = new System.Drawing.Point(6, 84);
             this.WeekdayOutputLabel.Name = "WeekdayOutputLabel";
-            this.WeekdayOutputLabel.Size = new System.Drawing.Size(35, 13);
+            this.WeekdayOutputLabel.Size = new System.Drawing.Size(100, 13);
             this.WeekdayOutputLabel.TabIndex = 2;
-            this.WeekdayOutputLabel.Text = "label5";
+            this.WeekdayOutputLabel.Text = "Это день недели ()";
             // 
-            // textBox1
+            // TextBoxParsing
             // 
-            this.textBox1.Location = new System.Drawing.Point(9, 52);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(218, 20);
-            this.textBox1.TabIndex = 3;
+            this.TextBoxParsing.Location = new System.Drawing.Point(9, 52);
+            this.TextBoxParsing.Name = "TextBoxParsing";
+            this.TextBoxParsing.Size = new System.Drawing.Size(218, 20);
+            this.TextBoxParsing.TabIndex = 3;
             // 
             // MaimForm
             // 
@@ -215,7 +216,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox ValueListBox;
         private System.Windows.Forms.GroupBox WeekdayParsingBox;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TextBoxParsing;
         private System.Windows.Forms.Label WeekdayOutputLabel;
         private System.Windows.Forms.Label WeekdayTitleLabel;
         private System.Windows.Forms.Button ParseButton;
