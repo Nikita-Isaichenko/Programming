@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using Programming.Model;
 
@@ -84,7 +85,8 @@ namespace Programming.View
             switch (SeasonComboBox.SelectedItem)
             {
                 case Season.Winter:
-                    SeasonPictureBox.ImageLocation = "res/Winter.jpg";
+
+                    
                     break;
                 case Season.Spring:
                     

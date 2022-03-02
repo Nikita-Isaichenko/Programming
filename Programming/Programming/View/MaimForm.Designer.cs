@@ -236,10 +236,10 @@
             this.ValueListBox.SelectedIndexChanged += new System.EventHandler(this.ValueListBox_SelectedIndexChanged);
             // 
             // SeasonPictureBox
-            // 
+            //             
             this.SeasonPictureBox.Location = new System.Drawing.Point(335, 71);
             this.SeasonPictureBox.Name = "SeasonPictureBox";
-            this.SeasonPictureBox.Size = new System.Drawing.Size(304, 160);
+            this.SeasonPictureBox.Size = new System.Drawing.Size(305, 160);
             this.SeasonPictureBox.TabIndex = 6;
             this.SeasonPictureBox.TabStop = false;
             // 
