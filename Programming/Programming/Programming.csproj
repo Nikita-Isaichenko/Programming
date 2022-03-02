@@ -46,12 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Weekday.cs" />
-    <Compile Include="Model\EducationalForm.cs" />
-    <Compile Include="Model\Genre.cs" />
-    <Compile Include="Model\Manufacturers.cs" />
-    <Compile Include="Model\Season.cs" />
-    <Compile Include="Model\Color.cs" />
+    <Compile Include="Model\Enums\Weekday.cs" />
+    <Compile Include="Model\Enums\EducationalForm.cs" />
+    <Compile Include="Model\Enums\Genre.cs" />
+    <Compile Include="Model\Enums\Manufacturers.cs" />
+    <Compile Include="Model\Enums\Season.cs" />
+    <Compile Include="Model\Enums\Color.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -87,7 +87,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="res\Autumn.jpg" />
     <Content Include="res\Spring.jpg" />
