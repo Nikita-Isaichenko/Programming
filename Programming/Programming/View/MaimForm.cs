@@ -1,24 +1,27 @@
 ﻿using System;
-
 using System.Windows.Forms;
 using Programming.Model;
 
 
+
 namespace Programming.View
 {
-    public partial class MaimForm : Form
+    public partial class MainForm : Form
     {
         public Array value;
         Weekday weekday;
         
-        public MaimForm()
+        public MainForm()
         {
             InitializeComponent();
             foreach (Enum valueEnums in Enum.GetValues(typeof(Enums)))
             {
                 EnumListBox.Items.Add(valueEnums);
             }
-
+            foreach (Enum valueSeason in Enum.GetValues(typeof(Season)))
+            {
+                SeasonComboBox.Items.Add(valueSeason);
+            }
             EnumListBox.SelectedIndex = 0;
         }
 
@@ -72,6 +75,24 @@ namespace Programming.View
             else
             {
                 WeekdayOutputLabel.Text = "Нет такого дня недели";
+            }
+        }
+
+        private void GoButton_Click(object sender, EventArgs e)
+        {
+            SeasonPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            switch (SeasonComboBox.SelectedItem)
+            {
+                case Season.Winter:
+                    SeasonPictureBox.ImageLocation = "res/Winter.jpg";
+                    break;
+                case Season.Spring:
+                    
+                    break;
+                case Season.Autumn:
+                    break;
+                case Season.Summer:
+                    break;
             }
         }
     }
