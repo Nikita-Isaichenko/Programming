@@ -8,8 +8,8 @@ namespace Programming.View
 {
     public partial class MainForm : Form
     {
-        public Array value;
-        Weekday weekday;
+        private Array value;
+        private Weekday days;
         
         public MainForm()
         {
@@ -69,7 +69,7 @@ namespace Programming.View
         private void ParseButton_Click(object sender, EventArgs e)
         {
             string text = TextBoxParsing.Text;
-            if (Enum.TryParse(text, out weekday))
+            if (Enum.TryParse(text, out days))
             {
                 WeekdayOutputLabel.Text = $"Это день недели ({text} = {(int)Enum.Parse(typeof(Weekday), text)})";
             }
@@ -97,8 +97,6 @@ namespace Programming.View
                     SeasonPictureBox.Image = Properties.Resources.Summer;
                     break;
             }
-        }
-
-        
+        }       
     }
 }
