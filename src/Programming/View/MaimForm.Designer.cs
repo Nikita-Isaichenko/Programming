@@ -144,9 +144,9 @@
             this.WeekdayOutputLabel.AutoSize = true;
             this.WeekdayOutputLabel.Location = new System.Drawing.Point(6, 84);
             this.WeekdayOutputLabel.Name = "WeekdayOutputLabel";
-            this.WeekdayOutputLabel.Size = new System.Drawing.Size(100, 13);
+            this.WeekdayOutputLabel.Size = new System.Drawing.Size(7, 13);
             this.WeekdayOutputLabel.TabIndex = 2;
-            this.WeekdayOutputLabel.Text = "Это день недели ()";
+            this.WeekdayOutputLabel.Text = "\r\n";
             // 
             // WeekdayTitleLabel
             // 
