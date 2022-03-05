@@ -5,8 +5,7 @@ using Programming.Model.Enums;
 namespace Programming.View
 {
     public partial class MainForm : Form
-    {        
-        private Weekday days;
+    {                
         
         public MainForm()
         {
@@ -71,7 +70,7 @@ namespace Programming.View
             if (int.TryParse(text, out int a)){
                 WeekdayOutputLabel.Text = "Введите день недели!";
             }
-            else if (Enum.TryParse(text, out days))
+            else if (Enum.TryParse(text, out Weekday days))
             {
                 WeekdayOutputLabel.Text = $"Это день недели ({text} = {(int)Enum.Parse(typeof(Weekday), text)})";
             }
