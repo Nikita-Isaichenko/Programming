@@ -5,8 +5,8 @@ using Programming.Model.Enums;
 namespace Programming.View
 {
     public partial class MainForm : Form
-    {                
-        
+    {
+
         public MainForm()
         {
             InitializeComponent();
