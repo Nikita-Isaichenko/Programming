@@ -7,6 +7,6 @@
         Thriller,
         Actionmovie,
         Horror,
-        blockbuster
+        Blockbuster
     }
 }
