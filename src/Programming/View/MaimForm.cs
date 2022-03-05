@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using Programming.Model;
-
-
+using Programming.Model.Enums;
 
 namespace Programming.View
 {
@@ -34,7 +32,7 @@ namespace Programming.View
             switch (EnumListBox.SelectedItem)
             {
                 case View.Enums.Color:
-                    value = Enum.GetValues(typeof(Model.Color));
+                    value = Enum.GetValues(typeof(Color));
                     break;
                 case View.Enums.EducationalForm:
                     value = Enum.GetValues(typeof(EducationalForm));
