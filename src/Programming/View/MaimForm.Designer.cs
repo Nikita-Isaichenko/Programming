@@ -252,7 +252,7 @@
             this.Controls.Add(this.LabControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "Programming Demo";
             this.LabControl.ResumeLayout(false);
             this.Enums.ResumeLayout(false);
             this.SeasonHandleGroupBox.ResumeLayout(false);
