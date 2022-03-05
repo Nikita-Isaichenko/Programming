@@ -7,8 +7,7 @@ using Programming.Model;
 namespace Programming.View
 {
     public partial class MainForm : Form
-    {
-        private Array value;
+    {        
         private Weekday days;
         
         public MainForm()
@@ -18,10 +17,12 @@ namespace Programming.View
             {
                 EnumListBox.Items.Add(valueEnums);
             }
+
             foreach (Enum valueSeason in Enum.GetValues(typeof(Season)))
             {
                 SeasonComboBox.Items.Add(valueSeason);
             }
+
             EnumListBox.SelectedIndex = 0;           
 
         }
@@ -29,6 +30,7 @@ namespace Programming.View
         private void EnumListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ValueListBox.Items.Clear();
+            Array value;
             switch (EnumListBox.SelectedItem)
             {
                 case View.Enums.Color:
@@ -52,6 +54,7 @@ namespace Programming.View
                 default:
                     throw new NotImplementedException();
             }
+
             foreach (var valueEnums in value)
             {
                 ValueListBox.Items.Add(valueEnums);
@@ -66,9 +69,8 @@ namespace Programming.View
 
         private void ParseButton_Click(object sender, EventArgs e)
         {
-            string text = TextBoxParsing.Text;
-            int a;
-            if (int.TryParse(text, out a)){
+            string text = TextBoxParsing.Text;            
+            if (int.TryParse(text, out int a)){
                 WeekdayOutputLabel.Text = "Введите день недели!";
             }
             else if (Enum.TryParse(text, out days))

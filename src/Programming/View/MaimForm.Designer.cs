@@ -30,7 +30,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.EnumsControl = new System.Windows.Forms.TabControl();
+            this.LabControl = new System.Windows.Forms.TabControl();
             this.Enums = new System.Windows.Forms.TabPage();
             this.SeasonHandleGroupBox = new System.Windows.Forms.GroupBox();
             this.SeasonComboBox = new System.Windows.Forms.ComboBox();
@@ -49,7 +49,7 @@
             this.EnumerationLabel = new System.Windows.Forms.Label();
             this.ValueLabel = new System.Windows.Forms.Label();
             this.ValueListBox = new System.Windows.Forms.ListBox();
-            this.EnumsControl.SuspendLayout();
+            this.LabControl.SuspendLayout();
             this.Enums.SuspendLayout();
             this.SeasonHandleGroupBox.SuspendLayout();
             this.WeekdayParsingGroupBox.SuspendLayout();
@@ -57,15 +57,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.SeasonPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // EnumsControl
+            // LabControl
             // 
-            this.EnumsControl.Controls.Add(this.Enums);
-            this.EnumsControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.EnumsControl.Location = new System.Drawing.Point(0, 0);
-            this.EnumsControl.Name = "EnumsControl";
-            this.EnumsControl.SelectedIndex = 0;
-            this.EnumsControl.Size = new System.Drawing.Size(670, 450);
-            this.EnumsControl.TabIndex = 0;
+            this.LabControl.Controls.Add(this.Enums);
+            this.LabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LabControl.Location = new System.Drawing.Point(0, 0);
+            this.LabControl.Name = "LabControl";
+            this.LabControl.SelectedIndex = 0;
+            this.LabControl.Size = new System.Drawing.Size(670, 450);
+            this.LabControl.TabIndex = 0;
             // 
             // Enums
             // 
@@ -95,9 +95,9 @@
             // SeasonComboBox
             // 
             this.SeasonComboBox.FormattingEnabled = true;
-            this.SeasonComboBox.Location = new System.Drawing.Point(6, 52);
+            this.SeasonComboBox.Location = new System.Drawing.Point(9, 52);
             this.SeasonComboBox.Name = "SeasonComboBox";
-            this.SeasonComboBox.Size = new System.Drawing.Size(227, 21);
+            this.SeasonComboBox.Size = new System.Drawing.Size(224, 21);
             this.SeasonComboBox.TabIndex = 3;
             // 
             // GoButton
@@ -113,7 +113,7 @@
             // SeasonLabel
             // 
             this.SeasonLabel.AutoSize = true;
-            this.SeasonLabel.Location = new System.Drawing.Point(3, 36);
+            this.SeasonLabel.Location = new System.Drawing.Point(6, 36);
             this.SeasonLabel.Name = "SeasonLabel";
             this.SeasonLabel.Size = new System.Drawing.Size(85, 13);
             this.SeasonLabel.TabIndex = 0;
@@ -134,15 +134,15 @@
             // 
             // TextBoxParsing
             // 
-            this.TextBoxParsing.Location = new System.Drawing.Point(6, 52);
+            this.TextBoxParsing.Location = new System.Drawing.Point(9, 52);
             this.TextBoxParsing.Name = "TextBoxParsing";
-            this.TextBoxParsing.Size = new System.Drawing.Size(227, 20);
+            this.TextBoxParsing.Size = new System.Drawing.Size(224, 20);
             this.TextBoxParsing.TabIndex = 3;
             // 
             // WeekdayOutputLabel
             // 
             this.WeekdayOutputLabel.AutoSize = true;
-            this.WeekdayOutputLabel.Location = new System.Drawing.Point(6, 84);
+            this.WeekdayOutputLabel.Location = new System.Drawing.Point(6, 75);
             this.WeekdayOutputLabel.Name = "WeekdayOutputLabel";
             this.WeekdayOutputLabel.Size = new System.Drawing.Size(7, 13);
             this.WeekdayOutputLabel.TabIndex = 2;
@@ -151,7 +151,7 @@
             // WeekdayTitleLabel
             // 
             this.WeekdayTitleLabel.AutoSize = true;
-            this.WeekdayTitleLabel.Location = new System.Drawing.Point(3, 36);
+            this.WeekdayTitleLabel.Location = new System.Drawing.Point(6, 36);
             this.WeekdayTitleLabel.Name = "WeekdayTitleLabel";
             this.WeekdayTitleLabel.Size = new System.Drawing.Size(115, 13);
             this.WeekdayTitleLabel.TabIndex = 1;
@@ -185,9 +185,9 @@
             // 
             // SeasonPictureBox
             // 
-            this.SeasonPictureBox.Location = new System.Drawing.Point(332, 71);
+            this.SeasonPictureBox.Location = new System.Drawing.Point(335, 71);
             this.SeasonPictureBox.Name = "SeasonPictureBox";
-            this.SeasonPictureBox.Size = new System.Drawing.Size(308, 160);
+            this.SeasonPictureBox.Size = new System.Drawing.Size(305, 160);
             this.SeasonPictureBox.TabIndex = 6;
             this.SeasonPictureBox.TabStop = false;
             // 
@@ -249,11 +249,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(670, 450);
-            this.Controls.Add(this.EnumsControl);
+            this.Controls.Add(this.LabControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "MainForm";
-            this.EnumsControl.ResumeLayout(false);
+            this.LabControl.ResumeLayout(false);
             this.Enums.ResumeLayout(false);
             this.SeasonHandleGroupBox.ResumeLayout(false);
             this.SeasonHandleGroupBox.PerformLayout();
@@ -268,7 +268,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl EnumsControl;
+        private System.Windows.Forms.TabControl LabControl;
         private System.Windows.Forms.TabPage Enums;
         private System.Windows.Forms.GroupBox EnumerationGroupBox;
         private System.Windows.Forms.TextBox IntValueTextBox;
