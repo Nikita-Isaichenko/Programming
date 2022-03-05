@@ -37,7 +37,7 @@
             this.GoButton = new System.Windows.Forms.Button();
             this.SeasonLabel = new System.Windows.Forms.Label();
             this.WeekdayParsingGroupBox = new System.Windows.Forms.GroupBox();
-            this.TextBoxParsing = new System.Windows.Forms.TextBox();
+            this.ParsingTextBox = new System.Windows.Forms.TextBox();
             this.WeekdayOutputLabel = new System.Windows.Forms.Label();
             this.WeekdayTitleLabel = new System.Windows.Forms.Label();
             this.ParseButton = new System.Windows.Forms.Button();
@@ -121,7 +121,7 @@
             // 
             // WeekdayParsingGroupBox
             // 
-            this.WeekdayParsingGroupBox.Controls.Add(this.TextBoxParsing);
+            this.WeekdayParsingGroupBox.Controls.Add(this.ParsingTextBox);
             this.WeekdayParsingGroupBox.Controls.Add(this.WeekdayOutputLabel);
             this.WeekdayParsingGroupBox.Controls.Add(this.WeekdayTitleLabel);
             this.WeekdayParsingGroupBox.Controls.Add(this.ParseButton);
@@ -132,12 +132,12 @@
             this.WeekdayParsingGroupBox.TabStop = false;
             this.WeekdayParsingGroupBox.Text = "Weekday Parsing";
             // 
-            // TextBoxParsing
+            // ParsingTextBox
             // 
-            this.TextBoxParsing.Location = new System.Drawing.Point(9, 52);
-            this.TextBoxParsing.Name = "TextBoxParsing";
-            this.TextBoxParsing.Size = new System.Drawing.Size(224, 20);
-            this.TextBoxParsing.TabIndex = 3;
+            this.ParsingTextBox.Location = new System.Drawing.Point(9, 52);
+            this.ParsingTextBox.Name = "ParsingTextBox";
+            this.ParsingTextBox.Size = new System.Drawing.Size(224, 20);
+            this.ParsingTextBox.TabIndex = 3;
             // 
             // WeekdayOutputLabel
             // 
@@ -187,7 +187,7 @@
             // 
             this.SeasonPictureBox.Location = new System.Drawing.Point(335, 71);
             this.SeasonPictureBox.Name = "SeasonPictureBox";
-            this.SeasonPictureBox.Size = new System.Drawing.Size(305, 160);
+            this.SeasonPictureBox.Size = new System.Drawing.Size(302, 160);
             this.SeasonPictureBox.TabIndex = 6;
             this.SeasonPictureBox.TabStop = false;
             // 
@@ -278,7 +278,7 @@
         private System.Windows.Forms.Label ValueLabel;
         private System.Windows.Forms.ListBox ValueListBox;
         private System.Windows.Forms.GroupBox WeekdayParsingGroupBox;
-        private System.Windows.Forms.TextBox TextBoxParsing;
+        private System.Windows.Forms.TextBox ParsingTextBox;
         private System.Windows.Forms.Label WeekdayOutputLabel;
         private System.Windows.Forms.Label WeekdayTitleLabel;
         private System.Windows.Forms.Button ParseButton;

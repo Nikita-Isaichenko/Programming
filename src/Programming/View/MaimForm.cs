@@ -66,7 +66,7 @@ namespace Programming.View
 
         private void ParseButton_Click(object sender, EventArgs e)
         {
-            string text = TextBoxParsing.Text;
+            string text = ParsingTextBox.Text;
             if (int.TryParse(text, out int _)){
                 WeekdayOutputLabel.Text = "Введите день недели!";
             }
