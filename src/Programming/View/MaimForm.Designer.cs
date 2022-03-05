@@ -113,7 +113,7 @@
             // SeasonLabel
             // 
             this.SeasonLabel.AutoSize = true;
-            this.SeasonLabel.Location = new System.Drawing.Point(6, 36);
+            this.SeasonLabel.Location = new System.Drawing.Point(3, 36);
             this.SeasonLabel.Name = "SeasonLabel";
             this.SeasonLabel.Size = new System.Drawing.Size(85, 13);
             this.SeasonLabel.TabIndex = 0;
@@ -185,9 +185,9 @@
             // 
             // SeasonPictureBox
             // 
-            this.SeasonPictureBox.Location = new System.Drawing.Point(335, 71);
+            this.SeasonPictureBox.Location = new System.Drawing.Point(332, 71);
             this.SeasonPictureBox.Name = "SeasonPictureBox";
-            this.SeasonPictureBox.Size = new System.Drawing.Size(305, 160);
+            this.SeasonPictureBox.Size = new System.Drawing.Size(308, 160);
             this.SeasonPictureBox.TabIndex = 6;
             this.SeasonPictureBox.TabStop = false;
             // 
