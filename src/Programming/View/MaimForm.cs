@@ -66,11 +66,11 @@ namespace Programming.View
 
         private void ParseButton_Click(object sender, EventArgs e)
         {
-            string text = TextBoxParsing.Text;            
-            if (int.TryParse(text, out int a)){
+            string text = TextBoxParsing.Text;
+            if (int.TryParse(text, out int _)){
                 WeekdayOutputLabel.Text = "Введите день недели!";
             }
-            else if (Enum.TryParse(text, out Weekday days))
+            else if (Enum.TryParse(text, out Weekday _))
             {
                 WeekdayOutputLabel.Text = $"Это день недели ({text} = {(int)Enum.Parse(typeof(Weekday), text)})";
             }
