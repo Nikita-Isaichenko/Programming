@@ -1,6 +1,6 @@
 ﻿namespace Programming.Model.Enums
 { 
-    public enum EducationalForm
+    public enum EducationForm
     {
         FullTime,
         PartTime,

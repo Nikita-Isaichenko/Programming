@@ -5,7 +5,7 @@
         Сomedy,
         Drama,
         Thriller,
-        Actionmovie,
+        Action,
         Horror,
         Blockbuster
     }

@@ -34,7 +34,7 @@ namespace Programming.View
                     value = Enum.GetValues(typeof(Color));
                     break;
                 case View.Enums.EducationalForm:
-                    value = Enum.GetValues(typeof(EducationalForm));
+                    value = Enum.GetValues(typeof(EducationForm));
                     break;
                 case View.Enums.Genre:
                     value = Enum.GetValues(typeof(Genre));
