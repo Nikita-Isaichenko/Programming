@@ -21,7 +21,6 @@ namespace Programming.View
             }
 
             EnumListBox.SelectedIndex = 0;           
-
         }
 
         private void EnumListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,7 +59,6 @@ namespace Programming.View
 
         private void ValueListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            IntValueTextBox.Clear();
             IntValueTextBox.Text = ((int) ValueListBox.SelectedItem).ToString();
         }
 
