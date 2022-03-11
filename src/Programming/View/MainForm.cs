@@ -26,26 +26,26 @@ namespace Programming.View
         private void EnumListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ValueListBox.Items.Clear();
-            Array value;
+            Array values;
             switch (EnumListBox.SelectedItem)
             {
                 case View.Enums.Color:
-                    value = Enum.GetValues(typeof(Color));
+                    values = Enum.GetValues(typeof(Color));
                     break;
                 case View.Enums.EducationalForm:
-                    value = Enum.GetValues(typeof(EducationForm));
+                    values = Enum.GetValues(typeof(EducationForm));
                     break;
                 case View.Enums.Genre:
-                    value = Enum.GetValues(typeof(Genre));
+                    values = Enum.GetValues(typeof(Genre));
                     break;
                 case View.Enums.Manufacturers:
-                    value = Enum.GetValues(typeof(Manufacturers));
+                    values = Enum.GetValues(typeof(Manufacturers));
                     break;
                 case View.Enums.Season:
-                    value = Enum.GetValues(typeof(Season));
+                    values = Enum.GetValues(typeof(Season));
                     break;
                 case View.Enums.Weekday:
-                    value = Enum.GetValues(typeof(Weekday));
+                    values = Enum.GetValues(typeof(Weekday));
                     break;
                 default:
                     throw new NotImplementedException();

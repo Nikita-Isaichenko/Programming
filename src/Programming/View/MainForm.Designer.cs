@@ -31,7 +31,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.LabControl = new System.Windows.Forms.TabControl();
-            this.Enums = new System.Windows.Forms.TabPage();
+            this.EnumsTabPage = new System.Windows.Forms.TabPage();
             this.SeasonHandleGroupBox = new System.Windows.Forms.GroupBox();
             this.SeasonComboBox = new System.Windows.Forms.ComboBox();
             this.GoButton = new System.Windows.Forms.Button();
@@ -42,15 +42,15 @@
             this.WeekdayTitleLabel = new System.Windows.Forms.Label();
             this.ParseButton = new System.Windows.Forms.Button();
             this.EnumerationGroupBox = new System.Windows.Forms.GroupBox();
+            this.SeasonPictureBox = new System.Windows.Forms.PictureBox();
             this.IntValueTextBox = new System.Windows.Forms.TextBox();
             this.EnumListBox = new System.Windows.Forms.ListBox();
             this.IntValueLabel = new System.Windows.Forms.Label();
             this.EnumerationLabel = new System.Windows.Forms.Label();
             this.ValueLabel = new System.Windows.Forms.Label();
             this.ValueListBox = new System.Windows.Forms.ListBox();
-            this.SeasonPictureBox = new System.Windows.Forms.PictureBox();
             this.LabControl.SuspendLayout();
-            this.Enums.SuspendLayout();
+            this.EnumsTabPage.SuspendLayout();
             this.SeasonHandleGroupBox.SuspendLayout();
             this.WeekdayParsingGroupBox.SuspendLayout();
             this.EnumerationGroupBox.SuspendLayout();
@@ -59,7 +59,7 @@
             // 
             // LabControl
             // 
-            this.LabControl.Controls.Add(this.Enums);
+            this.LabControl.Controls.Add(this.EnumsTabPage);
             this.LabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LabControl.Location = new System.Drawing.Point(0, 0);
             this.LabControl.Name = "LabControl";
@@ -67,18 +67,18 @@
             this.LabControl.Size = new System.Drawing.Size(670, 450);
             this.LabControl.TabIndex = 0;
             // 
-            // Enums
+            // EnumsTabPage
             // 
-            this.Enums.Controls.Add(this.SeasonHandleGroupBox);
-            this.Enums.Controls.Add(this.WeekdayParsingGroupBox);
-            this.Enums.Controls.Add(this.EnumerationGroupBox);
-            this.Enums.Location = new System.Drawing.Point(4, 22);
-            this.Enums.Name = "Enums";
-            this.Enums.Padding = new System.Windows.Forms.Padding(3);
-            this.Enums.Size = new System.Drawing.Size(662, 424);
-            this.Enums.TabIndex = 0;
-            this.Enums.Text = "Enums";
-            this.Enums.UseVisualStyleBackColor = true;
+            this.EnumsTabPage.Controls.Add(this.SeasonHandleGroupBox);
+            this.EnumsTabPage.Controls.Add(this.WeekdayParsingGroupBox);
+            this.EnumsTabPage.Controls.Add(this.EnumerationGroupBox);
+            this.EnumsTabPage.Location = new System.Drawing.Point(4, 22);
+            this.EnumsTabPage.Name = "EnumsTabPage";
+            this.EnumsTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.EnumsTabPage.Size = new System.Drawing.Size(662, 424);
+            this.EnumsTabPage.TabIndex = 0;
+            this.EnumsTabPage.Text = "Enums";
+            this.EnumsTabPage.UseVisualStyleBackColor = true;
             // 
             // SeasonHandleGroupBox
             // 
@@ -181,7 +181,15 @@
             this.EnumerationGroupBox.Size = new System.Drawing.Size(645, 252);
             this.EnumerationGroupBox.TabIndex = 5;
             this.EnumerationGroupBox.TabStop = false;
-            this.EnumerationGroupBox.Text = "Enumeration";
+            this.EnumerationGroupBox.Text = "Enumerations";
+            // 
+            // SeasonPictureBox
+            // 
+            this.SeasonPictureBox.Location = new System.Drawing.Point(335, 71);
+            this.SeasonPictureBox.Name = "SeasonPictureBox";
+            this.SeasonPictureBox.Size = new System.Drawing.Size(304, 160);
+            this.SeasonPictureBox.TabIndex = 6;
+            this.SeasonPictureBox.TabStop = false;
             // 
             // IntValueTextBox
             // 
@@ -236,14 +244,6 @@
             this.ValueListBox.TabIndex = 1;
             this.ValueListBox.SelectedIndexChanged += new System.EventHandler(this.ValueListBox_SelectedIndexChanged);
             // 
-            // SeasonPictureBox
-            // 
-            this.SeasonPictureBox.Location = new System.Drawing.Point(335, 71);
-            this.SeasonPictureBox.Name = "SeasonPictureBox";
-            this.SeasonPictureBox.Size = new System.Drawing.Size(304, 160);
-            this.SeasonPictureBox.TabIndex = 6;
-            this.SeasonPictureBox.TabStop = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -254,7 +254,7 @@
             this.Name = "MainForm";
             this.Text = "Programming Demo";
             this.LabControl.ResumeLayout(false);
-            this.Enums.ResumeLayout(false);
+            this.EnumsTabPage.ResumeLayout(false);
             this.SeasonHandleGroupBox.ResumeLayout(false);
             this.SeasonHandleGroupBox.PerformLayout();
             this.WeekdayParsingGroupBox.ResumeLayout(false);
@@ -269,7 +269,7 @@
         #endregion
 
         private System.Windows.Forms.TabControl LabControl;
-        private System.Windows.Forms.TabPage Enums;
+        private System.Windows.Forms.TabPage EnumsTabPage;
         private System.Windows.Forms.GroupBox EnumerationGroupBox;
         private System.Windows.Forms.TextBox IntValueTextBox;
         private System.Windows.Forms.ListBox EnumListBox;
