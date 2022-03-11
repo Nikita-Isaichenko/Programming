@@ -95,14 +95,14 @@
             // SeasonComboBox
             // 
             this.SeasonComboBox.FormattingEnabled = true;
-            this.SeasonComboBox.Location = new System.Drawing.Point(9, 52);
+            this.SeasonComboBox.Location = new System.Drawing.Point(9, 54);
             this.SeasonComboBox.Name = "SeasonComboBox";
             this.SeasonComboBox.Size = new System.Drawing.Size(224, 21);
             this.SeasonComboBox.TabIndex = 3;
             // 
             // GoButton
             // 
-            this.GoButton.Location = new System.Drawing.Point(239, 52);
+            this.GoButton.Location = new System.Drawing.Point(239, 51);
             this.GoButton.Name = "GoButton";
             this.GoButton.Size = new System.Drawing.Size(75, 23);
             this.GoButton.TabIndex = 2;
@@ -113,7 +113,7 @@
             // SeasonLabel
             // 
             this.SeasonLabel.AutoSize = true;
-            this.SeasonLabel.Location = new System.Drawing.Point(6, 36);
+            this.SeasonLabel.Location = new System.Drawing.Point(6, 34);
             this.SeasonLabel.Name = "SeasonLabel";
             this.SeasonLabel.Size = new System.Drawing.Size(85, 13);
             this.SeasonLabel.TabIndex = 0;
@@ -134,7 +134,7 @@
             // 
             // ParsingTextBox
             // 
-            this.ParsingTextBox.Location = new System.Drawing.Point(9, 52);
+            this.ParsingTextBox.Location = new System.Drawing.Point(9, 54);
             this.ParsingTextBox.Name = "ParsingTextBox";
             this.ParsingTextBox.Size = new System.Drawing.Size(224, 20);
             this.ParsingTextBox.TabIndex = 3;
@@ -151,7 +151,7 @@
             // WeekdayTitleLabel
             // 
             this.WeekdayTitleLabel.AutoSize = true;
-            this.WeekdayTitleLabel.Location = new System.Drawing.Point(6, 36);
+            this.WeekdayTitleLabel.Location = new System.Drawing.Point(6, 34);
             this.WeekdayTitleLabel.Name = "WeekdayTitleLabel";
             this.WeekdayTitleLabel.Size = new System.Drawing.Size(115, 13);
             this.WeekdayTitleLabel.TabIndex = 1;
