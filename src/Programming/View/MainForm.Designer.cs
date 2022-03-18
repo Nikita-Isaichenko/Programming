@@ -49,17 +49,22 @@
             this.EnumerationLabel = new System.Windows.Forms.Label();
             this.ValueLabel = new System.Windows.Forms.Label();
             this.ValueListBox = new System.Windows.Forms.ListBox();
+            this.ClassesTabPage = new System.Windows.Forms.TabPage();
+            this.RectanglesGroupBox = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.LabControl.SuspendLayout();
             this.EnumsTabPage.SuspendLayout();
             this.SeasonHandleGroupBox.SuspendLayout();
             this.WeekdayParsingGroupBox.SuspendLayout();
             this.EnumerationGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SeasonPictureBox)).BeginInit();
+            this.ClassesTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // LabControl
             // 
             this.LabControl.Controls.Add(this.EnumsTabPage);
+            this.LabControl.Controls.Add(this.ClassesTabPage);
             this.LabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LabControl.Location = new System.Drawing.Point(0, 0);
             this.LabControl.Name = "LabControl";
@@ -244,6 +249,36 @@
             this.ValueListBox.TabIndex = 1;
             this.ValueListBox.SelectedIndexChanged += new System.EventHandler(this.ValueListBox_SelectedIndexChanged);
             // 
+            // ClassesTabPage
+            // 
+            this.ClassesTabPage.Controls.Add(this.groupBox2);
+            this.ClassesTabPage.Controls.Add(this.RectanglesGroupBox);
+            this.ClassesTabPage.Location = new System.Drawing.Point(4, 22);
+            this.ClassesTabPage.Name = "ClassesTabPage";
+            this.ClassesTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.ClassesTabPage.Size = new System.Drawing.Size(662, 424);
+            this.ClassesTabPage.TabIndex = 1;
+            this.ClassesTabPage.Text = "Classes";
+            this.ClassesTabPage.UseVisualStyleBackColor = true;
+            // 
+            // RectanglesGroupBox
+            // 
+            this.RectanglesGroupBox.Location = new System.Drawing.Point(6, 6);
+            this.RectanglesGroupBox.Name = "RectanglesGroupBox";
+            this.RectanglesGroupBox.Size = new System.Drawing.Size(322, 410);
+            this.RectanglesGroupBox.TabIndex = 0;
+            this.RectanglesGroupBox.TabStop = false;
+            this.RectanglesGroupBox.Text = "Rectangles";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Location = new System.Drawing.Point(332, 6);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(322, 410);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "groupBox2";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -262,6 +297,7 @@
             this.EnumerationGroupBox.ResumeLayout(false);
             this.EnumerationGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SeasonPictureBox)).EndInit();
+            this.ClassesTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -287,6 +323,9 @@
         private System.Windows.Forms.Label SeasonLabel;
         private System.Windows.Forms.ComboBox SeasonComboBox;
         private System.Windows.Forms.PictureBox SeasonPictureBox;
+        private System.Windows.Forms.TabPage ClassesTabPage;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox RectanglesGroupBox;
     }
 }
 
