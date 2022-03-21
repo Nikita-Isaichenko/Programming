@@ -1,11 +1,19 @@
 ﻿using System;
 using System.Windows.Forms;
+using Programming.Model.Classes;
 using Programming.Model.Enums;
 
 namespace Programming.View
 {
     public partial class MainForm : Form
     {
+        Random rnd = new Random();
+
+        private string[] colors;
+
+        private Rectangle[] _rectangles;
+
+        private Rectangle _currentRectangle;
 
         public MainForm()
         {
@@ -20,7 +28,22 @@ namespace Programming.View
                 SeasonComboBox.Items.Add(valueSeason);
             }
 
-            EnumListBox.SelectedIndex = 0;           
+            EnumListBox.SelectedIndex = 0;
+            _rectangles = new Rectangle[5];
+            colors = Enum.GetNames(typeof(Color));
+
+            for (int i = 0; i < _rectangles.Length; i++)
+            {
+                _rectangles[i] = new Rectangle(rnd.Next(0, 1000), rnd.Next(0, 1000),
+                                               colors[rnd.Next(colors.Length)]);               
+            }
+
+            RectanglesListBox.DataSource = _rectangles;
+            
+
+            
+
+            
         }
 
         private void EnumListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -51,7 +74,7 @@ namespace Programming.View
                     throw new NotImplementedException();
             }
 
-            foreach (var valueEnums in value)
+            foreach (var valueEnums in values)
             {
                 ValueListBox.Items.Add(valueEnums);
             }
@@ -93,6 +116,15 @@ namespace Programming.View
                     SeasonPictureBox.Image = Properties.Resources.Summer;
                     break;
             }
-        }       
+        }
+
+        private void RectanglesListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int indexRectangle = RectanglesListBox.SelectedIndex;
+            _currentRectangle = _rectangles[indexRectangle];
+            LenghtTextBox.Text = _currentRectangle.Length.ToString();  
+            WidthTextBox.Text = _currentRectangle.Width.ToString();
+            ColorTextBox.Text = _currentRectangle.Color.ToString(); 
+        }
     }
 }

@@ -47,6 +47,10 @@ namespace Programming.Model.Classes
                 _width = value;
             }
         }
-        public string Color { get; set; }
+        public string Color
+        {
+            get { return _color; }
+            set { _color = value; }
+        }
     }
 }

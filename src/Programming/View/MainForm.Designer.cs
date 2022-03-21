@@ -50,8 +50,16 @@
             this.ValueLabel = new System.Windows.Forms.Label();
             this.ValueListBox = new System.Windows.Forms.ListBox();
             this.ClassesTabPage = new System.Windows.Forms.TabPage();
-            this.RectanglesGroupBox = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.RectanglesGroupBox = new System.Windows.Forms.GroupBox();
+            this.FindButton = new System.Windows.Forms.Button();
+            this.ColorLabel = new System.Windows.Forms.Label();
+            this.WidthLabel = new System.Windows.Forms.Label();
+            this.LenghtLabel = new System.Windows.Forms.Label();
+            this.ColorTextBox = new System.Windows.Forms.TextBox();
+            this.WidthTextBox = new System.Windows.Forms.TextBox();
+            this.LenghtTextBox = new System.Windows.Forms.TextBox();
+            this.RectanglesListBox = new System.Windows.Forms.ListBox();
             this.LabControl.SuspendLayout();
             this.EnumsTabPage.SuspendLayout();
             this.SeasonHandleGroupBox.SuspendLayout();
@@ -59,6 +67,8 @@
             this.EnumerationGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SeasonPictureBox)).BeginInit();
             this.ClassesTabPage.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.RectanglesGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // LabControl
@@ -261,8 +271,25 @@
             this.ClassesTabPage.Text = "Classes";
             this.ClassesTabPage.UseVisualStyleBackColor = true;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.RectanglesListBox);
+            this.groupBox2.Location = new System.Drawing.Point(332, 6);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(322, 410);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "groupBox2";
+            // 
             // RectanglesGroupBox
             // 
+            this.RectanglesGroupBox.Controls.Add(this.FindButton);
+            this.RectanglesGroupBox.Controls.Add(this.ColorLabel);
+            this.RectanglesGroupBox.Controls.Add(this.WidthLabel);
+            this.RectanglesGroupBox.Controls.Add(this.LenghtLabel);
+            this.RectanglesGroupBox.Controls.Add(this.ColorTextBox);
+            this.RectanglesGroupBox.Controls.Add(this.WidthTextBox);
+            this.RectanglesGroupBox.Controls.Add(this.LenghtTextBox);
             this.RectanglesGroupBox.Location = new System.Drawing.Point(6, 6);
             this.RectanglesGroupBox.Name = "RectanglesGroupBox";
             this.RectanglesGroupBox.Size = new System.Drawing.Size(322, 410);
@@ -270,14 +297,71 @@
             this.RectanglesGroupBox.TabStop = false;
             this.RectanglesGroupBox.Text = "Rectangles";
             // 
-            // groupBox2
+            // FindButton
             // 
-            this.groupBox2.Location = new System.Drawing.Point(332, 6);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(322, 410);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.FindButton.Location = new System.Drawing.Point(168, 377);
+            this.FindButton.Name = "FindButton";
+            this.FindButton.Size = new System.Drawing.Size(100, 23);
+            this.FindButton.TabIndex = 7;
+            this.FindButton.Text = "FInd";
+            this.FindButton.UseVisualStyleBackColor = true;
+            // 
+            // ColorLabel
+            // 
+            this.ColorLabel.AutoSize = true;
+            this.ColorLabel.Location = new System.Drawing.Point(165, 125);
+            this.ColorLabel.Name = "ColorLabel";
+            this.ColorLabel.Size = new System.Drawing.Size(34, 13);
+            this.ColorLabel.TabIndex = 6;
+            this.ColorLabel.Text = "Color:";
+            // 
+            // WidthLabel
+            // 
+            this.WidthLabel.AutoSize = true;
+            this.WidthLabel.Location = new System.Drawing.Point(165, 72);
+            this.WidthLabel.Name = "WidthLabel";
+            this.WidthLabel.Size = new System.Drawing.Size(38, 13);
+            this.WidthLabel.TabIndex = 5;
+            this.WidthLabel.Text = "Width:";
+            // 
+            // LenghtLabel
+            // 
+            this.LenghtLabel.AutoSize = true;
+            this.LenghtLabel.Location = new System.Drawing.Point(165, 19);
+            this.LenghtLabel.Name = "LenghtLabel";
+            this.LenghtLabel.Size = new System.Drawing.Size(43, 13);
+            this.LenghtLabel.TabIndex = 4;
+            this.LenghtLabel.Text = "Lenght:";
+            // 
+            // ColorTextBox
+            // 
+            this.ColorTextBox.Location = new System.Drawing.Point(168, 141);
+            this.ColorTextBox.Name = "ColorTextBox";
+            this.ColorTextBox.Size = new System.Drawing.Size(100, 20);
+            this.ColorTextBox.TabIndex = 3;
+            // 
+            // WidthTextBox
+            // 
+            this.WidthTextBox.Location = new System.Drawing.Point(168, 88);
+            this.WidthTextBox.Name = "WidthTextBox";
+            this.WidthTextBox.Size = new System.Drawing.Size(100, 20);
+            this.WidthTextBox.TabIndex = 2;
+            // 
+            // LenghtTextBox
+            // 
+            this.LenghtTextBox.Location = new System.Drawing.Point(168, 35);
+            this.LenghtTextBox.Name = "LenghtTextBox";
+            this.LenghtTextBox.Size = new System.Drawing.Size(100, 20);
+            this.LenghtTextBox.TabIndex = 1;
+            // 
+            // RectanglesListBox
+            // 
+            this.RectanglesListBox.FormattingEnabled = true;
+            this.RectanglesListBox.Location = new System.Drawing.Point(6, 23);
+            this.RectanglesListBox.Name = "RectanglesListBox";
+            this.RectanglesListBox.Size = new System.Drawing.Size(310, 381);
+            this.RectanglesListBox.TabIndex = 0;
+            this.RectanglesListBox.SelectedIndexChanged += new System.EventHandler(this.RectanglesListBox_SelectedIndexChanged);
             // 
             // MainForm
             // 
@@ -298,6 +382,9 @@
             this.EnumerationGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SeasonPictureBox)).EndInit();
             this.ClassesTabPage.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.RectanglesGroupBox.ResumeLayout(false);
+            this.RectanglesGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -326,6 +413,14 @@
         private System.Windows.Forms.TabPage ClassesTabPage;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox RectanglesGroupBox;
+        private System.Windows.Forms.Button FindButton;
+        private System.Windows.Forms.Label ColorLabel;
+        private System.Windows.Forms.Label WidthLabel;
+        private System.Windows.Forms.Label LenghtLabel;
+        private System.Windows.Forms.TextBox ColorTextBox;
+        private System.Windows.Forms.TextBox WidthTextBox;
+        private System.Windows.Forms.TextBox LenghtTextBox;
+        private System.Windows.Forms.ListBox RectanglesListBox;
     }
 }
 
