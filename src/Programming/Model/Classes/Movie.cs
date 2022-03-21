@@ -21,11 +21,11 @@ namespace Programming.Model.Classes
         public Movie(string title, int durationInMinutes, int yearOfIssue,
                      string genre, double rating)
         {
-            _title = title;
-            _durationInMinutes = durationInMinutes;
-            _yearOfIssue = yearOfIssue;
-            _genre = genre;
-            _rating = rating;
+            this._title = title;
+            this._durationInMinutes = durationInMinutes;
+            this._yearOfIssue = yearOfIssue;
+            this._genre = genre;
+            this._rating = rating;
         }
 
         public string Title { get; set; }

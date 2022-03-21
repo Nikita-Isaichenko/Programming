@@ -14,9 +14,9 @@
 
         public Fligth(string departurePoint, string destination, int flightTimeInMinutes)
         {
-            _departurePoint = departurePoint;
-            _destination = destination;
-            _flightTimeInMinutes = flightTimeInMinutes;
+            this._departurePoint = departurePoint;
+            this._destination = destination;
+            this._flightTimeInMinutes = flightTimeInMinutes;
         }
 
         public string DeparturePoint { get; set; }
