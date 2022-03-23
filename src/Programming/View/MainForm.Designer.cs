@@ -52,6 +52,7 @@
             this.ClassesTabPage = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.RectanglesGroupBox = new System.Windows.Forms.GroupBox();
+            this.RectanglesListBox = new System.Windows.Forms.ListBox();
             this.FindButton = new System.Windows.Forms.Button();
             this.ColorLabel = new System.Windows.Forms.Label();
             this.WidthLabel = new System.Windows.Forms.Label();
@@ -59,7 +60,6 @@
             this.ColorTextBox = new System.Windows.Forms.TextBox();
             this.WidthTextBox = new System.Windows.Forms.TextBox();
             this.LenghtTextBox = new System.Windows.Forms.TextBox();
-            this.RectanglesListBox = new System.Windows.Forms.ListBox();
             this.LabControl.SuspendLayout();
             this.EnumsTabPage.SuspendLayout();
             this.SeasonHandleGroupBox.SuspendLayout();
@@ -67,7 +67,6 @@
             this.EnumerationGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SeasonPictureBox)).BeginInit();
             this.ClassesTabPage.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.RectanglesGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -273,7 +272,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.RectanglesListBox);
             this.groupBox2.Location = new System.Drawing.Point(332, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(322, 410);
@@ -283,6 +281,7 @@
             // 
             // RectanglesGroupBox
             // 
+            this.RectanglesGroupBox.Controls.Add(this.RectanglesListBox);
             this.RectanglesGroupBox.Controls.Add(this.FindButton);
             this.RectanglesGroupBox.Controls.Add(this.ColorLabel);
             this.RectanglesGroupBox.Controls.Add(this.WidthLabel);
@@ -297,6 +296,15 @@
             this.RectanglesGroupBox.TabStop = false;
             this.RectanglesGroupBox.Text = "Rectangles";
             // 
+            // RectanglesListBox
+            // 
+            this.RectanglesListBox.FormattingEnabled = true;
+            this.RectanglesListBox.Location = new System.Drawing.Point(6, 19);
+            this.RectanglesListBox.Name = "RectanglesListBox";
+            this.RectanglesListBox.Size = new System.Drawing.Size(153, 381);
+            this.RectanglesListBox.TabIndex = 0;
+            this.RectanglesListBox.SelectedIndexChanged += new System.EventHandler(this.RectanglesListBox_SelectedIndexChanged);
+            // 
             // FindButton
             // 
             this.FindButton.Location = new System.Drawing.Point(168, 377);
@@ -305,6 +313,7 @@
             this.FindButton.TabIndex = 7;
             this.FindButton.Text = "FInd";
             this.FindButton.UseVisualStyleBackColor = true;
+            this.FindButton.Click += new System.EventHandler(this.FindButton_Click);
             // 
             // ColorLabel
             // 
@@ -354,15 +363,6 @@
             this.LenghtTextBox.Size = new System.Drawing.Size(100, 20);
             this.LenghtTextBox.TabIndex = 1;
             // 
-            // RectanglesListBox
-            // 
-            this.RectanglesListBox.FormattingEnabled = true;
-            this.RectanglesListBox.Location = new System.Drawing.Point(6, 23);
-            this.RectanglesListBox.Name = "RectanglesListBox";
-            this.RectanglesListBox.Size = new System.Drawing.Size(310, 381);
-            this.RectanglesListBox.TabIndex = 0;
-            this.RectanglesListBox.SelectedIndexChanged += new System.EventHandler(this.RectanglesListBox_SelectedIndexChanged);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -382,7 +382,6 @@
             this.EnumerationGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SeasonPictureBox)).EndInit();
             this.ClassesTabPage.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
             this.RectanglesGroupBox.ResumeLayout(false);
             this.RectanglesGroupBox.PerformLayout();
             this.ResumeLayout(false);

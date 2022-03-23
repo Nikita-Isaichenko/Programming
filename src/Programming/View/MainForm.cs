@@ -35,10 +35,11 @@ namespace Programming.View
             for (int i = 0; i < _rectangles.Length; i++)
             {
                 _rectangles[i] = new Rectangle(rnd.Next(0, 1000), rnd.Next(0, 1000),
-                                               colors[rnd.Next(colors.Length)]);               
+                                               colors[rnd.Next(colors.Length)]);
+                RectanglesListBox.Items.Add(_rectangles[i].ToString());
             }
 
-            RectanglesListBox.DataSource = _rectangles;
+            
             
 
             
@@ -125,6 +126,25 @@ namespace Programming.View
             LenghtTextBox.Text = _currentRectangle.Length.ToString();  
             WidthTextBox.Text = _currentRectangle.Width.ToString();
             ColorTextBox.Text = _currentRectangle.Color.ToString(); 
+        }
+
+        private int FindRectangleWithMaxWidth(Rectangle[] rectangles)
+        {
+            int maxWidth = 0;
+            for (int i = 0; i < rectangles.Length; i++)
+            {
+                if (rectangles[i].Width > maxWidth)
+                {
+                    maxWidth = i;
+                }
+            }
+            return maxWidth;
+        }
+
+        private void FindButton_Click(object sender, EventArgs e)
+        {
+            RectanglesListBox.SelectedIndex = FindRectangleWithMaxWidth(_rectangles);
+
         }
     }
 }
