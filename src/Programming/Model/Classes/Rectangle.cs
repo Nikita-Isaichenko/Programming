@@ -4,7 +4,7 @@ namespace Programming.Model.Classes
 {
     public class Rectangle
     {
-        private static int count = 0;
+        private static int _count = 0;
         private int _length;
 
         private int _width;
@@ -13,12 +13,12 @@ namespace Programming.Model.Classes
 
         public Rectangle()
         {
-            count++;
+            _count++;
         }
 
         public Rectangle(int length, int width, string color)
         {
-            count++;
+            _count++;
             this._length = length;
             this._color = color;
             this._width = width;
@@ -30,11 +30,12 @@ namespace Programming.Model.Classes
             set 
             {
                 if (value < 0) 
-                {
-                    throw new ArgumentException("Length must not be less than zero");
-                }
-                _length = value;
+                {   
+                    _length = 0;
+                    throw new ArgumentException("Длина не может быть меньше нуля.");                    
+                }              
 
+                _length = value;
             }
         }
 
@@ -45,7 +46,8 @@ namespace Programming.Model.Classes
             {
                 if (value < 0)
                 {
-                    throw new ArgumentException("Width must not be less than zero");
+                    _width = 0;
+                    throw new ArgumentException("Ширина не может быть меньше нуля.");
                 }
                 _width = value;
             }
@@ -58,7 +60,7 @@ namespace Programming.Model.Classes
 
         public override string ToString()
         {
-            return $"Rectangle {count}";
+            return $"Rectangle {_count}";
         }
     }
 }

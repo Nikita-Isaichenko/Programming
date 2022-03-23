@@ -9,15 +9,22 @@ namespace Programming.View
     {
         Random rnd = new Random();
 
-        private string[] colors;
+        private string[] _titleMovies = {"Титаник", "Матрица", "Шерлок Хоумс", "Интерстеллар", "Гладиатор"};
+                                        
+        private string[] _colors;
+
+        private string[] _genres;
 
         private Rectangle[] _rectangles;
+
+        private Movie[] _movies;
 
         private Rectangle _currentRectangle;
 
         public MainForm()
         {
             InitializeComponent();
+
             foreach (Enum valueEnums in Enum.GetValues(typeof(Enums)))
             {
                 EnumListBox.Items.Add(valueEnums);
@@ -28,23 +35,42 @@ namespace Programming.View
                 SeasonComboBox.Items.Add(valueSeason);
             }
 
-            EnumListBox.SelectedIndex = 0;
+            EnumListBox.SelectedIndex = 0; 
+            
+            // Иницилизируем массив из пяти объектов типа Rectangle.
             _rectangles = new Rectangle[5];
-            colors = Enum.GetNames(typeof(Color));
 
+            // Добавляем в массив цвета, которые содержатся в перечислении Color.
+            _colors = Enum.GetNames(typeof(Color));
+
+            // Иницилизируем каждый объект в массиве рандомными значениями полей
+            // и добавляем в RectanglesListBox название объектов.
             for (int i = 0; i < _rectangles.Length; i++)
             {
                 _rectangles[i] = new Rectangle(rnd.Next(0, 1000), rnd.Next(0, 1000),
-                                               colors[rnd.Next(colors.Length)]);
+                                               _colors[rnd.Next(_colors.Length)]);
                 RectanglesListBox.Items.Add(_rectangles[i].ToString());
             }
 
-            
-            
+            // Иницилизируем массив из пяти объектов типа Movie.
+            _movies = new Movie[5];
 
-            
+            // Добавляем в массив жанры, которые содержатся в перечислении Genre.
+            _genres = Enum.GetNames(typeof(Genre));
 
-            
+            // Иницилизируем каждый объект в массиве рандомными значениями полей
+            // и добавляем в MoviesListBox название объектов.
+            for (int i = 0; i < _movies.Length; i++)
+            {
+                _movies[i] = new Movie(_titleMovies[i], rnd.Next(90, 210), rnd.Next(1900, 2022),
+                                       _genres[rnd.Next(0, _genres.Length)], rnd.NextDouble()*10);
+                MoviesListBox.Items.Add(_movies[i].ToString());
+            }
+
+
+
+
+
         }
 
         private void EnumListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -130,21 +156,51 @@ namespace Programming.View
 
         private int FindRectangleWithMaxWidth(Rectangle[] rectangles)
         {
+            int indexMaxWidth = 0;
             int maxWidth = 0;
             for (int i = 0; i < rectangles.Length; i++)
             {
                 if (rectangles[i].Width > maxWidth)
                 {
-                    maxWidth = i;
+                    maxWidth = rectangles[i].Width;
+                    indexMaxWidth = i;
                 }
             }
-            return maxWidth;
+            return indexMaxWidth;
         }
 
         private void FindButton_Click(object sender, EventArgs e)
         {
             RectanglesListBox.SelectedIndex = FindRectangleWithMaxWidth(_rectangles);
 
+        }
+
+        private void LenghtTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _currentRectangle.Length = int.Parse(LenghtTextBox.Text);
+                LenghtTextBox.BackColor = System.Drawing.Color.White;
+            }
+            catch (Exception ex)
+            {
+                LenghtTextBox.BackColor = System.Drawing.Color.LightPink;
+                LengthToolTip.SetToolTip(LenghtTextBox, ex.Message);
+            }
+        }
+
+        private void WidthTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _currentRectangle.Width = int.Parse(WidthTextBox.Text);
+                WidthTextBox.BackColor = System.Drawing.Color.White;
+            }
+            catch (Exception ex)
+            {
+                WidthTextBox.BackColor = System.Drawing.Color.LightPink;
+                WidthToolTip.SetToolTip(WidthTextBox, ex.Message);
+            }
         }
     }
 }
