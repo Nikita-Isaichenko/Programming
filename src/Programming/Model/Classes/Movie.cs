@@ -24,11 +24,11 @@ namespace Programming.Model.Classes
         public Movie(string title, int durationInMinutes, int yearOfIssue,
                      string genre, double rating)
         {
-            _title = title;
-            _durationInMinutes = durationInMinutes;
-            _yearOfIssue = yearOfIssue;
-            _genre = genre;
-            _rating = rating;
+            Title = title;
+            DurationInMinutes = durationInMinutes;
+            YearOfIssue = yearOfIssue;
+            Genre = genre;
+            Rating = rating;
             _count++;
         }
 
@@ -45,7 +45,7 @@ namespace Programming.Model.Classes
                 if (_durationInMinutes < 0)
                 {
                     _durationInMinutes = 0;
-                    throw new ArgumentException("Время не может быть меньше нуля");
+                    throw new ArgumentException("Длительность фильма не может быть меньше нуля");
                 }
                 _durationInMinutes = value;
             } 
@@ -56,9 +56,9 @@ namespace Programming.Model.Classes
             get { return _yearOfIssue; }
             set
             {
-                if (value < 1900 & value > 2022)
+                if (value < 1900 | value > DateTime.Now.Year)
                 {
-                    throw new ArgumentException("Indicate the actual year of manufacture");
+                    throw new ArgumentException("Введенная дата меньше 1900 года или больше настоящего года");
                 }
                 _yearOfIssue = value;
             }
@@ -75,12 +75,12 @@ namespace Programming.Model.Classes
             get { return _rating; }
             set
             {
-                if (value < 0 & value > 10)
+                if (value < 0 | value > 10)
                 {
-                    throw new ArgumentException("The rating is indicated outside" +
-                                                " the established values (from 0 to 10)");
+                    throw new ArgumentException("Число вышло за допустимые пределы" +
+                                                "(от 0 до 10)");
                 }
-                _rating = Math.Round(value, 2);
+                _rating = value;
             }
         }
 

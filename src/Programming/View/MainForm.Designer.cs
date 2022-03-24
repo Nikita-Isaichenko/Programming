@@ -75,6 +75,9 @@
             this.LenghtTextBox = new System.Windows.Forms.TextBox();
             this.LengthToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.WidthToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.DurationInMinutesToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.YearOfIssueToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.RatingToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.LabControl.SuspendLayout();
             this.EnumsTabPage.SuspendLayout();
             this.SeasonHandleGroupBox.SuspendLayout();
@@ -333,6 +336,7 @@
             this.FindMaxRatingButton.TabIndex = 4;
             this.FindMaxRatingButton.Text = "Find";
             this.FindMaxRatingButton.UseVisualStyleBackColor = true;
+            this.FindMaxRatingButton.Click += new System.EventHandler(this.FindMaxRatingButton_Click);
             // 
             // RatingTextBox
             // 
@@ -340,6 +344,7 @@
             this.RatingTextBox.Name = "RatingTextBox";
             this.RatingTextBox.Size = new System.Drawing.Size(100, 20);
             this.RatingTextBox.TabIndex = 9;
+            this.RatingTextBox.TextChanged += new System.EventHandler(this.RatingTextBox_TextChanged);
             // 
             // GenreTextBox
             // 
@@ -347,6 +352,7 @@
             this.GenreTextBox.Name = "GenreTextBox";
             this.GenreTextBox.Size = new System.Drawing.Size(100, 20);
             this.GenreTextBox.TabIndex = 8;
+            this.GenreTextBox.TextChanged += new System.EventHandler(this.GenreTextBox_TextChanged);
             // 
             // DurationInMinutesTextBox
             // 
@@ -354,6 +360,7 @@
             this.DurationInMinutesTextBox.Name = "DurationInMinutesTextBox";
             this.DurationInMinutesTextBox.Size = new System.Drawing.Size(100, 20);
             this.DurationInMinutesTextBox.TabIndex = 7;
+            this.DurationInMinutesTextBox.TextChanged += new System.EventHandler(this.DurationInMinutesTextBox_TextChanged);
             // 
             // YearOfIssueTextBox
             // 
@@ -361,6 +368,7 @@
             this.YearOfIssueTextBox.Name = "YearOfIssueTextBox";
             this.YearOfIssueTextBox.Size = new System.Drawing.Size(100, 20);
             this.YearOfIssueTextBox.TabIndex = 6;
+            this.YearOfIssueTextBox.TextChanged += new System.EventHandler(this.YearOfIssueTextBox_TextChanged);
             // 
             // TitleTextBox
             // 
@@ -368,6 +376,7 @@
             this.TitleTextBox.Name = "TitleTextBox";
             this.TitleTextBox.Size = new System.Drawing.Size(100, 20);
             this.TitleTextBox.TabIndex = 5;
+            this.TitleTextBox.TextChanged += new System.EventHandler(this.TitleTextBox_TextChanged);
             // 
             // YearOfIssueLabel
             // 
@@ -474,6 +483,7 @@
             this.ColorTextBox.Name = "ColorTextBox";
             this.ColorTextBox.Size = new System.Drawing.Size(100, 20);
             this.ColorTextBox.TabIndex = 3;
+            this.ColorTextBox.TextChanged += new System.EventHandler(this.ColorTextBox_TextChanged);
             // 
             // WidthTextBox
             // 
@@ -564,6 +574,9 @@
         private System.Windows.Forms.Label RatingLabel;
         private System.Windows.Forms.Label GenreLabel;
         private System.Windows.Forms.TextBox RatingTextBox;
+        private System.Windows.Forms.ToolTip DurationInMinutesToolTip;
+        private System.Windows.Forms.ToolTip YearOfIssueToolTip;
+        private System.Windows.Forms.ToolTip RatingToolTip;
     }
 }
 

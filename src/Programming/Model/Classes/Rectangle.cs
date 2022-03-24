@@ -19,9 +19,9 @@ namespace Programming.Model.Classes
         public Rectangle(int length, int width, string color)
         {
             _count++;
-            this._length = length;
-            this._color = color;
-            this._width = width;
+            Length = length;
+            Color = color;
+            Width = width;
         }
 
         public int Length

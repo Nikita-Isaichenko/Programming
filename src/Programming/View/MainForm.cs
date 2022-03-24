@@ -65,7 +65,7 @@ namespace Programming.View
             for (int i = 0; i < _movies.Length; i++)
             {
                 _movies[i] = new Movie(_titleMovies[i], rnd.Next(90, 210), rnd.Next(1900, 2022),
-                                       _genres[rnd.Next(0, _genres.Length)], Math.Round(rnd.NextDouble()*10));
+                                       _genres[rnd.Next(0, _genres.Length)], Math.Round(rnd.NextDouble()*10, 2));
                 MoviesListBox.Items.Add(_movies[i].ToString());
             }
         }
@@ -148,7 +148,7 @@ namespace Programming.View
             _currentRectangle = _rectangles[indexRectangle];
             LenghtTextBox.Text = _currentRectangle.Length.ToString();  
             WidthTextBox.Text = _currentRectangle.Width.ToString();
-            ColorTextBox.Text = _currentRectangle.Color.ToString(); 
+            ColorTextBox.Text = _currentRectangle.Color; 
         }
 
         private int FindRectangleWithMaxWidth(Rectangle[] rectangles)
@@ -177,6 +177,7 @@ namespace Programming.View
             {
                 _currentRectangle.Length = int.Parse(LenghtTextBox.Text);
                 LenghtTextBox.BackColor = System.Drawing.Color.White;
+                LengthToolTip.SetToolTip(LenghtTextBox, null);
             }
             catch (Exception ex)
             {
@@ -191,12 +192,18 @@ namespace Programming.View
             {
                 _currentRectangle.Width = int.Parse(WidthTextBox.Text);
                 WidthTextBox.BackColor = System.Drawing.Color.White;
+                WidthToolTip.SetToolTip(WidthTextBox, null);
             }
             catch (Exception ex)
             {
                 WidthTextBox.BackColor = System.Drawing.Color.LightPink;
                 WidthToolTip.SetToolTip(WidthTextBox, ex.Message);
             }
+        }
+
+        private void ColorTextBox_TextChanged(object sender, EventArgs e)
+        {
+            _currentRectangle.Color = ColorTextBox.Text;
         }
 
         private void MoviesListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -207,7 +214,82 @@ namespace Programming.View
             DurationInMinutesTextBox.Text = _currentMovie.DurationInMinutes.ToString();
             YearOfIssueTextBox.Text = _currentMovie.YearOfIssue.ToString();
             GenreTextBox.Text = _currentMovie.Genre;
-            RatingTextBox.Text = (_currentMovie.Rating.ToString());
+            RatingTextBox.Text = _currentMovie.Rating.ToString();
+        }
+
+        private void TitleTextBox_TextChanged(object sender, EventArgs e)
+        {
+            _currentMovie.Title = TitleTextBox.Text;
+        }
+
+        private void DurationInMinutesTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _currentMovie.DurationInMinutes = int.Parse(DurationInMinutesTextBox.Text);
+                DurationInMinutesTextBox.BackColor = System.Drawing.Color.White;
+                DurationInMinutesToolTip.SetToolTip(DurationInMinutesTextBox, null);
+            }
+            catch (Exception ex)
+            {
+                DurationInMinutesTextBox.BackColor = System.Drawing.Color.LightPink;
+                DurationInMinutesToolTip.SetToolTip(DurationInMinutesTextBox, ex.Message);
+            }
+        }
+
+        private void YearOfIssueTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _currentMovie.YearOfIssue = int.Parse(YearOfIssueTextBox.Text);
+                YearOfIssueTextBox.BackColor = System.Drawing.Color.White;
+                YearOfIssueToolTip.SetToolTip(YearOfIssueTextBox, null);
+            }
+            catch (Exception ex)
+            {
+                YearOfIssueTextBox.BackColor = System.Drawing.Color.LightPink;
+                YearOfIssueToolTip.SetToolTip(YearOfIssueTextBox, ex.Message);
+            }
+        }
+
+        private void GenreTextBox_TextChanged(object sender, EventArgs e)
+        {
+            _currentMovie.Genre = GenreTextBox.Text;
+        }
+
+        private void RatingTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _currentMovie.Rating = double.Parse(RatingTextBox.Text);
+                RatingTextBox.BackColor = System.Drawing.Color.White;
+                RatingToolTip.SetToolTip(RatingTextBox, null);
+            }
+            catch (Exception ex)
+            {
+                RatingTextBox.BackColor = System.Drawing.Color.LightPink;
+                RatingToolTip.SetToolTip(RatingTextBox, ex.Message);
+            }
+        }
+
+        private void FindMaxRatingButton_Click(object sender, EventArgs e)
+        {
+            MoviesListBox.SelectedIndex = FindMovieWithMaxRating(_movies);
+        }
+
+        private int FindMovieWithMaxRating(Movie[] movie)
+        {
+            int indexMaxRating = 0;
+            double maxRating = 0;
+            for (int i = 0; i < movie.Length; i++)
+            {
+                if (movie[i].Rating > maxRating)
+                {
+                    maxRating = movie[i].Rating;
+                    indexMaxRating = i;
+                }
+            }
+            return indexMaxRating;
         }
     }
 }
