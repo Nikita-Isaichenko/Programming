@@ -21,6 +21,8 @@ namespace Programming.View
 
         private Rectangle _currentRectangle;
 
+        private Movie _currentMovie;
+
         public MainForm()
         {
             InitializeComponent();
@@ -63,14 +65,9 @@ namespace Programming.View
             for (int i = 0; i < _movies.Length; i++)
             {
                 _movies[i] = new Movie(_titleMovies[i], rnd.Next(90, 210), rnd.Next(1900, 2022),
-                                       _genres[rnd.Next(0, _genres.Length)], rnd.NextDouble()*10);
+                                       _genres[rnd.Next(0, _genres.Length)], Math.Round(rnd.NextDouble()*10));
                 MoviesListBox.Items.Add(_movies[i].ToString());
             }
-
-
-
-
-
         }
 
         private void EnumListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -169,10 +166,9 @@ namespace Programming.View
             return indexMaxWidth;
         }
 
-        private void FindButton_Click(object sender, EventArgs e)
+        private void FindMaxWidthButton_Click(object sender, EventArgs e)
         {
             RectanglesListBox.SelectedIndex = FindRectangleWithMaxWidth(_rectangles);
-
         }
 
         private void LenghtTextBox_TextChanged(object sender, EventArgs e)
@@ -201,6 +197,17 @@ namespace Programming.View
                 WidthTextBox.BackColor = System.Drawing.Color.LightPink;
                 WidthToolTip.SetToolTip(WidthTextBox, ex.Message);
             }
+        }
+
+        private void MoviesListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int indexMovie = MoviesListBox.SelectedIndex;
+            _currentMovie = _movies[indexMovie];
+            TitleTextBox.Text = _currentMovie.Title;
+            DurationInMinutesTextBox.Text = _currentMovie.DurationInMinutes.ToString();
+            YearOfIssueTextBox.Text = _currentMovie.YearOfIssue.ToString();
+            GenreTextBox.Text = _currentMovie.Genre;
+            RatingTextBox.Text = (_currentMovie.Rating.ToString());
         }
     }
 }

@@ -24,16 +24,32 @@ namespace Programming.Model.Classes
         public Movie(string title, int durationInMinutes, int yearOfIssue,
                      string genre, double rating)
         {
-            this._title = title;
-            this._durationInMinutes = durationInMinutes;
-            this._yearOfIssue = yearOfIssue;
-            this._genre = genre;
-            this._rating = rating;
+            _title = title;
+            _durationInMinutes = durationInMinutes;
+            _yearOfIssue = yearOfIssue;
+            _genre = genre;
+            _rating = rating;
             _count++;
         }
 
-        public string Title { get; set; }
-        public int DurationInMinutes { get; set; }
+        public string Title 
+        { 
+            get { return _title; }
+            set { _title = value; }
+        }
+        public int DurationInMinutes 
+        {
+            get { return _durationInMinutes; }
+            set 
+            {
+                if (_durationInMinutes < 0)
+                {
+                    _durationInMinutes = 0;
+                    throw new ArgumentException("Время не может быть меньше нуля");
+                }
+                _durationInMinutes = value;
+            } 
+        }
 
         public int YearOfIssue
         {
@@ -48,7 +64,11 @@ namespace Programming.Model.Classes
             }
         }
 
-        public string Genre { get; set; }
+        public string Genre
+        {
+            get { return _genre; }
+            set { _genre = value; }
+        }
 
         public double Rating
         {
@@ -60,7 +80,7 @@ namespace Programming.Model.Classes
                     throw new ArgumentException("The rating is indicated outside" +
                                                 " the established values (from 0 to 10)");
                 }
-                _rating = value;
+                _rating = Math.Round(value, 2);
             }
         }
 
