@@ -28,7 +28,7 @@ namespace Programming.Model.Classes
             {
                 if (value < 0 & value > 23)
                 {
-                    throw new ArgumentException("the number is out of bounds of the set [0; 23]");
+                    throw new ArgumentException("Некорректное кол-во часов");
                 }
                 _hours = value;
             }
@@ -41,7 +41,7 @@ namespace Programming.Model.Classes
             {
                 if (value < 0 & value > 60)
                 {
-                    throw new ArgumentException("the number is out of bounds of the set [0;60]");
+                    throw new ArgumentException("Некорректное кол-во минут");
                 }
                 _minutes = value;
             }
@@ -54,7 +54,7 @@ namespace Programming.Model.Classes
             {
                 if (value < 0 & value > 60)
                 {
-                    throw new ArgumentException("the number is out of bounds of the set [0;60]");
+                    throw new ArgumentException("Некорректное кол-во секунд");
                 }
                 _seconds = value;
             }

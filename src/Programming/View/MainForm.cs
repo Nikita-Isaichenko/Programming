@@ -9,6 +9,8 @@ namespace Programming.View
     {
         Random rnd = new Random();
 
+        private  System.Drawing.Color ErrorBackColor = System.Drawing.Color.LightPink;
+
         private string[] _titleMovies = {"Титаник", "Матрица", "Шерлок Хоумс", "Интерстеллар", "Гладиатор"};
                                         
         private string[] _colors;
@@ -181,7 +183,7 @@ namespace Programming.View
             }
             catch (Exception ex)
             {
-                LenghtTextBox.BackColor = System.Drawing.Color.LightPink;
+                LenghtTextBox.BackColor = ErrorBackColor;
                 LengthToolTip.SetToolTip(LenghtTextBox, ex.Message);
             }
         }
@@ -196,7 +198,7 @@ namespace Programming.View
             }
             catch (Exception ex)
             {
-                WidthTextBox.BackColor = System.Drawing.Color.LightPink;
+                WidthTextBox.BackColor = ErrorBackColor;
                 WidthToolTip.SetToolTip(WidthTextBox, ex.Message);
             }
         }
@@ -232,7 +234,7 @@ namespace Programming.View
             }
             catch (Exception ex)
             {
-                DurationInMinutesTextBox.BackColor = System.Drawing.Color.LightPink;
+                DurationInMinutesTextBox.BackColor = ErrorBackColor;
                 DurationInMinutesToolTip.SetToolTip(DurationInMinutesTextBox, ex.Message);
             }
         }
@@ -247,7 +249,7 @@ namespace Programming.View
             }
             catch (Exception ex)
             {
-                YearOfIssueTextBox.BackColor = System.Drawing.Color.LightPink;
+                YearOfIssueTextBox.BackColor = ErrorBackColor;
                 YearOfIssueToolTip.SetToolTip(YearOfIssueTextBox, ex.Message);
             }
         }
@@ -267,7 +269,7 @@ namespace Programming.View
             }
             catch (Exception ex)
             {
-                RatingTextBox.BackColor = System.Drawing.Color.LightPink;
+                RatingTextBox.BackColor = ErrorBackColor;
                 RatingToolTip.SetToolTip(RatingTextBox, ex.Message);
             }
         }

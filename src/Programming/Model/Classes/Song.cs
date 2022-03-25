@@ -35,7 +35,7 @@ namespace Programming.Model.Classes
             {
                 if (value < 0 & value > 60)
                 {
-                    throw new ArgumentException("Некорректное значение минут");
+                    throw new ArgumentException("Некорректное кол-во минут");
                 }
                 _minutes = value;
             }
@@ -48,7 +48,7 @@ namespace Programming.Model.Classes
             {
                 if (value < 0 & value > 60)
                 {
-                    throw new ArgumentException("Некорректное значение часов");
+                    throw new ArgumentException("Некорректное кол-во секунд");
                 }
                 _seconds = value;
             }

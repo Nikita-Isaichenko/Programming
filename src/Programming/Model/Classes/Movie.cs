@@ -43,7 +43,7 @@ namespace Programming.Model.Classes
             get { return _durationInMinutes; }
             set 
             {
-                if (_durationInMinutes < 0)
+                if (value < 0)
                 {
                     _durationInMinutes = 0;
                     throw new ArgumentException("Длительность фильма не может быть меньше нуля");
