@@ -31,10 +31,11 @@ namespace Programming.Model.Classes
             {
                 if (_numberHours < 0)
                 {
-                    throw new ArgumentException("Number of hours less than zero");
+                    throw new ArgumentException("Число часов не может быть меньше нуля");
                 }
             }
         }
+
         public string Title { get; set; }
 
         public int Grade { get; set; }

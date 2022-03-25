@@ -37,6 +37,7 @@ namespace Programming.Model.Classes
             get { return _title; }
             set { _title = value; }
         }
+
         public int DurationInMinutes 
         {
             get { return _durationInMinutes; }

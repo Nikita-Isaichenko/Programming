@@ -33,6 +33,7 @@ namespace Programming.Model.Classes
                 _hours = value;
             }
         }
+
         public int Minutes
         {
             get { return _minutes; }
@@ -45,6 +46,7 @@ namespace Programming.Model.Classes
                 _minutes = value;
             }
         }
+
         public int Seconds
         {
             get { return _seconds; }

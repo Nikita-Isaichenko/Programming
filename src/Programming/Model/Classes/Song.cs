@@ -22,7 +22,6 @@ namespace Programming.Model.Classes
             Singer = singer;
             Minutes = minutes;
             Seconds = seconds;
-
         }
 
         public string Title { get; set; }
@@ -36,7 +35,7 @@ namespace Programming.Model.Classes
             {
                 if (value < 0 & value > 60)
                 {
-                    throw new ArgumentException("the number is out of bounds of the set [0;60]");
+                    throw new ArgumentException("Некорректное значение минут");
                 }
                 _minutes = value;
             }
@@ -49,7 +48,7 @@ namespace Programming.Model.Classes
             {
                 if (value < 0 & value > 60)
                 {
-                    throw new ArgumentException("the number is out of bounds of the set [0;60]");
+                    throw new ArgumentException("Некорректное значение часов");
                 }
                 _seconds = value;
             }

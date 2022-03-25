@@ -49,7 +49,7 @@
     <Compile Include="Model\Classes\Discipline.cs" />
     <Compile Include="Model\Classes\Movie.cs" />
     <Compile Include="Model\Classes\Rectangle.cs" />
-    <Compile Include="Model\Classes\Fligth.cs" />
+    <Compile Include="Model\Classes\Flight.cs" />
     <Compile Include="Model\Classes\Song.cs" />
     <Compile Include="Model\Classes\Time.cs" />
     <Compile Include="Model\Enums\Weekday.cs" />

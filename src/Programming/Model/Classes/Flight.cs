@@ -1,6 +1,6 @@
 ﻿namespace Programming.Model.Classes
 {
-    public class Fligth
+    public class Flight
     {
         private string _departurePoint;
 
@@ -8,11 +8,11 @@
 
         private int _flightTimeInMinutes;
 
-        public Fligth()
+        public Flight()
         {
         }
 
-        public Fligth(string departurePoint, string destination, int flightTimeInMinutes)
+        public Flight(string departurePoint, string destination, int flightTimeInMinutes)
         {
             DeparturePoint = departurePoint;
             Destination = destination;
@@ -20,7 +20,9 @@
         }
 
         public string DeparturePoint { get; set; }
+
         public string Destination { get; set; }
+
         public int FlightTimeInMinutes { get; set; }
     }
 }
