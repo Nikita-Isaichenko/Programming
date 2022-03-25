@@ -18,10 +18,10 @@ namespace Programming.Model.Classes
 
         public Song(string title, string singer, int minutes, int seconds)
         {
-            this._title = title;
-            this._singer = singer;
-            this._minutes = minutes;
-            this._seconds = seconds;
+            Title = title;
+            Singer = singer;
+            Minutes = minutes;
+            Seconds = seconds;
 
         }
 

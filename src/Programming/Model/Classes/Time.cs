@@ -16,9 +16,9 @@ namespace Programming.Model.Classes
 
         public Time(int hours, int minutes, int seconds)
         {
-            this._hours = hours;
-            this._minutes = minutes;
-            this._seconds = seconds;
+            Hours = hours;
+            Minutes = minutes;
+            Seconds = seconds;
         }
 
         public int Hours

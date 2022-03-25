@@ -18,10 +18,10 @@ namespace Programming.Model.Classes
 
         public Discipline(string title, int numberHours, int grade, string lastNameTeacher)
         {
-            this._title = title;
-            this._numberHours = numberHours;
-            this._grade = grade;
-            this._lastNameTeacher = lastNameTeacher;
+            Title = title;
+            NumberHours = numberHours;
+            Grade = grade;
+            LastNameTeacher = lastNameTeacher;
         }
 
         public int NumberHours

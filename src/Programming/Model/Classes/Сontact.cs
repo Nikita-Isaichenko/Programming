@@ -16,9 +16,9 @@ namespace Programming.Model
 
         public Contact(string phoneNumber, string name, string lastName)
         {
-            this._phoneNumber = phoneNumber;
-            this._name = name;
-            this._lastName = lastName;
+            PhoneNumber = phoneNumber;
+            Name = name;
+            LastName = lastName;
         }
 
         public string PhoneNumber
@@ -40,7 +40,7 @@ namespace Programming.Model
 
         public string Name { get; set; }
 
-        public string lastName { get; set; }
+        public string LastName { get; set; }
         
     }
 }
