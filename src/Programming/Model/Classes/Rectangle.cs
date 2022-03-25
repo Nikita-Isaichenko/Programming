@@ -5,6 +5,9 @@ namespace Programming.Model.Classes
     public class Rectangle
     {
         private static int _count = 0;
+
+        private int _id;
+
         private int _length;
 
         private int _width;
@@ -19,9 +22,16 @@ namespace Programming.Model.Classes
         public Rectangle(int length, int width, string color)
         {
             _count++;
+            Id = _count;
             Length = length;
             Color = color;
             Width = width;
+        }
+
+        public int Id 
+        { 
+            get { return _id; }
+            set { _id = value; }
         }
 
         public int Length
@@ -61,7 +71,7 @@ namespace Programming.Model.Classes
 
         public override string ToString()
         {
-            return $"Rectangle {_count}";
+            return $"Rectangle {_id}";
         }
     }
 }

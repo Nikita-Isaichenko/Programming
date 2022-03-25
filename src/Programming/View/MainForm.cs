@@ -10,6 +10,7 @@ namespace Programming.View
         Random rnd = new Random();
 
         private  System.Drawing.Color ErrorBackColor = System.Drawing.Color.LightPink;
+        private  System.Drawing.Color NormalBackColor = System.Drawing.Color.White;
 
         private string[] _titleMovies = {"Титаник", "Матрица", "Шерлок Хоумс", "Интерстеллар", "Гладиатор"};
                                         
@@ -178,7 +179,7 @@ namespace Programming.View
             try
             {
                 _currentRectangle.Length = int.Parse(LenghtTextBox.Text);
-                LenghtTextBox.BackColor = System.Drawing.Color.White;
+                LenghtTextBox.BackColor = NormalBackColor;
                 LengthToolTip.SetToolTip(LenghtTextBox, null);
             }
             catch (Exception ex)
@@ -193,7 +194,7 @@ namespace Programming.View
             try
             {
                 _currentRectangle.Width = int.Parse(WidthTextBox.Text);
-                WidthTextBox.BackColor = System.Drawing.Color.White;
+                WidthTextBox.BackColor = NormalBackColor;
                 WidthToolTip.SetToolTip(WidthTextBox, null);
             }
             catch (Exception ex)
@@ -214,7 +215,7 @@ namespace Programming.View
             _currentMovie = _movies[indexMovie];
             TitleTextBox.Text = _currentMovie.Title;
             DurationInMinutesTextBox.Text = _currentMovie.DurationInMinutes.ToString();
-            YearOfIssueTextBox.Text = _currentMovie.YearOfIssue.ToString();
+            YearOfIssueTextBox.Text = _currentMovie.ReleaseYear.ToString();
             GenreTextBox.Text = _currentMovie.Genre;
             RatingTextBox.Text = _currentMovie.Rating.ToString();
         }
@@ -229,7 +230,7 @@ namespace Programming.View
             try
             {
                 _currentMovie.DurationInMinutes = int.Parse(DurationInMinutesTextBox.Text);
-                DurationInMinutesTextBox.BackColor = System.Drawing.Color.White;
+                DurationInMinutesTextBox.BackColor = NormalBackColor;
                 DurationInMinutesToolTip.SetToolTip(DurationInMinutesTextBox, null);
             }
             catch (Exception ex)
@@ -243,8 +244,8 @@ namespace Programming.View
         {
             try
             {
-                _currentMovie.YearOfIssue = int.Parse(YearOfIssueTextBox.Text);
-                YearOfIssueTextBox.BackColor = System.Drawing.Color.White;
+                _currentMovie.ReleaseYear = int.Parse(YearOfIssueTextBox.Text);
+                YearOfIssueTextBox.BackColor = NormalBackColor;
                 YearOfIssueToolTip.SetToolTip(YearOfIssueTextBox, null);
             }
             catch (Exception ex)
@@ -264,7 +265,7 @@ namespace Programming.View
             try
             {
                 _currentMovie.Rating = double.Parse(RatingTextBox.Text);
-                RatingTextBox.BackColor = System.Drawing.Color.White;
+                RatingTextBox.BackColor = NormalBackColor;
                 RatingToolTip.SetToolTip(RatingTextBox, null);
             }
             catch (Exception ex)

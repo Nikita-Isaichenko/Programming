@@ -6,11 +6,13 @@ namespace Programming.Model.Classes
     {
         private static int _count = 0;
 
+        private int _id;
+
         private string _title;
 
         private int _durationInMinutes;
 
-        private int _yearOfIssue;
+        private int _releaseYear;
 
         private string _genre;
 
@@ -26,10 +28,17 @@ namespace Programming.Model.Classes
         {
             Title = title;
             DurationInMinutes = durationInMinutes;
-            YearOfIssue = yearOfIssue;
+            ReleaseYear = yearOfIssue;
             Genre = genre;
             Rating = rating;
             _count++;
+            Id = _count;
+        }
+
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
         }
 
         public string Title 
@@ -52,16 +61,16 @@ namespace Programming.Model.Classes
             } 
         }
 
-        public int YearOfIssue
+        public int ReleaseYear
         {
-            get { return _yearOfIssue; }
+            get { return _releaseYear; }
             set
             {
                 if (value < 1900 | value > DateTime.Now.Year)
                 {
                     throw new ArgumentException("Введенная дата меньше 1900 года или больше настоящего года");
                 }
-                _yearOfIssue = value;
+                _releaseYear = value;
             }
         }
 
@@ -87,7 +96,7 @@ namespace Programming.Model.Classes
 
         public override string ToString()
         {
-            return $"Movie {_count}";
+            return $"Movie {_id}";
         }
     }
 }

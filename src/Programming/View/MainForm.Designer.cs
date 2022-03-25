@@ -118,9 +118,9 @@
             this.SeasonHandleGroupBox.Controls.Add(this.SeasonComboBox);
             this.SeasonHandleGroupBox.Controls.Add(this.GoButton);
             this.SeasonHandleGroupBox.Controls.Add(this.SeasonLabel);
-            this.SeasonHandleGroupBox.Location = new System.Drawing.Point(335, 265);
+            this.SeasonHandleGroupBox.Location = new System.Drawing.Point(334, 265);
             this.SeasonHandleGroupBox.Name = "SeasonHandleGroupBox";
-            this.SeasonHandleGroupBox.Size = new System.Drawing.Size(320, 151);
+            this.SeasonHandleGroupBox.Size = new System.Drawing.Size(322, 151);
             this.SeasonHandleGroupBox.TabIndex = 7;
             this.SeasonHandleGroupBox.TabStop = false;
             this.SeasonHandleGroupBox.Text = "Season Handle";
@@ -128,14 +128,14 @@
             // SeasonComboBox
             // 
             this.SeasonComboBox.FormattingEnabled = true;
-            this.SeasonComboBox.Location = new System.Drawing.Point(9, 54);
+            this.SeasonComboBox.Location = new System.Drawing.Point(6, 52);
             this.SeasonComboBox.Name = "SeasonComboBox";
             this.SeasonComboBox.Size = new System.Drawing.Size(224, 21);
             this.SeasonComboBox.TabIndex = 3;
             // 
             // GoButton
             // 
-            this.GoButton.Location = new System.Drawing.Point(239, 51);
+            this.GoButton.Location = new System.Drawing.Point(240, 50);
             this.GoButton.Name = "GoButton";
             this.GoButton.Size = new System.Drawing.Size(75, 23);
             this.GoButton.TabIndex = 2;
@@ -146,7 +146,7 @@
             // SeasonLabel
             // 
             this.SeasonLabel.AutoSize = true;
-            this.SeasonLabel.Location = new System.Drawing.Point(6, 34);
+            this.SeasonLabel.Location = new System.Drawing.Point(3, 34);
             this.SeasonLabel.Name = "SeasonLabel";
             this.SeasonLabel.Size = new System.Drawing.Size(85, 13);
             this.SeasonLabel.TabIndex = 0;
@@ -158,16 +158,16 @@
             this.WeekdayParsingGroupBox.Controls.Add(this.WeekdayOutputLabel);
             this.WeekdayParsingGroupBox.Controls.Add(this.WeekdayTitleLabel);
             this.WeekdayParsingGroupBox.Controls.Add(this.ParseButton);
-            this.WeekdayParsingGroupBox.Location = new System.Drawing.Point(9, 265);
+            this.WeekdayParsingGroupBox.Location = new System.Drawing.Point(6, 265);
             this.WeekdayParsingGroupBox.Name = "WeekdayParsingGroupBox";
-            this.WeekdayParsingGroupBox.Size = new System.Drawing.Size(320, 151);
+            this.WeekdayParsingGroupBox.Size = new System.Drawing.Size(322, 151);
             this.WeekdayParsingGroupBox.TabIndex = 6;
             this.WeekdayParsingGroupBox.TabStop = false;
             this.WeekdayParsingGroupBox.Text = "Weekday Parsing";
             // 
             // ParsingTextBox
             // 
-            this.ParsingTextBox.Location = new System.Drawing.Point(9, 54);
+            this.ParsingTextBox.Location = new System.Drawing.Point(6, 52);
             this.ParsingTextBox.Name = "ParsingTextBox";
             this.ParsingTextBox.Size = new System.Drawing.Size(224, 20);
             this.ParsingTextBox.TabIndex = 3;
@@ -184,7 +184,7 @@
             // WeekdayTitleLabel
             // 
             this.WeekdayTitleLabel.AutoSize = true;
-            this.WeekdayTitleLabel.Location = new System.Drawing.Point(6, 34);
+            this.WeekdayTitleLabel.Location = new System.Drawing.Point(3, 34);
             this.WeekdayTitleLabel.Name = "WeekdayTitleLabel";
             this.WeekdayTitleLabel.Size = new System.Drawing.Size(115, 13);
             this.WeekdayTitleLabel.TabIndex = 1;
@@ -192,7 +192,7 @@
             // 
             // ParseButton
             // 
-            this.ParseButton.Location = new System.Drawing.Point(239, 52);
+            this.ParseButton.Location = new System.Drawing.Point(239, 51);
             this.ParseButton.Name = "ParseButton";
             this.ParseButton.Size = new System.Drawing.Size(75, 23);
             this.ParseButton.TabIndex = 0;
@@ -209,24 +209,24 @@
             this.EnumerationGroupBox.Controls.Add(this.EnumerationLabel);
             this.EnumerationGroupBox.Controls.Add(this.ValueLabel);
             this.EnumerationGroupBox.Controls.Add(this.ValueListBox);
-            this.EnumerationGroupBox.Location = new System.Drawing.Point(9, 7);
+            this.EnumerationGroupBox.Location = new System.Drawing.Point(6, 7);
             this.EnumerationGroupBox.Name = "EnumerationGroupBox";
-            this.EnumerationGroupBox.Size = new System.Drawing.Size(645, 252);
+            this.EnumerationGroupBox.Size = new System.Drawing.Size(650, 252);
             this.EnumerationGroupBox.TabIndex = 5;
             this.EnumerationGroupBox.TabStop = false;
             this.EnumerationGroupBox.Text = "Enumerations";
             // 
             // SeasonPictureBox
             // 
-            this.SeasonPictureBox.Location = new System.Drawing.Point(335, 71);
+            this.SeasonPictureBox.Location = new System.Drawing.Point(336, 71);
             this.SeasonPictureBox.Name = "SeasonPictureBox";
-            this.SeasonPictureBox.Size = new System.Drawing.Size(304, 160);
+            this.SeasonPictureBox.Size = new System.Drawing.Size(308, 160);
             this.SeasonPictureBox.TabIndex = 6;
             this.SeasonPictureBox.TabStop = false;
             // 
             // IntValueTextBox
             // 
-            this.IntValueTextBox.Location = new System.Drawing.Point(335, 45);
+            this.IntValueTextBox.Location = new System.Drawing.Point(336, 45);
             this.IntValueTextBox.Name = "IntValueTextBox";
             this.IntValueTextBox.ReadOnly = true;
             this.IntValueTextBox.Size = new System.Drawing.Size(100, 20);
@@ -235,7 +235,7 @@
             // EnumListBox
             // 
             this.EnumListBox.FormattingEnabled = true;
-            this.EnumListBox.Location = new System.Drawing.Point(9, 45);
+            this.EnumListBox.Location = new System.Drawing.Point(6, 45);
             this.EnumListBox.Name = "EnumListBox";
             this.EnumListBox.Size = new System.Drawing.Size(142, 186);
             this.EnumListBox.TabIndex = 0;
@@ -244,7 +244,7 @@
             // IntValueLabel
             // 
             this.IntValueLabel.AutoSize = true;
-            this.IntValueLabel.Location = new System.Drawing.Point(332, 29);
+            this.IntValueLabel.Location = new System.Drawing.Point(333, 29);
             this.IntValueLabel.Name = "IntValueLabel";
             this.IntValueLabel.Size = new System.Drawing.Size(51, 13);
             this.IntValueLabel.TabIndex = 4;
@@ -253,7 +253,7 @@
             // EnumerationLabel
             // 
             this.EnumerationLabel.AutoSize = true;
-            this.EnumerationLabel.Location = new System.Drawing.Point(6, 29);
+            this.EnumerationLabel.Location = new System.Drawing.Point(3, 29);
             this.EnumerationLabel.Name = "EnumerationLabel";
             this.EnumerationLabel.Size = new System.Drawing.Size(107, 13);
             this.EnumerationLabel.TabIndex = 2;

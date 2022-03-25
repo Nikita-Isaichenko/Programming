@@ -2,34 +2,31 @@
 
 namespace Programming.Model.Classes
 {
-    public class Discipline
+    public class Subject
     {
-        private string _title;
-
-        private int _numberHours;
-
-        private int _grade;
-
-        private string _lastNameTeacher;
+        private int _hoursCount;
  
-        public Discipline()
+        public Subject()
         {
         }
 
-        public Discipline(string title, int numberHours, int grade, string lastNameTeacher)
+        public Subject(string title, int hoursCount, int mark, string lastNameTeacher)
         {
             Title = title;
-            NumberHours = numberHours;
-            Grade = grade;
+            NumberHours = hoursCount;
+            Mark = mark;
             LastNameTeacher = lastNameTeacher;
         }
 
         public int NumberHours
         {
-            get { return _numberHours; }
+            get 
+            { 
+                return _hoursCount; 
+            }
             set
             {
-                if (_numberHours < 0)
+                if (_hoursCount < 0)
                 {
                     throw new ArgumentException("Число часов не может быть меньше нуля");
                 }
@@ -38,7 +35,7 @@ namespace Programming.Model.Classes
 
         public string Title { get; set; }
 
-        public int Grade { get; set; }
+        public int Mark { get; set; }
 
         public string LastNameTeacher { get; set; }
     }

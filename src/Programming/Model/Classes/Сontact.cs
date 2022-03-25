@@ -6,10 +6,6 @@ namespace Programming.Model.Classes
     {
         private string _phoneNumber;
 
-        private string _name;
-
-        private string _lastName;
-
         public Contact()
         {
         }

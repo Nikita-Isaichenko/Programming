@@ -2,24 +2,18 @@
 {
     public class Flight
     {
-        private string _departurePoint;
-
-        private string _destination;
-
-        private int _flightTimeInMinutes;
-
         public Flight()
         {
         }
 
-        public Flight(string departurePoint, string destination, int flightTimeInMinutes)
+        public Flight(string departure, string destination, int flightTimeInMinutes)
         {
-            DeparturePoint = departurePoint;
+            Departure = departure;
             Destination = destination;
             FlightTimeInMinutes = flightTimeInMinutes;
         }
 
-        public string DeparturePoint { get; set; }
+        public string Departure { get; set; }
 
         public string Destination { get; set; }
 

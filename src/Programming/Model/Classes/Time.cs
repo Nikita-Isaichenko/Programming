@@ -23,7 +23,10 @@ namespace Programming.Model.Classes
 
         public int Hours
         {
-            get { return _hours; }
+            get 
+            { 
+                return _hours; 
+            }
             set
             {
                 if (value < 0 & value > 23)
