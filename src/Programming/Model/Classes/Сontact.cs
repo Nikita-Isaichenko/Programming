@@ -6,15 +6,19 @@ namespace Programming.Model.Classes
     {
         private string _phoneNumber;
 
+        private string _name;
+
+        private string _surname;
+
         public Contact()
         {
         }
 
-        public Contact(string phoneNumber, string name, string lastName)
+        public Contact(string phoneNumber, string name, string surname)
         {
             PhoneNumber = phoneNumber;
             Name = name;
-            LastName = lastName;
+            Surname = surname;
         }
 
         public string PhoneNumber
@@ -22,21 +26,69 @@ namespace Programming.Model.Classes
             get { return _phoneNumber; }
             set
             {
-                if (_phoneNumber.Length != 11)
+                if (value.Length != 11)
                 {
                     throw new ArgumentException("Некорректная длина номера телефона");
                 }
-                if (!int.TryParse(value, out int result))
+                if (!long.TryParse(value, out long result))
                 {
-                    throw new ArgumentException("некорректные символы в номере телефона");
+                    throw new ArgumentException("Некорректные символы в номере телефона");
                 }
                 _phoneNumber = value;
             }
         }
 
-        public string Name { get; set; }
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                try
+                {
+                    _name = AssertStringContainsOnlyLetters(value);
+                }
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine(ex.Message + "Name.");
+                }
+            }
+        }
 
-        public string LastName { get; set; }
+        public string Surname
+        {
+            get
+            {
+                return _surname;
+            }
+            set
+            {
+                try
+                {
+                    _surname = AssertStringContainsOnlyLetters(value);
+                }
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine(ex.Message + "Surname.");
+                }
+            }
+        }
         
+
+        private string AssertStringContainsOnlyLetters(string value)
+        {
+            string lowercaseWord = value.ToLower();
+
+            for (int i = 0; i < lowercaseWord.Length; i++)
+            {
+                if (!((lowercaseWord[i] >= 'a') && (lowercaseWord[i] <= 'z')))
+                {
+                    throw new ArgumentException("Invalid value in the field: ");
+                }
+            }
+            return value;
+        }
     }
 }

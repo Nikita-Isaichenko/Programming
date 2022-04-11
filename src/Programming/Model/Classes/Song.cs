@@ -36,7 +36,7 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if (value < 0 & value > 60)
+                if (value < 0 | value > 60)
                 {
                     throw new ArgumentException("Некорректное кол-во минут");
                 }
@@ -52,7 +52,7 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if (value < 0 & value > 60)
+                if (value < 0 | value > 60)
                 {
                     throw new ArgumentException("Некорректное кол-во секунд");
                 }

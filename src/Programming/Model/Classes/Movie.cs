@@ -23,12 +23,12 @@ namespace Programming.Model.Classes
             _count++;
         }
 
-        public Movie(string title, int durationInMinutes, int yearOfIssue,
+        public Movie(string title, int durationInMinutes, int releaseYear,
                      string genre, double rating)
         {
             Title = title;
             DurationInMinutes = durationInMinutes;
-            ReleaseYear = yearOfIssue;
+            ReleaseYear = releaseYear;
             Genre = genre;
             Rating = rating;
             _count++;
@@ -49,7 +49,9 @@ namespace Programming.Model.Classes
 
         public int DurationInMinutes 
         {
-            get { return _durationInMinutes; }
+            get { 
+                return _durationInMinutes;
+            }
             set 
             {
                 if (value < 0)
@@ -63,7 +65,9 @@ namespace Programming.Model.Classes
 
         public int ReleaseYear
         {
-            get { return _releaseYear; }
+            get { 
+                return _releaseYear;
+            }
             set
             {
                 if (value < 1900 | value > DateTime.Now.Year)
@@ -82,7 +86,9 @@ namespace Programming.Model.Classes
 
         public double Rating
         {
-            get { return _rating; }
+            get { 
+                return _rating;
+            }
             set
             {
                 if (value < 0 | value > 10)

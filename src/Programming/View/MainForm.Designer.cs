@@ -60,7 +60,7 @@
             this.DurationInMinutesTextBox = new System.Windows.Forms.TextBox();
             this.YearOfIssueTextBox = new System.Windows.Forms.TextBox();
             this.TitleTextBox = new System.Windows.Forms.TextBox();
-            this.YearOfIssueLabel = new System.Windows.Forms.Label();
+            this.ReleaseYearLabel = new System.Windows.Forms.Label();
             this.DurationInMinutesLabel = new System.Windows.Forms.Label();
             this.TitleLabel = new System.Windows.Forms.Label();
             this.MoviesListBox = new System.Windows.Forms.ListBox();
@@ -299,7 +299,7 @@
             this.MoviesGroupBox.Controls.Add(this.DurationInMinutesTextBox);
             this.MoviesGroupBox.Controls.Add(this.YearOfIssueTextBox);
             this.MoviesGroupBox.Controls.Add(this.TitleTextBox);
-            this.MoviesGroupBox.Controls.Add(this.YearOfIssueLabel);
+            this.MoviesGroupBox.Controls.Add(this.ReleaseYearLabel);
             this.MoviesGroupBox.Controls.Add(this.DurationInMinutesLabel);
             this.MoviesGroupBox.Controls.Add(this.TitleLabel);
             this.MoviesGroupBox.Controls.Add(this.MoviesListBox);
@@ -378,14 +378,14 @@
             this.TitleTextBox.TabIndex = 5;
             this.TitleTextBox.TextChanged += new System.EventHandler(this.TitleTextBox_TextChanged);
             // 
-            // YearOfIssueLabel
+            // ReleaseYearLabel
             // 
-            this.YearOfIssueLabel.AutoSize = true;
-            this.YearOfIssueLabel.Location = new System.Drawing.Point(165, 125);
-            this.YearOfIssueLabel.Name = "YearOfIssueLabel";
-            this.YearOfIssueLabel.Size = new System.Drawing.Size(68, 13);
-            this.YearOfIssueLabel.TabIndex = 3;
-            this.YearOfIssueLabel.Text = "YearOfIssue:";
+            this.ReleaseYearLabel.AutoSize = true;
+            this.ReleaseYearLabel.Location = new System.Drawing.Point(165, 125);
+            this.ReleaseYearLabel.Name = "ReleaseYearLabel";
+            this.ReleaseYearLabel.Size = new System.Drawing.Size(71, 13);
+            this.ReleaseYearLabel.TabIndex = 3;
+            this.ReleaseYearLabel.Text = "ReleaseYear:";
             // 
             // DurationInMinutesLabel
             // 
@@ -568,7 +568,7 @@
         private System.Windows.Forms.TextBox YearOfIssueTextBox;
         private System.Windows.Forms.TextBox TitleTextBox;
         private System.Windows.Forms.Button FindMaxRatingButton;
-        private System.Windows.Forms.Label YearOfIssueLabel;
+        private System.Windows.Forms.Label ReleaseYearLabel;
         private System.Windows.Forms.Label DurationInMinutesLabel;
         private System.Windows.Forms.Label TitleLabel;
         private System.Windows.Forms.Label RatingLabel;

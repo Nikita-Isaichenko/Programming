@@ -26,6 +26,9 @@ namespace Programming.View
 
         private Movie _currentMovie;
 
+        private Contact contact = new Contact("43230900000", "ilоya", "popov");
+        
+
         public MainForm()
         {
             InitializeComponent();
@@ -67,7 +70,7 @@ namespace Programming.View
             // и добавляем в MoviesListBox название объектов.
             for (int i = 0; i < _movies.Length; i++)
             {
-                _movies[i] = new Movie(_titleMovies[i], rnd.Next(90, 210), rnd.Next(2021, DateTime.Now.Year + 1),
+                _movies[i] = new Movie(_titleMovies[i], rnd.Next(90, 210), rnd.Next(1900, DateTime.Now.Year + 1),
                                        _genres[rnd.Next(0, _genres.Length)], Math.Round(rnd.NextDouble()*10, 2));
                 MoviesListBox.Items.Add(_movies[i].ToString());
             }
