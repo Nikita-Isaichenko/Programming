@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Classes\Point2D.cs" />
     <Compile Include="Model\Classes\Subject.cs" />
     <Compile Include="Model\Classes\Movie.cs" />
     <Compile Include="Model\Classes\Rectangle.cs" />

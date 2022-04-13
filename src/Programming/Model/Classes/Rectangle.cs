@@ -35,7 +35,10 @@ namespace Programming.Model.Classes
 
         public int Length
         {
-            get { return _length; }
+            get 
+            { 
+                return _length;
+            }
             set 
             {
                 Validator.AssertOnPositiveValue(value, nameof(Length));          
@@ -45,7 +48,10 @@ namespace Programming.Model.Classes
 
         public int Width
         {
-            get { return _width; }
+            get 
+            { 
+                return _width;
+            }
             set
             {
                 Validator.AssertOnPositiveValue(value, nameof(Width));

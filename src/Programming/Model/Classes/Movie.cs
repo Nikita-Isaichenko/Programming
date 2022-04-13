@@ -49,7 +49,8 @@ namespace Programming.Model.Classes
 
         public int DurationInMinutes 
         {
-            get { 
+            get 
+            { 
                 return _durationInMinutes;
             }
             set 
@@ -61,7 +62,8 @@ namespace Programming.Model.Classes
 
         public int ReleaseYear
         {
-            get { 
+            get
+            { 
                 return _releaseYear;
             }
             set
@@ -79,7 +81,8 @@ namespace Programming.Model.Classes
 
         public double Rating
         {
-            get { 
+            get 
+            { 
                 return _rating;
             }
             set

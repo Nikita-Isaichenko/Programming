@@ -36,7 +36,10 @@ namespace Programming.Model.Classes
 
         public int Minutes
         {
-            get { return _minutes; }
+            get 
+            { 
+                return _minutes;
+            }
             set
             {
                 Validator.AssertValueInRange(value, 0, 60, nameof(Minutes));
@@ -46,7 +49,10 @@ namespace Programming.Model.Classes
 
         public int Seconds
         {
-            get { return _seconds; }
+            get 
+            { 
+                return _seconds;
+            }
             set
             {
                 Validator.AssertValueInRange(value, 0, 60, nameof(Seconds));
