@@ -52,6 +52,7 @@
     <Compile Include="Model\Classes\Flight.cs" />
     <Compile Include="Model\Classes\Song.cs" />
     <Compile Include="Model\Classes\Time.cs" />
+    <Compile Include="Model\Classes\Validator.cs" />
     <Compile Include="Model\Enums\Weekday.cs" />
     <Compile Include="Model\Enums\EducationalForm.cs" />
     <Compile Include="Model\Enums\Genre.cs" />

@@ -46,14 +46,9 @@ namespace Programming.Model.Classes
             }
             set
             {
-                try
-                {
-                    _name = AssertStringContainsOnlyLetters(value);
-                }
-                catch (ArgumentException ex)
-                {
-                    Console.WriteLine(ex.Message + "Name.");
-                }
+                Validator.AssertStringContainsOnlyLettersEnglish(value, nameof(Name));
+                _name = value;
+                
             }
         }
 
@@ -64,31 +59,10 @@ namespace Programming.Model.Classes
                 return _surname;
             }
             set
-            {
-                try
-                {
-                    _surname = AssertStringContainsOnlyLetters(value);
-                }
-                catch (ArgumentException ex)
-                {
-                    Console.WriteLine(ex.Message + "Surname.");
-                }
+            {              
+                Validator.AssertStringContainsOnlyLettersEnglish(value, nameof(Surname));
+                _surname = value;
             }
-        }
-        
-
-        private string AssertStringContainsOnlyLetters(string value)
-        {
-            string lowercaseWord = value.ToLower();
-
-            for (int i = 0; i < lowercaseWord.Length; i++)
-            {
-                if (!((lowercaseWord[i] >= 'a') && (lowercaseWord[i] <= 'z')))
-                {
-                    throw new ArgumentException("Invalid value in the field: ");
-                }
-            }
-            return value;
-        }
+        }        
     }
 }
