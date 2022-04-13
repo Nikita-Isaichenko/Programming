@@ -16,17 +16,41 @@ namespace Programming.Model.Classes
             {
                 if (!((lowercaseWord[i] >= 'a') && (lowercaseWord[i] <= 'z')))
                 {
-                    throw new ArgumentException($"Invalid value in the field: {propertyName}.");
+                    throw new ArgumentException($"Некорректное значение в поле: {propertyName}.");
                 }
             }
 
         }
 
-        public static void AssertOnPositiveValue(int value)
+        public static void AssertOnPositiveValue(int value, string propertyName)
         {
             if (value < 0)
             {
-                throw new ArgumentException("");
+                throw new ArgumentException($"Отрицательное значение в поле: {propertyName}");
+            }
+        }
+
+        public static void AssertOnPositiveValue(double value, string propertyName)
+        {
+            if (value < 0)
+            {
+                throw new ArgumentException($"Отрицательное значение в поле: {propertyName}");
+            }
+        }
+
+        public static void AssertValueInRange(int value, int min, int max, string propertyName)
+        {
+            if (value < min | value > max)
+            {
+                throw new ArgumentException($"Выход за диапазон значений в поле: {propertyName}");
+            }
+        }
+
+        public static void AssertValueInRange(double value, double min, double max, string propertyName)
+        {
+            if (value < min | value > max)
+            {
+                throw new ArgumentException($"Выход за диапазон значений в поле: {propertyName}");
             }
         }
     }

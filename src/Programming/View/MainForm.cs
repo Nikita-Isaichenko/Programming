@@ -26,7 +26,7 @@ namespace Programming.View
 
         private Movie _currentMovie;
 
-        private Contact contact = new Contact("43230900000", "ilоya", "popov");
+        private Contact contact = new Contact("43230900000", "ilya", "popov");
         
 
         public MainForm()

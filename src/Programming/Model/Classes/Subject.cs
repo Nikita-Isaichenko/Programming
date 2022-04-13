@@ -26,10 +26,8 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if (_hoursCount < 0)
-                {
-                    throw new ArgumentException("Число часов не может быть меньше нуля");
-                }
+                Validator.AssertOnPositiveValue(value, nameof(NumberHours));
+                _hoursCount = value;
             }
         }
 

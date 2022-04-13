@@ -29,10 +29,7 @@ namespace Programming.Model.Classes
             }
             set
             {
-                if (value < 0 | value > 23)
-                {
-                    throw new ArgumentException("Некорректное кол-во часов");
-                }
+                Validator.AssertValueInRange(value, 0, 24, nameof(Hours));
                 _hours = value;
             }
         }
@@ -42,10 +39,7 @@ namespace Programming.Model.Classes
             get { return _minutes; }
             set
             {
-                if (value < 0 | value > 60)
-                {
-                    throw new ArgumentException("Некорректное кол-во минут");
-                }
+                Validator.AssertValueInRange(value, 0, 60, nameof(Minutes));
                 _minutes = value;
             }
         }
@@ -55,10 +49,7 @@ namespace Programming.Model.Classes
             get { return _seconds; }
             set
             {
-                if (value < 0 | value > 60)
-                {
-                    throw new ArgumentException("Некорректное кол-во секунд");
-                }
+                Validator.AssertValueInRange(value, 0, 60, nameof(Seconds));
                 _seconds = value;
             }
         }

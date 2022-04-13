@@ -22,7 +22,7 @@ namespace Programming.Model.Classes
         public Rectangle(int length, int width, string color)
         {
             _count++;
-            Id = _count;
+            _id = _count;
             Length = length;
             Color = color;
             Width = width;
@@ -30,8 +30,7 @@ namespace Programming.Model.Classes
 
         public int Id 
         { 
-            get { return _id; }
-            set { _id = value; }
+            get { return _id; }           
         }
 
         public int Length
@@ -39,12 +38,7 @@ namespace Programming.Model.Classes
             get { return _length; }
             set 
             {
-                if (value < 0) 
-                {   
-                    _length = 0;
-                    throw new ArgumentException("Длина не может быть меньше нуля.");                    
-                }              
-
+                Validator.AssertOnPositiveValue(value, nameof(Length));          
                 _length = value;
             }
         }
@@ -54,11 +48,7 @@ namespace Programming.Model.Classes
             get { return _width; }
             set
             {
-                if (value < 0)
-                {
-                    _width = 0;
-                    throw new ArgumentException("Ширина не может быть меньше нуля.");
-                }
+                Validator.AssertOnPositiveValue(value, nameof(Width));
                 _width = value;
             }
         }
