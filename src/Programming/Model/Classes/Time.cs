@@ -10,17 +10,6 @@ namespace Programming.Model.Classes
 
         private int _seconds;
 
-        public Time()
-        {
-        }
-
-        public Time(int hours, int minutes, int seconds)
-        {
-            Hours = hours;
-            Minutes = minutes;
-            Seconds = seconds;
-        }
-
         public int Hours
         {
             get 
@@ -58,6 +47,17 @@ namespace Programming.Model.Classes
                 Validator.AssertValueInRange(value, 0, 60, nameof(Seconds));
                 _seconds = value;
             }
+        }
+
+        public Time()
+        {
+        }
+
+        public Time(int hours, int minutes, int seconds)
+        {
+            Hours = hours;
+            Minutes = minutes;
+            Seconds = seconds;
         }
     }
 }

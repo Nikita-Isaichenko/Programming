@@ -2,6 +2,12 @@
 {
     public class Flight
     {
+        public string Departure { get; set; }
+
+        public string Destination { get; set; }
+
+        public int FlightTimeInMinutes { get; set; }
+
         public Flight()
         {
         }
@@ -12,11 +18,5 @@
             Destination = destination;
             FlightTimeInMinutes = flightTimeInMinutes;
         }
-
-        public string Departure { get; set; }
-
-        public string Destination { get; set; }
-
-        public int FlightTimeInMinutes { get; set; }
     }
 }

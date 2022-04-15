@@ -18,23 +18,6 @@ namespace Programming.Model.Classes
 
         private double _rating;
 
-        public Movie()
-        {
-            _count++;
-        }
-
-        public Movie(string title, int durationInMinutes, int releaseYear,
-                     string genre, double rating)
-        {
-            Title = title;
-            DurationInMinutes = durationInMinutes;
-            ReleaseYear = releaseYear;
-            Genre = genre;
-            Rating = rating;
-            _count++;
-            Id = _count;
-        }
-
         public int Id
         {
             get { return _id; }
@@ -90,6 +73,23 @@ namespace Programming.Model.Classes
                 Validator.AssertValueInRange(value, 0, 10.0, nameof(Rating));
                 _rating = value;
             }
+        }
+
+        public Movie()
+        {
+            _count++;
+        }
+
+        public Movie(string title, int durationInMinutes, int releaseYear,
+                     string genre, double rating)
+        {
+            Title = title;
+            DurationInMinutes = durationInMinutes;
+            ReleaseYear = releaseYear;
+            Genre = genre;
+            Rating = rating;
+            _count++;
+            Id = _count;
         }
 
         public override string ToString()

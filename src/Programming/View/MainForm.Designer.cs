@@ -82,6 +82,8 @@
             this.DurationInMinutesToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.YearOfIssueToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.RatingToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.IdLabel = new System.Windows.Forms.Label();
+            this.IdTextBox = new System.Windows.Forms.TextBox();
             this.LabControl.SuspendLayout();
             this.EnumsTabPage.SuspendLayout();
             this.SeasonHandleGroupBox.SuspendLayout();
@@ -420,6 +422,8 @@
             // 
             // RectanglesGroupBox
             // 
+            this.RectanglesGroupBox.Controls.Add(this.IdTextBox);
+            this.RectanglesGroupBox.Controls.Add(this.IdLabel);
             this.RectanglesGroupBox.Controls.Add(this.YСoordinateTextBox);
             this.RectanglesGroupBox.Controls.Add(this.RectanglesListBox);
             this.RectanglesGroupBox.Controls.Add(this.YСoordinateLabel);
@@ -543,6 +547,23 @@
             this.LenghtTextBox.TabIndex = 1;
             this.LenghtTextBox.TextChanged += new System.EventHandler(this.LenghtTextBox_TextChanged);
             // 
+            // IdLabel
+            // 
+            this.IdLabel.AutoSize = true;
+            this.IdLabel.Location = new System.Drawing.Point(165, 284);
+            this.IdLabel.Name = "IdLabel";
+            this.IdLabel.Size = new System.Drawing.Size(19, 13);
+            this.IdLabel.TabIndex = 16;
+            this.IdLabel.Text = "Id:";
+            // 
+            // IdTextBox
+            // 
+            this.IdTextBox.Location = new System.Drawing.Point(168, 300);
+            this.IdTextBox.Name = "IdTextBox";
+            this.IdTextBox.ReadOnly = true;
+            this.IdTextBox.Size = new System.Drawing.Size(100, 20);
+            this.IdTextBox.TabIndex = 17;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -623,6 +644,8 @@
         private System.Windows.Forms.Label YСoordinateLabel;
         private System.Windows.Forms.TextBox XСoordinateTextBox;
         private System.Windows.Forms.Label XСoordinateLabel;
+        private System.Windows.Forms.TextBox IdTextBox;
+        private System.Windows.Forms.Label IdLabel;
     }
 }
 

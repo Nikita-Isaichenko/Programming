@@ -12,17 +12,6 @@ namespace Programming.Model.Classes
         private int _minutes;
 
         private int _seconds;
-        public Song()
-        {
-        }
-
-        public Song(string title, string singer, int minutes, int seconds)
-        {
-            Title = title;
-            Singer = singer;
-            Minutes = minutes;
-            Seconds = seconds;
-        }
 
         public string Title { get; set; }
 
@@ -52,6 +41,18 @@ namespace Programming.Model.Classes
                 Validator.AssertValueInRange(value, 0, 60, nameof(Seconds));
                 _seconds = value;
             }
+        }
+
+        public Song()
+        {
+        }
+
+        public Song(string title, string singer, int minutes, int seconds)
+        {
+            Title = title;
+            Singer = singer;
+            Minutes = minutes;
+            Seconds = seconds;
         }
     }
 }

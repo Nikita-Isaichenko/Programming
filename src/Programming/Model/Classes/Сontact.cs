@@ -10,17 +10,6 @@ namespace Programming.Model.Classes
 
         private string _surname;
 
-        public Contact()
-        {
-        }
-
-        public Contact(string phoneNumber, string name, string surname)
-        {
-            PhoneNumber = phoneNumber;
-            Name = name;
-            Surname = surname;
-        }
-
         public string PhoneNumber
         {
             get 
@@ -66,6 +55,17 @@ namespace Programming.Model.Classes
                 Validator.AssertStringContainsOnlyLettersEnglish(value, nameof(Surname));
                 _surname = value;
             }
-        }        
+        }
+
+        public Contact()
+        {
+        }
+
+        public Contact(string phoneNumber, string name, string surname)
+        {
+            PhoneNumber = phoneNumber;
+            Name = name;
+            Surname = surname;
+        }
     }
 }
