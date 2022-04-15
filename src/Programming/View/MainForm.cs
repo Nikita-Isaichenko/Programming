@@ -56,7 +56,8 @@ namespace Programming.View
             for (int i = 0; i < _rectangles.Length; i++)
             {
                 _rectangles[i] = new Rectangle(rnd.Next(0, 1000), rnd.Next(0, 1000),
-                                               _colors[rnd.Next(_colors.Length)]);
+                                               _colors[rnd.Next(_colors.Length)],
+                                               rnd.Next(0, 671), rnd.Next(0, 451));
                 RectanglesListBox.Items.Add(_rectangles[i].ToString());
             }
 
@@ -74,6 +75,36 @@ namespace Programming.View
                                        _genres[rnd.Next(0, _genres.Length)], Math.Round(rnd.NextDouble()*10, 2));
                 MoviesListBox.Items.Add(_movies[i].ToString());
             }
+        }
+
+        private int FindMovieWithMaxRating(Movie[] movie)
+        {
+            int indexMaxRating = 0;
+            double maxRating = 0;
+            for (int i = 0; i < movie.Length; i++)
+            {
+                if (movie[i].Rating > maxRating)
+                {
+                    maxRating = movie[i].Rating;
+                    indexMaxRating = i;
+                }
+            }
+            return indexMaxRating;
+        }
+
+        private int FindRectangleWithMaxWidth(Rectangle[] rectangles)
+        {
+            int indexMaxWidth = 0;
+            int maxWidth = 0;
+            for (int i = 0; i < rectangles.Length; i++)
+            {
+                if (rectangles[i].Width > maxWidth)
+                {
+                    maxWidth = rectangles[i].Width;
+                    indexMaxWidth = i;
+                }
+            }
+            return indexMaxWidth;
         }
 
         private void EnumListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -113,68 +144,17 @@ namespace Programming.View
         private void ValueListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             IntValueTextBox.Text = ((int) ValueListBox.SelectedItem).ToString();
-        }
-
-        private void ParseButton_Click(object sender, EventArgs e)
-        {
-            string text = ParsingTextBox.Text;           
-            if (Enum.TryParse(text, out Weekday weekday))
-            {
-                WeekdayOutputLabel.Text = $"Это день недели ({text} = {(int) weekday})";
-            }
-            else
-            {
-                WeekdayOutputLabel.Text = "Нет такого дня недели";
-            }
-        }
-
-        private void GoButton_Click(object sender, EventArgs e)
-        {
-            SeasonPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            switch (SeasonComboBox.SelectedItem)
-            {
-                case Season.Winter:
-                    SeasonPictureBox.Image = Properties.Resources.Winter;
-                    break;
-                case Season.Spring:
-                    SeasonPictureBox.Image = Properties.Resources.Spring;
-                    break;
-                case Season.Autumn:
-                    SeasonPictureBox.Image = Properties.Resources.Autumn;
-                    break;
-                case Season.Summer:
-                    SeasonPictureBox.Image = Properties.Resources.Summer;
-                    break;
-            }
-        }
+        }       
 
         private void RectanglesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int indexRectangle = RectanglesListBox.SelectedIndex;
             _currentRectangle = _rectangles[indexRectangle];
-            LenghtTextBox.Text = _currentRectangle.Length.ToString();  
+            LenghtTextBox.Text = _currentRectangle.Length.ToString();
             WidthTextBox.Text = _currentRectangle.Width.ToString();
-            ColorTextBox.Text = _currentRectangle.Color; 
-        }
-
-        private int FindRectangleWithMaxWidth(Rectangle[] rectangles)
-        {
-            int indexMaxWidth = 0;
-            int maxWidth = 0;
-            for (int i = 0; i < rectangles.Length; i++)
-            {
-                if (rectangles[i].Width > maxWidth)
-                {
-                    maxWidth = rectangles[i].Width;
-                    indexMaxWidth = i;
-                }
-            }
-            return indexMaxWidth;
-        }
-
-        private void FindMaxWidthButton_Click(object sender, EventArgs e)
-        {
-            RectanglesListBox.SelectedIndex = FindRectangleWithMaxWidth(_rectangles);
+            ColorTextBox.Text = _currentRectangle.Color;
+            XСoordinateTextBox.Text = _currentRectangle.Center.X.ToString();
+            YСoordinateTextBox.Text = _currentRectangle.Center.Y.ToString();
         }
 
         private void LenghtTextBox_TextChanged(object sender, EventArgs e)
@@ -278,24 +258,47 @@ namespace Programming.View
             }
         }
 
+        private void GoButton_Click(object sender, EventArgs e)
+        {
+            SeasonPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            switch (SeasonComboBox.SelectedItem)
+            {
+                case Season.Winter:
+                    SeasonPictureBox.Image = Properties.Resources.Winter;
+                    break;
+                case Season.Spring:
+                    SeasonPictureBox.Image = Properties.Resources.Spring;
+                    break;
+                case Season.Autumn:
+                    SeasonPictureBox.Image = Properties.Resources.Autumn;
+                    break;
+                case Season.Summer:
+                    SeasonPictureBox.Image = Properties.Resources.Summer;
+                    break;
+            }
+        }
+
         private void FindMaxRatingButton_Click(object sender, EventArgs e)
         {
             MoviesListBox.SelectedIndex = FindMovieWithMaxRating(_movies);
         }
 
-        private int FindMovieWithMaxRating(Movie[] movie)
+        private void FindMaxWidthButton_Click(object sender, EventArgs e)
         {
-            int indexMaxRating = 0;
-            double maxRating = 0;
-            for (int i = 0; i < movie.Length; i++)
+            RectanglesListBox.SelectedIndex = FindRectangleWithMaxWidth(_rectangles);
+        }
+
+        private void ParseButton_Click(object sender, EventArgs e)
+        {
+            string text = ParsingTextBox.Text;
+            if (Enum.TryParse(text, out Weekday weekday))
             {
-                if (movie[i].Rating > maxRating)
-                {
-                    maxRating = movie[i].Rating;
-                    indexMaxRating = i;
-                }
+                WeekdayOutputLabel.Text = $"Это день недели ({text} = {(int)weekday})";
             }
-            return indexMaxRating;
+            else
+            {
+                WeekdayOutputLabel.Text = "Нет такого дня недели";
+            }
         }
     }
 }

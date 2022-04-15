@@ -65,9 +65,13 @@
             this.TitleLabel = new System.Windows.Forms.Label();
             this.MoviesListBox = new System.Windows.Forms.ListBox();
             this.RectanglesGroupBox = new System.Windows.Forms.GroupBox();
+            this.YСoordinateTextBox = new System.Windows.Forms.TextBox();
             this.RectanglesListBox = new System.Windows.Forms.ListBox();
+            this.YСoordinateLabel = new System.Windows.Forms.Label();
+            this.XСoordinateTextBox = new System.Windows.Forms.TextBox();
             this.FindMaxWidthButton = new System.Windows.Forms.Button();
             this.ColorLabel = new System.Windows.Forms.Label();
+            this.XСoordinateLabel = new System.Windows.Forms.Label();
             this.WidthLabel = new System.Windows.Forms.Label();
             this.LenghtLabel = new System.Windows.Forms.Label();
             this.ColorTextBox = new System.Windows.Forms.TextBox();
@@ -118,7 +122,7 @@
             this.SeasonHandleGroupBox.Controls.Add(this.SeasonComboBox);
             this.SeasonHandleGroupBox.Controls.Add(this.GoButton);
             this.SeasonHandleGroupBox.Controls.Add(this.SeasonLabel);
-            this.SeasonHandleGroupBox.Location = new System.Drawing.Point(334, 265);
+            this.SeasonHandleGroupBox.Location = new System.Drawing.Point(333, 265);
             this.SeasonHandleGroupBox.Name = "SeasonHandleGroupBox";
             this.SeasonHandleGroupBox.Size = new System.Drawing.Size(322, 151);
             this.SeasonHandleGroupBox.TabIndex = 7;
@@ -209,9 +213,9 @@
             this.EnumerationGroupBox.Controls.Add(this.EnumerationLabel);
             this.EnumerationGroupBox.Controls.Add(this.ValueLabel);
             this.EnumerationGroupBox.Controls.Add(this.ValueListBox);
-            this.EnumerationGroupBox.Location = new System.Drawing.Point(6, 7);
+            this.EnumerationGroupBox.Location = new System.Drawing.Point(6, 6);
             this.EnumerationGroupBox.Name = "EnumerationGroupBox";
-            this.EnumerationGroupBox.Size = new System.Drawing.Size(650, 252);
+            this.EnumerationGroupBox.Size = new System.Drawing.Size(649, 253);
             this.EnumerationGroupBox.TabIndex = 5;
             this.EnumerationGroupBox.TabStop = false;
             this.EnumerationGroupBox.Text = "Enumerations";
@@ -303,7 +307,7 @@
             this.MoviesGroupBox.Controls.Add(this.DurationInMinutesLabel);
             this.MoviesGroupBox.Controls.Add(this.TitleLabel);
             this.MoviesGroupBox.Controls.Add(this.MoviesListBox);
-            this.MoviesGroupBox.Location = new System.Drawing.Point(332, 6);
+            this.MoviesGroupBox.Location = new System.Drawing.Point(333, 6);
             this.MoviesGroupBox.Name = "MoviesGroupBox";
             this.MoviesGroupBox.Size = new System.Drawing.Size(322, 410);
             this.MoviesGroupBox.TabIndex = 1;
@@ -416,9 +420,13 @@
             // 
             // RectanglesGroupBox
             // 
+            this.RectanglesGroupBox.Controls.Add(this.YСoordinateTextBox);
             this.RectanglesGroupBox.Controls.Add(this.RectanglesListBox);
+            this.RectanglesGroupBox.Controls.Add(this.YСoordinateLabel);
+            this.RectanglesGroupBox.Controls.Add(this.XСoordinateTextBox);
             this.RectanglesGroupBox.Controls.Add(this.FindMaxWidthButton);
             this.RectanglesGroupBox.Controls.Add(this.ColorLabel);
+            this.RectanglesGroupBox.Controls.Add(this.XСoordinateLabel);
             this.RectanglesGroupBox.Controls.Add(this.WidthLabel);
             this.RectanglesGroupBox.Controls.Add(this.LenghtLabel);
             this.RectanglesGroupBox.Controls.Add(this.ColorTextBox);
@@ -431,6 +439,14 @@
             this.RectanglesGroupBox.TabStop = false;
             this.RectanglesGroupBox.Text = "Rectangles";
             // 
+            // YСoordinateTextBox
+            // 
+            this.YСoordinateTextBox.Location = new System.Drawing.Point(168, 247);
+            this.YСoordinateTextBox.Name = "YСoordinateTextBox";
+            this.YСoordinateTextBox.ReadOnly = true;
+            this.YСoordinateTextBox.Size = new System.Drawing.Size(100, 20);
+            this.YСoordinateTextBox.TabIndex = 15;
+            // 
             // RectanglesListBox
             // 
             this.RectanglesListBox.FormattingEnabled = true;
@@ -439,6 +455,23 @@
             this.RectanglesListBox.Size = new System.Drawing.Size(153, 381);
             this.RectanglesListBox.TabIndex = 0;
             this.RectanglesListBox.SelectedIndexChanged += new System.EventHandler(this.RectanglesListBox_SelectedIndexChanged);
+            // 
+            // YСoordinateLabel
+            // 
+            this.YСoordinateLabel.AutoSize = true;
+            this.YСoordinateLabel.Location = new System.Drawing.Point(165, 231);
+            this.YСoordinateLabel.Name = "YСoordinateLabel";
+            this.YСoordinateLabel.Size = new System.Drawing.Size(17, 13);
+            this.YСoordinateLabel.TabIndex = 13;
+            this.YСoordinateLabel.Text = "Y:";
+            // 
+            // XСoordinateTextBox
+            // 
+            this.XСoordinateTextBox.Location = new System.Drawing.Point(168, 194);
+            this.XСoordinateTextBox.Name = "XСoordinateTextBox";
+            this.XСoordinateTextBox.ReadOnly = true;
+            this.XСoordinateTextBox.Size = new System.Drawing.Size(100, 20);
+            this.XСoordinateTextBox.TabIndex = 14;
             // 
             // FindMaxWidthButton
             // 
@@ -458,6 +491,15 @@
             this.ColorLabel.Size = new System.Drawing.Size(34, 13);
             this.ColorLabel.TabIndex = 6;
             this.ColorLabel.Text = "Color:";
+            // 
+            // XСoordinateLabel
+            // 
+            this.XСoordinateLabel.AutoSize = true;
+            this.XСoordinateLabel.Location = new System.Drawing.Point(165, 178);
+            this.XСoordinateLabel.Name = "XСoordinateLabel";
+            this.XСoordinateLabel.Size = new System.Drawing.Size(17, 13);
+            this.XСoordinateLabel.TabIndex = 12;
+            this.XСoordinateLabel.Text = "X:";
             // 
             // WidthLabel
             // 
@@ -577,6 +619,10 @@
         private System.Windows.Forms.ToolTip DurationInMinutesToolTip;
         private System.Windows.Forms.ToolTip YearOfIssueToolTip;
         private System.Windows.Forms.ToolTip RatingToolTip;
+        private System.Windows.Forms.TextBox YСoordinateTextBox;
+        private System.Windows.Forms.Label YСoordinateLabel;
+        private System.Windows.Forms.TextBox XСoordinateTextBox;
+        private System.Windows.Forms.Label XСoordinateLabel;
     }
 }
 

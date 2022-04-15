@@ -21,6 +21,7 @@ namespace Programming.Model.Classes
             private set
             {
                 Validator.AssertOnPositiveValue(value, nameof(X));
+                Validator.AssertValueInRange(value, 0, 670.0, nameof(X));
                 _x = value;
             }
         }
@@ -34,10 +35,10 @@ namespace Programming.Model.Classes
             private set
             {
                 Validator.AssertOnPositiveValue(value, nameof(Y));
+                Validator.AssertValueInRange(value, 0, 450.0, nameof(Y));
                 _y = value;
             }
         }
-
 
         public Point2D(int x, int y)
         {

@@ -12,20 +12,21 @@ namespace Programming.Model.Classes
 
         private int _width;
 
-        private string _color;
+        private string _color;      
 
         public Rectangle()
         {
             _count++;
         }
 
-        public Rectangle(int length, int width, string color)
+        public Rectangle(int length, int width, string color, int xCenter, int yCenter)
         {
             _count++;
             _id = _count;
             Length = length;
             Color = color;
             Width = width;
+            Center = new Point2D(xCenter, yCenter);
         }
 
         public int Id 
@@ -65,6 +66,8 @@ namespace Programming.Model.Classes
             set { _color = value; }
         }
 
+        public Point2D Center { get; set; }
+        
         public override string ToString()
         {
             return $"Rectangle {_id}";
