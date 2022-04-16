@@ -4,7 +4,7 @@ namespace Programming.Model.Classes
 {
     public class Movie
     {
-        private static int _count = 0;
+        private static int _allMoviesCount = 0;
 
         private int _id;
 
@@ -20,8 +20,7 @@ namespace Programming.Model.Classes
 
         public int Id
         {
-            get { return _id; }
-            set { _id = value; }
+            get { return _id; }            
         }
 
         public string Title 
@@ -77,7 +76,8 @@ namespace Programming.Model.Classes
 
         public Movie()
         {
-            _count++;
+            _allMoviesCount++;
+            _id = _allMoviesCount;
         }
 
         public Movie(string title, int durationInMinutes, int releaseYear,
@@ -88,8 +88,14 @@ namespace Programming.Model.Classes
             ReleaseYear = releaseYear;
             Genre = genre;
             Rating = rating;
-            _count++;
-            Id = _count;
+            _allMoviesCount++;
+            _id = _allMoviesCount;
+
+        }
+
+        public static int AllMoviesCount()
+        {
+            return _allMoviesCount;
         }
 
         public override string ToString()

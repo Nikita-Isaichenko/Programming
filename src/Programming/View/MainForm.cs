@@ -155,7 +155,7 @@ namespace Programming.View
             ColorTextBox.Text = _currentRectangle.Color;
             XСoordinateTextBox.Text = _currentRectangle.Center.X.ToString();
             YСoordinateTextBox.Text = _currentRectangle.Center.Y.ToString();
-            IdTextBox.Text = _currentRectangle.Id.ToString();
+            IdRectangleTextBox.Text = _currentRectangle.Id.ToString();
         }
 
         private void LenghtTextBox_TextChanged(object sender, EventArgs e)
@@ -202,6 +202,7 @@ namespace Programming.View
             YearOfIssueTextBox.Text = _currentMovie.ReleaseYear.ToString();
             GenreTextBox.Text = _currentMovie.Genre;
             RatingTextBox.Text = _currentMovie.Rating.ToString();
+            IdMovieTextBox.Text = _currentMovie.Id.ToString();
         }
 
         private void TitleTextBox_TextChanged(object sender, EventArgs e)

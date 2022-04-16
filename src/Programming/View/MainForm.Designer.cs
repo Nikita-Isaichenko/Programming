@@ -52,6 +52,8 @@
             this.ValueListBox = new System.Windows.Forms.ListBox();
             this.ClassesTabPage = new System.Windows.Forms.TabPage();
             this.MoviesGroupBox = new System.Windows.Forms.GroupBox();
+            this.IdMovieLabel = new System.Windows.Forms.Label();
+            this.IdMovieTextBox = new System.Windows.Forms.TextBox();
             this.RatingLabel = new System.Windows.Forms.Label();
             this.GenreLabel = new System.Windows.Forms.Label();
             this.FindMaxRatingButton = new System.Windows.Forms.Button();
@@ -65,6 +67,8 @@
             this.TitleLabel = new System.Windows.Forms.Label();
             this.MoviesListBox = new System.Windows.Forms.ListBox();
             this.RectanglesGroupBox = new System.Windows.Forms.GroupBox();
+            this.IdRectangleTextBox = new System.Windows.Forms.TextBox();
+            this.IdRectangleLabel = new System.Windows.Forms.Label();
             this.YСoordinateTextBox = new System.Windows.Forms.TextBox();
             this.RectanglesListBox = new System.Windows.Forms.ListBox();
             this.YСoordinateLabel = new System.Windows.Forms.Label();
@@ -82,8 +86,6 @@
             this.DurationInMinutesToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.YearOfIssueToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.RatingToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.IdLabel = new System.Windows.Forms.Label();
-            this.IdTextBox = new System.Windows.Forms.TextBox();
             this.LabControl.SuspendLayout();
             this.EnumsTabPage.SuspendLayout();
             this.SeasonHandleGroupBox.SuspendLayout();
@@ -297,6 +299,8 @@
             // 
             // MoviesGroupBox
             // 
+            this.MoviesGroupBox.Controls.Add(this.IdMovieLabel);
+            this.MoviesGroupBox.Controls.Add(this.IdMovieTextBox);
             this.MoviesGroupBox.Controls.Add(this.RatingLabel);
             this.MoviesGroupBox.Controls.Add(this.GenreLabel);
             this.MoviesGroupBox.Controls.Add(this.FindMaxRatingButton);
@@ -315,6 +319,23 @@
             this.MoviesGroupBox.TabIndex = 1;
             this.MoviesGroupBox.TabStop = false;
             this.MoviesGroupBox.Text = "Movies";
+            // 
+            // IdMovieLabel
+            // 
+            this.IdMovieLabel.AutoSize = true;
+            this.IdMovieLabel.Location = new System.Drawing.Point(168, 283);
+            this.IdMovieLabel.Name = "IdMovieLabel";
+            this.IdMovieLabel.Size = new System.Drawing.Size(19, 13);
+            this.IdMovieLabel.TabIndex = 13;
+            this.IdMovieLabel.Text = "Id:";
+            // 
+            // IdMovieTextBox
+            // 
+            this.IdMovieTextBox.Location = new System.Drawing.Point(168, 299);
+            this.IdMovieTextBox.Name = "IdMovieTextBox";
+            this.IdMovieTextBox.ReadOnly = true;
+            this.IdMovieTextBox.Size = new System.Drawing.Size(100, 20);
+            this.IdMovieTextBox.TabIndex = 12;
             // 
             // RatingLabel
             // 
@@ -422,8 +443,8 @@
             // 
             // RectanglesGroupBox
             // 
-            this.RectanglesGroupBox.Controls.Add(this.IdTextBox);
-            this.RectanglesGroupBox.Controls.Add(this.IdLabel);
+            this.RectanglesGroupBox.Controls.Add(this.IdRectangleTextBox);
+            this.RectanglesGroupBox.Controls.Add(this.IdRectangleLabel);
             this.RectanglesGroupBox.Controls.Add(this.YСoordinateTextBox);
             this.RectanglesGroupBox.Controls.Add(this.RectanglesListBox);
             this.RectanglesGroupBox.Controls.Add(this.YСoordinateLabel);
@@ -442,6 +463,23 @@
             this.RectanglesGroupBox.TabIndex = 0;
             this.RectanglesGroupBox.TabStop = false;
             this.RectanglesGroupBox.Text = "Rectangles";
+            // 
+            // IdRectangleTextBox
+            // 
+            this.IdRectangleTextBox.Location = new System.Drawing.Point(168, 300);
+            this.IdRectangleTextBox.Name = "IdRectangleTextBox";
+            this.IdRectangleTextBox.ReadOnly = true;
+            this.IdRectangleTextBox.Size = new System.Drawing.Size(100, 20);
+            this.IdRectangleTextBox.TabIndex = 17;
+            // 
+            // IdRectangleLabel
+            // 
+            this.IdRectangleLabel.AutoSize = true;
+            this.IdRectangleLabel.Location = new System.Drawing.Point(165, 284);
+            this.IdRectangleLabel.Name = "IdRectangleLabel";
+            this.IdRectangleLabel.Size = new System.Drawing.Size(19, 13);
+            this.IdRectangleLabel.TabIndex = 16;
+            this.IdRectangleLabel.Text = "Id:";
             // 
             // YСoordinateTextBox
             // 
@@ -547,23 +585,6 @@
             this.LenghtTextBox.TabIndex = 1;
             this.LenghtTextBox.TextChanged += new System.EventHandler(this.LenghtTextBox_TextChanged);
             // 
-            // IdLabel
-            // 
-            this.IdLabel.AutoSize = true;
-            this.IdLabel.Location = new System.Drawing.Point(165, 284);
-            this.IdLabel.Name = "IdLabel";
-            this.IdLabel.Size = new System.Drawing.Size(19, 13);
-            this.IdLabel.TabIndex = 16;
-            this.IdLabel.Text = "Id:";
-            // 
-            // IdTextBox
-            // 
-            this.IdTextBox.Location = new System.Drawing.Point(168, 300);
-            this.IdTextBox.Name = "IdTextBox";
-            this.IdTextBox.ReadOnly = true;
-            this.IdTextBox.Size = new System.Drawing.Size(100, 20);
-            this.IdTextBox.TabIndex = 17;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -644,8 +665,10 @@
         private System.Windows.Forms.Label YСoordinateLabel;
         private System.Windows.Forms.TextBox XСoordinateTextBox;
         private System.Windows.Forms.Label XСoordinateLabel;
-        private System.Windows.Forms.TextBox IdTextBox;
-        private System.Windows.Forms.Label IdLabel;
+        private System.Windows.Forms.TextBox IdRectangleTextBox;
+        private System.Windows.Forms.Label IdRectangleLabel;
+        private System.Windows.Forms.Label IdMovieLabel;
+        private System.Windows.Forms.TextBox IdMovieTextBox;
     }
 }
 

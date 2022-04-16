@@ -17,6 +17,7 @@ namespace Programming.Model.Classes
         public Rectangle()
         {
             _allRectanglesCount++;
+            _id = _allRectanglesCount;
         }
 
         public Rectangle(int length, int width, string color, int xCenter, int yCenter)
@@ -67,15 +68,15 @@ namespace Programming.Model.Classes
         }
 
         public Point2D Center { get; set; }
-        
-        public override string ToString()
-        {
-            return $"Rectangle {_id}";
-        }
 
         public static int AllRectanglesCount()
         {
             return _allRectanglesCount;
         }
+
+        public override string ToString()
+        {
+            return $"Rectangle {_id}";
+        }       
     }
 }
