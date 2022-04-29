@@ -7,10 +7,11 @@ namespace Programming.View
 {
     public partial class MainForm : Form
     {
-        Random rnd = new Random();
+        private readonly System.Drawing.Color ErrorBackColor = System.Drawing.Color.LightPink;
 
-        private  System.Drawing.Color ErrorBackColor = System.Drawing.Color.LightPink;
-        private  System.Drawing.Color NormalBackColor = System.Drawing.Color.White;
+        private readonly System.Drawing.Color NormalBackColor = System.Drawing.Color.White;
+
+        Random random = new Random();
 
         private string[] _titleMovies = {"Титаник", "Матрица", "Шерлок Хоумс", "Интерстеллар", "Гладиатор"};
                                         
@@ -55,9 +56,9 @@ namespace Programming.View
             // и добавляем в RectanglesListBox название объектов.
             for (int i = 0; i < _rectangles.Length; i++)
             {
-                _rectangles[i] = new Rectangle(rnd.Next(0, 1000), rnd.Next(0, 1000),
-                                               _colors[rnd.Next(_colors.Length)],
-                                               rnd.Next(0, 671), rnd.Next(0, 451));
+                _rectangles[i] = new Rectangle(random.Next(0, 1000), random.Next(0, 1000),
+                                               _colors[random.Next(_colors.Length)],
+                                               random.Next(0, 671), random.Next(0, 451));
                 RectanglesListBox.Items.Add(_rectangles[i].ToString());
             }
 
@@ -71,8 +72,8 @@ namespace Programming.View
             // и добавляем в MoviesListBox название объектов.
             for (int i = 0; i < _movies.Length; i++)
             {
-                _movies[i] = new Movie(_titleMovies[i], rnd.Next(90, 210), rnd.Next(1900, DateTime.Now.Year + 1),
-                                       _genres[rnd.Next(0, _genres.Length)], Math.Round(rnd.NextDouble()*10, 2));
+                _movies[i] = new Movie(_titleMovies[i], random.Next(90, 210), random.Next(1900, DateTime.Now.Year + 1),
+                                       _genres[random.Next(0, _genres.Length)], Math.Round(random.NextDouble()*10, 2));
                 MoviesListBox.Items.Add(_movies[i].ToString());
             }
         }
@@ -302,5 +303,7 @@ namespace Programming.View
                 WeekdayOutputLabel.Text = "Нет такого дня недели";
             }
         }
+
+        
     }
 }

@@ -11,7 +11,6 @@ namespace Programming.Model.Classes
         public static void AssertStringContainsOnlyLettersEnglish(string value, string propertyName)
         {
             string lowercaseWord = value.ToLower();
-
             for (int i = 0; i < lowercaseWord.Length; i++)
             {
                 if (!((lowercaseWord[i] >= 'a') && (lowercaseWord[i] <= 'z')))
@@ -19,7 +18,6 @@ namespace Programming.Model.Classes
                     throw new ArgumentException($"Некорректное значение в поле: {propertyName}.");
                 }
             }
-
         }
 
         public static void AssertOnPositiveValue(int value, string propertyName)
@@ -40,7 +38,7 @@ namespace Programming.Model.Classes
 
         public static void AssertValueInRange(int value, int min, int max, string propertyName)
         {
-            if (value < min | value > max)
+            if (value < min || value > max)
             {
                 throw new ArgumentException($"Выход за диапазон значений в поле: {propertyName}");
             }

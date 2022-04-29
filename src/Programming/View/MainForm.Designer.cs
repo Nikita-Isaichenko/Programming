@@ -81,11 +81,28 @@
             this.ColorTextBox = new System.Windows.Forms.TextBox();
             this.WidthTextBox = new System.Windows.Forms.TextBox();
             this.LenghtTextBox = new System.Windows.Forms.TextBox();
+            this.RectanglesPage = new System.Windows.Forms.TabPage();
+            this.RectanglesPageRectangleRemoveButton = new System.Windows.Forms.Button();
+            this.RectanglesPageRectangleAddButton = new System.Windows.Forms.Button();
+            this.RectanglesPageRectanglesLabel = new System.Windows.Forms.Label();
+            this.RectanglesPageRectanglesListBox = new System.Windows.Forms.ListBox();
+            this.RectanglePageCanva = new System.Windows.Forms.Panel();
             this.LengthToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.WidthToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.DurationInMinutesToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.YearOfIssueToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.RatingToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.RectanglesPageIdTextButton = new System.Windows.Forms.TextBox();
+            this.RectanglesPageXTextButton = new System.Windows.Forms.TextBox();
+            this.RectanglesPageYTextButton = new System.Windows.Forms.TextBox();
+            this.RectanglesPageWidthTextButton = new System.Windows.Forms.TextBox();
+            this.RectanglesPageLenghtTextButton = new System.Windows.Forms.TextBox();
+            this.RectanglesPageSelectedRectanglesLabel = new System.Windows.Forms.Label();
+            this.RectanglesPageIdLabel = new System.Windows.Forms.Label();
+            this.RectanglesPageXLabel = new System.Windows.Forms.Label();
+            this.RectanglesPageYLabel = new System.Windows.Forms.Label();
+            this.RectanglesPageWidthLabel = new System.Windows.Forms.Label();
+            this.RectanglesPageLengthLabel = new System.Windows.Forms.Label();
             this.LabControl.SuspendLayout();
             this.EnumsTabPage.SuspendLayout();
             this.SeasonHandleGroupBox.SuspendLayout();
@@ -95,12 +112,14 @@
             this.ClassesTabPage.SuspendLayout();
             this.MoviesGroupBox.SuspendLayout();
             this.RectanglesGroupBox.SuspendLayout();
+            this.RectanglesPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // LabControl
             // 
             this.LabControl.Controls.Add(this.EnumsTabPage);
             this.LabControl.Controls.Add(this.ClassesTabPage);
+            this.LabControl.Controls.Add(this.RectanglesPage);
             this.LabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LabControl.Location = new System.Drawing.Point(0, 0);
             this.LabControl.Name = "LabControl";
@@ -521,7 +540,7 @@
             this.FindMaxWidthButton.Name = "FindMaxWidthButton";
             this.FindMaxWidthButton.Size = new System.Drawing.Size(100, 23);
             this.FindMaxWidthButton.TabIndex = 7;
-            this.FindMaxWidthButton.Text = "FInd";
+            this.FindMaxWidthButton.Text = "Find";
             this.FindMaxWidthButton.UseVisualStyleBackColor = true;
             this.FindMaxWidthButton.Click += new System.EventHandler(this.FindMaxWidthButton_Click);
             // 
@@ -559,7 +578,7 @@
             this.LenghtLabel.Name = "LenghtLabel";
             this.LenghtLabel.Size = new System.Drawing.Size(43, 13);
             this.LenghtLabel.TabIndex = 4;
-            this.LenghtLabel.Text = "Lenght:";
+            this.LenghtLabel.Text = "Length:";
             // 
             // ColorTextBox
             // 
@@ -585,6 +604,169 @@
             this.LenghtTextBox.TabIndex = 1;
             this.LenghtTextBox.TextChanged += new System.EventHandler(this.LenghtTextBox_TextChanged);
             // 
+            // RectanglesPage
+            // 
+            this.RectanglesPage.Controls.Add(this.RectanglesPageLengthLabel);
+            this.RectanglesPage.Controls.Add(this.RectanglesPageWidthLabel);
+            this.RectanglesPage.Controls.Add(this.RectanglesPageYLabel);
+            this.RectanglesPage.Controls.Add(this.RectanglesPageXLabel);
+            this.RectanglesPage.Controls.Add(this.RectanglesPageIdLabel);
+            this.RectanglesPage.Controls.Add(this.RectanglesPageSelectedRectanglesLabel);
+            this.RectanglesPage.Controls.Add(this.RectanglesPageLenghtTextButton);
+            this.RectanglesPage.Controls.Add(this.RectanglesPageWidthTextButton);
+            this.RectanglesPage.Controls.Add(this.RectanglesPageYTextButton);
+            this.RectanglesPage.Controls.Add(this.RectanglesPageXTextButton);
+            this.RectanglesPage.Controls.Add(this.RectanglesPageIdTextButton);
+            this.RectanglesPage.Controls.Add(this.RectanglesPageRectangleRemoveButton);
+            this.RectanglesPage.Controls.Add(this.RectanglesPageRectangleAddButton);
+            this.RectanglesPage.Controls.Add(this.RectanglesPageRectanglesLabel);
+            this.RectanglesPage.Controls.Add(this.RectanglesPageRectanglesListBox);
+            this.RectanglesPage.Controls.Add(this.RectanglePageCanva);
+            this.RectanglesPage.Location = new System.Drawing.Point(4, 22);
+            this.RectanglesPage.Name = "RectanglesPage";
+            this.RectanglesPage.Padding = new System.Windows.Forms.Padding(3);
+            this.RectanglesPage.Size = new System.Drawing.Size(662, 424);
+            this.RectanglesPage.TabIndex = 2;
+            this.RectanglesPage.Text = "Rectangles";
+            this.RectanglesPage.UseVisualStyleBackColor = true;
+            // 
+            // RectanglesPageRectangleRemoveButton
+            // 
+            this.RectanglesPageRectangleRemoveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RectanglesPageRectangleRemoveButton.Location = new System.Drawing.Point(143, 169);
+            this.RectanglesPageRectangleRemoveButton.Name = "RectanglesPageRectangleRemoveButton";
+            this.RectanglesPageRectangleRemoveButton.Size = new System.Drawing.Size(75, 23);
+            this.RectanglesPageRectangleRemoveButton.TabIndex = 4;
+            this.RectanglesPageRectangleRemoveButton.Text = "Remove";
+            this.RectanglesPageRectangleRemoveButton.UseVisualStyleBackColor = true;
+            // 
+            // RectanglesPageRectangleAddButton
+            // 
+            this.RectanglesPageRectangleAddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RectanglesPageRectangleAddButton.Location = new System.Drawing.Point(48, 169);
+            this.RectanglesPageRectangleAddButton.Name = "RectanglesPageRectangleAddButton";
+            this.RectanglesPageRectangleAddButton.Size = new System.Drawing.Size(75, 23);
+            this.RectanglesPageRectangleAddButton.TabIndex = 3;
+            this.RectanglesPageRectangleAddButton.Text = "Add";
+            this.RectanglesPageRectangleAddButton.UseVisualStyleBackColor = true;
+            // 
+            // RectanglesPageRectanglesLabel
+            // 
+            this.RectanglesPageRectanglesLabel.AutoSize = true;
+            this.RectanglesPageRectanglesLabel.Location = new System.Drawing.Point(5, 13);
+            this.RectanglesPageRectanglesLabel.Name = "RectanglesPageRectanglesLabel";
+            this.RectanglesPageRectanglesLabel.Size = new System.Drawing.Size(64, 13);
+            this.RectanglesPageRectanglesLabel.TabIndex = 2;
+            this.RectanglesPageRectanglesLabel.Text = "Rectangles:";
+            // 
+            // RectanglesPageRectanglesListBox
+            // 
+            this.RectanglesPageRectanglesListBox.FormattingEnabled = true;
+            this.RectanglesPageRectanglesListBox.Location = new System.Drawing.Point(8, 29);
+            this.RectanglesPageRectanglesListBox.Name = "RectanglesPageRectanglesListBox";
+            this.RectanglesPageRectanglesListBox.Size = new System.Drawing.Size(250, 134);
+            this.RectanglesPageRectanglesListBox.TabIndex = 1;
+            // 
+            // RectanglePageCanva
+            // 
+            this.RectanglePageCanva.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.RectanglePageCanva.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.RectanglePageCanva.Location = new System.Drawing.Point(265, 13);
+            this.RectanglePageCanva.Name = "RectanglePageCanva";
+            this.RectanglePageCanva.Size = new System.Drawing.Size(389, 403);
+            this.RectanglePageCanva.TabIndex = 0;
+            // 
+            // RectanglesPageIdTextButton
+            // 
+            this.RectanglesPageIdTextButton.Location = new System.Drawing.Point(58, 261);
+            this.RectanglesPageIdTextButton.Name = "RectanglesPageIdTextButton";
+            this.RectanglesPageIdTextButton.Size = new System.Drawing.Size(100, 20);
+            this.RectanglesPageIdTextButton.TabIndex = 5;
+            // 
+            // RectanglesPageXTextButton
+            // 
+            this.RectanglesPageXTextButton.Location = new System.Drawing.Point(58, 287);
+            this.RectanglesPageXTextButton.Name = "RectanglesPageXTextButton";
+            this.RectanglesPageXTextButton.Size = new System.Drawing.Size(100, 20);
+            this.RectanglesPageXTextButton.TabIndex = 6;
+            // 
+            // RectanglesPageYTextButton
+            // 
+            this.RectanglesPageYTextButton.Location = new System.Drawing.Point(58, 313);
+            this.RectanglesPageYTextButton.Name = "RectanglesPageYTextButton";
+            this.RectanglesPageYTextButton.Size = new System.Drawing.Size(100, 20);
+            this.RectanglesPageYTextButton.TabIndex = 7;
+            // 
+            // RectanglesPageWidthTextButton
+            // 
+            this.RectanglesPageWidthTextButton.Location = new System.Drawing.Point(58, 339);
+            this.RectanglesPageWidthTextButton.Name = "RectanglesPageWidthTextButton";
+            this.RectanglesPageWidthTextButton.Size = new System.Drawing.Size(100, 20);
+            this.RectanglesPageWidthTextButton.TabIndex = 8;
+            // 
+            // RectanglesPageLenghtTextButton
+            // 
+            this.RectanglesPageLenghtTextButton.Location = new System.Drawing.Point(58, 365);
+            this.RectanglesPageLenghtTextButton.Name = "RectanglesPageLenghtTextButton";
+            this.RectanglesPageLenghtTextButton.Size = new System.Drawing.Size(100, 20);
+            this.RectanglesPageLenghtTextButton.TabIndex = 9;
+            // 
+            // RectanglesPageSelectedRectanglesLabel
+            // 
+            this.RectanglesPageSelectedRectanglesLabel.AutoSize = true;
+            this.RectanglesPageSelectedRectanglesLabel.Location = new System.Drawing.Point(5, 234);
+            this.RectanglesPageSelectedRectanglesLabel.Name = "RectanglesPageSelectedRectanglesLabel";
+            this.RectanglesPageSelectedRectanglesLabel.Size = new System.Drawing.Size(109, 13);
+            this.RectanglesPageSelectedRectanglesLabel.TabIndex = 10;
+            this.RectanglesPageSelectedRectanglesLabel.Text = "Selected Rectangles:";
+            // 
+            // RectanglesPageIdLabel
+            // 
+            this.RectanglesPageIdLabel.AutoSize = true;
+            this.RectanglesPageIdLabel.Location = new System.Drawing.Point(33, 264);
+            this.RectanglesPageIdLabel.Name = "RectanglesPageIdLabel";
+            this.RectanglesPageIdLabel.Size = new System.Drawing.Size(19, 13);
+            this.RectanglesPageIdLabel.TabIndex = 11;
+            this.RectanglesPageIdLabel.Text = "Id:";
+            // 
+            // RectanglesPageXLabel
+            // 
+            this.RectanglesPageXLabel.AutoSize = true;
+            this.RectanglesPageXLabel.Location = new System.Drawing.Point(35, 290);
+            this.RectanglesPageXLabel.Name = "RectanglesPageXLabel";
+            this.RectanglesPageXLabel.Size = new System.Drawing.Size(17, 13);
+            this.RectanglesPageXLabel.TabIndex = 12;
+            this.RectanglesPageXLabel.Text = "X:";
+            // 
+            // RectanglesPageYLabel
+            // 
+            this.RectanglesPageYLabel.AutoSize = true;
+            this.RectanglesPageYLabel.Location = new System.Drawing.Point(35, 316);
+            this.RectanglesPageYLabel.Name = "RectanglesPageYLabel";
+            this.RectanglesPageYLabel.Size = new System.Drawing.Size(17, 13);
+            this.RectanglesPageYLabel.TabIndex = 13;
+            this.RectanglesPageYLabel.Text = "Y:";
+            // 
+            // RectanglesPageWidthLabel
+            // 
+            this.RectanglesPageWidthLabel.AutoSize = true;
+            this.RectanglesPageWidthLabel.Location = new System.Drawing.Point(14, 342);
+            this.RectanglesPageWidthLabel.Name = "RectanglesPageWidthLabel";
+            this.RectanglesPageWidthLabel.Size = new System.Drawing.Size(38, 13);
+            this.RectanglesPageWidthLabel.TabIndex = 14;
+            this.RectanglesPageWidthLabel.Text = "Width:";
+            // 
+            // RectanglesPageLengthLabel
+            // 
+            this.RectanglesPageLengthLabel.AutoSize = true;
+            this.RectanglesPageLengthLabel.Location = new System.Drawing.Point(9, 368);
+            this.RectanglesPageLengthLabel.Name = "RectanglesPageLengthLabel";
+            this.RectanglesPageLengthLabel.Size = new System.Drawing.Size(43, 13);
+            this.RectanglesPageLengthLabel.TabIndex = 15;
+            this.RectanglesPageLengthLabel.Text = "Lenght:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -608,6 +790,8 @@
             this.MoviesGroupBox.PerformLayout();
             this.RectanglesGroupBox.ResumeLayout(false);
             this.RectanglesGroupBox.PerformLayout();
+            this.RectanglesPage.ResumeLayout(false);
+            this.RectanglesPage.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -669,6 +853,23 @@
         private System.Windows.Forms.Label IdRectangleLabel;
         private System.Windows.Forms.Label IdMovieLabel;
         private System.Windows.Forms.TextBox IdMovieTextBox;
+        private System.Windows.Forms.TabPage RectanglesPage;
+        private System.Windows.Forms.Button RectanglesPageRectangleRemoveButton;
+        private System.Windows.Forms.Button RectanglesPageRectangleAddButton;
+        private System.Windows.Forms.Label RectanglesPageRectanglesLabel;
+        private System.Windows.Forms.ListBox RectanglesPageRectanglesListBox;
+        private System.Windows.Forms.Panel RectanglePageCanva;
+        private System.Windows.Forms.Label RectanglesPageLengthLabel;
+        private System.Windows.Forms.Label RectanglesPageWidthLabel;
+        private System.Windows.Forms.Label RectanglesPageYLabel;
+        private System.Windows.Forms.Label RectanglesPageXLabel;
+        private System.Windows.Forms.Label RectanglesPageIdLabel;
+        private System.Windows.Forms.Label RectanglesPageSelectedRectanglesLabel;
+        private System.Windows.Forms.TextBox RectanglesPageLenghtTextButton;
+        private System.Windows.Forms.TextBox RectanglesPageWidthTextButton;
+        private System.Windows.Forms.TextBox RectanglesPageYTextButton;
+        private System.Windows.Forms.TextBox RectanglesPageXTextButton;
+        private System.Windows.Forms.TextBox RectanglesPageIdTextButton;
     }
 }
 
