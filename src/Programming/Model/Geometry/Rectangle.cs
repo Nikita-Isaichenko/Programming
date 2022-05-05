@@ -43,7 +43,7 @@ namespace Programming.Model.Classes
             }
             set 
             {
-                Validator.AssertOnPositiveValue(value, nameof(Length));          
+                Validator.AssertOnPositiveValue(value, nameof(Length));
                 _length = value;
             }
         }
@@ -56,7 +56,7 @@ namespace Programming.Model.Classes
             }
             set
             {
-                Validator.AssertOnPositiveValue(value, nameof(Width));
+                Validator.AssertOnPositiveValue(value, nameof(Width));               
                 _width = value;
             }
         }
@@ -76,7 +76,12 @@ namespace Programming.Model.Classes
 
         public override string ToString()
         {
-            return $"Rectangle {_id}";
-        }       
+            return $"Rectangle {Id}";
+        }   
+        
+        public string GetRectangleInfo()
+        {
+            return $"{Id}: (X={Center.X}; Y={Center.Y}; W={Width}; H={Length})";
+        }
     }
 }
