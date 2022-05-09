@@ -106,6 +106,7 @@
             this.LenghtTextBox.Name = "LenghtTextBox";
             this.LenghtTextBox.Size = new System.Drawing.Size(100, 20);
             this.LenghtTextBox.TabIndex = 25;
+            this.LenghtTextBox.TextChanged += new System.EventHandler(this.LenghtTextBox_TextChanged);
             // 
             // WidthTextBox
             // 
@@ -113,6 +114,7 @@
             this.WidthTextBox.Name = "WidthTextBox";
             this.WidthTextBox.Size = new System.Drawing.Size(100, 20);
             this.WidthTextBox.TabIndex = 24;
+            this.WidthTextBox.TextChanged += new System.EventHandler(this.WidthTextBox_TextChanged);
             // 
             // YTextBox
             // 
@@ -120,6 +122,7 @@
             this.YTextBox.Name = "YTextBox";
             this.YTextBox.Size = new System.Drawing.Size(100, 20);
             this.YTextBox.TabIndex = 23;
+            this.YTextBox.TextChanged += new System.EventHandler(this.YTextBox_TextChanged);
             // 
             // XTextBox
             // 
@@ -127,11 +130,14 @@
             this.XTextBox.Name = "XTextBox";
             this.XTextBox.Size = new System.Drawing.Size(100, 20);
             this.XTextBox.TabIndex = 22;
+            this.XTextBox.TextChanged += new System.EventHandler(this.XTextBox_TextChanged);
             // 
             // IdTextBox
             // 
+            this.IdTextBox.Enabled = false;
             this.IdTextBox.Location = new System.Drawing.Point(60, 259);
             this.IdTextBox.Name = "IdTextBox";
+            this.IdTextBox.ReadOnly = true;
             this.IdTextBox.Size = new System.Drawing.Size(100, 20);
             this.IdTextBox.TabIndex = 21;
             // 
