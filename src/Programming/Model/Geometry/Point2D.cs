@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Programming.Model.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Programming.Model.Classes
+namespace Programming.Model.Geometry
 {
     public class Point2D
     {
@@ -21,7 +22,7 @@ namespace Programming.Model.Classes
             set
             {
                 Validator.AssertOnPositiveValue(value, nameof(X));
-                Validator.AssertValueInRange(value, 0, 670.0, nameof(X));
+                Validator.AssertValueInRange(value, 0, 2000, nameof(X));
                 _x = value;
             }
         }
@@ -35,7 +36,7 @@ namespace Programming.Model.Classes
             set
             {
                 Validator.AssertOnPositiveValue(value, nameof(Y));
-                Validator.AssertValueInRange(value, 0, 450.0, nameof(Y));
+                Validator.AssertValueInRange(value, 0, 2000, nameof(Y));
                 _y = value;
             }
         }

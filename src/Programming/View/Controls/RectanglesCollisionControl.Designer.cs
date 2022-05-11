@@ -43,7 +43,7 @@
             this.AddRectangleButton = new System.Windows.Forms.Button();
             this.RectanglesLabel = new System.Windows.Forms.Label();
             this.RectanglesListBox = new System.Windows.Forms.ListBox();
-            this.Canva = new System.Windows.Forms.Panel();
+            this.CanvasPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // LengthLabel
@@ -181,16 +181,16 @@
             this.RectanglesListBox.TabIndex = 17;
             this.RectanglesListBox.SelectedIndexChanged += new System.EventHandler(this.RectanglesListBox_SelectedIndexChanged);
             // 
-            // Canva
+            // CanvasPanel
             // 
-            this.Canva.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.CanvasPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Canva.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Canva.Location = new System.Drawing.Point(267, 11);
-            this.Canva.Name = "Canva";
-            this.Canva.Size = new System.Drawing.Size(389, 403);
-            this.Canva.TabIndex = 16;
+            this.CanvasPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CanvasPanel.Location = new System.Drawing.Point(267, 11);
+            this.CanvasPanel.Name = "CanvasPanel";
+            this.CanvasPanel.Size = new System.Drawing.Size(412, 405);
+            this.CanvasPanel.TabIndex = 16;
             // 
             // RectanglesCollisionControl
             // 
@@ -211,9 +211,9 @@
             this.Controls.Add(this.AddRectangleButton);
             this.Controls.Add(this.RectanglesLabel);
             this.Controls.Add(this.RectanglesListBox);
-            this.Controls.Add(this.Canva);
+            this.Controls.Add(this.CanvasPanel);
             this.Name = "RectanglesCollisionControl";
-            this.Size = new System.Drawing.Size(662, 424);
+            this.Size = new System.Drawing.Size(685, 426);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -236,6 +236,6 @@
         private System.Windows.Forms.Button AddRectangleButton;
         private System.Windows.Forms.Label RectanglesLabel;
         private System.Windows.Forms.ListBox RectanglesListBox;
-        private System.Windows.Forms.Panel Canva;
+        private System.Windows.Forms.Panel CanvasPanel;
     }
 }

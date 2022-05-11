@@ -4,18 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Programming.Model.Classes
+namespace Programming.Model.Geometry
 {
     public static class CollisionManager
     {
         public static bool IsCollision(Rectangle rectangle1, Rectangle rectangle2)
         {
-            int dX = Math.Abs(rectangle1.Center.X - rectangle2.Center.X);
-            int dY = Math.Abs(rectangle1.Center.Y - rectangle2.Center.Y);
-            int dLength = Math.Abs(rectangle1.Length + rectangle2.Length)/2;
-            int dWidth = Math.Abs(rectangle1.Width + rectangle2.Width)/2;
-
-            return (dX < dLength && dY < dWidth);
+            return rectangle1.Center.X < rectangle2.Center.X + rectangle2.Length &&
+                   rectangle1.Center.X + rectangle1.Length > rectangle2.Center.X &&
+                   rectangle1.Center.Y < rectangle2.Center.Y + rectangle2.Width &&
+                   rectangle1.Width + rectangle1.Center.Y > rectangle2.Center.Y;
         }
 
         public static bool IsCollision(Ring ring1, Ring ring2)
