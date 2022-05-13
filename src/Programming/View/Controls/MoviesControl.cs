@@ -37,6 +37,7 @@ namespace Programming.View.Controls
         {
             int indexMaxRating = 0;
             double maxRating = 0;
+
             for (int i = 0; i < movie.Length; i++)
             {
                 if (movie[i].Rating > maxRating)
@@ -45,12 +46,14 @@ namespace Programming.View.Controls
                     indexMaxRating = i;
                 }
             }
+
             return indexMaxRating;
         }
 
         private void MoviesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int indexMovie = MoviesListBox.SelectedIndex;
+
             _currentMovie = _movies[indexMovie];
             TitleTextBox.Text = _currentMovie.Title;
             DurationInMinutesTextBox.Text = _currentMovie.DurationInMinutes.ToString();

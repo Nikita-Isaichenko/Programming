@@ -1,15 +1,9 @@
-﻿using Programming.Model.Classes;
-using Programming.Model.Enums;
+﻿using Programming.Model.Enums;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Color = Programming.Model.Enums.Color;
+
 
 namespace Programming.View.Controls
 {
@@ -18,9 +12,6 @@ namespace Programming.View.Controls
         public EnumerationsControl()
         {
             InitializeComponent();
-
-            
-
 
             foreach (Enum valueEnums in Enum.GetValues(typeof(Enums)))
             {
@@ -34,6 +25,7 @@ namespace Programming.View.Controls
         {
             ValueListBox.Items.Clear();
             Array values;
+
             switch (EnumListBox.SelectedItem)
             {
                 case View.Enums.Color:
@@ -69,24 +61,10 @@ namespace Programming.View.Controls
             IntValueTextBox.Text = ((int)ValueListBox.SelectedItem).ToString();
         }
 
-        public void PictureBox_UploadImagel(string season)
-        {           
+        public void PictureBox_UploadImagel(Image image)
+        {
             PictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            switch (season)
-            {
-                case "Winter":
-                    PictureBox.Image = Properties.Resources.Winter;
-                    break;
-                case "Spring":
-                    PictureBox.Image = Properties.Resources.Spring;
-                    break;
-                case "Autumn":
-                    PictureBox.Image = Properties.Resources.Autumn;
-                    break;
-                case "Summer":
-                    PictureBox.Image = Properties.Resources.Summer;
-                    break;
-            }
-        }       
+            PictureBox.Image = image;
+        }
     }
 }

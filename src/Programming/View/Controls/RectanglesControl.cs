@@ -4,6 +4,7 @@ using System;
 using System.Windows.Forms;
 using Rectangle = Programming.Model.Geometry.Rectangle;
 
+
 namespace Programming.View.Controls
 {
     public partial class RectanglesControl : UserControl
@@ -30,13 +31,13 @@ namespace Programming.View.Controls
                                                random.Next(0, 671), random.Next(0, 451));
                 RectanglesListBox.Items.Add(_rectangles[i].ToString());
             }
-
         }
 
         private int FindRectangleWithMaxWidth(Rectangle[] rectangles)
         {
             int indexMaxWidth = 0;
             int maxWidth = 0;
+
             for (int i = 0; i < rectangles.Length; i++)
             {
                 if (rectangles[i].Width > maxWidth)
@@ -45,12 +46,14 @@ namespace Programming.View.Controls
                     indexMaxWidth = i;
                 }
             }
+
             return indexMaxWidth;
         }
 
         private void RectanglesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int indexRectangle = RectanglesListBox.SelectedIndex;
+
             _currentRectangle = _rectangles[indexRectangle];
             LenghtTextBox.Text = _currentRectangle.Length.ToString();
             WidthTextBox.Text = _currentRectangle.Width.ToString();

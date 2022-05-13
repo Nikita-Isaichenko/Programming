@@ -6,6 +6,7 @@ using Rectangle = Programming.Model.Geometry.Rectangle;
 using System.Drawing;
 using Programming.Model.Classes;
 
+
 namespace Programming.View.Controls
 {
     public partial class RectanglesCollisionControl : UserControl
@@ -18,8 +19,6 @@ namespace Programming.View.Controls
 
         private int _currentIndexRectangle;
 
-        
-
         public RectanglesCollisionControl()
         {
             InitializeComponent();
@@ -27,7 +26,6 @@ namespace Programming.View.Controls
 
         private void AddRectangleButton_Click(object sender, System.EventArgs e)
         {
-
             var newRectangle = RectangleFactory.Randomize(CanvasPanel.Width, CanvasPanel.Height);
             var newPanel = new Panel
             {
@@ -81,7 +79,6 @@ namespace Programming.View.Controls
                 _currentRectangle = _rectangles[_currentIndexRectangle];
 
                 UpdateRectangleInfo(_currentRectangle);
-
             }                      
         }
 

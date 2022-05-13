@@ -35,7 +35,6 @@
             this.ValueLabel = new System.Windows.Forms.Label();
             this.ValueListBox = new System.Windows.Forms.ListBox();
             this.PictureBox = new System.Windows.Forms.PictureBox();
-            this.SeasonHandleControl = new SeasonHandleControl();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,7 +95,7 @@
             // 
             this.PictureBox.Location = new System.Drawing.Point(339, 49);
             this.PictureBox.Name = "PictureBox";
-            this.PictureBox.Size = new System.Drawing.Size(307, 185);
+            this.PictureBox.Size = new System.Drawing.Size(307, 160);
             this.PictureBox.TabIndex = 13;
             this.PictureBox.TabStop = false;
             // 
@@ -116,18 +115,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-            //
-            // SeasonHandleControl
-            //
-            this.SeasonHandleControl.OnGoButtonClick += this.PictureBox_UploadImagel;
-            
-
-
-        }
-
-        private void SeasonHandleControl_OnGoButtonClick(string season)
-        {
-            throw new System.NotImplementedException();
         }
 
         #endregion
@@ -138,6 +125,5 @@
         private System.Windows.Forms.Label ValueLabel;
         private System.Windows.Forms.ListBox ValueListBox;
         private System.Windows.Forms.PictureBox PictureBox;
-        SeasonHandleControl SeasonHandleControl;
     }
 }

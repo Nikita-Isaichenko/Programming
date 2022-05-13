@@ -1,16 +1,15 @@
-﻿using System;
-using System.Windows.Forms;
-using Programming.Model.Classes;
-using Programming.Model.Enums;
-using Programming.Model.Geometry;
+﻿using System.Windows.Forms;
+
 
 namespace Programming.View
 {
     public partial class MainForm : Form
-    {       
+    {
         public MainForm()
         {
-            InitializeComponent();                       
+            InitializeComponent();
+
+            seasonHandleControl1.PictureSelected += Enumerations.PictureBox_UploadImagel;
         }
     }
 }
