@@ -19,7 +19,7 @@ namespace Programming.View.Controls
         {
             InitializeComponent();
 
-            this.SeasonHandleControl.OnGoButtonClick += this.PictureBox_UploadImagel;
+            
 
 
             foreach (Enum valueEnums in Enum.GetValues(typeof(Enums)))

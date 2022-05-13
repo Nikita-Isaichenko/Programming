@@ -119,7 +119,7 @@
             //
             // SeasonHandleControl
             //
-            //this.SeasonHandleControl.OnGoButtonClick += this.PictureBox_UploadImagel;
+            this.SeasonHandleControl.OnGoButtonClick += this.PictureBox_UploadImagel;
             
 
 
