@@ -4,20 +4,12 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Rectangle = Programming.Model.Geometry.Rectangle;
 using System.Drawing;
-
+using Programming.Model.Classes;
 
 namespace Programming.View.Controls
 {
     public partial class RectanglesCollisionControl : UserControl
-    {
-        private readonly Color ErrorBackColor = Color.LightPink;
-
-        private readonly Color NormalBackColor = Color.White;
-
-        private readonly Color Unintersection = Color.FromArgb(127, 127, 255, 127);
-
-        private readonly Color Intersection = Color.FromArgb(127, 255, 127, 127);
-
+    {        
         private List<Rectangle> _rectangles = new List<Rectangle>();
 
         private List<Panel> _rectanglePanels = new List<Panel>();
@@ -42,7 +34,7 @@ namespace Programming.View.Controls
                 Height = newRectangle.Width,
                 Width = newRectangle.Length,
                 Location = new Point(newRectangle.Center.X, newRectangle.Center.Y),
-                BackColor = Unintersection
+                BackColor = AppColor.Unintersection
             };
 
             _rectangles.Add(newRectangle);
@@ -121,7 +113,7 @@ namespace Programming.View.Controls
         {
             for (int i = 0; i < _rectanglePanels.Count; i++)
             {
-                CanvasPanel.Controls[i].BackColor = Unintersection;
+                CanvasPanel.Controls[i].BackColor = AppColor.Unintersection;
                 _rectangles[i].Color = "Green";
             }
 
@@ -134,8 +126,8 @@ namespace Programming.View.Controls
                         _rectangles[i].Color = "Red";
                         _rectangles[j].Color = "Red";
 
-                        CanvasPanel.Controls[i].BackColor = Intersection;
-                        CanvasPanel.Controls[j].BackColor = Intersection;
+                        CanvasPanel.Controls[i].BackColor = AppColor.Intersection;
+                        CanvasPanel.Controls[j].BackColor = AppColor.Intersection;
                     }
                 }
             }
@@ -146,7 +138,7 @@ namespace Programming.View.Controls
             try
             {
                 _currentRectangle.Center.X = int.Parse(XTextBox.Text);
-                XTextBox.BackColor = NormalBackColor;
+                XTextBox.BackColor = AppColor.NormalBackColor;
                 CanvasPanel.Controls[_currentIndexRectangle].Location = new Point(_currentRectangle.Center.X,
                                                                               _currentRectangle.Center.Y);
 
@@ -157,7 +149,7 @@ namespace Programming.View.Controls
             {
                 if (RectanglesListBox.Items.Count != 0) 
                 {
-                    XTextBox.BackColor = ErrorBackColor;
+                    XTextBox.BackColor = AppColor.ErrorBackColor;
                 }                
             }
         }
@@ -167,7 +159,7 @@ namespace Programming.View.Controls
             try
             {
                 _currentRectangle.Center.Y = int.Parse(YTextBox.Text);
-                YTextBox.BackColor = NormalBackColor;
+                YTextBox.BackColor = AppColor.NormalBackColor;
                 CanvasPanel.Controls[_currentIndexRectangle].Location = new Point(_currentRectangle.Center.X,
                                                                               _currentRectangle.Center.Y);
 
@@ -178,7 +170,7 @@ namespace Programming.View.Controls
             {
                 if (RectanglesListBox.Items.Count != 0)
                 {
-                    YTextBox.BackColor = ErrorBackColor;
+                    YTextBox.BackColor = AppColor.ErrorBackColor;
                 }
             }
         }
@@ -188,7 +180,7 @@ namespace Programming.View.Controls
             try
             {
                 _currentRectangle.Width = int.Parse(WidthTextBox.Text);
-                WidthTextBox.BackColor = NormalBackColor;
+                WidthTextBox.BackColor = AppColor.NormalBackColor;
                 CanvasPanel.Controls[_currentIndexRectangle].Height = _currentRectangle.Width;
 
                 FindCollisions();
@@ -198,7 +190,7 @@ namespace Programming.View.Controls
             {
                 if (RectanglesListBox.Items.Count != 0)
                 {
-                    WidthTextBox.BackColor = ErrorBackColor;
+                    WidthTextBox.BackColor = AppColor.ErrorBackColor;
                 }
             }
         }
@@ -208,7 +200,7 @@ namespace Programming.View.Controls
             try
             {
                 _currentRectangle.Length = int.Parse(LenghtTextBox.Text);
-                LenghtTextBox.BackColor = NormalBackColor;
+                LenghtTextBox.BackColor = AppColor.NormalBackColor;
                 CanvasPanel.Controls[_currentIndexRectangle].Width = _currentRectangle.Length;
 
                 FindCollisions();
@@ -218,7 +210,7 @@ namespace Programming.View.Controls
             {
                 if (RectanglesListBox.Items.Count != 0)
                 {
-                    LenghtTextBox.BackColor = ErrorBackColor;
+                    LenghtTextBox.BackColor = AppColor.ErrorBackColor;
                 }
             }
         }
