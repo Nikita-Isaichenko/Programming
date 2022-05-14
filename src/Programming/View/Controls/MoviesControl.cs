@@ -60,7 +60,7 @@ namespace Programming.View.Controls
             YearOfIssueTextBox.Text = _currentMovie.ReleaseYear.ToString();
             GenreTextBox.Text = _currentMovie.Genre;
             RatingTextBox.Text = _currentMovie.Rating.ToString();
-            IdMovieTextBox.Text = _currentMovie.Id.ToString();
+            IdTextBox.Text = _currentMovie.Id.ToString();
         }
 
         private void TitleTextBox_TextChanged(object sender, EventArgs e)

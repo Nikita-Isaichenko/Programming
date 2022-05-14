@@ -156,6 +156,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Autumn.jpg" />
+    <None Include="Resources\rectangle_add_24x24_uncolor.bmp" />
+    <None Include="Resources\rectangle_add_24x24.png" />
+    <None Include="Resources\rectangle_add_24x24_uncolor.png" />
+    <None Include="Resources\rectangle_remove_24x24.png" />
+    <None Include="Resources\rectangle_remove_24x24_uncolor.png" />
     <Content Include="Resources\Spring.jpg" />
     <Content Include="Resources\Summer.jpg" />
     <Content Include="Resources\to_do_list_icon-icons.com_76974.ico" />

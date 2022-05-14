@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.IdMovieLabel = new System.Windows.Forms.Label();
-            this.IdMovieTextBox = new System.Windows.Forms.TextBox();
+            this.IdLabel = new System.Windows.Forms.Label();
+            this.IdTextBox = new System.Windows.Forms.TextBox();
             this.RatingLabel = new System.Windows.Forms.Label();
             this.GenreLabel = new System.Windows.Forms.Label();
             this.FindMaxRatingButton = new System.Windows.Forms.Button();
@@ -48,22 +48,22 @@
             this.RatingToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
-            // IdMovieLabel
+            // IdLabel
             // 
-            this.IdMovieLabel.AutoSize = true;
-            this.IdMovieLabel.Location = new System.Drawing.Point(165, 267);
-            this.IdMovieLabel.Name = "IdMovieLabel";
-            this.IdMovieLabel.Size = new System.Drawing.Size(19, 13);
-            this.IdMovieLabel.TabIndex = 27;
-            this.IdMovieLabel.Text = "Id:";
+            this.IdLabel.AutoSize = true;
+            this.IdLabel.Location = new System.Drawing.Point(165, 267);
+            this.IdLabel.Name = "IdLabel";
+            this.IdLabel.Size = new System.Drawing.Size(19, 13);
+            this.IdLabel.TabIndex = 27;
+            this.IdLabel.Text = "Id:";
             // 
-            // IdMovieTextBox
+            // IdTextBox
             // 
-            this.IdMovieTextBox.Location = new System.Drawing.Point(165, 283);
-            this.IdMovieTextBox.Name = "IdMovieTextBox";
-            this.IdMovieTextBox.ReadOnly = true;
-            this.IdMovieTextBox.Size = new System.Drawing.Size(100, 20);
-            this.IdMovieTextBox.TabIndex = 26;
+            this.IdTextBox.Location = new System.Drawing.Point(165, 283);
+            this.IdTextBox.Name = "IdTextBox";
+            this.IdTextBox.ReadOnly = true;
+            this.IdTextBox.Size = new System.Drawing.Size(100, 20);
+            this.IdTextBox.TabIndex = 26;
             // 
             // RatingLabel
             // 
@@ -173,8 +173,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.IdMovieLabel);
-            this.Controls.Add(this.IdMovieTextBox);
+            this.Controls.Add(this.IdLabel);
+            this.Controls.Add(this.IdTextBox);
             this.Controls.Add(this.RatingLabel);
             this.Controls.Add(this.GenreLabel);
             this.Controls.Add(this.FindMaxRatingButton);
@@ -196,8 +196,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label IdMovieLabel;
-        private System.Windows.Forms.TextBox IdMovieTextBox;
+        private System.Windows.Forms.Label IdLabel;
+        private System.Windows.Forms.TextBox IdTextBox;
         private System.Windows.Forms.Label RatingLabel;
         private System.Windows.Forms.Label GenreLabel;
         private System.Windows.Forms.Button FindMaxRatingButton;

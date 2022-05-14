@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RectanglesCollisionControl));
             this.LengthLabel = new System.Windows.Forms.Label();
             this.WidthLabel = new System.Windows.Forms.Label();
             this.YLabel = new System.Windows.Forms.Label();
@@ -39,11 +40,13 @@
             this.YTextBox = new System.Windows.Forms.TextBox();
             this.XTextBox = new System.Windows.Forms.TextBox();
             this.IdTextBox = new System.Windows.Forms.TextBox();
-            this.RemoveRectangleButton = new System.Windows.Forms.Button();
-            this.AddRectangleButton = new System.Windows.Forms.Button();
             this.RectanglesLabel = new System.Windows.Forms.Label();
             this.RectanglesListBox = new System.Windows.Forms.ListBox();
             this.CanvasPanel = new System.Windows.Forms.Panel();
+            this.RemoveButtonPictureBox = new System.Windows.Forms.PictureBox();
+            this.AddButtonPictureBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.RemoveButtonPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AddButtonPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // LengthLabel
@@ -141,28 +144,6 @@
             this.IdTextBox.Size = new System.Drawing.Size(100, 20);
             this.IdTextBox.TabIndex = 21;
             // 
-            // RemoveRectangleButton
-            // 
-            this.RemoveRectangleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RemoveRectangleButton.Location = new System.Drawing.Point(145, 167);
-            this.RemoveRectangleButton.Name = "RemoveRectangleButton";
-            this.RemoveRectangleButton.Size = new System.Drawing.Size(75, 23);
-            this.RemoveRectangleButton.TabIndex = 20;
-            this.RemoveRectangleButton.Text = "Remove";
-            this.RemoveRectangleButton.UseVisualStyleBackColor = true;
-            this.RemoveRectangleButton.Click += new System.EventHandler(this.RemoveRectangleButton_Click);
-            // 
-            // AddRectangleButton
-            // 
-            this.AddRectangleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddRectangleButton.Location = new System.Drawing.Point(50, 167);
-            this.AddRectangleButton.Name = "AddRectangleButton";
-            this.AddRectangleButton.Size = new System.Drawing.Size(75, 23);
-            this.AddRectangleButton.TabIndex = 19;
-            this.AddRectangleButton.Text = "Add";
-            this.AddRectangleButton.UseVisualStyleBackColor = true;
-            this.AddRectangleButton.Click += new System.EventHandler(this.AddRectangleButton_Click);
-            // 
             // RectanglesLabel
             // 
             this.RectanglesLabel.AutoSize = true;
@@ -192,10 +173,36 @@
             this.CanvasPanel.Size = new System.Drawing.Size(412, 405);
             this.CanvasPanel.TabIndex = 16;
             // 
+            // RemoveButtonPictureBox
+            // 
+            this.RemoveButtonPictureBox.Image = global::Programming.Properties.Resources.rectangle_remove_24x24_uncolor;
+            this.RemoveButtonPictureBox.Location = new System.Drawing.Point(160, 167);
+            this.RemoveButtonPictureBox.Name = "RemoveButtonPictureBox";
+            this.RemoveButtonPictureBox.Size = new System.Drawing.Size(46, 23);
+            this.RemoveButtonPictureBox.TabIndex = 33;
+            this.RemoveButtonPictureBox.TabStop = false;
+            this.RemoveButtonPictureBox.Click += new System.EventHandler(this.RemoveButtonPictureBox_Click);
+            this.RemoveButtonPictureBox.MouseEnter += new System.EventHandler(this.RemoveButtonPictureBox_MouseEnter);
+            this.RemoveButtonPictureBox.MouseLeave += new System.EventHandler(this.RemoveButtonPictureBox_MouseLeave);
+            // 
+            // AddButtonPictureBox
+            // 
+            this.AddButtonPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("AddButtonPictureBox.Image")));
+            this.AddButtonPictureBox.Location = new System.Drawing.Point(60, 167);
+            this.AddButtonPictureBox.Name = "AddButtonPictureBox";
+            this.AddButtonPictureBox.Size = new System.Drawing.Size(46, 23);
+            this.AddButtonPictureBox.TabIndex = 32;
+            this.AddButtonPictureBox.TabStop = false;
+            this.AddButtonPictureBox.Click += new System.EventHandler(this.AddButtonPictureBox_Click);
+            this.AddButtonPictureBox.MouseEnter += new System.EventHandler(this.AddButtonPictureBox_MouseEnter);
+            this.AddButtonPictureBox.MouseLeave += new System.EventHandler(this.AddButtonPictureBox_MouseLeave);
+            // 
             // RectanglesCollisionControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.RemoveButtonPictureBox);
+            this.Controls.Add(this.AddButtonPictureBox);
             this.Controls.Add(this.LengthLabel);
             this.Controls.Add(this.WidthLabel);
             this.Controls.Add(this.YLabel);
@@ -207,13 +214,13 @@
             this.Controls.Add(this.YTextBox);
             this.Controls.Add(this.XTextBox);
             this.Controls.Add(this.IdTextBox);
-            this.Controls.Add(this.RemoveRectangleButton);
-            this.Controls.Add(this.AddRectangleButton);
             this.Controls.Add(this.RectanglesLabel);
             this.Controls.Add(this.RectanglesListBox);
             this.Controls.Add(this.CanvasPanel);
             this.Name = "RectanglesCollisionControl";
             this.Size = new System.Drawing.Size(685, 426);
+            ((System.ComponentModel.ISupportInitialize)(this.RemoveButtonPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AddButtonPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -232,10 +239,10 @@
         private System.Windows.Forms.TextBox YTextBox;
         private System.Windows.Forms.TextBox XTextBox;
         private System.Windows.Forms.TextBox IdTextBox;
-        private System.Windows.Forms.Button RemoveRectangleButton;
-        private System.Windows.Forms.Button AddRectangleButton;
         private System.Windows.Forms.Label RectanglesLabel;
         private System.Windows.Forms.ListBox RectanglesListBox;
         private System.Windows.Forms.Panel CanvasPanel;
+        private System.Windows.Forms.PictureBox AddButtonPictureBox;
+        private System.Windows.Forms.PictureBox RemoveButtonPictureBox;
     }
 }

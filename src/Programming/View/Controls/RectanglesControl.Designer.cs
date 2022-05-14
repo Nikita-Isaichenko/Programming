@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.IdRectangleTextBox = new System.Windows.Forms.TextBox();
+            this.IdTextBox = new System.Windows.Forms.TextBox();
             this.IdRectangleLabel = new System.Windows.Forms.Label();
-            this.YСoordinateTextBox = new System.Windows.Forms.TextBox();
+            this.YTextBox = new System.Windows.Forms.TextBox();
             this.RectanglesListBox = new System.Windows.Forms.ListBox();
             this.YСoordinateLabel = new System.Windows.Forms.Label();
-            this.XСoordinateTextBox = new System.Windows.Forms.TextBox();
+            this.XTextBox = new System.Windows.Forms.TextBox();
             this.FindMaxWidthButton = new System.Windows.Forms.Button();
             this.ColorLabel = new System.Windows.Forms.Label();
             this.XСoordinateLabel = new System.Windows.Forms.Label();
@@ -47,13 +47,13 @@
             this.WidthToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
-            // IdRectangleTextBox
+            // IdTextBox
             // 
-            this.IdRectangleTextBox.Location = new System.Drawing.Point(165, 284);
-            this.IdRectangleTextBox.Name = "IdRectangleTextBox";
-            this.IdRectangleTextBox.ReadOnly = true;
-            this.IdRectangleTextBox.Size = new System.Drawing.Size(100, 20);
-            this.IdRectangleTextBox.TabIndex = 31;
+            this.IdTextBox.Location = new System.Drawing.Point(165, 284);
+            this.IdTextBox.Name = "IdTextBox";
+            this.IdTextBox.ReadOnly = true;
+            this.IdTextBox.Size = new System.Drawing.Size(100, 20);
+            this.IdTextBox.TabIndex = 31;
             // 
             // IdRectangleLabel
             // 
@@ -64,13 +64,13 @@
             this.IdRectangleLabel.TabIndex = 30;
             this.IdRectangleLabel.Text = "Id:";
             // 
-            // YСoordinateTextBox
+            // YTextBox
             // 
-            this.YСoordinateTextBox.Location = new System.Drawing.Point(165, 231);
-            this.YСoordinateTextBox.Name = "YСoordinateTextBox";
-            this.YСoordinateTextBox.ReadOnly = true;
-            this.YСoordinateTextBox.Size = new System.Drawing.Size(100, 20);
-            this.YСoordinateTextBox.TabIndex = 29;
+            this.YTextBox.Location = new System.Drawing.Point(165, 231);
+            this.YTextBox.Name = "YTextBox";
+            this.YTextBox.ReadOnly = true;
+            this.YTextBox.Size = new System.Drawing.Size(100, 20);
+            this.YTextBox.TabIndex = 29;
             // 
             // RectanglesListBox
             // 
@@ -90,13 +90,13 @@
             this.YСoordinateLabel.TabIndex = 27;
             this.YСoordinateLabel.Text = "Y:";
             // 
-            // XСoordinateTextBox
+            // XTextBox
             // 
-            this.XСoordinateTextBox.Location = new System.Drawing.Point(165, 178);
-            this.XСoordinateTextBox.Name = "XСoordinateTextBox";
-            this.XСoordinateTextBox.ReadOnly = true;
-            this.XСoordinateTextBox.Size = new System.Drawing.Size(100, 20);
-            this.XСoordinateTextBox.TabIndex = 28;
+            this.XTextBox.Location = new System.Drawing.Point(165, 178);
+            this.XTextBox.Name = "XTextBox";
+            this.XTextBox.ReadOnly = true;
+            this.XTextBox.Size = new System.Drawing.Size(100, 20);
+            this.XTextBox.TabIndex = 28;
             // 
             // FindMaxWidthButton
             // 
@@ -172,12 +172,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.IdRectangleTextBox);
+            this.Controls.Add(this.IdTextBox);
             this.Controls.Add(this.IdRectangleLabel);
-            this.Controls.Add(this.YСoordinateTextBox);
+            this.Controls.Add(this.YTextBox);
             this.Controls.Add(this.RectanglesListBox);
             this.Controls.Add(this.YСoordinateLabel);
-            this.Controls.Add(this.XСoordinateTextBox);
+            this.Controls.Add(this.XTextBox);
             this.Controls.Add(this.FindMaxWidthButton);
             this.Controls.Add(this.ColorLabel);
             this.Controls.Add(this.XСoordinateLabel);
@@ -195,12 +195,12 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox IdRectangleTextBox;
+        private System.Windows.Forms.TextBox IdTextBox;
         private System.Windows.Forms.Label IdRectangleLabel;
-        private System.Windows.Forms.TextBox YСoordinateTextBox;
+        private System.Windows.Forms.TextBox YTextBox;
         private System.Windows.Forms.ListBox RectanglesListBox;
         private System.Windows.Forms.Label YСoordinateLabel;
-        private System.Windows.Forms.TextBox XСoordinateTextBox;
+        private System.Windows.Forms.TextBox XTextBox;
         private System.Windows.Forms.Button FindMaxWidthButton;
         private System.Windows.Forms.Label ColorLabel;
         private System.Windows.Forms.Label XСoordinateLabel;

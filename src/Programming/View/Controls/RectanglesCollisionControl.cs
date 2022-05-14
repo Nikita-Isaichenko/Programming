@@ -22,54 +22,7 @@ namespace Programming.View.Controls
         public RectanglesCollisionControl()
         {
             InitializeComponent();
-        }
-
-        private void AddRectangleButton_Click(object sender, System.EventArgs e)
-        {
-            var newRectangle = RectangleFactory.Randomize(CanvasPanel.Width, CanvasPanel.Height);
-            var newPanel = new Panel
-            {
-                Height = newRectangle.Width,
-                Width = newRectangle.Length,
-                Location = new Point(newRectangle.Center.X, newRectangle.Center.Y),
-                BackColor = AppColor.Unintersection
-            };
-
-            _rectangles.Add(newRectangle);
-            _rectanglePanels.Add(newPanel);
-            RectanglesListBox.Items.Clear();
-
-            for (int i = 0; i < _rectangles.Count; i++)
-            {
-                RectanglesListBox.Items.Add(_rectangles[i].GetRectangleInfo());
-                CanvasPanel.Controls.Add(newPanel);
-            }
-
-            RectanglesListBox.SelectedIndex = _rectangles.Count - 1;
-
-            FindCollisions();
-        }
-
-        private void RemoveRectangleButton_Click(object sender, System.EventArgs e)
-        {
-            if (_rectangles.Count > 0)
-            {
-                RectanglesListBox.Items.RemoveAt(_currentIndexRectangle);
-                _rectangles.RemoveAt(_currentIndexRectangle);
-                CanvasPanel.Controls.RemoveAt(_currentIndexRectangle);
-                _rectanglePanels.RemoveAt(_currentIndexRectangle);
-                RectanglesListBox.SelectedIndex = _rectangles.Count > 0 ? 0 : -1;
-
-                UpdateRectangleInfo(_currentRectangle);
-            }
-
-            if (_rectangles.Count == 0)
-            {
-                ClearRectangleInfo();
-            }
-
-            FindCollisions();
-        }
+        }          
 
         private void RectanglesListBox_SelectedIndexChanged(object sender, System.EventArgs e)
         {
@@ -110,7 +63,7 @@ namespace Programming.View.Controls
         {
             for (int i = 0; i < _rectanglePanels.Count; i++)
             {
-                CanvasPanel.Controls[i].BackColor = AppColor.Unintersection;
+                CanvasPanel.Controls[i].BackColor = AppColor.NotCollision;
                 _rectangles[i].Color = "Green";
             }
 
@@ -123,8 +76,8 @@ namespace Programming.View.Controls
                         _rectangles[i].Color = "Red";
                         _rectangles[j].Color = "Red";
 
-                        CanvasPanel.Controls[i].BackColor = AppColor.Intersection;
-                        CanvasPanel.Controls[j].BackColor = AppColor.Intersection;
+                        CanvasPanel.Controls[i].BackColor = AppColor.Collision;
+                        CanvasPanel.Controls[j].BackColor = AppColor.Collision;
                     }
                 }
             }
@@ -210,6 +163,76 @@ namespace Programming.View.Controls
                     LenghtTextBox.BackColor = AppColor.ErrorBackColor;
                 }
             }
+        }      
+
+        private void AddButtonPictureBox_Click(object sender, EventArgs e)
+        {
+            var newRectangle = RectangleFactory.Randomize(CanvasPanel.Width, CanvasPanel.Height);
+
+            var newPanel = new Panel
+            {
+                Height = newRectangle.Width,
+                Width = newRectangle.Length,
+                Location = new Point(newRectangle.Center.X, newRectangle.Center.Y),
+                BackColor = AppColor.NotCollision
+            };
+
+            _rectangles.Add(newRectangle);
+            _rectanglePanels.Add(newPanel);
+            RectanglesListBox.Items.Clear();
+
+            for (int i = 0; i < _rectangles.Count; i++)
+            {
+                RectanglesListBox.Items.Add(_rectangles[i].GetRectangleInfo());
+                CanvasPanel.Controls.Add(newPanel);
+            }
+
+            RectanglesListBox.SelectedIndex = _rectangles.Count - 1;
+
+            FindCollisions();
+        }
+
+        
+
+        private void RemoveButtonPictureBox_Click(object sender, EventArgs e)
+        {
+            if (_rectangles.Count > 0)
+            {
+                RectanglesListBox.Items.RemoveAt(_currentIndexRectangle);
+                _rectangles.RemoveAt(_currentIndexRectangle);
+                CanvasPanel.Controls.RemoveAt(_currentIndexRectangle);
+                _rectanglePanels.RemoveAt(_currentIndexRectangle);
+                RectanglesListBox.SelectedIndex = _rectangles.Count > 0 ? 0 : -1;
+
+                UpdateRectangleInfo(_currentRectangle);
+            }
+
+            if (_rectangles.Count == 0)
+            {
+                ClearRectangleInfo();
+            }
+
+            FindCollisions();
+        }
+
+        private void RemoveButtonPictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            RemoveButtonPictureBox.Image = Properties.Resources.rectangle_remove_24x24_uncolor;
+        }
+
+        private void RemoveButtonPictureBox_MouseEnter(object sender, EventArgs e)
+        {
+            RemoveButtonPictureBox.Image = Properties.Resources.rectangle_remove_24x24;
+        }
+
+        private void AddButtonPictureBox_MouseEnter(object sender, EventArgs e)
+        {
+            AddButtonPictureBox.Image = Properties.Resources.rectangle_add_24x24;
+        }
+
+        private void AddButtonPictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            AddButtonPictureBox.Image = Properties.Resources.rectangle_add_24x24_uncolor;
         }
     }
 }

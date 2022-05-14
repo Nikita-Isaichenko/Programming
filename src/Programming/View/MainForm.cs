@@ -9,7 +9,7 @@ namespace Programming.View
         {
             InitializeComponent();
 
-            seasonHandleControl1.PictureSelected += Enumerations.PictureBox_UploadImagel;
+            seasonHandleControl1.SeasonChange += Enumerations.PictureBox_UploadImagel;
         }
     }
 }

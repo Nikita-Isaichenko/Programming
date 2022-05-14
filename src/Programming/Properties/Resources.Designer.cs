@@ -73,6 +73,46 @@ namespace Programming.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap rectangle_add_24x24 {
+            get {
+                object obj = ResourceManager.GetObject("rectangle_add_24x24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rectangle_add_24x24_uncolor {
+            get {
+                object obj = ResourceManager.GetObject("rectangle_add_24x24_uncolor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rectangle_remove_24x24 {
+            get {
+                object obj = ResourceManager.GetObject("rectangle_remove_24x24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rectangle_remove_24x24_uncolor {
+            get {
+                object obj = ResourceManager.GetObject("rectangle_remove_24x24_uncolor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Spring {
             get {
                 object obj = ResourceManager.GetObject("Spring", resourceCulture);
