@@ -2,57 +2,60 @@
 
 namespace Programming.Model.Classes
 {
+    /// <summary>
+    /// Хранит данные о песне.
+    /// </summary>
     public class Song
     {
+        /// <summary>
+        /// Секунды.
+        /// </summary>
+        private int _durationSeconds;
 
-        private string _title;
-
-        private string _singer;
-
-        private int _minutes;
-
-        private int _seconds;
-
+        /// <summary>
+        /// Возвращает и задает название песни.
+        /// </summary>
         public string Title { get; set; }
 
+        /// <summary>
+        /// Возвращает и задает исполнителя песни.
+        /// </summary>
         public string Singer { get; set; }
 
-        public int Minutes
+        /// <summary>
+        /// Возвращает и задает длительность песни в секундах. Должна быть положительным числом.
+        /// </summary>
+        public int DurationSeconds
         {
             get 
             { 
-                return _minutes;
+                return _durationSeconds; 
             }
             set
             {
-                Validator.AssertValueInRange(value, 0, 60, nameof(Minutes));
-                _minutes = value;
+                Validator.AssertOnPositiveValue(value, nameof(DurationSeconds));
+                _durationSeconds = value;
             }
         }
 
-        public int Seconds
-        {
-            get 
-            { 
-                return _seconds; 
-            }
-            set
-            {
-                Validator.AssertValueInRange(value, 0, 60, nameof(Seconds));
-                _seconds = value;
-            }
-        }
-
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Song"/>
+        /// </summary>
         public Song()
         {
         }
 
-        public Song(string title, string singer, int minutes, int seconds)
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Song"/>
+        /// </summary>
+        /// <param name="title">Название песни.</param>
+        /// <param name="singer">Испольнитель песни.</param>
+        /// <param name="durationSeconds">Продолжительность в секундах. Должно быть положительным числом</param>
+        public Song(string title, string singer, int durationSeconds)
         {
             Title = title;
             Singer = singer;
-            Minutes = minutes;
-            Seconds = seconds;
+            DurationSeconds = durationSeconds;
         }
     }
 }

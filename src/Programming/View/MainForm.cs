@@ -1,5 +1,5 @@
 ﻿using System.Windows.Forms;
-
+using Programming.Model.Classes;
 
 namespace Programming.View
 {
@@ -8,7 +8,7 @@ namespace Programming.View
         public MainForm()
         {
             InitializeComponent();
-
+            
             seasonHandleControl1.SeasonChange += Enumerations.PictureBox_UploadImagel;
         }
     }
