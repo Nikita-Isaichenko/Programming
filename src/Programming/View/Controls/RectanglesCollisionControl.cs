@@ -76,7 +76,7 @@ namespace Programming.View.Controls
                         _rectangles[i].Color = "Red";
                         _rectangles[j].Color = "Red";
 
-                        CanvasPanel.Controls[i].BackColor = AppColor.Collision;
+                        CanvasPanel.Controls[i].BackColor = AppColor.Collision;                        
                         CanvasPanel.Controls[j].BackColor = AppColor.Collision;
                     }
                 }

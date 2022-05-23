@@ -1,15 +1,28 @@
-﻿using System;
-
-namespace Programming.Model.Classes
+﻿namespace Programming.Model.Classes
 {
+    /// <summary>
+    /// Хранит данные о времени.
+    /// </summary>
     public class Time
     {
+        /// <summary>
+        /// Часы.
+        /// </summary>
         private int _hours;
 
+        /// <summary>
+        /// Минуты.
+        /// </summary>
         private int _minutes;
 
+        /// <summary>
+        /// Секунды.
+        /// </summary>
         private int _seconds;
 
+        /// <summary>
+        /// Возвращает и задает кол-во часов. Число от 0 до 24 включительно.
+        /// </summary>
         public int Hours
         {
             get 
@@ -23,6 +36,9 @@ namespace Programming.Model.Classes
             }
         }
 
+        /// <summary>
+        /// Возвращает и задает кол-во минут. Число от 0 до 60 включительно.
+        /// </summary>
         public int Minutes
         {
             get 
@@ -36,6 +52,9 @@ namespace Programming.Model.Classes
             }
         }
 
+        /// <summary>
+        /// Возвращает и задает кол-во секунд. Число от 0 до 60 включительно.
+        /// </summary>
         public int Seconds
         {
             get 
@@ -49,10 +68,19 @@ namespace Programming.Model.Classes
             }
         }
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Time"/>
+        /// </summary>
         public Time()
         {
         }
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Time"/>
+        /// </summary>
+        /// <param name="hours">Часы. Число От 0 до 23 включительно.</param>
+        /// <param name="minutes">Минуты. Число от 0 до 60 включительно</param>
+        /// <param name="seconds">Секунды. Число от 0 до 60 включительно</param>
         public Time(int hours, int minutes, int seconds)
         {
             Hours = hours;

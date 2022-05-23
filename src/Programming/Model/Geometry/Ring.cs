@@ -1,19 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Programming.Model.Geometry
 {
+    /// <summary>
+    /// Хранит данные о кольце.
+    /// </summary>
     public class Ring
-    {
-        private Point2D _center;
-
+    {        
+        /// <summary>
+        /// внутренний радиус.
+        /// </summary>
         private double _innerRadius;
 
+        /// <summary>
+        /// Внешний радиус.
+        /// </summary>
         private double _outerRadius;
 
+        /// <summary>
+        /// Возвращает и задает внутренний радиус.
+        /// Внутренний радиус должен быть меньше внешнего радиуса.
+        /// </summary>
         public double InnerRadius
         {
             get
@@ -30,7 +38,10 @@ namespace Programming.Model.Geometry
                 _innerRadius = value;
             }
         }
-
+        /// <summary>
+        /// Возвращает и задает внешний радиус.
+        /// Внешний радиус должен быть больше внутреннего радиуса.
+        /// </summary>
         public double OuterRadius
         {
             get
@@ -48,8 +59,14 @@ namespace Programming.Model.Geometry
             }
         }
 
+        /// <summary>
+        /// Возвращает и задает начальную точку построения.
+        /// </summary>
         public Point2D Center { get; set; }
         
+        /// <summary>
+        /// Возвращает площадь кольца.
+        /// </summary>
         public double Area
         {
             get
@@ -58,11 +75,18 @@ namespace Programming.Model.Geometry
             }
         }
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Ring"./>
+        /// </summary>
+        /// <param name="outerRadius">Внешний радиус.</param>
+        /// <param name="innerRadius">Внутренний радиус.</param>
+        /// <param name="x">Координата x.</param>
+        /// <param name="y">Координата y.</param>
         public Ring(double outerRadius, double innerRadius, int x, int y)
         {
             OuterRadius = outerRadius;
             InnerRadius = innerRadius;
-            _center = new Point2D(x, y);
+            Center = new Point2D(x, y);
         }
     }
 }

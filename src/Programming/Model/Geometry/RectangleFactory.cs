@@ -1,26 +1,40 @@
-﻿using Programming.Model.Classes;
-using Programming.Model.Enums;
+﻿using Programming.Model.Enums;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Programming.Model.Geometry
 {
+    /// <summary>
+    /// Хранит методы для создания прямоугольников.
+    /// </summary>
     static class RectangleFactory
     {
-        private static string[] _colors = Enum.GetNames(typeof(Color));
-
+        /// <summary>
+        /// Отступ внутри элемента размещения прямоугольников.
+        /// </summary>
         private const int Margin = 15;
 
+        /// <summary>
+        /// Максимальная длина прямоугольника.
+        /// </summary>
         private const int MaxSize = 200;
 
+        /// <summary>
+        /// Минимальная длина прямоугольника.
+        /// </summary>
         private const int MinSize = 10;
 
-
+        /// <summary>
+        /// Объект класса <see cref="Random"/>
+        /// </summary>
         static Random random = new Random();
 
+        /// <summary>
+        /// Создает прямоугольник со случайными значениями ширины, длины и координат.
+        /// </summary>
+        /// <param name="length">Длина элемента, в котором размещаются прямоугольники.</param>
+        /// <param name="width">Ширина элемента, в котором размещаются прямоугольники.</param>
+        /// <returns>Объект Rectangle.</returns>
         public static Rectangle Randomize(int length, int width)
         {
             var rectangleLength = random.Next(MinSize, MaxSize);
