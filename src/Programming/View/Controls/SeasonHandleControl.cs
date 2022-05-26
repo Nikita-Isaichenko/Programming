@@ -7,7 +7,7 @@ using System.Windows.Forms;
 namespace Programming.View.Controls
 {
     public partial class SeasonHandleControl : UserControl
-    {
+    {     
         public delegate void SeasonChanged(Image image);
 
         public event SeasonChanged SeasonChange;

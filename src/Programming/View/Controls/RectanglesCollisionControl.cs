@@ -11,12 +11,24 @@ namespace Programming.View.Controls
 {
     public partial class RectanglesCollisionControl : UserControl
     {        
+        /// <summary>
+        /// Список объектов класса <see cref="Rectangle"./>
+        /// </summary>
         private List<Rectangle> _rectangles = new List<Rectangle>();
 
+        /// <summary>
+        /// Список объектов класса <see cref="Panel"./>
+        /// </summary>
         private List<Panel> _rectanglePanels = new List<Panel>();
 
+        /// <summary>
+        /// Объект класса <see cref="Rectangle". Хранит выбранный прямоугольник./>
+        /// </summary>
         private Rectangle _currentRectangle;
 
+        /// <summary>
+        /// Индекс выбранного прямоугольника.
+        /// </summary>
         private int _currentIndexRectangle;
 
         public RectanglesCollisionControl()
@@ -35,12 +47,19 @@ namespace Programming.View.Controls
             }                      
         }
 
+        /// <summary>
+        /// Обновляет информацию о выбранном прямоугольнике в ListBox.
+        /// </summary>
         private void UpdateListBox()
         {
             int index = RectanglesListBox.FindString(_currentRectangle.Id.ToString());
             RectanglesListBox.Items[index] = _currentRectangle.GetRectangleInfo();
         }
 
+        /// <summary>
+        /// Обновляет информацию о переданном прямоугольнике в TextBoxes.
+        /// </summary>
+        /// <param name="rectangle">Объект класса <see cref="Rectangle"./></param>
         private void UpdateRectangleInfo(Rectangle rectangle)
         {           
                 IdTextBox.Text = rectangle.Id.ToString();
@@ -49,7 +68,10 @@ namespace Programming.View.Controls
                 WidthTextBox.Text = rectangle.Width.ToString();
                 LenghtTextBox.Text = rectangle.Length.ToString();            
         }
-
+        
+        /// <summary>
+        /// Очищает TextBoxes.
+        /// </summary>
         public void ClearRectangleInfo()
         {
                 IdTextBox.Clear();
@@ -59,6 +81,9 @@ namespace Programming.View.Controls
                 LenghtTextBox.Clear();
         }
 
+        /// <summary>
+        /// Находит пересекающиеся прямоугольники и перекращивает их.
+        /// </summary>
         public void FindCollisions()
         {
             for (int i = 0; i < _rectanglePanels.Count; i++)

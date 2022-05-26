@@ -8,14 +8,29 @@ namespace Programming.View.Controls
 {
     public partial class MoviesControl : UserControl
     {       
+        /// <summary>
+        /// Объект класса <see cref="Random"/>
+        /// </summary>
         Random random = new Random();
 
+        /// <summary>
+        /// Массив названий фильмов.
+        /// </summary>
         private string[] _titleMovies = { "Титаник", "Матрица", "Шерлок Хоумс", "Интерстеллар", "Гладиатор" };
 
+        /// <summary>
+        /// Массив жанров.
+        /// </summary>
         private string[] _genres;
 
+        /// <summary>
+        /// Массив объектов класса <see cref="Movie"./>.
+        /// </summary>
         private Movie[] _movies;
 
+        /// <summary>
+        /// Объект класса <see cref="Movie", хранит выбранный фильм./>
+        /// </summary>
         private Movie _currentMovie;
 
         public MoviesControl()
@@ -33,6 +48,11 @@ namespace Programming.View.Controls
             }
         }
 
+        /// <summary>
+        /// Находит фильм с самым большим рейтингом.
+        /// </summary>
+        /// <param name="movie">Объект класс <see cref="Movie"/></param>
+        /// <returns>Индекс фильма с самым большим рейтингом.</returns>
         private int FindMovieWithMaxRating(Movie[] movie)
         {
             int indexMaxRating = 0;

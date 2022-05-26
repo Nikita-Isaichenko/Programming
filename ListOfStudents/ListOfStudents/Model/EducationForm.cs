@@ -1,5 +1,5 @@
-﻿namespace Programming.Model.Enums
-{ 
+﻿namespace ListOfStudents.Model
+{
     /// <summary>
     /// Хранит перечисление форм обучения.
     /// </summary>
@@ -8,9 +8,6 @@
         FullTime,
         PartTime,
         EveningClasses,
-        DistanceLearning,
-        ElectronicEngineering,
-
+        DistanceLearning
     }
 }
- 

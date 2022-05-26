@@ -1,6 +1,6 @@
-﻿namespace ListOfStudents
+﻿namespace ListOfStudents.View
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.StudentsListBox = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.EducationFormComboBox = new System.Windows.Forms.ComboBox();
@@ -41,8 +40,8 @@
             this.RecordBookIdTextBox = new System.Windows.Forms.TextBox();
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
             this.FullNameTextLabel = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.AddStudentButtonClick = new System.Windows.Forms.Button();
+            this.RemoveStudentButtonClick = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,6 +56,7 @@
             this.StudentsListBox.Name = "StudentsListBox";
             this.StudentsListBox.Size = new System.Drawing.Size(240, 394);
             this.StudentsListBox.TabIndex = 0;
+            this.StudentsListBox.SelectedIndexChanged += new System.EventHandler(this.StudentsListBox_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -174,37 +174,35 @@
             this.FullNameTextLabel.TabIndex = 0;
             this.FullNameTextLabel.Text = "Full Name:";
             // 
-            // button1
+            // AddStudentButtonClick
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Image = global::ListOfStudents.Properties.Resources.Add_Student;
-            this.button1.Location = new System.Drawing.Point(12, 408);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(61, 41);
-            this.button1.TabIndex = 5;
-            this.button1.UseVisualStyleBackColor = true;
+            this.AddStudentButtonClick.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddStudentButtonClick.Location = new System.Drawing.Point(12, 408);
+            this.AddStudentButtonClick.Name = "AddStudentButtonClick";
+            this.AddStudentButtonClick.Size = new System.Drawing.Size(61, 41);
+            this.AddStudentButtonClick.TabIndex = 5;
+            this.AddStudentButtonClick.UseVisualStyleBackColor = true;
+            this.AddStudentButtonClick.Click += new System.EventHandler(this.AddStudentButtonClick_Click);
             // 
-            // button2
+            // RemoveStudentButtonClick
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.Image = global::ListOfStudents.Properties.Resources.Remove_Student;
-            this.button2.Location = new System.Drawing.Point(79, 408);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(61, 41);
-            this.button2.TabIndex = 6;
-            this.button2.UseVisualStyleBackColor = true;
+            this.RemoveStudentButtonClick.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.RemoveStudentButtonClick.Location = new System.Drawing.Point(79, 408);
+            this.RemoveStudentButtonClick.Name = "RemoveStudentButtonClick";
+            this.RemoveStudentButtonClick.Size = new System.Drawing.Size(61, 41);
+            this.RemoveStudentButtonClick.TabIndex = 6;
+            this.RemoveStudentButtonClick.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(700, 461);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.RemoveStudentButtonClick);
+            this.Controls.Add(this.AddStudentButtonClick);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.StudentsListBox);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "ListOfStudents";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -227,8 +225,8 @@
         private System.Windows.Forms.Label EducationFormLabel;
         private System.Windows.Forms.ComboBox FacultyComboBox;
         private System.Windows.Forms.Label FacultyLabel;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button AddStudentButtonClick;
+        private System.Windows.Forms.Button RemoveStudentButtonClick;
     }
 }
 

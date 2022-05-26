@@ -9,12 +9,25 @@ namespace Programming.View.Controls
 {
     public partial class RectanglesControl : UserControl
     {
+        
+        /// <summary>
+        /// Объект класса <see cref="Rectangle". Хранит выбранный прямоугольник./>
+        /// </summary>
         private Rectangle _currentRectangle;
 
+        /// <summary>
+        /// Массив объектов класса <see cref="Rectangle"./>
+        /// </summary>
         private Rectangle[] _rectangles;
 
+        /// <summary>
+        /// Массив цветов.
+        /// </summary>
         private string[] _colors;
 
+        /// <summary>
+        /// Объект класса <see cref="Random"./>
+        /// </summary>
         Random random = new Random();
 
         public RectanglesControl()
@@ -33,6 +46,11 @@ namespace Programming.View.Controls
             }
         }
 
+        /// <summary>
+        /// Находит прямоугольник с самой большой шириной.
+        /// </summary>
+        /// <param name="rectangles">Объект класса <see cref="Rectangle"./></param>
+        /// <returns>Индекс прямоугольника с самой большой шириной</returns>
         private int FindRectangleWithMaxWidth(Rectangle[] rectangles)
         {
             int indexMaxWidth = 0;

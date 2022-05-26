@@ -61,7 +61,11 @@ namespace Programming.View.Controls
             IntValueTextBox.Text = ((int)ValueListBox.SelectedItem).ToString();
         }
 
-        public void PictureBox_UploadImagel(Image image)
+        /// <summary>
+        /// Загружает картинку.
+        /// </summary>
+        /// <param name="image">Картинка.</param>
+        public void PictureBox_UploadImage(Image image)
         {
             PictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             PictureBox.Image = image;
