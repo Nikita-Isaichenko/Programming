@@ -163,6 +163,7 @@
             this.FullNameTextBox.Name = "FullNameTextBox";
             this.FullNameTextBox.Size = new System.Drawing.Size(330, 20);
             this.FullNameTextBox.TabIndex = 1;
+            this.FullNameTextBox.TextChanged += new System.EventHandler(this.FullNameTextBox_TextChanged);
             // 
             // FullNameTextLabel
             // 
@@ -192,6 +193,7 @@
             this.RemoveStudentButtonClick.Size = new System.Drawing.Size(61, 41);
             this.RemoveStudentButtonClick.TabIndex = 6;
             this.RemoveStudentButtonClick.UseVisualStyleBackColor = true;
+            this.RemoveStudentButtonClick.Click += new System.EventHandler(this.RemoveStudentButtonClick_Click);
             // 
             // MainForm
             // 

@@ -7,6 +7,9 @@ namespace Programming.View.Controls
 {
     public partial class WeekdayParsingControl : UserControl
     {
+        /// <summary>
+        /// Создает экземпляр класса <see cref="WeekdayParsingControl"/>
+        /// </summary>
         public WeekdayParsingControl()
         {
             InitializeComponent();

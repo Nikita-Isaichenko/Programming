@@ -9,6 +9,9 @@ namespace Programming.View.Controls
 {
     public partial class EnumerationsControl : UserControl
     {
+        /// <summary>
+        /// Создает экземпляр класса <see cref="EnumerationsControl"/>
+        /// </summary>
         public EnumerationsControl()
         {
             InitializeComponent();

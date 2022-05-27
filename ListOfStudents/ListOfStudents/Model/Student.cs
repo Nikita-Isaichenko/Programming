@@ -25,18 +25,7 @@ namespace ListOfStudents.Model
         /// <summary>
         /// Возвращает Id зачетной книжки. Состоит из 6 цифр.
         /// </summary>
-        public static int RecordBookId
-        {
-            get
-            {
-                return _recordBookId;
-            }
-            private set
-            {
-                /// проверка на кол-во символов.
-                _recordBookId = value;
-            }
-        }
+        public int RecordBookId { get; }
 
         /// <summary>
         /// Возвращает и задает номер группы. Не более 10 символов.
@@ -62,16 +51,28 @@ namespace ListOfStudents.Model
         /// <summary>
         /// Возвращает и задает факультет.
         /// </summary>
-        public Facutly Facutly { get; set; }
+        public Faculty Faculty { get; set; }
 
         /// <summary>
         /// Возвращает и задает форму обучения.
         /// </summary>
         public EducationForm EducationForm { get; set; }
 
+        /// <summary>
+        /// Выводит информацию о студенте в виде шаблона.
+        /// </summary>
+        /// <returns>Строка в виде "{FullName} - {NumberGroup}/{Faculty}"</returns>
+        public string OutputInformation()
+        {
+            return $"{FullName} - {NumberGroup}/{Faculty}";
+        }
 
         public Student()
         {
+            FullName = "No Data";
+            Faculty = Faculty.NoData;
+            EducationForm = EducationForm.NoData;
+            NumberGroup = "No Data";
             _recordBookId += 1;
         }
     }

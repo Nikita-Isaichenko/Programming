@@ -13,7 +13,7 @@ namespace ListOfStudents.View
 {
     public partial class MainForm : Form
     {
-        private List<Student> _students;
+        private List<Student> _students = new List<Student>();
 
         private Student _currentStudent;
 
@@ -21,7 +21,7 @@ namespace ListOfStudents.View
         {
             InitializeComponent();
 
-            var faculties = Enum.GetValues(typeof(Facutly));
+            var faculties = Enum.GetValues(typeof(Faculty));
             var educationForms = Enum.GetValues(typeof(EducationForm));
           
             foreach (var value in faculties)
@@ -58,13 +58,50 @@ namespace ListOfStudents.View
 
         private void AddStudentButtonClick_Click(object sender, EventArgs e)
         {
-            StudentsListBox.Items.Add("hello");
+            _currentStudent = new Student();
+            _students.Add(_currentStudent);
+            StudentsListBox.Items.Add(_currentStudent.OutputInformation());
+            StudentsListBox.SelectedIndex = _students.Count-1;
+
             CheckEmptinessListBox();
         }
 
         private void StudentsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            _currentStudent = _students[StudentsListBox.SelectedIndex];
+            FullNameTextBox.Text = _currentStudent.FullName;
+            RecordBookIdTextBox.Text = _currentStudent.RecordBookId.ToString();
+            GroupNumberTextBox.Text = _currentStudent.NumberGroup;
+            FacultyComboBox.SelectedIndex = (int)_currentStudent.Faculty;
+            EducationFormComboBox.SelectedIndex = (int)_currentStudent.EducationForm;
+        }
+
+        private void RemoveStudentButtonClick_Click(object sender, EventArgs e)
+        {
+            if (StudentsListBox.SelectedIndex == -1) return;
+            _students.RemoveAt(StudentsListBox.SelectedIndex);
+            StudentsListBox.SelectedIndex = _students.Count-1;
+            StudentsListBox.Items.RemoveAt(_students.Count);
+
+            CheckEmptinessListBox();
+        }
+
+        private void FullNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            _currentStudent.FullName = FullNameTextBox.Text;
+
+            UpdateListBoxInfo(_currentStudent);
+        }
+
+        public void UpdateListBoxInfo(Student student)
+        {
+            StudentsListBox.Items.Clear();
+
+            _students[StudentsListBox.SelectedIndex+1] = student;
+            foreach (var value in _students)
+            {
+                StudentsListBox.Items.Add(value.OutputInformation());
+            }
         }
     }
 }

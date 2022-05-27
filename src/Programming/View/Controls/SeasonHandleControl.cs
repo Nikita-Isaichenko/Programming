@@ -7,11 +7,21 @@ using System.Windows.Forms;
 namespace Programming.View.Controls
 {
     public partial class SeasonHandleControl : UserControl
-    {     
+    {    
+        /// <summary>
+        /// Указывает на методы изменения времени года.
+        /// </summary>
+        /// <param name="image">Картинка.</param>
         public delegate void SeasonChanged(Image image);
 
+        /// <summary>
+        /// Событие при изменение времени года.
+        /// </summary>
         public event SeasonChanged SeasonChange;
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref="SeasonHandleControl"/>
+        /// </summary>
         public SeasonHandleControl()
         {
             InitializeComponent();

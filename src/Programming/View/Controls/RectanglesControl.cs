@@ -30,6 +30,9 @@ namespace Programming.View.Controls
         /// </summary>
         Random random = new Random();
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref="RectanglesControl"/>
+        /// </summary>
         public RectanglesControl()
         {
             InitializeComponent();

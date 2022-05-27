@@ -1,6 +1,6 @@
 ﻿namespace ListOfStudents.Model
 {
-    public enum Facutly
+    public enum Faculty
     {
         RadioEngineering,
         ComputingSystems,
@@ -9,6 +9,7 @@
         Humanities,
         Law,
         InnovativeTechnologies,
-        Security
+        Security,
+        NoData
     }
 }

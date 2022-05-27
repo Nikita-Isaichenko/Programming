@@ -8,6 +8,7 @@
         FullTime,
         PartTime,
         EveningClasses,
-        DistanceLearning
+        DistanceLearning,
+        NoData
     }
 }

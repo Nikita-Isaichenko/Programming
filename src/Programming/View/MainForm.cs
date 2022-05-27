@@ -1,10 +1,13 @@
 ﻿using System.Windows.Forms;
-using Programming.Model.Classes;
+
 
 namespace Programming.View
 {
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// Создает экземпляр класса <see cref="MainForm"/>
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();

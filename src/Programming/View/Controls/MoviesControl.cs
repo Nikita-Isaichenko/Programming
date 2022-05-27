@@ -33,6 +33,9 @@ namespace Programming.View.Controls
         /// </summary>
         private Movie _currentMovie;
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref="MoviesControl"/>
+        /// </summary>
         public MoviesControl()
         {
             InitializeComponent();

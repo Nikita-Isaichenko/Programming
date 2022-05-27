@@ -31,6 +31,9 @@ namespace Programming.View.Controls
         /// </summary>
         private int _currentIndexRectangle;
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref="RectanglesCollisionControl"/>
+        /// </summary>
         public RectanglesCollisionControl()
         {
             InitializeComponent();
