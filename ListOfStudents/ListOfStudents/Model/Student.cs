@@ -23,6 +23,11 @@ namespace ListOfStudents.Model
         private string _numberGroup;
 
         /// <summary>
+        /// Фио.
+        /// </summary>
+        private string _fullName;
+
+        /// <summary>
         /// Возвращает Id зачетной книжки. Состоит из 6 цифр.
         /// </summary>
         public int RecordBookId { get; }
@@ -38,7 +43,8 @@ namespace ListOfStudents.Model
             }
             set
             {
-                // проверка
+                Validator.AssertLengthString(value, 10, nameof(NumberGroup));
+                Validator.AssertEmptyTextBox(value, nameof(NumberGroup));
                 _numberGroup = value;
             }
         }
@@ -46,7 +52,19 @@ namespace ListOfStudents.Model
         /// <summary>
         /// Возвращает и задает полное имя.
         /// </summary>
-        public string FullName { get; set; }
+        public string FullName
+        {
+            get
+            {
+                return _fullName;
+            }
+            set
+            {
+                Validator.AssertLengthString(value, 200, nameof(FullName));
+                Validator.AssertEmptyTextBox(value, nameof(FullName));
+                _fullName = value;
+            }
+        }
 
         /// <summary>
         /// Возвращает и задает факультет.
@@ -69,10 +87,10 @@ namespace ListOfStudents.Model
 
         public Student()
         {
-            FullName = "No Data";
-            Faculty = Faculty.NoData;
-            EducationForm = EducationForm.NoData;
-            NumberGroup = "No Data";
+            FullName = "None";
+            Faculty = Faculty.None;
+            EducationForm = EducationForm.None;
+            NumberGroup = "None";
             _recordBookId += 1;
         }
     }

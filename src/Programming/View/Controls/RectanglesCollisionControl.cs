@@ -22,7 +22,7 @@ namespace Programming.View.Controls
         private List<Panel> _rectanglePanels = new List<Panel>();
 
         /// <summary>
-        /// Объект класса <see cref="Rectangle". Хранит выбранный прямоугольник./>
+        /// Объект класса <see cref="Rectangle"/>. Хранит выбранный прямоугольник.
         /// </summary>
         private Rectangle _currentRectangle;
 

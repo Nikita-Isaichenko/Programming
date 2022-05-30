@@ -10,6 +10,6 @@
         Law,
         InnovativeTechnologies,
         Security,
-        NoData
+        None
     }
 }

@@ -17,9 +17,11 @@ namespace ListOfStudents.View
 
         private Student _currentStudent;
 
+        private int _currentStudentIndex;
+
         public MainForm()
         {
-            InitializeComponent();
+            InitializeComponent();           
 
             var faculties = Enum.GetValues(typeof(Faculty));
             var educationForms = Enum.GetValues(typeof(EducationForm));
@@ -34,26 +36,8 @@ namespace ListOfStudents.View
                 EducationFormComboBox.Items.Add(value);
             }
 
-           
-            CheckEmptinessListBox();
-        }
-
-        private void CheckEmptinessListBox()
-        {
-            if (StudentsListBox.Items.Count == 0)
-            {
-                FullNameTextBox.Enabled = false;
-                GroupNumberTextBox.Enabled = false;
-                FacultyComboBox.Enabled = false;
-                EducationFormComboBox.Enabled = false;
-            }
-            else
-            {
-                FullNameTextBox.Enabled = true;
-                GroupNumberTextBox.Enabled = true;
-                FacultyComboBox.Enabled = true;
-                EducationFormComboBox.Enabled = true;
-            }
+            UpdateSelectedStudentInfo(_currentStudent);
+            
         }
 
         private void AddStudentButtonClick_Click(object sender, EventArgs e)
@@ -62,46 +46,136 @@ namespace ListOfStudents.View
             _students.Add(_currentStudent);
             StudentsListBox.Items.Add(_currentStudent.OutputInformation());
             StudentsListBox.SelectedIndex = _students.Count-1;
-
-            CheckEmptinessListBox();
         }
 
         private void StudentsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _currentStudent = _students[StudentsListBox.SelectedIndex];
-            FullNameTextBox.Text = _currentStudent.FullName;
-            RecordBookIdTextBox.Text = _currentStudent.RecordBookId.ToString();
-            GroupNumberTextBox.Text = _currentStudent.NumberGroup;
-            FacultyComboBox.SelectedIndex = (int)_currentStudent.Faculty;
-            EducationFormComboBox.SelectedIndex = (int)_currentStudent.EducationForm;
+            if (StudentsListBox.SelectedIndex == -1) return;
+
+            _currentStudentIndex = StudentsListBox.SelectedIndex;
+            _currentStudent = _students[_currentStudentIndex];
+
+            UpdateSelectedStudentInfo(_currentStudent);
+           
         }
 
         private void RemoveStudentButtonClick_Click(object sender, EventArgs e)
         {
-            if (StudentsListBox.SelectedIndex == -1) return;
-            _students.RemoveAt(StudentsListBox.SelectedIndex);
-            StudentsListBox.SelectedIndex = _students.Count-1;
-            StudentsListBox.Items.RemoveAt(_students.Count);
+            if (_students.Count > 0)
+            {               
+                StudentsListBox.Items.RemoveAt(_currentStudentIndex);
+                _students.RemoveAt(_currentStudentIndex);                                
+                StudentsListBox.SelectedIndex = _students.Count > 0 ? 0 : -1;             
+            }
 
-            CheckEmptinessListBox();
+            UpdateSelectedStudentInfo(_currentStudent);
+
         }
 
-        private void FullNameTextBox_TextChanged(object sender, EventArgs e)
+        private void UpdateListBoxInfo()
         {
-            _currentStudent.FullName = FullNameTextBox.Text;
-
-            UpdateListBoxInfo(_currentStudent);
-        }
-
-        public void UpdateListBoxInfo(Student student)
-        {
+            int index = StudentsListBox.SelectedIndex;
             StudentsListBox.Items.Clear();
-
-            _students[StudentsListBox.SelectedIndex+1] = student;
+            
             foreach (var value in _students)
             {
                 StudentsListBox.Items.Add(value.OutputInformation());
             }
+
+            StudentsListBox.SelectedIndex = index;
+        }
+
+        private void ClearTextBoxes()
+        {            
+            {
+                FullNameTextBox.Clear();
+                RecordBookIdTextBox.Clear();
+                GroupNumberTextBox.Clear();
+                FacultyComboBox.SelectedIndex = -1;
+                EducationFormComboBox.SelectedIndex = -1;
+            }           
+        }
+
+        private void UpdateSelectedStudentInfo(Student student)
+        {
+            if (_students.Count > 0)
+            {
+                FullNameTextBox.Text = student.FullName;
+                RecordBookIdTextBox.Text = student.RecordBookId.ToString();
+                GroupNumberTextBox.Text = student.NumberGroup;
+                FacultyComboBox.SelectedIndex = (int)student.Faculty;
+                EducationFormComboBox.SelectedIndex = (int)student.EducationForm;
+
+                FullNameTextBox.Enabled = true;
+                GroupNumberTextBox.Enabled = true;
+                FacultyComboBox.Enabled = true;
+                EducationFormComboBox.Enabled = true;
+            }
+
+            if (_students.Count == 0)
+            {
+                FullNameTextBox.Enabled = false;
+                GroupNumberTextBox.Enabled = false;
+                FacultyComboBox.Enabled = false;
+                EducationFormComboBox.Enabled = false;
+
+                ClearTextBoxes();
+            }      
+        }
+        private void FullNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {               
+                _currentStudent.FullName = FullNameTextBox.Text;
+                FullNameTextBox.BackColor = AppColor.NormalBackColor;
+
+                if (_students.Count == 0)
+                {
+                    FullNameTextBox.BackColor = AppColor.NotEnabledWidget;
+                }
+
+                UpdateListBoxInfo();
+            }
+            catch
+            {
+                FullNameTextBox.BackColor = AppColor.ErrorBackColor;
+            }
+        }
+
+        private void GroupNumberTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _currentStudent.NumberGroup = GroupNumberTextBox.Text;
+                GroupNumberTextBox.BackColor = AppColor.NormalBackColor;
+
+                if (_students.Count == 0)
+                {
+                    GroupNumberTextBox.BackColor = AppColor.NotEnabledWidget;
+                }
+
+                UpdateListBoxInfo();
+            }
+            catch
+            {
+                GroupNumberTextBox.BackColor = AppColor.ErrorBackColor;
+            }
+        }
+
+        private void FacultyComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (FacultyComboBox.SelectedIndex == -1) return;
+
+            _currentStudent.Faculty = (Faculty)FacultyComboBox.SelectedItem;
+
+            UpdateListBoxInfo();
+        }
+
+        private void EducationFormComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (EducationFormComboBox.SelectedIndex == -1) return;
+
+            _currentStudent.EducationForm = (EducationForm)EducationFormComboBox.SelectedItem;
         }
     }
 }

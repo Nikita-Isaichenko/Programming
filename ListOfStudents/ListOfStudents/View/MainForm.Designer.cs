@@ -51,10 +51,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.StudentsListBox.FormattingEnabled = true;
+            this.StudentsListBox.HorizontalScrollbar = true;
             this.StudentsListBox.Location = new System.Drawing.Point(10, 10);
             this.StudentsListBox.Margin = new System.Windows.Forms.Padding(1);
             this.StudentsListBox.Name = "StudentsListBox";
-            this.StudentsListBox.Size = new System.Drawing.Size(240, 394);
+            this.StudentsListBox.Size = new System.Drawing.Size(300, 394);
             this.StudentsListBox.TabIndex = 0;
             this.StudentsListBox.SelectedIndexChanged += new System.EventHandler(this.StudentsListBox_SelectedIndexChanged);
             // 
@@ -72,10 +73,10 @@
             this.groupBox1.Controls.Add(this.RecordBookIdTextBox);
             this.groupBox1.Controls.Add(this.FullNameTextBox);
             this.groupBox1.Controls.Add(this.FullNameTextLabel);
-            this.groupBox1.Location = new System.Drawing.Point(256, 10);
+            this.groupBox1.Location = new System.Drawing.Point(316, 10);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 3, 1, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(434, 166);
+            this.groupBox1.Size = new System.Drawing.Size(485, 235);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Selected Student";
@@ -87,6 +88,7 @@
             this.EducationFormComboBox.Name = "EducationFormComboBox";
             this.EducationFormComboBox.Size = new System.Drawing.Size(165, 21);
             this.EducationFormComboBox.TabIndex = 9;
+            this.EducationFormComboBox.SelectedIndexChanged += new System.EventHandler(this.EducationFormComboBox_SelectedIndexChanged);
             // 
             // EducationFormLabel
             // 
@@ -105,6 +107,7 @@
             this.FacultyComboBox.Name = "FacultyComboBox";
             this.FacultyComboBox.Size = new System.Drawing.Size(165, 21);
             this.FacultyComboBox.TabIndex = 7;
+            this.FacultyComboBox.SelectedIndexChanged += new System.EventHandler(this.FacultyComboBox_SelectedIndexChanged);
             // 
             // FacultyLabel
             // 
@@ -133,6 +136,7 @@
             this.GroupNumberTextBox.Name = "GroupNumberTextBox";
             this.GroupNumberTextBox.Size = new System.Drawing.Size(165, 20);
             this.GroupNumberTextBox.TabIndex = 4;
+            this.GroupNumberTextBox.TextChanged += new System.EventHandler(this.GroupNumberTextBox_TextChanged);
             // 
             // label1
             // 
@@ -161,7 +165,7 @@
             this.FullNameTextBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.FullNameTextBox.MaxLength = 201;
             this.FullNameTextBox.Name = "FullNameTextBox";
-            this.FullNameTextBox.Size = new System.Drawing.Size(330, 20);
+            this.FullNameTextBox.Size = new System.Drawing.Size(374, 20);
             this.FullNameTextBox.TabIndex = 1;
             this.FullNameTextBox.TextChanged += new System.EventHandler(this.FullNameTextBox_TextChanged);
             // 
@@ -199,7 +203,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 461);
+            this.ClientSize = new System.Drawing.Size(811, 461);
             this.Controls.Add(this.RemoveStudentButtonClick);
             this.Controls.Add(this.AddStudentButtonClick);
             this.Controls.Add(this.groupBox1);
