@@ -12,10 +12,11 @@ namespace ListOfStudents.Model
     /// </summary>
     public class Student
     {
+        private static int _allStudentsCount;
         /// <summary>
         /// Идентификатор зачетной книжки.
         /// </summary>
-        private static int _recordBookId = 0;
+        private readonly int _recordBookId;
 
         /// <summary>
         /// Номер группы.
@@ -25,12 +26,7 @@ namespace ListOfStudents.Model
         /// <summary>
         /// Фио.
         /// </summary>
-        private string _fullName;
-
-        /// <summary>
-        /// Возвращает Id зачетной книжки. Состоит из 6 цифр.
-        /// </summary>
-        public int RecordBookId { get; }
+        private string _fullName;        
 
         /// <summary>
         /// Возвращает и задает номер группы. Не более 10 символов.
@@ -66,6 +62,14 @@ namespace ListOfStudents.Model
             }
         }
 
+        public int RecordBookId
+        {
+            get
+            {
+                return _recordBookId;
+            }
+        }
+
         /// <summary>
         /// Возвращает и задает факультет.
         /// </summary>
@@ -87,11 +91,13 @@ namespace ListOfStudents.Model
 
         public Student()
         {
+            _allStudentsCount++;
+            _recordBookId = _allStudentsCount;
             FullName = "None";
             Faculty = Faculty.None;
             EducationForm = EducationForm.None;
             NumberGroup = "None";
-            _recordBookId += 1;
+            
         }
     }
 }

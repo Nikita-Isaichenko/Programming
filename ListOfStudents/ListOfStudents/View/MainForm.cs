@@ -73,16 +73,22 @@ namespace ListOfStudents.View
         }
 
         private void UpdateListBoxInfo()
-        {
-            int index = StudentsListBox.SelectedIndex;
-            StudentsListBox.Items.Clear();
+        {            
             
-            foreach (var value in _students)
+            StudentsListBox.Items.Clear();
+
+            var students = SortFullName();
+
+            foreach (var value in students)
             {
                 StudentsListBox.Items.Add(value.OutputInformation());
             }
 
-            StudentsListBox.SelectedIndex = index;
+            var index = students.IndexOf(_currentStudent);
+
+            StudentsListBox.SelectedIndex = Convert.ToInt32(index);
+
+            
         }
 
         private void ClearTextBoxes()
@@ -125,14 +131,17 @@ namespace ListOfStudents.View
         private void FullNameTextBox_TextChanged(object sender, EventArgs e)
         {
             try
-            {               
-                _currentStudent.FullName = FullNameTextBox.Text;
-                FullNameTextBox.BackColor = AppColor.NormalBackColor;
-
+            {   
                 if (_students.Count == 0)
                 {
                     FullNameTextBox.BackColor = AppColor.NotEnabledWidget;
-                }
+                    return;
+                } 
+                
+                _currentStudent.FullName = FullNameTextBox.Text;
+                FullNameTextBox.BackColor = AppColor.NormalBackColor;
+
+                
 
                 UpdateListBoxInfo();
             }
@@ -146,20 +155,21 @@ namespace ListOfStudents.View
         {
             try
             {
-                _currentStudent.NumberGroup = GroupNumberTextBox.Text;
-                GroupNumberTextBox.BackColor = AppColor.NormalBackColor;
-
                 if (_students.Count == 0)
                 {
                     GroupNumberTextBox.BackColor = AppColor.NotEnabledWidget;
+                    return;
                 }
+
+                _currentStudent.NumberGroup = GroupNumberTextBox.Text;
+                GroupNumberTextBox.BackColor = AppColor.NormalBackColor;
 
                 UpdateListBoxInfo();
             }
             catch
             {
                 GroupNumberTextBox.BackColor = AppColor.ErrorBackColor;
-            }
+            }        
         }
 
         private void FacultyComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -176,6 +186,16 @@ namespace ListOfStudents.View
             if (EducationFormComboBox.SelectedIndex == -1) return;
 
             _currentStudent.EducationForm = (EducationForm)EducationFormComboBox.SelectedItem;
+        }
+
+        private List<Student> SortFullName()
+        {
+            var sortedStudents = from value in _students
+                                 orderby value.FullName
+                                 select value;
+            _students = sortedStudents.ToList();
+
+            return _students;
         }
     }
 }
