@@ -12,7 +12,16 @@ namespace ListOfStudents.Model
     /// </summary>
     public class Student
     {
+        /// <summary>
+        /// Общее кол-во.
+        /// </summary>
         private static int _allStudentsCount;
+
+        /// <summary>
+        /// Фио.
+        /// </summary>
+        private string _fullName;
+
         /// <summary>
         /// Идентификатор зачетной книжки.
         /// </summary>
@@ -21,12 +30,7 @@ namespace ListOfStudents.Model
         /// <summary>
         /// Номер группы.
         /// </summary>
-        private string _numberGroup;
-
-        /// <summary>
-        /// Фио.
-        /// </summary>
-        private string _fullName;        
+        private string _numberGroup;                
 
         /// <summary>
         /// Возвращает и задает номер группы. Не более 10 символов.
@@ -62,6 +66,9 @@ namespace ListOfStudents.Model
             }
         }
 
+        /// <summary>
+        /// Возвращает id зачетной книжки.
+        /// </summary>
         public int RecordBookId
         {
             get
@@ -89,6 +96,9 @@ namespace ListOfStudents.Model
             return $"{FullName} - {NumberGroup}/{Faculty}";
         }
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Student"/>.
+        /// </summary>
         public Student()
         {
             _allStudentsCount++;
@@ -96,8 +106,7 @@ namespace ListOfStudents.Model
             FullName = "None";
             Faculty = Faculty.None;
             EducationForm = EducationForm.None;
-            NumberGroup = "None";
-            
+            NumberGroup = "None";           
         }
     }
 }

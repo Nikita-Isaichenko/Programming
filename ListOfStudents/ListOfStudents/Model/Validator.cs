@@ -25,7 +25,13 @@ namespace ListOfStudents.Model
             }
         }
 
-        public static void AssertEmptyTextBox(string value, string propertyName)
+        /// <summary>
+        /// Проверяет является ли переданная строка пустой.
+        /// </summary>
+        /// <param name="value">Строка.</param>
+        /// <param name="propertyName">Имя свойства.</param>
+        /// <exception cref="ArgumentException">Если строка оказалась пустой.</exception>
+        public static void AssertEmptyValue(string value, string propertyName)
         {
             if (value == "")
             {
