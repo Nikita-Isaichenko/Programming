@@ -1,13 +1,10 @@
 ﻿using ListOfStudents.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Environment;
 
 namespace ListOfStudents.View
 {
@@ -21,11 +18,15 @@ namespace ListOfStudents.View
 
         public MainForm()
         {
-            InitializeComponent();           
+            InitializeComponent();
 
+            Serializer.Path = $@"{Environment.GetFolderPath(SpecialFolder.ApplicationData)}"+
+                               @"\data.json";
+
+            _students = Serializer.LoadFromFile();
             var faculties = Enum.GetValues(typeof(Faculty));
             var educationForms = Enum.GetValues(typeof(EducationForm));
-          
+
             foreach (var value in faculties)
             {
                 FacultyComboBox.Items.Add(value);
@@ -35,8 +36,11 @@ namespace ListOfStudents.View
             {
                 EducationFormComboBox.Items.Add(value);
             }
+            
 
+            UpdateListBoxInfo();
             UpdateSelectedStudentInfo(_currentStudent);
+
             
         }
 
@@ -73,8 +77,7 @@ namespace ListOfStudents.View
         }
 
         private void UpdateListBoxInfo()
-        {            
-            
+        {                        
             StudentsListBox.Items.Clear();
 
             var students = SortFullName();
@@ -86,9 +89,7 @@ namespace ListOfStudents.View
 
             var index = students.IndexOf(_currentStudent);
 
-            StudentsListBox.SelectedIndex = Convert.ToInt32(index);
-
-            
+            StudentsListBox.SelectedIndex = Convert.ToInt32(index);           
         }
 
         private void ClearTextBoxes()
@@ -103,8 +104,8 @@ namespace ListOfStudents.View
         }
 
         private void UpdateSelectedStudentInfo(Student student)
-        {
-            if (_students.Count > 0)
+        {           
+            if (StudentsListBox.Items.Count > 0 & StudentsListBox.SelectedIndex != -1)
             {
                 FullNameTextBox.Text = student.FullName;
                 RecordBookIdTextBox.Text = student.RecordBookId.ToString();
@@ -118,7 +119,7 @@ namespace ListOfStudents.View
                 EducationFormComboBox.Enabled = true;
             }
 
-            if (_students.Count == 0)
+            if (StudentsListBox.Items.Count == 0 & StudentsListBox.SelectedIndex == -1)
             {
                 FullNameTextBox.Enabled = false;
                 GroupNumberTextBox.Enabled = false;
@@ -128,6 +129,7 @@ namespace ListOfStudents.View
                 ClearTextBoxes();
             }      
         }
+
         private void FullNameTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -140,9 +142,7 @@ namespace ListOfStudents.View
                 
                 _currentStudent.FullName = FullNameTextBox.Text;
                 FullNameTextBox.BackColor = AppColor.NormalBackColor;
-
-                
-
+              
                 UpdateListBoxInfo();
             }
             catch
@@ -196,6 +196,11 @@ namespace ListOfStudents.View
             _students = sortedStudents.ToList();
 
             return _students;
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Serializer.SaveToFile(_students);
         }
     }
 }

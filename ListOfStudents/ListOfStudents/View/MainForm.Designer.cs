@@ -210,6 +210,7 @@
             this.Controls.Add(this.StudentsListBox);
             this.Name = "MainForm";
             this.Text = "ListOfStudents";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
