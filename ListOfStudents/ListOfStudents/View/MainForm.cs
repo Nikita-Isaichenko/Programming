@@ -11,6 +11,11 @@ namespace ListOfStudents.View
     public partial class MainForm : Form
     {
         /// <summary>
+        /// Список объектов класса <see cref="Student"/>, которые найдены через поиск.
+        /// </summary>
+        private List<Student> _studentsSearch = new List<Student>();
+
+        /// <summary>
         /// Список объектов класса <see cref="Student"/>.
         /// </summary>
         private List<Student> _students = new List<Student>();
@@ -58,31 +63,46 @@ namespace ListOfStudents.View
         /// по возрастанию значения свойства <see cref="Student.FullName"/>.
         /// </summary>
         /// <returns>Отсортированный список.</returns>
-        private List<Student> SortFullName()
+        private List<Student> SortFullName(List<Student> student)
         {
-            var sortedStudents = from value in _students
+            var sortedStudents = from value in student
                                  orderby value.FullName
                                  select value;
-            _students = sortedStudents.ToList();
+            student = sortedStudents.ToList();
 
-            return _students;
+            return student;
         }        
 
         /// <summary>
         /// Обновляет StudentListBox.
         /// </summary>
         private void UpdateListBoxInfo()
-        {                        
+        {   
             StudentsListBox.Items.Clear();
-            var students = SortFullName();
-
-            foreach (var value in students)
+          
+            if (SearchTextBox.Text != "")
             {
-                StudentsListBox.Items.Add(value.OutputInformation());
+                _studentsSearch = SortFullName(_studentsSearch);
+
+                foreach (var value in _studentsSearch)
+                {
+                    StudentsListBox.Items.Add(value.OutputInformation());
+                }               
             }
 
-            var index = students.IndexOf(_currentStudent);
-            StudentsListBox.SelectedIndex = Convert.ToInt32(index);           
+            if (SearchTextBox.Text == "")
+            {
+                _students = SortFullName(_students);
+
+                foreach (var value in _students)
+                {
+                    StudentsListBox.Items.Add(value.OutputInformation());
+                }
+
+                var index = _students.IndexOf(_currentStudent);
+                StudentsListBox.SelectedIndex = Convert.ToInt32(index);
+            }
+           
         }
 
         /// <summary>
@@ -133,24 +153,37 @@ namespace ListOfStudents.View
 
         private void AddStudentButtonClick_Click(object sender, EventArgs e)
         {
+            if (SearchTextBox.Text != "") return;
+
             _currentStudent = new Student();
             _students.Add(_currentStudent);
-            StudentsListBox.Items.Add(_currentStudent.OutputInformation());
-            StudentsListBox.SelectedIndex = _students.Count - 1;
+
+            UpdateListBoxInfo();
         }
 
         private void StudentsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (StudentsListBox.SelectedIndex == -1) return;
 
-            _currentStudentIndex = StudentsListBox.SelectedIndex;
-            _currentStudent = _students[_currentStudentIndex];
+            if (SearchTextBox.Text != "")
+            {
+                _currentStudentIndex = StudentsListBox.SelectedIndex;
+                _currentStudent = _studentsSearch[_currentStudentIndex];
+            }
+            if (SearchTextBox.Text == "")
+            {
+                _currentStudentIndex = StudentsListBox.SelectedIndex;
+                _currentStudent = _students[_currentStudentIndex];
+            }
+                
 
             UpdateSelectedStudentInfo(_currentStudent);
         }
 
         private void RemoveStudentButtonClick_Click(object sender, EventArgs e)
         {
+            if (SearchTextBox.Text != "") return;
+
             if (_students.Count > 0)
             {
                 StudentsListBox.Items.RemoveAt(_currentStudentIndex);
@@ -222,6 +255,27 @@ namespace ListOfStudents.View
             if (EducationFormComboBox.SelectedIndex == -1) return;
 
             _currentStudent.EducationForm = (EducationForm)EducationFormComboBox.SelectedItem;
+        }
+
+        private void SearchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            var searchText = SearchTextBox.Text;
+            _studentsSearch = Search(searchText);
+
+            UpdateListBoxInfo();
+            //UpdateSelectedStudentInfo(_currentStudent);
+        }
+
+        private List<Student> Search(string searchText)
+        {
+            var result = from value in _students
+                         where value.FullName.Contains(searchText) ||
+                         value.NumberGroup.Contains(searchText) ||
+                         value.Faculty.ToString().Contains(searchText) ||
+                         value.EducationForm.ToString().Contains(searchText)
+                         select value;
+
+            return result.ToList();
         }
     }
 }

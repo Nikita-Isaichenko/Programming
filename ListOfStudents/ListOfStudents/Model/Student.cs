@@ -25,7 +25,7 @@ namespace ListOfStudents.Model
         /// <summary>
         /// Идентификатор зачетной книжки.
         /// </summary>
-        private readonly int _recordBookId;
+        private readonly int _recordBookId = 100000;
 
         /// <summary>
         /// Номер группы.
@@ -44,7 +44,7 @@ namespace ListOfStudents.Model
             set
             {
                 Validator.AssertLengthString(value, 10, nameof(NumberGroup));
-                Validator.AssertEmptyTextBox(value, nameof(NumberGroup));
+                Validator.AssertEmptyValue(value, nameof(NumberGroup));
                 _numberGroup = value;
             }
         }
@@ -61,7 +61,7 @@ namespace ListOfStudents.Model
             set
             {
                 Validator.AssertLengthString(value, 200, nameof(FullName));
-                Validator.AssertEmptyTextBox(value, nameof(FullName));
+                Validator.AssertEmptyValue(value, nameof(FullName));
                 _fullName = value;
             }
         }
@@ -102,7 +102,7 @@ namespace ListOfStudents.Model
         public Student()
         {
             _allStudentsCount++;
-            _recordBookId = _allStudentsCount;
+            _recordBookId += _allStudentsCount;
             FullName = "None";
             Faculty = Faculty.None;
             EducationForm = EducationForm.None;

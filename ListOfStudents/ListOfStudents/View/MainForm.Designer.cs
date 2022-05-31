@@ -30,6 +30,7 @@
         {
             this.StudentsListBox = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.SearchTextBox = new System.Windows.Forms.TextBox();
             this.EducationFormComboBox = new System.Windows.Forms.ComboBox();
             this.EducationFormLabel = new System.Windows.Forms.Label();
             this.FacultyComboBox = new System.Windows.Forms.ComboBox();
@@ -42,6 +43,7 @@
             this.FullNameTextLabel = new System.Windows.Forms.Label();
             this.AddStudentButtonClick = new System.Windows.Forms.Button();
             this.RemoveStudentButtonClick = new System.Windows.Forms.Button();
+            this.SearchLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,6 +82,14 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Selected Student";
+            // 
+            // SearchTextBox
+            // 
+            this.SearchTextBox.Location = new System.Drawing.Point(634, 429);
+            this.SearchTextBox.Name = "SearchTextBox";
+            this.SearchTextBox.Size = new System.Drawing.Size(165, 20);
+            this.SearchTextBox.TabIndex = 11;
+            this.SearchTextBox.TextChanged += new System.EventHandler(this.SearchTextBox_TextChanged);
             // 
             // EducationFormComboBox
             // 
@@ -199,11 +209,23 @@
             this.RemoveStudentButtonClick.UseVisualStyleBackColor = true;
             this.RemoveStudentButtonClick.Click += new System.EventHandler(this.RemoveStudentButtonClick_Click);
             // 
+            // SearchLabel
+            // 
+            this.SearchLabel.AutoSize = true;
+            this.SearchLabel.Location = new System.Drawing.Point(582, 432);
+            this.SearchLabel.Margin = new System.Windows.Forms.Padding(3, 0, 5, 0);
+            this.SearchLabel.Name = "SearchLabel";
+            this.SearchLabel.Size = new System.Drawing.Size(44, 13);
+            this.SearchLabel.TabIndex = 12;
+            this.SearchLabel.Text = "Search:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(811, 461);
+            this.Controls.Add(this.SearchTextBox);
+            this.Controls.Add(this.SearchLabel);
             this.Controls.Add(this.RemoveStudentButtonClick);
             this.Controls.Add(this.AddStudentButtonClick);
             this.Controls.Add(this.groupBox1);
@@ -234,6 +256,8 @@
         private System.Windows.Forms.Label FacultyLabel;
         private System.Windows.Forms.Button AddStudentButtonClick;
         private System.Windows.Forms.Button RemoveStudentButtonClick;
+        private System.Windows.Forms.TextBox SearchTextBox;
+        private System.Windows.Forms.Label SearchLabel;
     }
 }
 
