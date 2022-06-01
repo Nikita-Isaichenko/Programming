@@ -30,7 +30,7 @@ namespace ListOfStudents.Model
         /// <summary>
         /// Номер группы.
         /// </summary>
-        private string _numberGroup;                
+        private string _numberGroup;
 
         /// <summary>
         /// Возвращает и задает номер группы. Не более 10 символов.
@@ -78,6 +78,11 @@ namespace ListOfStudents.Model
         }
 
         /// <summary>
+        /// Возвращает и задает изображение в кодировке Base64.
+        /// </summary>
+        public string StudentImage { get; set; }
+
+        /// <summary>
         /// Возвращает и задает факультет.
         /// </summary>
         public Faculty Faculty { get; set; }
@@ -86,6 +91,8 @@ namespace ListOfStudents.Model
         /// Возвращает и задает форму обучения.
         /// </summary>
         public EducationForm EducationForm { get; set; }
+
+
 
         /// <summary>
         /// Выводит информацию о студенте в виде шаблона.

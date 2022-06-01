@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.StudentsListBox = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.SearchTextBox = new System.Windows.Forms.TextBox();
+            this.RemoveImageButton = new System.Windows.Forms.Button();
+            this.AddImageButton = new System.Windows.Forms.Button();
             this.EducationFormComboBox = new System.Windows.Forms.ComboBox();
             this.EducationFormLabel = new System.Windows.Forms.Label();
             this.FacultyComboBox = new System.Windows.Forms.ComboBox();
@@ -41,10 +43,13 @@
             this.RecordBookIdTextBox = new System.Windows.Forms.TextBox();
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
             this.FullNameTextLabel = new System.Windows.Forms.Label();
-            this.AddStudentButtonClick = new System.Windows.Forms.Button();
-            this.RemoveStudentButtonClick = new System.Windows.Forms.Button();
+            this.SearchTextBox = new System.Windows.Forms.TextBox();
             this.SearchLabel = new System.Windows.Forms.Label();
+            this.RemoveStudentButtonClick = new System.Windows.Forms.Button();
+            this.AddStudentButtonClick = new System.Windows.Forms.Button();
+            this.StudentImagePictureBox = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StudentImagePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // StudentsListBox
@@ -65,6 +70,9 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.AutoSize = true;
+            this.groupBox1.Controls.Add(this.RemoveImageButton);
+            this.groupBox1.Controls.Add(this.AddImageButton);
+            this.groupBox1.Controls.Add(this.StudentImagePictureBox);
             this.groupBox1.Controls.Add(this.EducationFormComboBox);
             this.groupBox1.Controls.Add(this.EducationFormLabel);
             this.groupBox1.Controls.Add(this.FacultyComboBox);
@@ -78,18 +86,31 @@
             this.groupBox1.Location = new System.Drawing.Point(316, 10);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 3, 1, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(485, 235);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(485, 293);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Selected Student";
             // 
-            // SearchTextBox
+            // RemoveImageButton
             // 
-            this.SearchTextBox.Location = new System.Drawing.Point(634, 429);
-            this.SearchTextBox.Name = "SearchTextBox";
-            this.SearchTextBox.Size = new System.Drawing.Size(165, 20);
-            this.SearchTextBox.TabIndex = 11;
-            this.SearchTextBox.TextChanged += new System.EventHandler(this.SearchTextBox_TextChanged);
+            this.RemoveImageButton.Image = global::ListOfStudents.Properties.Resources.delete_picture;
+            this.RemoveImageButton.Location = new System.Drawing.Point(372, 232);
+            this.RemoveImageButton.Name = "RemoveImageButton";
+            this.RemoveImageButton.Size = new System.Drawing.Size(100, 43);
+            this.RemoveImageButton.TabIndex = 12;
+            this.RemoveImageButton.UseVisualStyleBackColor = true;
+            this.RemoveImageButton.Click += new System.EventHandler(this.RemoveImageButton_Click);
+            // 
+            // AddImageButton
+            // 
+            this.AddImageButton.Image = global::ListOfStudents.Properties.Resources.add_picture;
+            this.AddImageButton.Location = new System.Drawing.Point(269, 232);
+            this.AddImageButton.Name = "AddImageButton";
+            this.AddImageButton.Size = new System.Drawing.Size(100, 43);
+            this.AddImageButton.TabIndex = 11;
+            this.AddImageButton.UseVisualStyleBackColor = true;
+            this.AddImageButton.Click += new System.EventHandler(this.AddImageButton_Click);
             // 
             // EducationFormComboBox
             // 
@@ -189,25 +210,13 @@
             this.FullNameTextLabel.TabIndex = 0;
             this.FullNameTextLabel.Text = "Full Name:";
             // 
-            // AddStudentButtonClick
+            // SearchTextBox
             // 
-            this.AddStudentButtonClick.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddStudentButtonClick.Location = new System.Drawing.Point(12, 408);
-            this.AddStudentButtonClick.Name = "AddStudentButtonClick";
-            this.AddStudentButtonClick.Size = new System.Drawing.Size(61, 41);
-            this.AddStudentButtonClick.TabIndex = 5;
-            this.AddStudentButtonClick.UseVisualStyleBackColor = true;
-            this.AddStudentButtonClick.Click += new System.EventHandler(this.AddStudentButtonClick_Click);
-            // 
-            // RemoveStudentButtonClick
-            // 
-            this.RemoveStudentButtonClick.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.RemoveStudentButtonClick.Location = new System.Drawing.Point(79, 408);
-            this.RemoveStudentButtonClick.Name = "RemoveStudentButtonClick";
-            this.RemoveStudentButtonClick.Size = new System.Drawing.Size(61, 41);
-            this.RemoveStudentButtonClick.TabIndex = 6;
-            this.RemoveStudentButtonClick.UseVisualStyleBackColor = true;
-            this.RemoveStudentButtonClick.Click += new System.EventHandler(this.RemoveStudentButtonClick_Click);
+            this.SearchTextBox.Location = new System.Drawing.Point(634, 429);
+            this.SearchTextBox.Name = "SearchTextBox";
+            this.SearchTextBox.Size = new System.Drawing.Size(165, 20);
+            this.SearchTextBox.TabIndex = 11;
+            this.SearchTextBox.TextChanged += new System.EventHandler(this.SearchTextBox_TextChanged);
             // 
             // SearchLabel
             // 
@@ -218,6 +227,37 @@
             this.SearchLabel.Size = new System.Drawing.Size(44, 13);
             this.SearchLabel.TabIndex = 12;
             this.SearchLabel.Text = "Search:";
+            // 
+            // RemoveStudentButtonClick
+            // 
+            this.RemoveStudentButtonClick.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.RemoveStudentButtonClick.Image = global::ListOfStudents.Properties.Resources.delete_user;
+            this.RemoveStudentButtonClick.Location = new System.Drawing.Point(79, 408);
+            this.RemoveStudentButtonClick.Name = "RemoveStudentButtonClick";
+            this.RemoveStudentButtonClick.Size = new System.Drawing.Size(61, 41);
+            this.RemoveStudentButtonClick.TabIndex = 6;
+            this.RemoveStudentButtonClick.UseVisualStyleBackColor = true;
+            this.RemoveStudentButtonClick.Click += new System.EventHandler(this.RemoveStudentButtonClick_Click);
+            // 
+            // AddStudentButtonClick
+            // 
+            this.AddStudentButtonClick.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddStudentButtonClick.Image = global::ListOfStudents.Properties.Resources.add_user;
+            this.AddStudentButtonClick.Location = new System.Drawing.Point(12, 408);
+            this.AddStudentButtonClick.Name = "AddStudentButtonClick";
+            this.AddStudentButtonClick.Size = new System.Drawing.Size(61, 41);
+            this.AddStudentButtonClick.TabIndex = 5;
+            this.AddStudentButtonClick.UseVisualStyleBackColor = true;
+            this.AddStudentButtonClick.Click += new System.EventHandler(this.AddStudentButtonClick_Click);
+            // 
+            // StudentImagePictureBox
+            // 
+            this.StudentImagePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.StudentImagePictureBox.Location = new System.Drawing.Point(269, 47);
+            this.StudentImagePictureBox.Name = "StudentImagePictureBox";
+            this.StudentImagePictureBox.Size = new System.Drawing.Size(203, 179);
+            this.StudentImagePictureBox.TabIndex = 10;
+            this.StudentImagePictureBox.TabStop = false;
             // 
             // MainForm
             // 
@@ -230,11 +270,13 @@
             this.Controls.Add(this.AddStudentButtonClick);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.StudentsListBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
-            this.Text = "ListOfStudents";
+            this.Text = "List Of Students";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StudentImagePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,6 +300,9 @@
         private System.Windows.Forms.Button RemoveStudentButtonClick;
         private System.Windows.Forms.TextBox SearchTextBox;
         private System.Windows.Forms.Label SearchLabel;
+        private System.Windows.Forms.Button AddImageButton;
+        private System.Windows.Forms.PictureBox StudentImagePictureBox;
+        private System.Windows.Forms.Button RemoveImageButton;
     }
 }
 

@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using static System.Environment;
@@ -31,12 +33,18 @@ namespace ListOfStudents.View
         private int _currentStudentIndex;
 
         /// <summary>
+        /// Фильтр
+        /// </summary>
+        private string _filter = "(*.jpg;*.png;*.jpeg)|*.JPG;*.PNG;*.JPEG";
+
+        /// <summary>
         /// Создает экземпляр класса <see cref="MainForm"/>.
         /// </summary>
         public MainForm()
         {
             InitializeComponent();
 
+            StudentImagePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             Serializer.Path = $@"{Environment.GetFolderPath(SpecialFolder.ApplicationData)}"+
                                @"\data.json";
 
@@ -138,17 +146,52 @@ namespace ListOfStudents.View
                 GroupNumberTextBox.Enabled = true;
                 FacultyComboBox.Enabled = true;
                 EducationFormComboBox.Enabled = true;
+                AddImageButton.Enabled = true;
+                RemoveImageButton.Enabled = true;
             }
 
-            if (StudentsListBox.Items.Count == 0 & StudentsListBox.SelectedIndex == -1)
+            if (StudentsListBox.Items.Count == 0 || StudentsListBox.SelectedIndex == -1)
             {
                 FullNameTextBox.Enabled = false;
                 GroupNumberTextBox.Enabled = false;
                 FacultyComboBox.Enabled = false;
                 EducationFormComboBox.Enabled = false;
+                AddImageButton.Enabled = false;
+                RemoveImageButton.Enabled = false;
 
                 ClearTextBoxes();
             }      
+        }
+
+        /// <summary>
+        /// Организует поиск полей у объектов,
+        /// удовлетворяющих введенному в строку значению.
+        /// </summary>
+        /// <param name="searchText">Строка по которой нужно искать.</param>
+        /// <returns>Список объектов подходящих под введенную строку.</returns>
+        private List<Student> Search(string searchText)
+        {
+            var result = from value in _students
+                         where value.FullName.Contains(searchText) ||
+                         value.NumberGroup.Contains(searchText) ||
+                         value.Faculty.ToString().Contains(searchText) ||
+                         value.EducationForm.ToString().Contains(searchText)
+                         select value;
+
+            return result.ToList();
+        }
+
+        /// <summary>
+        /// Преобразует Base64 в Image.
+        /// </summary>
+        /// <param name="base64">Строка в виде Base64.</param>
+        /// <returns>Объект класса <see cref="Image"/>.</returns>
+        private Image ConvertFromBase64StringToImage(string base64)
+        {          
+            if (base64 == null) return null;
+
+            var byteArrayImage = Convert.FromBase64String(base64);
+            return Image.FromStream(new MemoryStream(byteArrayImage));
         }
 
         private void AddStudentButtonClick_Click(object sender, EventArgs e)
@@ -169,11 +212,15 @@ namespace ListOfStudents.View
             {
                 _currentStudentIndex = StudentsListBox.SelectedIndex;
                 _currentStudent = _studentsSearch[_currentStudentIndex];
+                StudentImagePictureBox.Image = 
+                    ConvertFromBase64StringToImage(_currentStudent.StudentImage);
             }
             if (SearchTextBox.Text == "")
             {
                 _currentStudentIndex = StudentsListBox.SelectedIndex;
                 _currentStudent = _students[_currentStudentIndex];
+                StudentImagePictureBox.Image =
+                    ConvertFromBase64StringToImage(_currentStudent.StudentImage);
             }
                 
 
@@ -262,20 +309,28 @@ namespace ListOfStudents.View
             var searchText = SearchTextBox.Text;
             _studentsSearch = Search(searchText);
 
-            UpdateListBoxInfo();
-            //UpdateSelectedStudentInfo(_currentStudent);
+            UpdateListBoxInfo();           
         }
 
-        private List<Student> Search(string searchText)
-        {
-            var result = from value in _students
-                         where value.FullName.Contains(searchText) ||
-                         value.NumberGroup.Contains(searchText) ||
-                         value.Faculty.ToString().Contains(searchText) ||
-                         value.EducationForm.ToString().Contains(searchText)
-                         select value;
+        private void AddImageButton_Click(object sender, EventArgs e)
+        {           
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = _filter;
 
-            return result.ToList();
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                byte[] imageArray = System.IO.File.ReadAllBytes(openFileDialog.FileName);
+                _currentStudent.StudentImage = Convert.ToBase64String(imageArray);
+                StudentImagePictureBox.Image = new Bitmap(openFileDialog.FileName);
+            }
+        }
+
+        private void RemoveImageButton_Click(object sender, EventArgs e)
+        {
+            if (_currentStudent.StudentImage == null) return;
+
+            _currentStudent.StudentImage = null;
+            StudentImagePictureBox.Image = null;
         }
     }
 }
