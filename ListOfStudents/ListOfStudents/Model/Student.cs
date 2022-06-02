@@ -13,9 +13,9 @@ namespace ListOfStudents.Model
     public class Student
     {
         /// <summary>
-        /// Общее кол-во.
+        /// Счетчик студентов.
         /// </summary>
-        private static int _allStudentsCount;
+        private static int _counterStudents;
 
         /// <summary>
         /// Фио.
@@ -25,12 +25,14 @@ namespace ListOfStudents.Model
         /// <summary>
         /// Идентификатор зачетной книжки.
         /// </summary>
-        private readonly int _recordBookId = 100000;
+        private  int _recordBookId = 100000;
 
         /// <summary>
         /// Номер группы.
         /// </summary>
         private string _numberGroup;
+
+
 
         /// <summary>
         /// Возвращает и задает номер группы. Не более 10 символов.
@@ -75,6 +77,11 @@ namespace ListOfStudents.Model
             {
                 return _recordBookId;
             }
+            set
+            {
+                _counterStudents = value - 100000;
+                _recordBookId = value;
+            }
         }
 
         /// <summary>
@@ -107,9 +114,9 @@ namespace ListOfStudents.Model
         /// Создает экземпляр класса <see cref="Student"/>.
         /// </summary>
         public Student()
-        {
-            _allStudentsCount++;
-            _recordBookId += _allStudentsCount;
+        {            
+            _counterStudents++;
+            _recordBookId += _counterStudents;
             FullName = "None";
             Faculty = Faculty.None;
             EducationForm = EducationForm.None;
