@@ -15,8 +15,6 @@
 
 AppId={{1F39445B-9523-4BD4-9C04-74B0B9793AB9}
 
-PrivilegesRequired = admin
-
 AppName={#Name}
 AppVersion={#Version}
 AppVerName = {#Name}
@@ -42,6 +40,8 @@ Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
+Name: "groupfolder"; Description: "Создать папку в меню пуск";  GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
+
 
 [Files]
 Source: "..\ListOfStudents\ListOfStudents\bin\Release\{#ExeName}"; DestDir: "{app}"; Flags: ignoreversion
@@ -49,7 +49,7 @@ Source: "..\ListOfStudents\ListOfStudents\bin\Release\*.dll"; DestDir: "{app}"; 
 Source: "..\ListOfStudents\ListOfStudents\Resources\*"; DestDir: "{app}\Resources"; Flags: ignoreversion recursesubdirs createallsubdirs
 [Icons]
 Name: "{group}\Uninstall.exe"; Filename: "Uninstallexe"; IconFilename: "{app}\Resources\{#IconName}";
-Name: "{group}\{#Name}"; Filename: "{app}\{#ExeName}"; WorkingDir: "{app}"; IconFilename: "{app}\Resources\{#IconName}"
+Name: "{group}\{#Name}"; Filename: "{app}\{#ExeName}"; Tasks: groupfolder; WorkingDir: "{app}"; IconFilename: "{app}\Resources\{#IconName}"
 Name: "{commondesktop}\{#Name}"; Filename: "{app}\{#ExeName}"; Tasks: desktopicon; IconFilename: "{app}\Resources\{#IconName}"
 
 [Run]

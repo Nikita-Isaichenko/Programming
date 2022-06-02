@@ -60,7 +60,7 @@ namespace ListOfStudents.View
             foreach (var value in educationForms)
             {
                 EducationFormComboBox.Items.Add(value);
-            }
+            }            
             
             UpdateListBoxInfo();
             UpdateSelectedStudentInfo(_currentStudent);       
@@ -95,7 +95,10 @@ namespace ListOfStudents.View
                 foreach (var value in _studentsSearch)
                 {
                     StudentsListBox.Items.Add(value.OutputInformation());
-                }               
+                }
+
+                var index = _studentsSearch.IndexOf(_currentStudent);
+                StudentsListBox.SelectedIndex = Convert.ToInt32(index);
             }
 
             if (SearchTextBox.Text == "")
@@ -150,7 +153,7 @@ namespace ListOfStudents.View
                 RemoveImageButton.Enabled = true;
             }
 
-            if (StudentsListBox.Items.Count == 0 || StudentsListBox.SelectedIndex == -1)
+            if (StudentsListBox.SelectedIndex == -1)
             {
                 FullNameTextBox.Enabled = false;
                 GroupNumberTextBox.Enabled = false;
@@ -223,7 +226,6 @@ namespace ListOfStudents.View
                     ConvertFromBase64StringToImage(_currentStudent.StudentImage);
             }
                 
-
             UpdateSelectedStudentInfo(_currentStudent);
         }
 

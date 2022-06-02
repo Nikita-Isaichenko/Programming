@@ -33,6 +33,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.RemoveImageButton = new System.Windows.Forms.Button();
             this.AddImageButton = new System.Windows.Forms.Button();
+            this.StudentImagePictureBox = new System.Windows.Forms.PictureBox();
             this.EducationFormComboBox = new System.Windows.Forms.ComboBox();
             this.EducationFormLabel = new System.Windows.Forms.Label();
             this.FacultyComboBox = new System.Windows.Forms.ComboBox();
@@ -47,7 +48,6 @@
             this.SearchLabel = new System.Windows.Forms.Label();
             this.RemoveStudentButtonClick = new System.Windows.Forms.Button();
             this.AddStudentButtonClick = new System.Windows.Forms.Button();
-            this.StudentImagePictureBox = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StudentImagePictureBox)).BeginInit();
             this.SuspendLayout();
@@ -111,6 +111,15 @@
             this.AddImageButton.TabIndex = 11;
             this.AddImageButton.UseVisualStyleBackColor = true;
             this.AddImageButton.Click += new System.EventHandler(this.AddImageButton_Click);
+            // 
+            // StudentImagePictureBox
+            // 
+            this.StudentImagePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.StudentImagePictureBox.Location = new System.Drawing.Point(269, 47);
+            this.StudentImagePictureBox.Name = "StudentImagePictureBox";
+            this.StudentImagePictureBox.Size = new System.Drawing.Size(203, 179);
+            this.StudentImagePictureBox.TabIndex = 10;
+            this.StudentImagePictureBox.TabStop = false;
             // 
             // EducationFormComboBox
             // 
@@ -212,6 +221,7 @@
             // 
             // SearchTextBox
             // 
+            this.SearchTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.SearchTextBox.Location = new System.Drawing.Point(634, 429);
             this.SearchTextBox.Name = "SearchTextBox";
             this.SearchTextBox.Size = new System.Drawing.Size(165, 20);
@@ -220,6 +230,7 @@
             // 
             // SearchLabel
             // 
+            this.SearchLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.SearchLabel.AutoSize = true;
             this.SearchLabel.Location = new System.Drawing.Point(582, 432);
             this.SearchLabel.Margin = new System.Windows.Forms.Padding(3, 0, 5, 0);
@@ -250,15 +261,6 @@
             this.AddStudentButtonClick.UseVisualStyleBackColor = true;
             this.AddStudentButtonClick.Click += new System.EventHandler(this.AddStudentButtonClick_Click);
             // 
-            // StudentImagePictureBox
-            // 
-            this.StudentImagePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.StudentImagePictureBox.Location = new System.Drawing.Point(269, 47);
-            this.StudentImagePictureBox.Name = "StudentImagePictureBox";
-            this.StudentImagePictureBox.Size = new System.Drawing.Size(203, 179);
-            this.StudentImagePictureBox.TabIndex = 10;
-            this.StudentImagePictureBox.TabStop = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -271,6 +273,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.StudentsListBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(827, 500);
             this.Name = "MainForm";
             this.Text = "List Of Students";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
