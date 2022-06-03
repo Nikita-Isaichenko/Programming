@@ -6,7 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using static System.Environment;
+
 
 namespace ListOfStudents.View
 {
@@ -28,11 +28,6 @@ namespace ListOfStudents.View
         private Student _currentStudent;
 
         /// <summary>
-        /// Индекс выбранного объекта класса <see cref="Student"/>.
-        /// </summary>
-        private int _currentStudentIndex;
-
-        /// <summary>
         /// Фильтр
         /// </summary>
         private string _filter = "(*.jpg;*.png;*.jpeg)|*.JPG;*.PNG;*.JPEG";
@@ -42,11 +37,7 @@ namespace ListOfStudents.View
         /// </summary>
         public MainForm()
         {
-            InitializeComponent();
-
-            StudentImagePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            Serializer.Path = $@"{Environment.GetFolderPath(SpecialFolder.ApplicationData)}"+
-                               @"\data.json";
+            InitializeComponent();      
 
             _students = Serializer.LoadFromFile();
             var faculties = Enum.GetValues(typeof(Faculty));
@@ -127,6 +118,7 @@ namespace ListOfStudents.View
                 GroupNumberTextBox.Clear();
                 FacultyComboBox.SelectedIndex = -1;
                 EducationFormComboBox.SelectedIndex = -1;
+                StudentImagePictureBox.Image = null;
             }           
         }
 
@@ -137,31 +129,29 @@ namespace ListOfStudents.View
         /// <param name="student">Объект класса <see cref="Student"/></param>
         private void UpdateSelectedStudentInfo(Student student)
         {           
-            if (StudentsListBox.Items.Count > 0 & StudentsListBox.SelectedIndex != -1)
+            if (StudentsListBox.Items.Count > 0 && StudentsListBox.SelectedIndex != -1)
             {
                 FullNameTextBox.Text = student.FullName;
                 RecordBookIdTextBox.Text = student.RecordBookId.ToString();
                 GroupNumberTextBox.Text = student.NumberGroup;
                 FacultyComboBox.SelectedIndex = (int)student.Faculty;
                 EducationFormComboBox.SelectedIndex = (int)student.EducationForm;
-
-                FullNameTextBox.Enabled = true;
-                GroupNumberTextBox.Enabled = true;
-                FacultyComboBox.Enabled = true;
-                EducationFormComboBox.Enabled = true;
-                AddImageButton.Enabled = true;
-                RemoveImageButton.Enabled = true;
+       
+                foreach (Control control in SelectedStudentGroupBox.Controls)
+                {
+                    SelectedStudentGroupBox.
+                        Controls[SelectedStudentGroupBox.Controls.IndexOf(control)].Enabled = true;
+                }
             }
 
             if (StudentsListBox.SelectedIndex == -1)
             {
-                FullNameTextBox.Enabled = false;
-                GroupNumberTextBox.Enabled = false;
-                FacultyComboBox.Enabled = false;
-                EducationFormComboBox.Enabled = false;
-                AddImageButton.Enabled = false;
-                RemoveImageButton.Enabled = false;
-
+                foreach (Control control in SelectedStudentGroupBox.Controls)
+                {
+                    SelectedStudentGroupBox.
+                        Controls[SelectedStudentGroupBox.Controls.IndexOf(control)].Enabled = false;
+                }
+                
                 ClearTextBoxes();
             }      
         }
@@ -212,16 +202,15 @@ namespace ListOfStudents.View
             if (StudentsListBox.SelectedIndex == -1) return;
 
             if (SearchTextBox.Text != "")
-            {
-                _currentStudentIndex = StudentsListBox.SelectedIndex;
-                _currentStudent = _studentsSearch[_currentStudentIndex];
+            {               
+                _currentStudent = _studentsSearch[StudentsListBox.SelectedIndex];
                 StudentImagePictureBox.Image = 
                     ConvertFromBase64StringToImage(_currentStudent.StudentImage);
             }
+
             if (SearchTextBox.Text == "")
-            {
-                _currentStudentIndex = StudentsListBox.SelectedIndex;
-                _currentStudent = _students[_currentStudentIndex];
+            {               
+                _currentStudent = _students[StudentsListBox.SelectedIndex];
                 StudentImagePictureBox.Image =
                     ConvertFromBase64StringToImage(_currentStudent.StudentImage);
             }
@@ -231,14 +220,22 @@ namespace ListOfStudents.View
 
         private void RemoveStudentButtonClick_Click(object sender, EventArgs e)
         {
-            if (SearchTextBox.Text != "") return;
+            if (StudentsListBox.SelectedIndex == -1) return;
 
-            if (_students.Count > 0)
+            if (SearchTextBox.Text != "" && _students.Count > 0)
             {
-                StudentsListBox.Items.RemoveAt(_currentStudentIndex);
-                _students.RemoveAt(_currentStudentIndex);
-                StudentsListBox.SelectedIndex = _students.Count > 0 ? 0 : -1;
+                StudentsListBox.Items.RemoveAt(_studentsSearch.IndexOf(_currentStudent));
+                _studentsSearch.RemoveAt(_studentsSearch.IndexOf(_currentStudent));
+                _students.Remove(_currentStudent);
+                StudentsListBox.SelectedIndex = _studentsSearch.Count > 0 ? 0 : -1;
             }
+
+            if (SearchTextBox.Text == "" && _students.Count > 0)
+            {
+                StudentsListBox.Items.RemoveAt(_students.IndexOf(_currentStudent));
+                _students.RemoveAt(_students.IndexOf(_currentStudent));
+                StudentsListBox.SelectedIndex = _students.Count > 0 ? 0 : -1;
+            }            
 
             UpdateSelectedStudentInfo(_currentStudent);
         }
@@ -252,7 +249,7 @@ namespace ListOfStudents.View
         {
             try
             {   
-                if (_students.Count == 0)
+                if (StudentsListBox.Items.Count == 0)
                 {
                     FullNameTextBox.BackColor = AppColor.NotEnabledWidget;
                     return;
@@ -273,7 +270,7 @@ namespace ListOfStudents.View
         {
             try
             {
-                if (_students.Count == 0)
+                if (StudentsListBox.Items.Count == 0)
                 {
                     GroupNumberTextBox.BackColor = AppColor.NotEnabledWidget;
                     return;

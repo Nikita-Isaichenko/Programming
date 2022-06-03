@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.StudentsListBox = new System.Windows.Forms.ListBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.SelectedStudentGroupBox = new System.Windows.Forms.GroupBox();
             this.RemoveImageButton = new System.Windows.Forms.Button();
             this.AddImageButton = new System.Windows.Forms.Button();
             this.StudentImagePictureBox = new System.Windows.Forms.PictureBox();
@@ -48,7 +48,7 @@
             this.SearchLabel = new System.Windows.Forms.Label();
             this.RemoveStudentButtonClick = new System.Windows.Forms.Button();
             this.AddStudentButtonClick = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.SelectedStudentGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StudentImagePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,38 +59,38 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.StudentsListBox.FormattingEnabled = true;
             this.StudentsListBox.HorizontalScrollbar = true;
-            this.StudentsListBox.Location = new System.Drawing.Point(10, 10);
+            this.StudentsListBox.Location = new System.Drawing.Point(10, 36);
             this.StudentsListBox.Margin = new System.Windows.Forms.Padding(1);
             this.StudentsListBox.Name = "StudentsListBox";
-            this.StudentsListBox.Size = new System.Drawing.Size(300, 394);
+            this.StudentsListBox.Size = new System.Drawing.Size(300, 368);
             this.StudentsListBox.TabIndex = 0;
             this.StudentsListBox.SelectedIndexChanged += new System.EventHandler(this.StudentsListBox_SelectedIndexChanged);
             // 
-            // groupBox1
+            // SelectedStudentGroupBox
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.AutoSize = true;
-            this.groupBox1.Controls.Add(this.RemoveImageButton);
-            this.groupBox1.Controls.Add(this.AddImageButton);
-            this.groupBox1.Controls.Add(this.StudentImagePictureBox);
-            this.groupBox1.Controls.Add(this.EducationFormComboBox);
-            this.groupBox1.Controls.Add(this.EducationFormLabel);
-            this.groupBox1.Controls.Add(this.FacultyComboBox);
-            this.groupBox1.Controls.Add(this.FacultyLabel);
-            this.groupBox1.Controls.Add(this.GroupNumberLabel);
-            this.groupBox1.Controls.Add(this.GroupNumberTextBox);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.RecordBookIdTextBox);
-            this.groupBox1.Controls.Add(this.FullNameTextBox);
-            this.groupBox1.Controls.Add(this.FullNameTextLabel);
-            this.groupBox1.Location = new System.Drawing.Point(316, 10);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 3, 1, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(485, 293);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Selected Student";
+            this.SelectedStudentGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SelectedStudentGroupBox.AutoSize = true;
+            this.SelectedStudentGroupBox.Controls.Add(this.RemoveImageButton);
+            this.SelectedStudentGroupBox.Controls.Add(this.AddImageButton);
+            this.SelectedStudentGroupBox.Controls.Add(this.StudentImagePictureBox);
+            this.SelectedStudentGroupBox.Controls.Add(this.EducationFormComboBox);
+            this.SelectedStudentGroupBox.Controls.Add(this.EducationFormLabel);
+            this.SelectedStudentGroupBox.Controls.Add(this.FacultyComboBox);
+            this.SelectedStudentGroupBox.Controls.Add(this.FacultyLabel);
+            this.SelectedStudentGroupBox.Controls.Add(this.GroupNumberLabel);
+            this.SelectedStudentGroupBox.Controls.Add(this.GroupNumberTextBox);
+            this.SelectedStudentGroupBox.Controls.Add(this.label1);
+            this.SelectedStudentGroupBox.Controls.Add(this.RecordBookIdTextBox);
+            this.SelectedStudentGroupBox.Controls.Add(this.FullNameTextBox);
+            this.SelectedStudentGroupBox.Controls.Add(this.FullNameTextLabel);
+            this.SelectedStudentGroupBox.Location = new System.Drawing.Point(316, 10);
+            this.SelectedStudentGroupBox.Margin = new System.Windows.Forms.Padding(5, 3, 1, 3);
+            this.SelectedStudentGroupBox.Name = "SelectedStudentGroupBox";
+            this.SelectedStudentGroupBox.Padding = new System.Windows.Forms.Padding(3, 3, 3, 2);
+            this.SelectedStudentGroupBox.Size = new System.Drawing.Size(485, 293);
+            this.SelectedStudentGroupBox.TabIndex = 4;
+            this.SelectedStudentGroupBox.TabStop = false;
+            this.SelectedStudentGroupBox.Text = "Selected Student";
             // 
             // RemoveImageButton
             // 
@@ -118,6 +118,7 @@
             this.StudentImagePictureBox.Location = new System.Drawing.Point(269, 47);
             this.StudentImagePictureBox.Name = "StudentImagePictureBox";
             this.StudentImagePictureBox.Size = new System.Drawing.Size(203, 179);
+            this.StudentImagePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.StudentImagePictureBox.TabIndex = 10;
             this.StudentImagePictureBox.TabStop = false;
             // 
@@ -222,9 +223,10 @@
             // SearchTextBox
             // 
             this.SearchTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SearchTextBox.Location = new System.Drawing.Point(634, 429);
+            this.SearchTextBox.Location = new System.Drawing.Point(56, 10);
+            this.SearchTextBox.Margin = new System.Windows.Forms.Padding(0);
             this.SearchTextBox.Name = "SearchTextBox";
-            this.SearchTextBox.Size = new System.Drawing.Size(165, 20);
+            this.SearchTextBox.Size = new System.Drawing.Size(254, 20);
             this.SearchTextBox.TabIndex = 11;
             this.SearchTextBox.TextChanged += new System.EventHandler(this.SearchTextBox_TextChanged);
             // 
@@ -232,7 +234,7 @@
             // 
             this.SearchLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.SearchLabel.AutoSize = true;
-            this.SearchLabel.Location = new System.Drawing.Point(582, 432);
+            this.SearchLabel.Location = new System.Drawing.Point(9, 13);
             this.SearchLabel.Margin = new System.Windows.Forms.Padding(3, 0, 5, 0);
             this.SearchLabel.Name = "SearchLabel";
             this.SearchLabel.Size = new System.Drawing.Size(44, 13);
@@ -270,15 +272,15 @@
             this.Controls.Add(this.SearchLabel);
             this.Controls.Add(this.RemoveStudentButtonClick);
             this.Controls.Add(this.AddStudentButtonClick);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.SelectedStudentGroupBox);
             this.Controls.Add(this.StudentsListBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(827, 500);
             this.Name = "MainForm";
             this.Text = "List Of Students";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.SelectedStudentGroupBox.ResumeLayout(false);
+            this.SelectedStudentGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StudentImagePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -288,7 +290,7 @@
         #endregion
 
         private System.Windows.Forms.ListBox StudentsListBox;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox SelectedStudentGroupBox;
         private System.Windows.Forms.TextBox FullNameTextBox;
         private System.Windows.Forms.Label FullNameTextLabel;
         private System.Windows.Forms.Label label1;

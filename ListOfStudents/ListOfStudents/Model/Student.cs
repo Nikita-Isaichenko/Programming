@@ -32,8 +32,6 @@ namespace ListOfStudents.Model
         /// </summary>
         private string _numberGroup;
 
-
-
         /// <summary>
         /// Возвращает и задает номер группы. Не более 10 символов.
         /// </summary>
@@ -98,8 +96,6 @@ namespace ListOfStudents.Model
         /// Возвращает и задает форму обучения.
         /// </summary>
         public EducationForm EducationForm { get; set; }
-
-
 
         /// <summary>
         /// Выводит информацию о студенте в виде шаблона.
