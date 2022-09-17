@@ -13,6 +13,15 @@ namespace ListOfStudents.Model
     public class Student
     {
         /// <summary>
+        /// Максимальная длина полного имени.
+        /// </summary>
+        private const int MaxLengthFullName = 200;
+
+        /// <summary>
+        /// Максимальная кол-во символов в номере группы.
+        /// </summary>
+        private const int MaxLengthNumberGroup = 10;
+        /// <summary>
         /// Счетчик студентов.
         /// </summary>
         private static int _counterStudents;
@@ -43,7 +52,7 @@ namespace ListOfStudents.Model
             }
             set
             {
-                Validator.AssertLengthString(value, 10, nameof(NumberGroup));
+                Validator.AssertLengthString(value, MaxLengthNumberGroup, nameof(NumberGroup));
                 Validator.AssertEmptyValue(value, nameof(NumberGroup));
                 _numberGroup = value;
             }
@@ -60,7 +69,7 @@ namespace ListOfStudents.Model
             }
             set
             {
-                Validator.AssertLengthString(value, 200, nameof(FullName));
+                Validator.AssertLengthString(value, MaxLengthFullName, nameof(FullName));
                 Validator.AssertEmptyValue(value, nameof(FullName));
                 _fullName = value;
             }

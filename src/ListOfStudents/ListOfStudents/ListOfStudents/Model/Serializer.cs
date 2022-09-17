@@ -17,8 +17,8 @@ namespace ListOfStudents.Model
         static Serializer()
         {
             Path = $@"{Environment.GetFolderPath(SpecialFolder.ApplicationData)}" +
-                    @"\Isaichenko Nikita\List of Program\";
-            NameFile = "data.json";
+                    @"\Isaichenko Nikita\List of Students\";
+            FileName = "data.json";
 
             if (!File.Exists(Path))
             {
@@ -33,7 +33,7 @@ namespace ListOfStudents.Model
         /// <summary>
         /// Возвращает и задает имя файла.
         /// </summary>
-        public static string NameFile { get; set; }
+        public static string FileName { get; set; }
         
         /// <summary>
         /// Сохраняет данные из списка в формате JSON.
@@ -41,7 +41,7 @@ namespace ListOfStudents.Model
         /// <param name="students">Список студентов.</param>
         public static void SaveToFile(List<Student> students)
         {
-            using (StreamWriter writer = new StreamWriter(Path + NameFile))
+            using (StreamWriter writer = new StreamWriter(Path + FileName))
             {
 
                 writer.Write(JsonConvert.SerializeObject(students));
@@ -59,7 +59,7 @@ namespace ListOfStudents.Model
 
                 try
                 {
-                    using (StreamReader reader = new StreamReader(Path + NameFile))
+                    using (StreamReader reader = new StreamReader(Path + FileName))
                     {
                         students = JsonConvert.DeserializeObject<List<Student>>(reader.ReadToEnd());
                     }
