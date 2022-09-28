@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ItemsPanel = new System.Windows.Forms.Panel();
             this.TableLayoutPanelButtons = new System.Windows.Forms.TableLayoutPanel();
             this.AddButton = new System.Windows.Forms.Button();
@@ -38,12 +39,15 @@
             this.DescriptionTextBox = new System.Windows.Forms.TextBox();
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.DescriptionLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.NameLabel = new System.Windows.Forms.Label();
             this.CostTextBox = new System.Windows.Forms.TextBox();
             this.IDTextBox = new System.Windows.Forms.TextBox();
             this.CostLabel = new System.Windows.Forms.Label();
             this.IDLabel = new System.Windows.Forms.Label();
             this.SelectedItemsLabel = new System.Windows.Forms.Label();
+            this.CostToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.NameToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.DescriptionToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.ItemsPanel.SuspendLayout();
             this.TableLayoutPanelButtons.SuspendLayout();
             this.SelectedItemsPanel.SuspendLayout();
@@ -130,7 +134,7 @@
             this.SelectedItemsPanel.Controls.Add(this.DescriptionTextBox);
             this.SelectedItemsPanel.Controls.Add(this.NameTextBox);
             this.SelectedItemsPanel.Controls.Add(this.DescriptionLabel);
-            this.SelectedItemsPanel.Controls.Add(this.label1);
+            this.SelectedItemsPanel.Controls.Add(this.NameLabel);
             this.SelectedItemsPanel.Controls.Add(this.CostTextBox);
             this.SelectedItemsPanel.Controls.Add(this.IDTextBox);
             this.SelectedItemsPanel.Controls.Add(this.CostLabel);
@@ -175,14 +179,14 @@
             this.DescriptionLabel.TabIndex = 6;
             this.DescriptionLabel.Text = "Description:";
             // 
-            // label1
+            // NameLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 99);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Name:";
+            this.NameLabel.AutoSize = true;
+            this.NameLabel.Location = new System.Drawing.Point(3, 99);
+            this.NameLabel.Name = "NameLabel";
+            this.NameLabel.Size = new System.Drawing.Size(38, 13);
+            this.NameLabel.TabIndex = 5;
+            this.NameLabel.Text = "Name:";
             // 
             // CostTextBox
             // 
@@ -270,6 +274,9 @@
         private System.Windows.Forms.TextBox DescriptionTextBox;
         private System.Windows.Forms.TextBox NameTextBox;
         private System.Windows.Forms.Label DescriptionLabel;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label NameLabel;
+        private System.Windows.Forms.ToolTip CostToolTip;
+        private System.Windows.Forms.ToolTip NameToolTip;
+        private System.Windows.Forms.ToolTip DescriptionToolTip;
     }
 }

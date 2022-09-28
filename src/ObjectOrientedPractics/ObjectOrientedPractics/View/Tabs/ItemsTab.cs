@@ -122,6 +122,7 @@ namespace ObjectOrientedPractics.View.Tabs
             catch(Exception ex)
             {
                 CostTextBox.BackColor = AppColor.ErrorBackColor;
+                CostToolTip.SetToolTip(CostTextBox, ex.Message);
 
                 if (_items.Count == 0)
                     CostTextBox.BackColor = AppColor.NormalBackColor;
@@ -138,6 +139,7 @@ namespace ObjectOrientedPractics.View.Tabs
             catch (Exception ex)
             {
                 NameTextBox.BackColor = AppColor.ErrorBackColor;
+                NameToolTip.SetToolTip(NameTextBox, ex.Message);
 
                 if (_items.Count == 0) 
                     NameTextBox.BackColor = AppColor.NormalBackColor;
@@ -154,6 +156,7 @@ namespace ObjectOrientedPractics.View.Tabs
             catch (Exception ex)
             {
                 DescriptionTextBox.BackColor = AppColor.ErrorBackColor;
+                DescriptionToolTip.SetToolTip(DescriptionTextBox, ex.Message);
             }
         }      
     }
