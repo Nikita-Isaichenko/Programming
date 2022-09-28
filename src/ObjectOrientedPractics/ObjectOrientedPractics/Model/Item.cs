@@ -14,11 +14,6 @@ namespace ObjectOrientedPractics.Model
     public class Item
     {
         /// <summary>
-        /// Уникальный идентификатор для всех объектов данного класса.
-        /// </summary>
-        private readonly int _id;
-
-        /// <summary>
         /// Название товара.
         /// </summary>
         private string _name;
@@ -26,7 +21,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Информация о товаре.
         /// </summary>
-        private string _info;
+        private string _description;
 
         /// <summary>
         /// Стоимость товара
@@ -48,7 +43,6 @@ namespace ObjectOrientedPractics.Model
             {
                 Validator.AssertEmptyValue(value, nameof(Name));
                 Validator.AssertLengthString(value, 200, nameof(Name));
-                //Validator.AssertValueInRange(value, 0, 100000, "Name");
                 _name = value;
             }
         }
@@ -56,18 +50,19 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Возвращает и задает информацию о товаре.
         /// </summary>
-        public string Info
+        public string Description
         {
             get 
             { 
-                return _info;
+                return _description;
             }
             set
             {
-                Validator.AssertLengthString(value, 1000, nameof(Info));
-                _info = value;
+                Validator.AssertLengthString(value, 1000, nameof(Description));
+                _description = value;
             }
         }
+
         /// <summary>
         /// Возвращает и задает стоимость товара.
         /// </summary>
@@ -82,21 +77,19 @@ namespace ObjectOrientedPractics.Model
                 Validator.AssertValueInRange(value, 0, 100000, nameof(Cost));
                 _cost = value;
             }
-        }
-
-        
+        }       
         
         /// <summary>
         /// Создает экземпляр класса <see cref="Item"/>
         /// </summary>
         /// <param name="name">Название товара.</param>
-        /// <param name="info">Информация о товаре</param>
+        /// <param name="description">Информация о товаре</param>
         /// <param name="cost">Стоимость товара.</param>
-        public Item(string name, string info, double cost)
+        public Item(string name, string description, double cost)
         {
             Id = IdGenerator.GetIdNext();
             Name = name;
-            Info = info;
+            Description = description;
             Cost = cost;
         }
     }

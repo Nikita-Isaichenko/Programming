@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Item.cs" />
+    <Compile Include="Services\AppColor.cs" />
     <Compile Include="Services\IdGenerator.cs" />
     <Compile Include="Services\Validator.cs" />
     <Compile Include="View\MainForm.cs">
@@ -80,6 +81,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Tabs\ItemsTab.resx">
       <DependentUpon>ItemsTab.cs</DependentUpon>
     </EmbeddedResource>
