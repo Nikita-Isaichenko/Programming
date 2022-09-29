@@ -2,15 +2,14 @@
 using ObjectOrientedPractics.Services;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Forms;
 using UserControl = System.Windows.Forms.UserControl;
+
 
 namespace ObjectOrientedPractics.View.Tabs
 {
+    /// <summary>
+    /// Хранит логику обработки событий окна.
+    /// </summary>
     public partial class ItemsTab : UserControl
     {
         /// <summary>
@@ -24,11 +23,29 @@ namespace ObjectOrientedPractics.View.Tabs
         private Item _currentItem;
 
         /// <summary>
+        /// Название файла.
+        /// </summary>
+        private string _nameFile = "Items";
+
+        /// <summary>
         /// Создает экземпляр класса <see cref="ItemsTab"/>
         /// </summary>
         public ItemsTab()
         {
             InitializeComponent();
+            
+            if (Serializer.IsFile(_nameFile))
+            {
+                _items = Serializer.LoadFromFile<Item>(_nameFile);
+
+                foreach (var item in _items)
+                {
+                    ItemsListBox.Items.Add(item.Name);
+                }
+
+                ItemsListBox.SelectedIndex = 0;
+            }   
+
             CheckingAvailabilityItems();
         }
 
@@ -163,6 +180,14 @@ namespace ObjectOrientedPractics.View.Tabs
                 DescriptionTextBox.BackColor = AppColor.ErrorBackColor;
                 DescriptionToolTip.SetToolTip(DescriptionTextBox, ex.Message);
             }
-        }      
+        }  
+        
+        /// <summary>
+        /// Сохраняет данные о товарах.
+        /// </summary>
+        public void SaveItemsData()
+        {
+            Serializer.SaveToFile(_nameFile, _items);
+        }
     }
 }

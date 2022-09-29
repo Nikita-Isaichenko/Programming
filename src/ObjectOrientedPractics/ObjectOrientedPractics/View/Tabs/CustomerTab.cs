@@ -2,16 +2,15 @@
 using ObjectOrientedPractics.Services;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
+
 
 namespace ObjectOrientedPractics.View.Tabs
 {
+    /// <summary>
+    /// Хранит логику обработки событий окна.
+    /// </summary>
     public partial class CustomerTab : UserControl
     {
         /// <summary>
@@ -25,11 +24,30 @@ namespace ObjectOrientedPractics.View.Tabs
         private Customer _currentCustomer;
 
         /// <summary>
+        /// Название файла.
+        /// </summary>
+        private  string _nameFile = "Customers";
+
+        /// <summary>
         /// Создает экземпляр класса <see cref="CustomerTab"/>
         /// </summary>
         public CustomerTab()
         {
             InitializeComponent();
+
+            if (Serializer.IsFile(_nameFile))
+            {
+                _customers = Serializer.LoadFromFile<Customer>(_nameFile);
+
+                foreach (var customer in _customers)
+                {
+                    CustomersListBox.Items.Add(customer.FullName);
+                }
+                
+                CustomersListBox.SelectedIndex = 0;
+            }
+            
+            CheckingAvailabilityItems();
         }
 
         /// <summary>
@@ -146,6 +164,14 @@ namespace ObjectOrientedPractics.View.Tabs
                 if (_customers.Count == 0)
                     AddressTextBox.BackColor = AppColor.NormalBackColor;
             }
+        }
+
+        /// <summary>
+        /// Сохраняет данные о покупателях.
+        /// </summary>
+        public void SaveCustomersData()
+        {
+            Serializer.SaveToFile(_nameFile, _customers);
         }
     }
 }
