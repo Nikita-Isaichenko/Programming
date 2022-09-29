@@ -1,10 +1,5 @@
 ﻿using ObjectOrientedPractics.Services;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Contracts;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ObjectOrientedPractics.Model
 {
@@ -35,6 +30,7 @@ namespace ObjectOrientedPractics.Model
 
         /// <summary>
         /// Возвращает и задает название товара.
+        /// Не больше 200 символов.
         /// </summary>
         public string Name
         {
@@ -49,6 +45,7 @@ namespace ObjectOrientedPractics.Model
 
         /// <summary>
         /// Возвращает и задает информацию о товаре.
+        /// Не больше 1000 символов.
         /// </summary>
         public string Description
         {
@@ -65,6 +62,7 @@ namespace ObjectOrientedPractics.Model
 
         /// <summary>
         /// Возвращает и задает стоимость товара.
+        /// От 0 до 100000.
         /// </summary>
         public double Cost
         {

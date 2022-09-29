@@ -1,9 +1,5 @@
 ﻿using ObjectOrientedPractics.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ObjectOrientedPractics.Model
 {
@@ -34,6 +30,7 @@ namespace ObjectOrientedPractics.Model
 
         /// <summary>
         /// Возвращает и задает полное имя покупателя.
+        /// Не больше 200 символов.
         /// </summary>
         public string FullName
         {
@@ -49,6 +46,10 @@ namespace ObjectOrientedPractics.Model
             }
         }
 
+        /// <summary>
+        /// Возвращает и задает адрес покупателя.
+        /// Не больше 500 символов.
+        /// </summary>
         public string Address
         {
             get
