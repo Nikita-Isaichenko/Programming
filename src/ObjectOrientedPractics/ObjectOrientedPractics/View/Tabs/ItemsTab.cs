@@ -135,6 +135,8 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 NameTextBox.BackColor = AppColor.NormalBackColor;
                 _currentItem.Name = NameTextBox.Text;
+                ItemsListBox.
+                    Items[_items.IndexOf(_currentItem)] = _currentItem.Name;
             }
             catch (Exception ex)
             {

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.SelectedICustomersPanel = new System.Windows.Forms.Panel();
             this.AddressTextBox = new System.Windows.Forms.TextBox();
             this.AddressLabel = new System.Windows.Forms.Label();
@@ -42,6 +43,8 @@
             this.RemoveButton = new System.Windows.Forms.Button();
             this.CustomersListBox = new System.Windows.Forms.ListBox();
             this.CustomersLabel = new System.Windows.Forms.Label();
+            this.FullNameToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.AddressToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.SelectedICustomersPanel.SuspendLayout();
             this.CustomersPanel.SuspendLayout();
             this.TableLayoutPanelButtons.SuspendLayout();
@@ -75,6 +78,7 @@
             this.AddressTextBox.Name = "AddressTextBox";
             this.AddressTextBox.Size = new System.Drawing.Size(294, 102);
             this.AddressTextBox.TabIndex = 7;
+            this.AddressTextBox.TextChanged += new System.EventHandler(this.AddressTextBox_TextChanged);
             // 
             // AddressLabel
             // 
@@ -94,6 +98,7 @@
             this.FullNameTextBox.Name = "FullNameTextBox";
             this.FullNameTextBox.Size = new System.Drawing.Size(294, 20);
             this.FullNameTextBox.TabIndex = 4;
+            this.FullNameTextBox.TextChanged += new System.EventHandler(this.FullNameTextBox_TextChanged);
             // 
             // IDTextBox
             // 
@@ -173,6 +178,7 @@
             this.AddButton.TabIndex = 0;
             this.AddButton.Text = "Add";
             this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // RemoveButton
             // 
@@ -182,6 +188,7 @@
             this.RemoveButton.TabIndex = 1;
             this.RemoveButton.Text = "Remove";
             this.RemoveButton.UseVisualStyleBackColor = true;
+            this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
             // 
             // CustomersListBox
             // 
@@ -193,6 +200,7 @@
             this.CustomersListBox.Name = "CustomersListBox";
             this.CustomersListBox.Size = new System.Drawing.Size(229, 316);
             this.CustomersListBox.TabIndex = 1;
+            this.CustomersListBox.SelectedIndexChanged += new System.EventHandler(this.CustomersListBox_SelectedIndexChanged);
             // 
             // CustomersLabel
             // 
@@ -238,5 +246,7 @@
         private System.Windows.Forms.Button RemoveButton;
         private System.Windows.Forms.ListBox CustomersListBox;
         private System.Windows.Forms.Label CustomersLabel;
+        private System.Windows.Forms.ToolTip FullNameToolTip;
+        private System.Windows.Forms.ToolTip AddressToolTip;
     }
 }
