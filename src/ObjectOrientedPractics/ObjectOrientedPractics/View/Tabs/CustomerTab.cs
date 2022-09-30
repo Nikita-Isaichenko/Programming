@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using static System.Net.WebRequestMethods;
 
 
 namespace ObjectOrientedPractics.View.Tabs
@@ -14,6 +15,11 @@ namespace ObjectOrientedPractics.View.Tabs
     public partial class CustomerTab : UserControl
     {
         /// <summary>
+        /// Создает автоматически сгенерированого покупателя.
+        /// </summary>
+        private CustomerFactory _customerFactory;
+
+        /// <summary>
         /// Список покупателей.
         /// </summary>
         private List<Customer> _customers = new List<Customer>();
@@ -22,6 +28,12 @@ namespace ObjectOrientedPractics.View.Tabs
         /// Текущий покупатель.
         /// </summary>
         private Customer _currentCustomer;
+
+        /// <summary>
+        /// Адрес для обращения по API.
+        /// </summary>
+        private string _url =
+            "https://api.randomdatatools.ru/?unescaped=false&params=FirstName,LastName,FatherName,Address";
 
         /// <summary>
         /// Название файла.
@@ -34,6 +46,9 @@ namespace ObjectOrientedPractics.View.Tabs
         public CustomerTab()
         {
             InitializeComponent();
+
+            _customerFactory = new CustomerFactory(_url);
+
 
             if (Serializer.IsFile(_nameFile))
             {
@@ -116,6 +131,18 @@ namespace ObjectOrientedPractics.View.Tabs
 
             UpdateTextBoxes(_currentCustomer);
             CheckingAvailabilityItems();
+        }
+
+        private void GenerateButton_Click(object sender, EventArgs e)
+        {
+            _currentCustomer = _customerFactory.CreatCustomer();
+
+            _customers.Add(_currentCustomer);
+            CustomersListBox.Items.Add(_currentCustomer.FullName);
+
+            CustomersListBox.SelectedIndex = _customers.Count - 1;
+
+            UpdateTextBoxes(_currentCustomer);
         }
 
         private void CustomersListBox_SelectedIndexChanged(object sender, EventArgs e)

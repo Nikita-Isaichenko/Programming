@@ -40,11 +40,12 @@
             this.CustomersPanel = new System.Windows.Forms.Panel();
             this.TableLayoutPanelButtons = new System.Windows.Forms.TableLayoutPanel();
             this.AddButton = new System.Windows.Forms.Button();
-            this.RemoveButton = new System.Windows.Forms.Button();
             this.CustomersListBox = new System.Windows.Forms.ListBox();
             this.CustomersLabel = new System.Windows.Forms.Label();
             this.FullNameToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.AddressToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.GenerateButton = new System.Windows.Forms.Button();
+            this.RemoveButton = new System.Windows.Forms.Button();
             this.SelectedICustomersPanel.SuspendLayout();
             this.CustomersPanel.SuspendLayout();
             this.TableLayoutPanelButtons.SuspendLayout();
@@ -162,6 +163,7 @@
             this.TableLayoutPanelButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.TableLayoutPanelButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.TableLayoutPanelButtons.Controls.Add(this.AddButton, 0, 0);
+            this.TableLayoutPanelButtons.Controls.Add(this.GenerateButton, 2, 0);
             this.TableLayoutPanelButtons.Controls.Add(this.RemoveButton, 1, 0);
             this.TableLayoutPanelButtons.Location = new System.Drawing.Point(3, 338);
             this.TableLayoutPanelButtons.Name = "TableLayoutPanelButtons";
@@ -179,16 +181,6 @@
             this.AddButton.Text = "Add";
             this.AddButton.UseVisualStyleBackColor = true;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
-            // 
-            // RemoveButton
-            // 
-            this.RemoveButton.Location = new System.Drawing.Point(79, 3);
-            this.RemoveButton.Name = "RemoveButton";
-            this.RemoveButton.Size = new System.Drawing.Size(69, 51);
-            this.RemoveButton.TabIndex = 1;
-            this.RemoveButton.Text = "Remove";
-            this.RemoveButton.UseVisualStyleBackColor = true;
-            this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
             // 
             // CustomersListBox
             // 
@@ -212,6 +204,26 @@
             this.CustomersLabel.Size = new System.Drawing.Size(65, 13);
             this.CustomersLabel.TabIndex = 0;
             this.CustomersLabel.Text = "Customers";
+            // 
+            // GenerateButton
+            // 
+            this.GenerateButton.Location = new System.Drawing.Point(155, 3);
+            this.GenerateButton.Name = "GenerateButton";
+            this.GenerateButton.Size = new System.Drawing.Size(70, 51);
+            this.GenerateButton.TabIndex = 3;
+            this.GenerateButton.Text = "Generate";
+            this.GenerateButton.UseVisualStyleBackColor = true;
+            this.GenerateButton.Click += new System.EventHandler(this.GenerateButton_Click);
+            // 
+            // RemoveButton
+            // 
+            this.RemoveButton.Location = new System.Drawing.Point(79, 3);
+            this.RemoveButton.Name = "RemoveButton";
+            this.RemoveButton.Size = new System.Drawing.Size(70, 51);
+            this.RemoveButton.TabIndex = 4;
+            this.RemoveButton.Text = "Remove";
+            this.RemoveButton.UseVisualStyleBackColor = true;
+            this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
             // 
             // CustomerTab
             // 
@@ -243,10 +255,11 @@
         private System.Windows.Forms.Panel CustomersPanel;
         private System.Windows.Forms.TableLayoutPanel TableLayoutPanelButtons;
         private System.Windows.Forms.Button AddButton;
-        private System.Windows.Forms.Button RemoveButton;
         private System.Windows.Forms.ListBox CustomersListBox;
         private System.Windows.Forms.Label CustomersLabel;
         private System.Windows.Forms.ToolTip FullNameToolTip;
         private System.Windows.Forms.ToolTip AddressToolTip;
+        private System.Windows.Forms.Button GenerateButton;
+        private System.Windows.Forms.Button RemoveButton;
     }
 }

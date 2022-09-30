@@ -14,6 +14,21 @@ namespace ObjectOrientedPractics.Model
         private readonly int _id;
 
         /// <summary>
+        /// Имя.
+        /// </summary>
+        private string _firstName;
+
+        /// <summary>
+        /// Фамилия.
+        /// </summary>
+        private string _lastName;
+
+        /// <summary>
+        /// Отчество.
+        /// </summary>
+        private string _fatherName;
+
+        /// <summary>
         /// Полное имя покупателя
         /// </summary>
         private string _fullname;
@@ -26,7 +41,62 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Возвращает и задает уникальный идентификатор покупателя.
         /// </summary>
-        public int Id { get; private set; }
+        public int Id { get; private set; }      
+
+        /// <summary>
+        /// Возвращает и задает фамилию.
+        /// Не больше 66 символов.
+        /// </summary>
+        public string LastName
+        {
+            get
+            {
+                return _lastName;
+            }
+            set
+            {
+                Validator.AssertEmptyValue(value, nameof(LastName));
+                Validator.AssertLengthString(value, 66, nameof(LastName));
+                _lastName = value;
+            }
+        }
+
+        /// <summary>
+        /// Возвращает и задает имя.
+        /// Не больше 66 символов.
+        /// </summary>
+        public string FirstName
+        {
+            get
+            {
+                return _firstName;
+            }
+            set
+            {
+                Validator.AssertEmptyValue(value, nameof(FirstName));
+                Validator.AssertLengthString(value, 66, nameof(FirstName));
+                _firstName = value;
+            }
+        }
+
+        /// <summary>
+        /// Возвращает и задает отчество.
+        /// Не больше 66 символов.
+        /// </summary>
+        public string FatherName
+        {
+            get
+            {
+                return _fatherName;
+            }
+            set
+            {
+                Validator.AssertEmptyValue(value, nameof(FatherName));
+                Validator.AssertLengthString(value, 66, nameof(FatherName));
+                _fatherName = value;
+            }
+        }
+        
 
         /// <summary>
         /// Возвращает и задает полное имя покупателя.
@@ -36,6 +106,10 @@ namespace ObjectOrientedPractics.Model
         {
             get
             {
+                if (_firstName != null || _lastName != null || _fatherName != null)
+                {
+                    FullName = $"{FirstName} {LastName} {FatherName}";
+                }
                 return _fullname;
             }
             set
@@ -63,7 +137,11 @@ namespace ObjectOrientedPractics.Model
                 _address = value;
             }
         }
-
+        /// <summary>
+        /// Cоздает экземпляр класса <see cref="Customer"/>
+        /// </summary>
+        /// <param name="fullName">ФИО.</param>
+        /// <param name="address">Адрес.</param>
         public Customer(string fullName, string address)
         {
             Id = IdGenerator.GetIdNext();
@@ -71,6 +149,12 @@ namespace ObjectOrientedPractics.Model
             Address = address;
         }
 
-
+        /// <summary>
+        /// Cоздает экземпляр класса <see cref="Customer"/>
+        /// </summary>
+        public Customer()
+        {
+            Id = IdGenerator.GetIdNext();
+        }
     }
 }
