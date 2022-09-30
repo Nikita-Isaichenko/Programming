@@ -9,24 +9,19 @@ namespace ObjectOrientedPractics.Model
     public class Customer
     {
         /// <summary>
-        /// Уникальный идентификатор покупателя.
-        /// </summary>
-        private readonly int _id;
-
-        /// <summary>
         /// Имя.
         /// </summary>
-        private string _firstName;
+        private string _firstName = "";
 
         /// <summary>
         /// Фамилия.
         /// </summary>
-        private string _lastName;
+        private string _lastName = "";
 
         /// <summary>
         /// Отчество.
         /// </summary>
-        private string _fatherName;
+        private string _fatherName = "";
 
         /// <summary>
         /// Полное имя покупателя
@@ -106,7 +101,7 @@ namespace ObjectOrientedPractics.Model
         {
             get
             {
-                if (_firstName != null || _lastName != null || _fatherName != null)
+                if (_firstName != "" || _lastName != "" || _fatherName != "")
                 {
                     FullName = $"{FirstName} {LastName} {FatherName}";
                 }

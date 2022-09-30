@@ -59,11 +59,21 @@ namespace ObjectOrientedPractics.Services
         /// Создает экземпляр класса <see cref="Parser"/>
         /// </summary>
         public Parser()
-        {          
-            _htmlDocument = _web.Load(_urlMainPages);
+        {
+            if (Serializer.IsFile(nameof(_itemsDescription)) &&
+                Serializer.IsFile(nameof(_itemsCost)) &&
+                Serializer.IsFile(nameof(_itemsName)))
+            {
+                DeserializerItemsInfo();
+            }
+            else
+            {
+                _htmlDocument = _web.Load(_urlMainPages);
 
-            GetHtmlPagesItems();
-            ParseItemInfo();
+                GetHtmlPagesItems();
+                ParseItemsInfo();
+                SerializerItemsInfo();
+            }            
         }
 
         /// <summary>
@@ -84,9 +94,7 @@ namespace ObjectOrientedPractics.Services
                     HtmlAttribute att = node.Attributes["href"];
 
                     _htmlDocuments.Add(_web.Load($"https://skazkina.com{att.Value}"));
-                }
-
-                CountOfParsedItems = _htmlDocuments.Count;
+                }               
             }
             catch { }           
         }
@@ -94,7 +102,7 @@ namespace ObjectOrientedPractics.Services
         /// <summary>
         /// Парсит данные о товаре из HTML страницы товара.
         /// </summary>
-        private void ParseItemInfo()
+        private void ParseItemsInfo()
         {
             try
             {
@@ -109,6 +117,8 @@ namespace ObjectOrientedPractics.Services
                         .SelectSingleNode("//div[contains(@class, 'product-page__props-value')]").InnerText);
 
                     _itemsCost.Add(random.Next(7000, 15000));
+
+                    CountOfParsedItems = _itemsCost.Count;
                 }
             }
             catch { }            
@@ -142,6 +152,22 @@ namespace ObjectOrientedPractics.Services
         public double GetItemCost(int number)
         {
             return _itemsCost[number];
+        }
+
+        private void SerializerItemsInfo()
+        {
+            Serializer.SaveToFile(nameof(_itemsDescription), _itemsDescription);
+            Serializer.SaveToFile(nameof(_itemsCost), _itemsCost);
+            Serializer.SaveToFile(nameof(_itemsName), _itemsName);
+        }
+
+        private void DeserializerItemsInfo()
+        {
+            _itemsDescription = Serializer.LoadFromFile<string>(nameof(_itemsDescription));
+            _itemsCost = Serializer.LoadFromFile<double>(nameof(_itemsCost));
+            _itemsName = Serializer.LoadFromFile<string>(nameof(_itemsName));
+
+            CountOfParsedItems = _itemsCost.Count;
         }
 
     }

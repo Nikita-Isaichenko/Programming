@@ -135,10 +135,15 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         private void GenerateButton_Click(object sender, EventArgs e)
-        {
+        {           
+            if (count > _itemFactory.MaxCountUniqueItems - 1)
+            {
+                count = 0;
+            }
+
             _currentItem = _itemFactory.CreatItem(count);
 
-            count = count > _itemFactory.MaxCountUniqueItems - 1 ? 0 : ++count;
+            count++;
 
             _items.Add(_currentItem);
             ItemsListBox.Items.Add(_currentItem.Name);
