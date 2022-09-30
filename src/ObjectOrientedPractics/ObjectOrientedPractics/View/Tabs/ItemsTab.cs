@@ -13,6 +13,11 @@ namespace ObjectOrientedPractics.View.Tabs
     public partial class ItemsTab : UserControl
     {
         /// <summary>
+        /// Создает товары с автоматически заполненными данными.
+        /// </summary>
+        private ItemFactory _itemFactory;
+
+        /// <summary>
         /// Список товаров.
         /// </summary>
         private List<Item> _items = new List<Item>();
@@ -28,11 +33,20 @@ namespace ObjectOrientedPractics.View.Tabs
         private string _nameFile = "Items";
 
         /// <summary>
+        /// Счетчик.
+        /// </summary>
+        private int count;
+
+        /// <summary>
         /// Создает экземпляр класса <see cref="ItemsTab"/>
         /// </summary>
         public ItemsTab()
         {
             InitializeComponent();
+
+            _itemFactory = new ItemFactory();
+
+            count = 0;
             
             if (Serializer.IsFile(_nameFile))
             {
@@ -120,6 +134,13 @@ namespace ObjectOrientedPractics.View.Tabs
             CheckingAvailabilityItems();
         }
 
+        private void GenerateButton_Click(object sender, EventArgs e)
+        {
+            _currentItem = _itemFactory.CreatItem(count);
+            
+            count 
+        }
+
         private void ItemsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {           
             int index = ItemsListBox.SelectedIndex;
@@ -188,6 +209,6 @@ namespace ObjectOrientedPractics.View.Tabs
         public void SaveItemsData()
         {
             Serializer.SaveToFile(_nameFile, _items);
-        }
+        }       
     }
 }

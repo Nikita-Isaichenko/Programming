@@ -48,6 +48,7 @@
             this.CostToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.NameToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.DescriptionToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.GenerateButton = new System.Windows.Forms.Button();
             this.ItemsPanel.SuspendLayout();
             this.TableLayoutPanelButtons.SuspendLayout();
             this.SelectedItemsPanel.SuspendLayout();
@@ -75,6 +76,7 @@
             this.TableLayoutPanelButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.TableLayoutPanelButtons.Controls.Add(this.AddButton, 0, 0);
             this.TableLayoutPanelButtons.Controls.Add(this.RemoveButton, 1, 0);
+            this.TableLayoutPanelButtons.Controls.Add(this.GenerateButton, 2, 0);
             this.TableLayoutPanelButtons.Location = new System.Drawing.Point(3, 344);
             this.TableLayoutPanelButtons.Name = "TableLayoutPanelButtons";
             this.TableLayoutPanelButtons.RowCount = 1;
@@ -239,6 +241,16 @@
             this.SelectedItemsLabel.TabIndex = 0;
             this.SelectedItemsLabel.Text = "Selected Items";
             // 
+            // GenerateButton
+            // 
+            this.GenerateButton.Location = new System.Drawing.Point(155, 3);
+            this.GenerateButton.Name = "GenerateButton";
+            this.GenerateButton.Size = new System.Drawing.Size(70, 51);
+            this.GenerateButton.TabIndex = 2;
+            this.GenerateButton.Text = "Generate";
+            this.GenerateButton.UseVisualStyleBackColor = true;
+            this.GenerateButton.Click += new System.EventHandler(this.GenerateButton_Click);
+            // 
             // ItemsTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -278,5 +290,6 @@
         private System.Windows.Forms.ToolTip CostToolTip;
         private System.Windows.Forms.ToolTip NameToolTip;
         private System.Windows.Forms.ToolTip DescriptionToolTip;
+        private System.Windows.Forms.Button GenerateButton;
     }
 }
