@@ -154,6 +154,10 @@ namespace ObjectOrientedPractics.Services
             return _itemsCost[number];
         }
 
+
+        /// <summary>
+        /// Сериализует списки с информацией о товарах.
+        /// </summary>
         private void SerializerItemsInfo()
         {
             Serializer.SaveToFile(nameof(_itemsDescription), _itemsDescription);
@@ -161,6 +165,9 @@ namespace ObjectOrientedPractics.Services
             Serializer.SaveToFile(nameof(_itemsName), _itemsName);
         }
 
+        /// <summary>
+        /// Десериализует списки с информацией о товарах.
+        /// </summary>
         private void DeserializerItemsInfo()
         {
             _itemsDescription = Serializer.LoadFromFile<string>(nameof(_itemsDescription));
