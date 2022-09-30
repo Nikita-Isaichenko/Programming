@@ -78,7 +78,7 @@ namespace ObjectOrientedPractics.Model
         }       
         
         /// <summary>
-        /// Создает экземпляр класса <see cref="Item"/>
+        /// Создает экземпляр класса <see cref="Item"/>.
         /// </summary>
         /// <param name="name">Название товара.</param>
         /// <param name="description">Информация о товаре</param>
@@ -89,6 +89,14 @@ namespace ObjectOrientedPractics.Model
             Name = name;
             Description = description;
             Cost = cost;
+        }
+
+        /// <summary>
+        /// Создает экземпляр класса <see cref="Item"/>.
+        /// </summary>
+        public Item()
+        {
+            Id = IdGenerator.GetIdNext();
         }
     }
 }

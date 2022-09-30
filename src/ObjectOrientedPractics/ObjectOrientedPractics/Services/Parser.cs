@@ -26,6 +26,21 @@ namespace ObjectOrientedPractics.Services
         private HtmlWeb _web = new HtmlWeb();
 
         /// <summary>
+        /// Cписок имен для товаров.
+        /// </summary>
+        private List<string> _itemsName = new List<string>();
+
+        /// <summary>
+        /// Cписок описаний для товаров.
+        /// </summary>
+        private List<string> _itemsDescription = new List<string>();
+
+        /// <summary>
+        /// список цен для товаров.
+        /// </summary>
+        private List<double> _itemsCost = new List<double>();
+
+        /// <summary>
         /// Переменная для сохранения HTML страницы.
         /// </summary>
         private HtmlDocument _htmlDocument;
@@ -33,22 +48,12 @@ namespace ObjectOrientedPractics.Services
         /// <summary>
         /// Список для сохранения HTML страниц.
         /// </summary>
-        private List<HtmlDocument> _htmlDocuments;
+        private List<HtmlDocument> _htmlDocuments = new List<HtmlDocument>();
 
         /// <summary>
-        /// Возвращает и задает список имен для товаров.
+        /// Возвращает кол-во распарсенных товаров.
         /// </summary>
-        public List<string> ItemsName { get; }
-
-        /// <summary>
-        /// Возвращает и задает список описаний для товаров.
-        /// </summary>
-        public List<string> ItemsDescription { get; }
-
-        /// <summary>
-        /// Возвращает и задает список цен для товаров.
-        /// </summary>
-        public List<double> ItemsCost { get; }
+        public int CountOfParsedItems { get; private set; }
 
         /// <summary>
         /// Создает экземпляр класса <see cref="Parser"/>
@@ -80,6 +85,8 @@ namespace ObjectOrientedPractics.Services
 
                     _htmlDocuments.Add(_web.Load($"https://skazkina.com{att.Value}"));
                 }
+
+                CountOfParsedItems = _htmlDocuments.Count;
             }
             catch { }           
         }
@@ -93,18 +100,49 @@ namespace ObjectOrientedPractics.Services
             {
                 for (int i = 0; i < _htmlDocuments.Count - 1; i++)
                 {
-                    ItemsName.Add(_htmlDocuments[i]
+                    _itemsName.Add(_htmlDocuments[i]
                         .DocumentNode
                         .SelectSingleNode("//div[contains(@class, 'product-page__title')]").InnerText);
 
-                    ItemsDescription.Add(_htmlDocuments[i]
+                    _itemsDescription.Add(_htmlDocuments[i]
                         .DocumentNode
                         .SelectSingleNode("//div[contains(@class, 'product-page__props-value')]").InnerText);
 
-                    ItemsCost.Add(random.Next(7000, 15000));
+                    _itemsCost.Add(random.Next(7000, 15000));
                 }
             }
             catch { }            
         }
+
+        /// <summary>
+        /// Возвращает имя для товара.
+        /// </summary>
+        /// <param name="number">индекс для выбора имени товара.</param>
+        /// <returns>Имя товара.</returns>
+        public string GetItemName(int number)
+        {
+            return _itemsName[number];
+        }
+
+        /// <summary>
+        /// Возвращает описание для товара.
+        /// </summary>
+        /// <param name="number">индекс для выбора описания товара.</param>
+        /// <returns>Описание товара.</returns>
+        public string GetItemDescription(int number)
+        {
+            return _itemsDescription[number];
+        }
+
+        /// <summary>
+        /// Возвращает цену товара.
+        /// </summary>
+        /// <param name="number">индекс для выбора цены товара.</param>
+        /// <returns>Цена товара.</returns>
+        public double GetItemCost(int number)
+        {
+            return _itemsCost[number];
+        }
+
     }
 }

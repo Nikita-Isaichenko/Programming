@@ -137,8 +137,15 @@ namespace ObjectOrientedPractics.View.Tabs
         private void GenerateButton_Click(object sender, EventArgs e)
         {
             _currentItem = _itemFactory.CreatItem(count);
-            
-            count 
+
+            count = count > _itemFactory.MaxCountUniqueItems - 1 ? 0 : ++count;
+
+            _items.Add(_currentItem);
+            ItemsListBox.Items.Add(_currentItem.Name);
+
+            ItemsListBox.SelectedIndex = _items.Count - 1;
+
+            UpdateTextBoxes(_currentItem);
         }
 
         private void ItemsListBox_SelectedIndexChanged(object sender, EventArgs e)
