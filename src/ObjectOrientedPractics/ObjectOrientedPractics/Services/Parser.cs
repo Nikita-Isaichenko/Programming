@@ -18,7 +18,7 @@ namespace ObjectOrientedPractics.Services
         /// <summary>
         /// Случайные числа.
         /// </summary>
-        private Random random = new Random();
+        private Random _random = new Random();
 
         /// <summary>
         /// Экземпляр класса <see cref="HtmlWeb"./>
@@ -116,7 +116,7 @@ namespace ObjectOrientedPractics.Services
                         .DocumentNode
                         .SelectSingleNode("//div[contains(@class, 'product-page__props-value')]").InnerText);
 
-                    _itemsCost.Add(random.Next(7000, 15000));
+                    _itemsCost.Add(_random.Next(7000, 15000));
 
                     CountOfParsedItems = _itemsCost.Count;
                 }

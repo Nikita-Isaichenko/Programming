@@ -26,7 +26,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Полное имя покупателя
         /// </summary>
-        private string _fullname;
+        private string _fullName;
 
         /// <summary>
         /// Адрес доставки до покупателя.
@@ -105,13 +105,13 @@ namespace ObjectOrientedPractics.Model
                 {
                     FullName = $"{FirstName} {LastName} {FatherName}";
                 }
-                return _fullname;
+                return _fullName;
             }
             set
             {
                 Validator.AssertEmptyValue(value, nameof(FullName));
                 Validator.AssertLengthString(value, 200, nameof(FullName));
-                _fullname = value;
+                _fullName = value;
             }
         }
 

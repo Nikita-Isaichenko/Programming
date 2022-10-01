@@ -13,7 +13,7 @@ namespace ObjectOrientedPractics.Services
         /// <summary>
         /// путь сохранения данных
         /// </summary>
-        private static string Path = @"..\..\Data\";
+        private static string _path = @"..\..\Data\";
 
         /// <summary>
         /// Проверяет, существует ли файл.
@@ -22,7 +22,7 @@ namespace ObjectOrientedPractics.Services
         /// <returns></returns>
         public static bool IsFile(string nameFile)
         {
-            return File.Exists(Path + nameFile);          
+            return File.Exists(_path + nameFile);          
         }       
 
         /// <summary>
@@ -35,12 +35,12 @@ namespace ObjectOrientedPractics.Services
         {
             if (listObjects.Count == 0)
             {
-                File.Delete(Path + nameFile);
+                File.Delete(_path + nameFile);
 
                 return;
             }
             
-            using (StreamWriter writer = new StreamWriter(Path + nameFile))
+            using (StreamWriter writer = new StreamWriter(_path + nameFile))
             {
                 writer.Write(JsonConvert.SerializeObject(listObjects));
             }
@@ -56,7 +56,7 @@ namespace ObjectOrientedPractics.Services
         {
             var listObjects = new List<T>();
 
-            using (StreamReader reader = new StreamReader(Path + nameFile))
+            using (StreamReader reader = new StreamReader(_path + nameFile))
             {
                 listObjects = JsonConvert.DeserializeObject<List<T>>(reader.ReadToEnd());
             }
