@@ -1,4 +1,5 @@
-﻿using ObjectOrientedPractics.Model;
+﻿using Newtonsoft.Json;
+using ObjectOrientedPractics.Model;
 
 
 namespace ObjectOrientedPractics.Services
@@ -14,22 +15,21 @@ namespace ObjectOrientedPractics.Services
         private Item _item;
 
         /// <summary>
-        /// Парсер HTML страниц.
+        /// Oбъект класса <see cref="DataAPI"/>.
         /// </summary>
-        private Parser _parser;
+        private DataAPI dataAPI;
 
         /// <summary>
-        /// Возвращает доступное кол-во уникальных товаров.
+        /// Параметры для запроса.
         /// </summary>
-        public int MaxCountUniqueItems { get; private set; }
+        private string _parameters = "CarBrand,CarModel,CarYear,CarColor";
 
         /// <summary>
         /// Создает экземпляр класса <see cref="ItemFactory"/>.
         /// </summary>
         public ItemFactory()
         {
-            _parser = new Parser();
-            MaxCountUniqueItems = _parser.CountOfParsedItems;
+            dataAPI = new DataAPI(_parameters);
         }
 
         /// <summary>
@@ -37,14 +37,9 @@ namespace ObjectOrientedPractics.Services
         /// с автоматически генерированными данными.
         /// </summary>
         /// <returns>Экземпляр класса <see cref="Item"/>.</returns>
-        public Item CreatItem(int number)
+        public Item CreatItem()
         {
-            _item = new Item
-            {
-                Cost = _parser.GetItemCost(number),
-                Name = _parser.GetItemName(number),
-                Description = _parser.GetItemDescription(number)
-            };           
+            _item = JsonConvert.DeserializeObject<Item>(dataAPI.GetJsonData());
 
             return _item;
         }

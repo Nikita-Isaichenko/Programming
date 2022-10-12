@@ -21,7 +21,7 @@ namespace ObjectOrientedPractics.Services
         private string _parameters = "FirstName,LastName,FatherName,Address";
 
         /// <summary>
-        /// Oбъект класса <see cref="dataAPI"/>.
+        /// Oбъект класса <see cref="DataAPI"/>.
         /// </summary>
         private DataAPI dataAPI;
 

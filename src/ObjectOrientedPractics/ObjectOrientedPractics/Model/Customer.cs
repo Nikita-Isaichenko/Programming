@@ -50,7 +50,6 @@ namespace ObjectOrientedPractics.Model
             }
             set
             {
-                Validator.AssertEmptyValue(value, nameof(LastName));
                 Validator.AssertLengthString(value, 66, nameof(LastName));
                 _lastName = value;
             }
@@ -68,7 +67,6 @@ namespace ObjectOrientedPractics.Model
             }
             set
             {
-                Validator.AssertEmptyValue(value, nameof(FirstName));
                 Validator.AssertLengthString(value, 66, nameof(FirstName));
                 _firstName = value;
             }
@@ -86,7 +84,6 @@ namespace ObjectOrientedPractics.Model
             }
             set
             {
-                Validator.AssertEmptyValue(value, nameof(FatherName));
                 Validator.AssertLengthString(value, 66, nameof(FatherName));
                 _fatherName = value;
             }

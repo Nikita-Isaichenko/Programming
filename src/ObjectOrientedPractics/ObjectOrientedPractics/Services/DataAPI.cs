@@ -43,15 +43,15 @@ namespace ObjectOrientedPractics.Services
         /// <param name="parameters"></param>
         public DataAPI(string parameters)
         {
-            Parameters = parameters;
-
-            _request = (HttpWebRequest)WebRequest.Create(_sitePath + Parameters);
-            _response = (HttpWebResponse)_request.GetResponse();
+            Parameters = parameters;            
         }
 
         public string GetJsonData()
         {
             string jsonText;
+
+            _request = (HttpWebRequest)WebRequest.Create(_sitePath + Parameters);
+            _response = (HttpWebResponse)_request.GetResponse();
 
             using (StreamReader reader = new StreamReader(_response.GetResponseStream()))
             {

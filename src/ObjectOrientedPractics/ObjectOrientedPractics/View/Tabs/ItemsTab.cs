@@ -33,11 +33,6 @@ namespace ObjectOrientedPractics.View.Tabs
         private string _nameFile = "Items";
 
         /// <summary>
-        /// Счетчик.
-        /// </summary>
-        private int count;
-
-        /// <summary>
         /// Создает экземпляр класса <see cref="ItemsTab"/>
         /// </summary>
         public ItemsTab()
@@ -46,8 +41,6 @@ namespace ObjectOrientedPractics.View.Tabs
 
             _itemFactory = new ItemFactory();
 
-            count = 0;
-            
             if (Serializer.IsFile(_nameFile))
             {
                 _items = Serializer.LoadFromFile<Item>(_nameFile);
@@ -136,14 +129,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void GenerateButton_Click(object sender, EventArgs e)
         {           
-            if (count > _itemFactory.MaxCountUniqueItems - 1)
-            {
-                count = 0;
-            }
-
-            _currentItem = _itemFactory.CreatItem(count);
-
-            count++;
+            _currentItem = _itemFactory.CreatItem();
 
             _items.Add(_currentItem);
             ItemsListBox.Items.Add(_currentItem.Name);

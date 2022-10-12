@@ -19,6 +19,26 @@ namespace ObjectOrientedPractics.Model
         private string _description;
 
         /// <summary>
+        /// Модель машины.
+        /// </summary>
+        private string _carModel = "";
+
+        /// <summary>
+        /// Год выпуска машины.
+        /// </summary>
+        private string _carYear = "";
+
+        /// <summary>
+        /// цвет машины.
+        /// </summary>
+        private string _carColor = "";
+
+        /// <summary>
+        /// Бренд машины.
+        /// </summary>
+        private string _carBrand = "";
+
+        /// <summary>
         /// Стоимость товара
         /// </summary>
         private double _cost;
@@ -34,7 +54,13 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public string Name
         {
-            get { return _name; }
+            get 
+            {
+                if (_carBrand != "") 
+                    Name = CarBrand;
+
+                return _name;
+            }
             set
             {
                 Validator.AssertEmptyValue(value, nameof(Name));
@@ -50,7 +76,12 @@ namespace ObjectOrientedPractics.Model
         public string Description
         {
             get 
-            { 
+            {
+                if (_carModel != "" || _carColor != "" || _carYear != "")
+                {
+                    Description = $"{_carModel} {_carColor} {_carYear}";
+                }
+                
                 return _description;
             }
             set
@@ -75,8 +106,72 @@ namespace ObjectOrientedPractics.Model
                 Validator.AssertValueInRange(value, 0, 100000, nameof(Cost));
                 _cost = value;
             }
-        }       
+        }
+
+        /// <summary>
+        /// Возвращает и задает модель машины.
+        /// </summary>
+        public string CarModel
+        {
+            get
+            {
+                return _carModel;
+            }
+            set
+            {
+                Validator.AssertLengthString(value, 333, nameof(CarModel));
+                _carModel = value;
+            }
+        }
         
+        /// <summary>
+        /// Возвращает и задает год выпуска машины.
+        /// </summary>
+        public string CarYear
+        {
+            get
+            {
+                return _carYear;
+            }
+            set
+            {
+                Validator.AssertLengthString(value, 333, nameof(CarYear));
+                _carYear = value;
+            }
+        }
+
+        /// <summary>
+        /// Возвращает и задает цвет машины.
+        /// </summary>
+        public string CarColor
+        {
+            get
+            {
+                return _carColor;
+            }
+            set
+            {
+                Validator.AssertLengthString(value, 333, nameof(CarColor));
+                _carColor = value;
+            }
+        }
+
+        /// <summary>
+        /// Возвращает и задает бренд машины.
+        /// </summary>
+        public string CarBrand
+        {
+            get
+            {
+                return _carBrand;
+            }
+            set
+            {
+                Validator.AssertLengthString(value, 200, nameof(CarBrand));
+                _carBrand = value;
+            }
+        }
+
         /// <summary>
         /// Создает экземпляр класса <see cref="Item"/>.
         /// </summary>
