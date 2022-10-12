@@ -1,6 +1,4 @@
-﻿using System.IO;
-using System.Net;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using ObjectOrientedPractics.Model;
 
 
@@ -16,28 +14,23 @@ namespace ObjectOrientedPractics.Services
         /// Покупатель.
         /// </summary>
         private Customer _customer;
-        /// <summary>
-        /// Отправка запроса к веб ресурсу.
-        /// </summary>
-        private HttpWebRequest _request;
-            
-        /// <summary>
-        /// Получение ответа от веб ресурса.
-        /// </summary>
-        private HttpWebResponse _response;
 
         /// <summary>
-        /// Возвращает и принимает URL адрес.
+        /// Параметры для запроса.
         /// </summary>
-        public string URL { get; set; }
+        private string _parameters = "FirstName,LastName,FatherName,Address";
 
         /// <summary>
-        /// Создает экземпляр класса <see cref="CustomerFactory"./>
+        /// Oбъект класса <see cref="dataAPI"/>.
         /// </summary>
-        /// <param name="url">Адрес API.</param>
-        public CustomerFactory(string url)
+        private DataAPI dataAPI;
+
+        /// <summary>
+        /// Создает экземпляр класса <see cref="CustomerFactory"/>
+        /// </summary>
+        public CustomerFactory()
         {
-            URL = url;
+            dataAPI = new DataAPI(_parameters);
         }
 
         /// <summary>
@@ -46,15 +39,9 @@ namespace ObjectOrientedPractics.Services
         /// </summary>
         /// <returns>Экземпляр класса <see cref="Customer"/> </returns>
         public Customer CreatCustomer()
-        {
-            _request = (HttpWebRequest)WebRequest.Create(URL);
-            _response = (HttpWebResponse)_request.GetResponse();
-
-            using (StreamReader reader = new StreamReader(_response.GetResponseStream()))
-            {
-                _customer = JsonConvert.DeserializeObject<Customer>(reader.ReadToEnd());
-            }
-
+        {                    
+            _customer = JsonConvert.DeserializeObject<Customer>(dataAPI.GetJsonData());
+           
             return _customer;
         }
     }

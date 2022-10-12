@@ -170,7 +170,7 @@ namespace ObjectOrientedPractics.View.Tabs
             try
             {
                 CostTextBox.BackColor = AppColor.NormalBackColor;
-                _currentItem.Cost = Convert.ToInt32(CostTextBox.Text);
+                _currentItem.Cost = Convert.ToDouble(CostTextBox.Text);
             }
             catch(Exception ex)
             {

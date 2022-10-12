@@ -63,6 +63,7 @@
     <Compile Include="Model\Item.cs" />
     <Compile Include="Services\AppColor.cs" />
     <Compile Include="Services\CustomerFactory.cs" />
+    <Compile Include="Services\DataAPI.cs" />
     <Compile Include="Services\IdGenerator.cs" />
     <Compile Include="Services\ItemFactory.cs" />
     <Compile Include="Services\Parser.cs" />

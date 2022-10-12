@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-using static System.Net.WebRequestMethods;
 
 
 namespace ObjectOrientedPractics.View.Tabs
@@ -30,12 +29,6 @@ namespace ObjectOrientedPractics.View.Tabs
         private Customer _currentCustomer;
 
         /// <summary>
-        /// Адрес для обращения по API.
-        /// </summary>
-        private string _url =
-            "https://api.randomdatatools.ru/?unescaped=false&params=FirstName,LastName,FatherName,Address";
-
-        /// <summary>
         /// Название файла.
         /// </summary>
         private  string _nameFile = "Customers";
@@ -47,7 +40,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             InitializeComponent();
 
-            _customerFactory = new CustomerFactory(_url);
+            _customerFactory = new CustomerFactory();
 
 
             if (Serializer.IsFile(_nameFile))
@@ -96,7 +89,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// Обновляет информацию в 
+        /// Обновляет информацию в текст боксах.
         /// </summary>
         /// <param name="customer"></param>
         private void UpdateTextBoxes(Customer customer)
