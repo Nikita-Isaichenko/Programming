@@ -1,5 +1,6 @@
 ﻿using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Services;
+using ObjectOrientedPractics.View.Controls;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -93,11 +94,12 @@ namespace ObjectOrientedPractics.View.Tabs
         {           
             FullNameTextBox.Text = customer.FullName;
             IDTextBox.Text = customer.Id.ToString();
+            AddressControl.Address = _currentCustomer.Address;
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            _currentCustomer = new Customer("None", "None");
+            _currentCustomer = new Customer();
 
             _customers.Add(_currentCustomer);
             CustomersListBox.Items.Add(_currentCustomer.FullName);
@@ -140,7 +142,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
             if (index == -1) return;
 
-            _currentCustomer = _customers[index];
+            _currentCustomer = _customers[index];           
 
             UpdateTextBoxes(_currentCustomer);
             CheckingAvailabilityItems();

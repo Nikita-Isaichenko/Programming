@@ -31,7 +31,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Адрес доставки до покупателя.
         /// </summary>
-        private string _address;
+        private Address _address;
 
         /// <summary>
         /// Корзина покупок.
@@ -131,25 +131,14 @@ namespace ObjectOrientedPractics.Model
         /// Возвращает и задает адрес покупателя.
         /// Не больше 500 символов.
         /// </summary>
-        public string Address
-        {
-            get
-            {
-                return _address;
-            }
-            set
-            {
-                Validator.AssertEmptyValue(value, nameof(Address));
-                Validator.AssertLengthString(value, 500, nameof(Address));
-                _address = value;
-            }
-        }
+        public Address Address { get; set; }
+
         /// <summary>
         /// Cоздает экземпляр класса <see cref="Customer"/>
         /// </summary>
         /// <param name="fullName">ФИО.</param>
         /// <param name="address">Адрес.</param>
-        public Customer(string fullName, string address)
+        public Customer(string fullName, Address address)
         {
             Cart = new Cart();
             Id = IdGenerator.GetIdNext();
@@ -164,6 +153,8 @@ namespace ObjectOrientedPractics.Model
         {
             Cart = new Cart();
             Id = IdGenerator.GetIdNext();
+            FullName = "None";
+            Address = new Address();
         }
     }
 }
