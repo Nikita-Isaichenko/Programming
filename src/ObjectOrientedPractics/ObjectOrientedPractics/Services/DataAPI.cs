@@ -46,6 +46,10 @@ namespace ObjectOrientedPractics.Services
             Parameters = parameters;            
         }
 
+        /// <summary>
+        /// Получение данных в json формате.
+        /// </summary>
+        /// <returns>данные в виде json.</returns>
         public string GetJsonData()
         {
             string jsonText;
