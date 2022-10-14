@@ -55,5 +55,14 @@ namespace ObjectOrientedPractics.Services
                 throw new ArgumentException($"Строка не может быть пустой в поле {propertyName}");
             }
         }
+
+        public static void AssertCountSymbols(int value, int countSymbols, string propertyName)
+        {
+            if (value.ToString().Length != countSymbols)
+            {
+                throw new ArgumentException($"Некорректная длина поле {propertyName}." +
+                    $" Необходимая длина = {countSymbols}");                   
+            }
+        }
     }
 }
