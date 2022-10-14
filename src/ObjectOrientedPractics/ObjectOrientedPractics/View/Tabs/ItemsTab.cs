@@ -20,7 +20,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Список товаров.
         /// </summary>
-        private List<Item> _items = new List<Item>();
+        private static List<Item> _items = new List<Item>();
 
         /// <summary>
         /// Текущий товар.
@@ -67,15 +67,13 @@ namespace ObjectOrientedPractics.View.Tabs
             }           
 
                 ItemsListBox.SelectedIndex = 0;
-                
+                CategoryComboBox.SelectedItem = _currentItem.Category;
             }
 
             foreach (var category in Enum.GetValues(typeof(Category)))
             {
                 CategoryComboBox.Items.Add(category);
-            }
-            
-            CategoryComboBox.SelectedItem = _currentItem.Category;
+            }           
 
             CheckingAvailabilityItems();
         }
@@ -245,7 +243,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Сохраняет данные о товарах.
         /// </summary>
-        public void SaveItemsData()
+        public static void SaveItemsData()
         {
             Serializer.SaveToFile(_nameFile, _items);
         }

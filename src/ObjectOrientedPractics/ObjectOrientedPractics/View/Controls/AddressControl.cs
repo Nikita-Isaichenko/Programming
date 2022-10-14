@@ -31,7 +31,7 @@ namespace ObjectOrientedPractics.View.Controls
 
         public AddressControl()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
 
         private void UpdateTextBoxes()
