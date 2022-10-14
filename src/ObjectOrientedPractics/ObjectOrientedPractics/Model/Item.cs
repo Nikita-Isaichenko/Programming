@@ -199,6 +199,10 @@ namespace ObjectOrientedPractics.Model
         public Item()
         {
             Id = IdGenerator.GetIdNext();
+            Name = "None";
+            Description = "None";
+            Cost = 0;
+            Category = Category.None;
         }
     }
 }

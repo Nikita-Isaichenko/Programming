@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.SelectedICustomersPanel = new System.Windows.Forms.Panel();
+            this.AddressControl = new ObjectOrientedPractics.View.Controls.AddressControl();
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
             this.IDTextBox = new System.Windows.Forms.TextBox();
             this.FullNameLabel = new System.Windows.Forms.Label();
@@ -44,7 +45,6 @@
             this.CustomersLabel = new System.Windows.Forms.Label();
             this.FullNameToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.AddressToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.addressControl1 = new ObjectOrientedPractics.View.Controls.AddressControl();
             this.SelectedICustomersPanel.SuspendLayout();
             this.CustomersPanel.SuspendLayout();
             this.TableLayoutPanelButtons.SuspendLayout();
@@ -56,7 +56,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SelectedICustomersPanel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.SelectedICustomersPanel.Controls.Add(this.addressControl1);
+            this.SelectedICustomersPanel.Controls.Add(this.AddressControl);
             this.SelectedICustomersPanel.Controls.Add(this.FullNameTextBox);
             this.SelectedICustomersPanel.Controls.Add(this.IDTextBox);
             this.SelectedICustomersPanel.Controls.Add(this.FullNameLabel);
@@ -68,6 +68,16 @@
             this.SelectedICustomersPanel.Size = new System.Drawing.Size(360, 399);
             this.SelectedICustomersPanel.TabIndex = 3;
             // 
+            // AddressControl
+            // 
+            this.AddressControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddressControl.AutoSize = true;
+            this.AddressControl.Location = new System.Drawing.Point(3, 92);
+            this.AddressControl.Name = "AddressControl";
+            this.AddressControl.Size = new System.Drawing.Size(353, 123);
+            this.AddressControl.TabIndex = 5;
+            //
             // FullNameTextBox
             // 
             this.FullNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -161,6 +171,7 @@
             // 
             // GenerateButton
             // 
+            this.GenerateButton.Enabled = false;
             this.GenerateButton.Location = new System.Drawing.Point(155, 3);
             this.GenerateButton.Name = "GenerateButton";
             this.GenerateButton.Size = new System.Drawing.Size(70, 51);
@@ -202,16 +213,6 @@
             this.CustomersLabel.TabIndex = 0;
             this.CustomersLabel.Text = "Customers";
             // 
-            // addressControl1
-            // 
-            this.addressControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.addressControl1.AutoSize = true;
-            this.addressControl1.Location = new System.Drawing.Point(3, 92);
-            this.addressControl1.Name = "addressControl1";
-            this.addressControl1.Size = new System.Drawing.Size(353, 123);
-            this.addressControl1.TabIndex = 5;
-            // 
             // CustomerTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -246,6 +247,6 @@
         private System.Windows.Forms.ToolTip AddressToolTip;
         private System.Windows.Forms.Button GenerateButton;
         private System.Windows.Forms.Button RemoveButton;
-        private Controls.AddressControl addressControl1;
+        private Controls.AddressControl AddressControl;
     }
 }
