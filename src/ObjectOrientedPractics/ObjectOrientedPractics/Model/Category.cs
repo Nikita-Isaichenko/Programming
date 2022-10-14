@@ -11,6 +11,7 @@
         Books,
         Games,
         Cars,
-        Shoes
+        Shoes,
+        Pharmacy
     }
 }
