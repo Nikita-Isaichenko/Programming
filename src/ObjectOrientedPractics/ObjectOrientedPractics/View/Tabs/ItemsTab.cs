@@ -51,7 +51,15 @@ namespace ObjectOrientedPractics.View.Tabs
                 }
 
                 ItemsListBox.SelectedIndex = 0;
-            }   
+                
+            }
+
+            foreach (var category in Enum.GetValues(typeof(Category)))
+            {
+                CategoryComboBox.Items.Add(category);
+            }
+            
+            CategoryComboBox.SelectedItem = _currentItem.Category;
 
             CheckingAvailabilityItems();
         }
@@ -65,6 +73,7 @@ namespace ObjectOrientedPractics.View.Tabs
             NameTextBox.Text = item.Name;
             DescriptionTextBox.Text = item.Description;
             IDTextBox.Text = item.Id.ToString();
+            CategoryComboBox.SelectedItem = item.Category;
         }
 
         /// <summary>
@@ -76,6 +85,7 @@ namespace ObjectOrientedPractics.View.Tabs
             NameTextBox.Clear();
             DescriptionTextBox.Clear();
             IDTextBox.Clear();
+            CategoryComboBox.SelectedIndex = -1;
         }
 
         /// <summary>
@@ -89,6 +99,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 CostTextBox.Enabled = false;
                 NameTextBox.Enabled = false;
                 DescriptionTextBox.Enabled = false;
+                CategoryComboBox.Enabled = false;
 
                 ClearTextBoxes();
             }
@@ -97,12 +108,13 @@ namespace ObjectOrientedPractics.View.Tabs
                 CostTextBox.Enabled = true;
                 NameTextBox.Enabled = true;
                 DescriptionTextBox.Enabled = true;
+                CategoryComboBox.Enabled = true;
             }            
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            _currentItem = new Item("None", "None", 0);
+            _currentItem = new Item("None", "None", 0, Category.None);
 
             _items.Add(_currentItem);
             ItemsListBox.Items.Add(_currentItem.Name);
@@ -190,7 +202,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private void DescriptionTextBox_TextChanged(object sender, EventArgs e)
         {
             try
-            {                
+            {
                 DescriptionTextBox.BackColor = AppColor.NormalBackColor;
                 _currentItem.Description = DescriptionTextBox.Text;
             }
@@ -199,14 +211,27 @@ namespace ObjectOrientedPractics.View.Tabs
                 DescriptionTextBox.BackColor = AppColor.ErrorBackColor;
                 DescriptionToolTip.SetToolTip(DescriptionTextBox, ex.Message);
             }
-        }  
-        
+        }
+
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                CategoryComboBox.BackColor = AppColor.NormalBackColor;
+                _currentItem.Category = (Category)CategoryComboBox.SelectedIndex;
+            }
+            catch
+            {
+                CategoryComboBox.BackColor = AppColor.ErrorBackColor;
+            }
+        }
+
         /// <summary>
         /// Сохраняет данные о товарах.
         /// </summary>
         public void SaveItemsData()
         {
             Serializer.SaveToFile(_nameFile, _items);
-        }       
+        }
     }
 }

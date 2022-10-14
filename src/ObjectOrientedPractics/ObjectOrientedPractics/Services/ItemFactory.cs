@@ -40,7 +40,7 @@ namespace ObjectOrientedPractics.Services
         public Item CreatItem()
         {
             _item = JsonConvert.DeserializeObject<Item>(dataAPI.GetJsonData());
-
+            _item.Category = Category.Cars;
             return _item;
         }
     }
