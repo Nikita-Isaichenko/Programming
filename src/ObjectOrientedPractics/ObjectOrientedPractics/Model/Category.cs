@@ -12,5 +12,6 @@
         Games,
         Cars,
         Shoes,
+        None,
     }
 }
