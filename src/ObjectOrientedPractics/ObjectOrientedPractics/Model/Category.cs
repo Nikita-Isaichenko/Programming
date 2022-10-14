@@ -12,6 +12,5 @@
         Games,
         Cars,
         Shoes,
-        Pharmacy
     }
 }
