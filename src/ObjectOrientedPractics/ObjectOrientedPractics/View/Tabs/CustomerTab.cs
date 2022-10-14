@@ -21,7 +21,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Список покупателей.
         /// </summary>
-        private List<Customer> _customers = new List<Customer>();
+        private static List<Customer> _customers = new List<Customer>();
 
         /// <summary>
         /// Текущий покупатель.
@@ -31,7 +31,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Название файла.
         /// </summary>
-        private  string _nameFile = "Customers";
+        private static string _nameFile = "Customers";
 
         /// <summary>
         /// Создает экземпляр класса <see cref="CustomerTab"/>
@@ -67,14 +67,12 @@ namespace ObjectOrientedPractics.View.Tabs
             if (_customers.Count == 0)
             {
                 FullNameTextBox.Enabled = false;
-                AddressTextBox.Enabled = false;
 
                 ClearTextBoxes();
             }
             else
             {
                 FullNameTextBox.Enabled = true;
-                AddressTextBox.Enabled = true;
             }
         }
 
@@ -84,7 +82,6 @@ namespace ObjectOrientedPractics.View.Tabs
         private void ClearTextBoxes()
         {          
             FullNameTextBox.Clear();
-            AddressTextBox.Clear();
             IDTextBox.Clear();
         }
 
@@ -95,7 +92,6 @@ namespace ObjectOrientedPractics.View.Tabs
         private void UpdateTextBoxes(Customer customer)
         {           
             FullNameTextBox.Text = customer.FullName;
-            AddressTextBox.Text = customer.Address;
             IDTextBox.Text = customer.Id.ToString();
         }
 
@@ -169,27 +165,10 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
-        private void AddressTextBox_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                AddressTextBox.BackColor = AppColor.NormalBackColor;
-                _currentCustomer.Address = AddressTextBox.Text;
-            }
-            catch (Exception ex)
-            {
-                AddressTextBox.BackColor = AppColor.ErrorBackColor;
-                AddressToolTip.SetToolTip(AddressTextBox, ex.Message);
-
-                if (_customers.Count == 0)
-                    AddressTextBox.BackColor = AppColor.NormalBackColor;
-            }
-        }
-
         /// <summary>
         /// Сохраняет данные о покупателях.
         /// </summary>
-        public void SaveCustomersData()
+        public static void SaveCustomersData()
         {
             Serializer.SaveToFile(_nameFile, _customers);
         }
