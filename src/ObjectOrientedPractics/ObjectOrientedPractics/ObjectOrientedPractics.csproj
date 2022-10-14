@@ -71,6 +71,12 @@
     <Compile Include="Services\Parser.cs" />
     <Compile Include="Services\Serializer.cs" />
     <Compile Include="Services\Validator.cs" />
+    <Compile Include="View\Controls\AddressControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\AddressControl.Designer.cs">
+      <DependentUpon>AddressControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\Controls\AddressControl.resx">
+      <DependentUpon>AddressControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

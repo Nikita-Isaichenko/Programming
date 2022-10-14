@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using ObjectOrientedPractics.View.Tabs;
+using System.Windows.Forms;
 
 
 namespace ObjectOrientedPractics
