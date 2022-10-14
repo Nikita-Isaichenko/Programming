@@ -66,6 +66,17 @@ namespace ObjectOrientedPractics.View.Tabs
                 CategoryComboBox.Items.Add(category);
             }           
 
+                ItemsListBox.SelectedIndex = 0;
+                
+            }
+
+            foreach (var category in Enum.GetValues(typeof(Category)))
+            {
+                CategoryComboBox.Items.Add(category);
+            }
+            
+            CategoryComboBox.SelectedItem = _currentItem.Category;
+
             CheckingAvailabilityItems();
         }
 
@@ -119,7 +130,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            _currentItem = new Item();
+            _currentItem = new Item("None", "None", 0, Category.None);
 
             Items.Add(_currentItem);
             ItemsListBox.Items.Add(_currentItem.Name);
@@ -229,6 +240,14 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 CategoryComboBox.BackColor = AppColor.ErrorBackColor;
             }
+        }
+
+        /// <summary>
+        /// Сохраняет данные о товарах.
+        /// </summary>
+        public void SaveItemsData()
+        {
+            Serializer.SaveToFile(_nameFile, _items);
         }
     }
 }
