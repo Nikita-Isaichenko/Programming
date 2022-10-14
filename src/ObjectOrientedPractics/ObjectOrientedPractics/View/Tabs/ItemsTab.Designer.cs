@@ -51,6 +51,8 @@
             this.CostToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.NameToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.DescriptionToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.CategoryComboBox = new System.Windows.Forms.ComboBox();
+            this.CategoryLabel = new System.Windows.Forms.Label();
             this.ItemsPanel.SuspendLayout();
             this.TableLayoutPanelButtons.SuspendLayout();
             this.SelectedItemsPanel.SuspendLayout();
@@ -275,6 +277,26 @@
             this.SelectedItemsLabel.Size = new System.Drawing.Size(91, 13);
             this.SelectedItemsLabel.TabIndex = 0;
             this.SelectedItemsLabel.Text = "Selected Items";
+            // 
+            // CategoryComboBox
+            // 
+            this.CategoryComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CategoryComboBox.FormattingEnabled = true;
+            this.CategoryComboBox.Location = new System.Drawing.Point(74, 81);
+            this.CategoryComboBox.Name = "CategoryComboBox";
+            this.CategoryComboBox.Size = new System.Drawing.Size(121, 21);
+            this.CategoryComboBox.TabIndex = 9;
+            // 
+            // CategoryLabel
+            // 
+            this.CategoryLabel.AutoSize = true;
+            this.CategoryLabel.Location = new System.Drawing.Point(3, 84);
+            this.CategoryLabel.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
+            this.CategoryLabel.Name = "CategoryLabel";
+            this.CategoryLabel.Size = new System.Drawing.Size(52, 13);
+            this.CategoryLabel.TabIndex = 10;
+            this.CategoryLabel.Text = "Category:";
             // 
             // ItemsTab
             // 
