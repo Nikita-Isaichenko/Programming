@@ -128,7 +128,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            _currentItem = new Item("None", "None", 0, Category.None);
+            _currentItem = new Item();
 
             Items.Add(_currentItem);
             ItemsListBox.Items.Add(_currentItem.Name);
