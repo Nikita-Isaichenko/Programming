@@ -20,19 +20,37 @@ namespace ObjectOrientedPractics.View.Tabs
         private CustomerFactory _customerFactory;
 
         /// <summary>
-        /// Список покупателей.
-        /// </summary>
-        private static List<Customer> _customers = new List<Customer>();
-
-        /// <summary>
         /// Текущий покупатель.
         /// </summary>
         private Customer _currentCustomer;
 
+        private List<Customer> _customers = new List<Customer>();
+
         /// <summary>
-        /// Название файла.
+        /// Возвращает и задает список покупателей.
         /// </summary>
-        private static string _nameFile = "Customers";
+        public List<Customer> Customers
+        {
+            get
+            {
+                return _customers;
+            }
+            set
+            {
+                _customers = value;
+
+                if (Customers.Count != 0)
+                {
+                    foreach (var customer in Customers)
+                    {
+                        CustomersListBox.Items.Add(customer.FullName);
+                    }
+
+                    CustomersListBox.SelectedIndex = 0;
+                }
+            }
+        }
+
 
         /// <summary>
         /// Создает экземпляр класса <see cref="CustomerTab"/>
@@ -42,19 +60,6 @@ namespace ObjectOrientedPractics.View.Tabs
             InitializeComponent();
 
             _customerFactory = new CustomerFactory();
-
-
-            if (Serializer.IsFile(_nameFile))
-            {
-                _customers = Serializer.LoadFromFile<Customer>(_nameFile);
-
-                foreach (var customer in _customers)
-                {
-                    CustomersListBox.Items.Add(customer.FullName);
-                }
-                
-                CustomersListBox.SelectedIndex = 0;
-            }
             
             CheckingAvailabilityItems();
         }
@@ -65,7 +70,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void CheckingAvailabilityItems()
         {
-            if (_customers.Count == 0)
+            if (Customers.Count == 0)
             {
                 FullNameTextBox.Enabled = false;
 
@@ -101,10 +106,10 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             _currentCustomer = new Customer();
 
-            _customers.Add(_currentCustomer);
+            Customers.Add(_currentCustomer);
             CustomersListBox.Items.Add(_currentCustomer.FullName);
 
-            CustomersListBox.SelectedIndex = _customers.Count - 1;
+            CustomersListBox.SelectedIndex = Customers.Count - 1;
 
             UpdateTextBoxes(_currentCustomer);
         }
@@ -116,9 +121,9 @@ namespace ObjectOrientedPractics.View.Tabs
             int index = CustomersListBox.SelectedIndex;
 
             CustomersListBox.Items.RemoveAt(index);
-            _customers.RemoveAt(index);
+            Customers.RemoveAt(index);
 
-            CustomersListBox.SelectedIndex = _customers.Count > 0 ? 0 : -1;
+            CustomersListBox.SelectedIndex = Customers.Count > 0 ? 0 : -1;
 
             UpdateTextBoxes(_currentCustomer);
             CheckingAvailabilityItems();
@@ -128,10 +133,10 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             _currentCustomer = _customerFactory.CreatCustomer();
 
-            _customers.Add(_currentCustomer);
+            Customers.Add(_currentCustomer);
             CustomersListBox.Items.Add(_currentCustomer.FullName);
 
-            CustomersListBox.SelectedIndex = _customers.Count - 1;
+            CustomersListBox.SelectedIndex = Customers.Count - 1;
 
             UpdateTextBoxes(_currentCustomer);
         }
@@ -142,7 +147,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
             if (index == -1) return;
 
-            _currentCustomer = _customers[index];           
+            _currentCustomer = Customers[index];           
 
             UpdateTextBoxes(_currentCustomer);
             CheckingAvailabilityItems();
@@ -155,24 +160,16 @@ namespace ObjectOrientedPractics.View.Tabs
                 FullNameTextBox.BackColor = AppColor.NormalBackColor;
                 _currentCustomer.FullName = FullNameTextBox.Text;
                 CustomersListBox.
-                    Items[_customers.IndexOf(_currentCustomer)] = _currentCustomer.FullName;
+                    Items[Customers.IndexOf(_currentCustomer)] = _currentCustomer.FullName;
             }
             catch (Exception ex)
             {
                 FullNameTextBox.BackColor = AppColor.ErrorBackColor;
                 FullNameToolTip.SetToolTip(FullNameTextBox, ex.Message);
 
-                if (_customers.Count == 0)
+                if (Customers.Count == 0)
                     FullNameTextBox.BackColor = AppColor.NormalBackColor;
             }
-        }
-
-        /// <summary>
-        /// Сохраняет данные о покупателях.
-        /// </summary>
-        public static void SaveCustomersData()
-        {
-            Serializer.SaveToFile(_nameFile, _customers);
         }
     }
 }
