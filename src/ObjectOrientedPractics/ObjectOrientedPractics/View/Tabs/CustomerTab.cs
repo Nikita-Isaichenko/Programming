@@ -24,6 +24,9 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private Customer _currentCustomer;
 
+        /// <summary>
+        /// Список покупателей.
+        /// </summary>
         private List<Customer> _customers = new List<Customer>();
 
         /// <summary>
@@ -50,7 +53,6 @@ namespace ObjectOrientedPractics.View.Tabs
                 }
             }
         }
-
 
         /// <summary>
         /// Создает экземпляр класса <see cref="CustomerTab"/>
