@@ -20,7 +20,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Список товаров.
         /// </summary>
-        private static List<Item> _items = new List<Item>();
+        private List<Item> _items = new List<Item>();
 
         /// <summary>
         /// Текущий товар.
@@ -28,9 +28,29 @@ namespace ObjectOrientedPractics.View.Tabs
         private Item _currentItem;
 
         /// <summary>
-        /// Название файла.
+        /// Возвращает и задает список товаров.
         /// </summary>
-        private static string _nameFile = "Items";
+        public List<Item> Items
+        {
+            get
+            {
+                return _items;
+            }
+            set
+            {
+                _items = value;
+
+                if (Items.Count != 0)
+                {
+                    foreach (var item in Items)
+                    {
+                        ItemsListBox.Items.Add(item.Name);
+                    }
+
+                    ItemsListBox.SelectedIndex = 0;
+                }
+            }
+        }
 
         /// <summary>
         /// Создает экземпляр класса <see cref="ItemsTab"/>
@@ -40,19 +60,6 @@ namespace ObjectOrientedPractics.View.Tabs
             InitializeComponent();
 
             _itemFactory = new ItemFactory();
-
-            if (Serializer.IsFile(_nameFile))
-            {
-                _items = Serializer.LoadFromFile<Item>(_nameFile);
-
-                foreach (var item in _items)
-                {
-                    ItemsListBox.Items.Add(item.Name);
-                }
-
-                ItemsListBox.SelectedIndex = 0;
-                CategoryComboBox.SelectedItem = _currentItem.Category;
-            }
 
             foreach (var category in Enum.GetValues(typeof(Category)))
             {
@@ -92,7 +99,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void CheckingAvailabilityItems()
         {
-            if (_items.Count == 0)
+            if (Items.Count == 0)
             {
                 CostTextBox.Enabled = false;
                 NameTextBox.Enabled = false;
@@ -114,10 +121,10 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             _currentItem = new Item();
 
-            _items.Add(_currentItem);
+            Items.Add(_currentItem);
             ItemsListBox.Items.Add(_currentItem.Name);
 
-            ItemsListBox.SelectedIndex = _items.Count - 1;
+            ItemsListBox.SelectedIndex = Items.Count - 1;
 
             UpdateTextBoxes(_currentItem);
         }
@@ -129,9 +136,9 @@ namespace ObjectOrientedPractics.View.Tabs
             int index = ItemsListBox.SelectedIndex;          
 
             ItemsListBox.Items.RemoveAt(index);
-            _items.RemoveAt(index);
+            Items.RemoveAt(index);
 
-            ItemsListBox.SelectedIndex = _items.Count > 0 ? 0 : -1;
+            ItemsListBox.SelectedIndex = Items.Count > 0 ? 0 : -1;
             
             UpdateTextBoxes(_currentItem);
             CheckingAvailabilityItems();
@@ -141,10 +148,10 @@ namespace ObjectOrientedPractics.View.Tabs
         {           
             _currentItem = _itemFactory.CreatItem();
 
-            _items.Add(_currentItem);
+            Items.Add(_currentItem);
             ItemsListBox.Items.Add(_currentItem.Name);
 
-            ItemsListBox.SelectedIndex = _items.Count - 1;
+            ItemsListBox.SelectedIndex = Items.Count - 1;
 
             UpdateTextBoxes(_currentItem);
         }
@@ -155,7 +162,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
             if (index == -1) return;
             
-            _currentItem = _items[index];
+            _currentItem = Items[index];
            
             UpdateTextBoxes(_currentItem);
             CheckingAvailabilityItems();
@@ -173,7 +180,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 CostTextBox.BackColor = AppColor.ErrorBackColor;
                 CostToolTip.SetToolTip(CostTextBox, ex.Message);
 
-                if (_items.Count == 0)
+                if (Items.Count == 0)
                     CostTextBox.BackColor = AppColor.NormalBackColor;
             }
         }
@@ -185,14 +192,14 @@ namespace ObjectOrientedPractics.View.Tabs
                 NameTextBox.BackColor = AppColor.NormalBackColor;
                 _currentItem.Name = NameTextBox.Text;
                 ItemsListBox.
-                    Items[_items.IndexOf(_currentItem)] = _currentItem.Name;
+                    Items[Items.IndexOf(_currentItem)] = _currentItem.Name;
             }
             catch (Exception ex)
             {
                 NameTextBox.BackColor = AppColor.ErrorBackColor;
                 NameToolTip.SetToolTip(NameTextBox, ex.Message);
 
-                if (_items.Count == 0) 
+                if (Items.Count == 0) 
                     NameTextBox.BackColor = AppColor.NormalBackColor;
             }
         }
@@ -222,14 +229,6 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 CategoryComboBox.BackColor = AppColor.ErrorBackColor;
             }
-        }
-
-        /// <summary>
-        /// Сохраняет данные о товарах.
-        /// </summary>
-        public static void SaveItemsData()
-        {
-            Serializer.SaveToFile(_nameFile, _items);
         }
     }
 }

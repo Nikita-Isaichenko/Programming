@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
-
+using ObjectOrientedPractics.Model;
 
 namespace ObjectOrientedPractics.Services
 {
@@ -31,18 +32,11 @@ namespace ObjectOrientedPractics.Services
         /// <typeparam name="T">Тип объекта.</typeparam>
         /// <param name="nameFile">Имя файла для сохранения.</param>
         /// <param name="listObjects">Список объектов.</param>
-        public static void SaveToFile<T>(string nameFile, List<T> listObjects)
-        {
-            if (listObjects.Count == 0)
-            {
-                File.Delete(_path + nameFile);
-
-                return;
-            }
-            
+        public static void SaveToFile(string nameFile, object obj)
+        {           
             using (StreamWriter writer = new StreamWriter(_path + nameFile))
             {
-                writer.Write(JsonConvert.SerializeObject(listObjects));
+                writer.Write(JsonConvert.SerializeObject(obj));
             }
         }
 
@@ -52,16 +46,16 @@ namespace ObjectOrientedPractics.Services
         /// <typeparam name="T">Тип объекта.</typeparam>
         /// <param name="nameFile">Имя файла для загрузки объектов.</param>
         /// <returns></returns>
-        public static List<T> LoadFromFile<T>(string nameFile)
+        public static Store LoadFromFile(string nameFile)
         {
-            var listObjects = new List<T>();
+            Store store;
 
             using (StreamReader reader = new StreamReader(_path + nameFile))
             {
-                listObjects = JsonConvert.DeserializeObject<List<T>>(reader.ReadToEnd());
+                store = JsonConvert.DeserializeObject<Store>(reader.ReadToEnd());
             }
 
-            return listObjects;
+            return store;
         }
     }
 }
