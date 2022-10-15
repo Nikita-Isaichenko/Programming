@@ -20,19 +20,11 @@ namespace ObjectOrientedPractics.View.Tabs
         private CustomerFactory _customerFactory;
 
         /// <summary>
-        /// Список покупателей.
-        /// </summary>
-        private static List<Customer> _customers = new List<Customer>();
-
-        /// <summary>
         /// Текущий покупатель.
         /// </summary>
         private Customer _currentCustomer;
 
-        /// <summary>
-        /// Список покупателей.
-        /// </summary>
-        private static string _nameFile = "Customers";
+        private List<Customer> _customers = new List<Customer>();
 
         /// <summary>
         /// Возвращает и задает список покупателей.
@@ -58,6 +50,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 }
             }
         }
+
 
         /// <summary>
         /// Создает экземпляр класса <see cref="CustomerTab"/>
@@ -177,14 +170,6 @@ namespace ObjectOrientedPractics.View.Tabs
                 if (Customers.Count == 0)
                     FullNameTextBox.BackColor = AppColor.NormalBackColor;
             }
-        }
-
-        /// <summary>
-        /// Сохраняет данные о покупателях.
-        /// </summary>
-        public static void SaveCustomersData()
-        {
-            Serializer.SaveToFile(_nameFile, _customers);
         }
     }
 }

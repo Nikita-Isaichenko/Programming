@@ -20,7 +20,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Список товаров.
         /// </summary>
-        private static List<Item> _items = new List<Item>();
+        private List<Item> _items = new List<Item>();
 
         /// <summary>
         /// Текущий товар.
@@ -52,6 +52,18 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
+                if (Items.Count != 0)
+                {
+                    foreach (var item in Items)
+                    {
+                        ItemsListBox.Items.Add(item.Name);
+                    }
+
+                    ItemsListBox.SelectedIndex = 0;
+                }
+            }
+        }
+
         /// <summary>
         /// Создает экземпляр класса <see cref="ItemsTab"/>
         /// </summary>
@@ -60,15 +72,6 @@ namespace ObjectOrientedPractics.View.Tabs
             InitializeComponent();
 
             _itemFactory = new ItemFactory();
-
-            foreach (var category in Enum.GetValues(typeof(Category)))
-            {
-                CategoryComboBox.Items.Add(category);
-            }           
-
-                ItemsListBox.SelectedIndex = 0;
-                CategoryComboBox.SelectedItem = _currentItem.Category;
-            }
 
             foreach (var category in Enum.GetValues(typeof(Category)))
             {
@@ -238,14 +241,6 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 CategoryComboBox.BackColor = AppColor.ErrorBackColor;
             }
-        }
-
-        /// <summary>
-        /// Сохраняет данные о товарах.
-        /// </summary>
-        public static void SaveItemsData()
-        {
-            Serializer.SaveToFile(_nameFile, _items);
         }
     }
 }
