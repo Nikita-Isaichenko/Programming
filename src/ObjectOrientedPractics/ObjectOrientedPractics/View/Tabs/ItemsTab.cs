@@ -52,18 +52,6 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
-                if (Items.Count != 0)
-                {
-                    foreach (var item in Items)
-                    {
-                        ItemsListBox.Items.Add(item.Name);
-                    }
-
-                    ItemsListBox.SelectedIndex = 0;
-                }
-            }
-        }
-
         /// <summary>
         /// Создает экземпляр класса <see cref="ItemsTab"/>
         /// </summary>
