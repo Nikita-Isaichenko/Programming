@@ -40,15 +40,19 @@ namespace ObjectOrientedPractics
             this.ItemsTab = new ObjectOrientedPractics.View.Tabs.ItemsTab();
             this.CustomerTabPage = new System.Windows.Forms.TabPage();
             this.CustomerTab = new ObjectOrientedPractics.View.Tabs.CustomerTab();
+            this.CartTabPage = new System.Windows.Forms.TabPage();
+            this.cartsTab1 = new ObjectOrientedPractics.View.Tabs.CartsTab();
             this.MainTabControl.SuspendLayout();
             this.ItemsTabPage.SuspendLayout();
             this.CustomerTabPage.SuspendLayout();
+            this.CartTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainTabControl
             // 
             this.MainTabControl.Controls.Add(this.ItemsTabPage);
             this.MainTabControl.Controls.Add(this.CustomerTabPage);
+            this.MainTabControl.Controls.Add(this.CartTabPage);
             this.MainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainTabControl.Location = new System.Drawing.Point(0, 0);
             this.MainTabControl.Name = "MainTabControl";
@@ -94,6 +98,25 @@ namespace ObjectOrientedPractics
             this.CustomerTab.Size = new System.Drawing.Size(666, 414);
             this.CustomerTab.TabIndex = 0;
             // 
+            // CartTabPage
+            // 
+            this.CartTabPage.Controls.Add(this.cartsTab1);
+            this.CartTabPage.Location = new System.Drawing.Point(4, 22);
+            this.CartTabPage.Name = "CartTabPage";
+            this.CartTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.CartTabPage.Size = new System.Drawing.Size(666, 414);
+            this.CartTabPage.TabIndex = 2;
+            this.CartTabPage.Text = "Carts";
+            this.CartTabPage.UseVisualStyleBackColor = true;
+            // 
+            // cartsTab1
+            // 
+            this.cartsTab1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cartsTab1.Location = new System.Drawing.Point(3, 3);
+            this.cartsTab1.Name = "cartsTab1";
+            this.cartsTab1.Size = new System.Drawing.Size(660, 408);
+            this.cartsTab1.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -108,6 +131,7 @@ namespace ObjectOrientedPractics
             this.MainTabControl.ResumeLayout(false);
             this.ItemsTabPage.ResumeLayout(false);
             this.CustomerTabPage.ResumeLayout(false);
+            this.CartTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -119,6 +143,8 @@ namespace ObjectOrientedPractics
         private View.Tabs.ItemsTab ItemsTab;
         private System.Windows.Forms.TabPage CustomerTabPage;
         private View.Tabs.CustomerTab CustomerTab;
+        private TabPage CartTabPage;
+        private View.Tabs.CartsTab cartsTab1;
     }
 }
 
