@@ -64,7 +64,7 @@ namespace ObjectOrientedPractics.Services
                 Serializer.IsFile(nameof(_itemsCost)) &&
                 Serializer.IsFile(nameof(_itemsName)))
             {
-                DeserializerItemsInfo();
+                
             }
             else
             {
@@ -164,18 +164,5 @@ namespace ObjectOrientedPractics.Services
             Serializer.SaveToFile(nameof(_itemsCost), _itemsCost);
             Serializer.SaveToFile(nameof(_itemsName), _itemsName);
         }
-
-        /// <summary>
-        /// Десериализует списки с информацией о товарах.
-        /// </summary>
-        private void DeserializerItemsInfo()
-        {
-            _itemsDescription = Serializer.LoadFromFile<string>(nameof(_itemsDescription));
-            _itemsCost = Serializer.LoadFromFile<double>(nameof(_itemsCost));
-            _itemsName = Serializer.LoadFromFile<string>(nameof(_itemsName));
-
-            CountOfParsedItems = _itemsCost.Count;
-        }
-
     }
 }

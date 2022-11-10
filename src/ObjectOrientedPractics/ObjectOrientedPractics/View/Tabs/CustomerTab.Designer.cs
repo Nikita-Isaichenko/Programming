@@ -30,8 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.SelectedICustomersPanel = new System.Windows.Forms.Panel();
-            this.AddressTextBox = new System.Windows.Forms.TextBox();
-            this.AddressLabel = new System.Windows.Forms.Label();
+            this.AddressControl = new ObjectOrientedPractics.View.Controls.AddressControl();
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
             this.IDTextBox = new System.Windows.Forms.TextBox();
             this.FullNameLabel = new System.Windows.Forms.Label();
@@ -40,12 +39,12 @@
             this.CustomersPanel = new System.Windows.Forms.Panel();
             this.TableLayoutPanelButtons = new System.Windows.Forms.TableLayoutPanel();
             this.AddButton = new System.Windows.Forms.Button();
+            this.GenerateButton = new System.Windows.Forms.Button();
+            this.RemoveButton = new System.Windows.Forms.Button();
             this.CustomersListBox = new System.Windows.Forms.ListBox();
             this.CustomersLabel = new System.Windows.Forms.Label();
             this.FullNameToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.AddressToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.GenerateButton = new System.Windows.Forms.Button();
-            this.RemoveButton = new System.Windows.Forms.Button();
             this.SelectedICustomersPanel.SuspendLayout();
             this.CustomersPanel.SuspendLayout();
             this.TableLayoutPanelButtons.SuspendLayout();
@@ -57,8 +56,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SelectedICustomersPanel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.SelectedICustomersPanel.Controls.Add(this.AddressTextBox);
-            this.SelectedICustomersPanel.Controls.Add(this.AddressLabel);
+            this.SelectedICustomersPanel.Controls.Add(this.AddressControl);
             this.SelectedICustomersPanel.Controls.Add(this.FullNameTextBox);
             this.SelectedICustomersPanel.Controls.Add(this.IDTextBox);
             this.SelectedICustomersPanel.Controls.Add(this.FullNameLabel);
@@ -70,27 +68,16 @@
             this.SelectedICustomersPanel.Size = new System.Drawing.Size(360, 399);
             this.SelectedICustomersPanel.TabIndex = 3;
             // 
-            // AddressTextBox
+            // AddressControl
             // 
-            this.AddressTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.AddressControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddressTextBox.Location = new System.Drawing.Point(62, 81);
-            this.AddressTextBox.Multiline = true;
-            this.AddressTextBox.Name = "AddressTextBox";
-            this.AddressTextBox.Size = new System.Drawing.Size(294, 102);
-            this.AddressTextBox.TabIndex = 7;
-            this.AddressTextBox.TextChanged += new System.EventHandler(this.AddressTextBox_TextChanged);
-            // 
-            // AddressLabel
-            // 
-            this.AddressLabel.AutoSize = true;
-            this.AddressLabel.Location = new System.Drawing.Point(3, 84);
-            this.AddressLabel.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
-            this.AddressLabel.Name = "AddressLabel";
-            this.AddressLabel.Size = new System.Drawing.Size(48, 13);
-            this.AddressLabel.TabIndex = 5;
-            this.AddressLabel.Text = "Address:";
-            // 
+            this.AddressControl.AutoSize = true;
+            this.AddressControl.Location = new System.Drawing.Point(3, 92);
+            this.AddressControl.Name = "AddressControl";
+            this.AddressControl.Size = new System.Drawing.Size(353, 123);
+            this.AddressControl.TabIndex = 5;
+            //
             // FullNameTextBox
             // 
             this.FullNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -182,6 +169,27 @@
             this.AddButton.UseVisualStyleBackColor = true;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
+            // GenerateButton
+            // 
+            this.GenerateButton.Enabled = false;
+            this.GenerateButton.Location = new System.Drawing.Point(155, 3);
+            this.GenerateButton.Name = "GenerateButton";
+            this.GenerateButton.Size = new System.Drawing.Size(70, 51);
+            this.GenerateButton.TabIndex = 3;
+            this.GenerateButton.Text = "Generate";
+            this.GenerateButton.UseVisualStyleBackColor = true;
+            this.GenerateButton.Click += new System.EventHandler(this.GenerateButton_Click);
+            // 
+            // RemoveButton
+            // 
+            this.RemoveButton.Location = new System.Drawing.Point(79, 3);
+            this.RemoveButton.Name = "RemoveButton";
+            this.RemoveButton.Size = new System.Drawing.Size(70, 51);
+            this.RemoveButton.TabIndex = 4;
+            this.RemoveButton.Text = "Remove";
+            this.RemoveButton.UseVisualStyleBackColor = true;
+            this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
+            // 
             // CustomersListBox
             // 
             this.CustomersListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -205,26 +213,6 @@
             this.CustomersLabel.TabIndex = 0;
             this.CustomersLabel.Text = "Customers";
             // 
-            // GenerateButton
-            // 
-            this.GenerateButton.Location = new System.Drawing.Point(155, 3);
-            this.GenerateButton.Name = "GenerateButton";
-            this.GenerateButton.Size = new System.Drawing.Size(70, 51);
-            this.GenerateButton.TabIndex = 3;
-            this.GenerateButton.Text = "Generate";
-            this.GenerateButton.UseVisualStyleBackColor = true;
-            this.GenerateButton.Click += new System.EventHandler(this.GenerateButton_Click);
-            // 
-            // RemoveButton
-            // 
-            this.RemoveButton.Location = new System.Drawing.Point(79, 3);
-            this.RemoveButton.Name = "RemoveButton";
-            this.RemoveButton.Size = new System.Drawing.Size(70, 51);
-            this.RemoveButton.TabIndex = 4;
-            this.RemoveButton.Text = "Remove";
-            this.RemoveButton.UseVisualStyleBackColor = true;
-            this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
-            // 
             // CustomerTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -245,8 +233,6 @@
         #endregion
 
         private System.Windows.Forms.Panel SelectedICustomersPanel;
-        private System.Windows.Forms.TextBox AddressTextBox;
-        private System.Windows.Forms.Label AddressLabel;
         private System.Windows.Forms.TextBox FullNameTextBox;
         private System.Windows.Forms.TextBox IDTextBox;
         private System.Windows.Forms.Label FullNameLabel;
@@ -261,5 +247,6 @@
         private System.Windows.Forms.ToolTip AddressToolTip;
         private System.Windows.Forms.Button GenerateButton;
         private System.Windows.Forms.Button RemoveButton;
+        private Controls.AddressControl AddressControl;
     }
 }
