@@ -46,7 +46,7 @@
             // CityTextBox
             // 
             this.CityTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CityTextBox.Location = new System.Drawing.Point(217, 48);
+            this.CityTextBox.Location = new System.Drawing.Point(260, 48);
             this.CityTextBox.Name = "CityTextBox";
             this.CityTextBox.Size = new System.Drawing.Size(79, 20);
             this.CityTextBox.TabIndex = 10;
@@ -87,7 +87,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PostIndexTextBox.Location = new System.Drawing.Point(69, 22);
             this.PostIndexTextBox.Name = "PostIndexTextBox";
-            this.PostIndexTextBox.Size = new System.Drawing.Size(107, 20);
+            this.PostIndexTextBox.Size = new System.Drawing.Size(150, 20);
             this.PostIndexTextBox.TabIndex = 3;
             this.PostIndexTextBox.TextChanged += new System.EventHandler(this.PostIndexTextBox_TextChanged);
             // 
@@ -97,7 +97,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CountryTextBox.Location = new System.Drawing.Point(69, 48);
             this.CountryTextBox.Name = "CountryTextBox";
-            this.CountryTextBox.Size = new System.Drawing.Size(107, 20);
+            this.CountryTextBox.Size = new System.Drawing.Size(150, 20);
             this.CountryTextBox.TabIndex = 4;
             this.CountryTextBox.TextChanged += new System.EventHandler(this.CountryTextBox_TextChanged);
             // 
@@ -125,7 +125,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.StreetTextBox.Location = new System.Drawing.Point(69, 74);
             this.StreetTextBox.Name = "StreetTextBox";
-            this.StreetTextBox.Size = new System.Drawing.Size(227, 20);
+            this.StreetTextBox.Size = new System.Drawing.Size(270, 20);
             this.StreetTextBox.TabIndex = 7;
             this.StreetTextBox.TextChanged += new System.EventHandler(this.StreetTextBox_TextChanged);
             // 
@@ -135,7 +135,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BuildingTextBox.Location = new System.Drawing.Point(69, 100);
             this.BuildingTextBox.Name = "BuildingTextBox";
-            this.BuildingTextBox.Size = new System.Drawing.Size(46, 20);
+            this.BuildingTextBox.Size = new System.Drawing.Size(89, 20);
             this.BuildingTextBox.TabIndex = 8;
             this.BuildingTextBox.TextChanged += new System.EventHandler(this.BuildingTextBox_TextChanged);
             // 
@@ -143,7 +143,7 @@
             // 
             this.CityLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CityLabel.AutoSize = true;
-            this.CityLabel.Location = new System.Drawing.Point(184, 51);
+            this.CityLabel.Location = new System.Drawing.Point(227, 51);
             this.CityLabel.Name = "CityLabel";
             this.CityLabel.Size = new System.Drawing.Size(27, 13);
             this.CityLabel.TabIndex = 11;
@@ -153,7 +153,7 @@
             // 
             this.ApartmentLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ApartmentLabel.AutoSize = true;
-            this.ApartmentLabel.Location = new System.Drawing.Point(184, 103);
+            this.ApartmentLabel.Location = new System.Drawing.Point(227, 103);
             this.ApartmentLabel.Name = "ApartmentLabel";
             this.ApartmentLabel.Size = new System.Drawing.Size(58, 13);
             this.ApartmentLabel.TabIndex = 12;
@@ -162,7 +162,7 @@
             // ApartmentTextBox
             // 
             this.ApartmentTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ApartmentTextBox.Location = new System.Drawing.Point(248, 100);
+            this.ApartmentTextBox.Location = new System.Drawing.Point(291, 100);
             this.ApartmentTextBox.Name = "ApartmentTextBox";
             this.ApartmentTextBox.Size = new System.Drawing.Size(48, 20);
             this.ApartmentTextBox.TabIndex = 13;
@@ -187,7 +187,7 @@
             this.Controls.Add(this.PostIndexLabel);
             this.Controls.Add(this.DeliveryAddressLabel);
             this.Name = "AddressControl";
-            this.Size = new System.Drawing.Size(299, 125);
+            this.Size = new System.Drawing.Size(342, 125);
             this.ResumeLayout(false);
             this.PerformLayout();
 
