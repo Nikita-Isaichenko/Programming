@@ -34,6 +34,11 @@ namespace ObjectOrientedPractics.Model
         private Address _address;
 
         /// <summary>
+        /// Корзина покупателя.
+        /// </summary>
+        private Cart _cart;
+
+        /// <summary>
         /// Возвращает и задает уникальный идентификатор покупателя.
         /// </summary>
         public int Id { get; private set; }      
@@ -119,6 +124,11 @@ namespace ObjectOrientedPractics.Model
         public Address Address { get; set; }
 
         /// <summary>
+        /// Возвращает и задает корзину покупателя.
+        /// </summary>
+        public Cart Cart { get; set; }
+
+        /// <summary>
         /// Cоздает экземпляр класса <see cref="Customer"/>
         /// </summary>
         /// <param name="fullName">ФИО.</param>
@@ -128,6 +138,7 @@ namespace ObjectOrientedPractics.Model
             Id = IdGenerator.GetIdNext();
             FullName = fullName;
             Address = address;
+            Cart = new Cart();
         }
 
         /// <summary>
@@ -138,6 +149,7 @@ namespace ObjectOrientedPractics.Model
             Id = IdGenerator.GetIdNext();
             FullName = "None";
             Address = new Address();
+            Cart = new Cart();
         }
     }
 }
