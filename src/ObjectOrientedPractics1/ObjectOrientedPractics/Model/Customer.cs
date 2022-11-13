@@ -1,5 +1,6 @@
 ﻿using ObjectOrientedPractics.Services;
-
+using System.Collections.Generic;
+using System.Windows.Documents;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -32,6 +33,11 @@ namespace ObjectOrientedPractics.Model
         /// Адрес доставки до покупателя.
         /// </summary>
         private Address _address;
+
+        /// <summary>
+        /// Корзина покупателя.
+        /// </summary>
+        private Cart _cart;
 
         /// <summary>
         /// Возвращает и задает уникальный идентификатор покупателя.
@@ -119,6 +125,16 @@ namespace ObjectOrientedPractics.Model
         public Address Address { get; set; }
 
         /// <summary>
+        /// Возвращает и задает корзину покупателя.
+        /// </summary>
+        public Cart Cart { get; set; }
+
+        /// <summary>
+        /// Возвращает и задает список заказов.
+        /// </summary>
+        public List<Order> Orders { get; set; }
+
+        /// <summary>
         /// Cоздает экземпляр класса <see cref="Customer"/>
         /// </summary>
         /// <param name="fullName">ФИО.</param>
@@ -128,6 +144,7 @@ namespace ObjectOrientedPractics.Model
             Id = IdGenerator.GetIdNext();
             FullName = fullName;
             Address = address;
+            Cart = new Cart();
         }
 
         /// <summary>
@@ -138,6 +155,7 @@ namespace ObjectOrientedPractics.Model
             Id = IdGenerator.GetIdNext();
             FullName = "None";
             Address = new Address();
+            Cart = new Cart();
         }
     }
 }
