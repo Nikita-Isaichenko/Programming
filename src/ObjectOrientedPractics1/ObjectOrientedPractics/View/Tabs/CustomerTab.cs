@@ -62,6 +62,8 @@ namespace ObjectOrientedPractics.View.Tabs
             InitializeComponent();
 
             _customerFactory = new CustomerFactory();
+
+            
             
             CheckingAvailabilityItems();
         }
