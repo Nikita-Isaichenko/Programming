@@ -11,7 +11,7 @@ namespace ObjectOrientedPractics.Model
     /// </summary>
     public class Store
     {
-        /*/// <summary>
+        /// <summary>
         /// Возвращает и задает список товаров.
         /// </summary>
         public List<Item> Items { get; set; }
@@ -19,15 +19,15 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Возвращает и задает список покупателей.
         /// </summary>
-        public List<Customer> Customers { get; set; }*/
+        public List<Customer> Customers { get; set; }
 
         /// <summary>
         /// Создает экземпляр класса <see cref="Store"/>
         /// </summary>
         public Store()
         {
-            //Items = new List<Item>();
-            //Customers = new List<Customer>();
+            Items = new List<Item>();
+            Customers = new List<Customer>();
         }
     }
 }
