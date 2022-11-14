@@ -62,6 +62,8 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             InitializeComponent();
 
+            Items = new List<Item>();
+
             _itemFactory = new ItemFactory();
 
             foreach (var category in Enum.GetValues(typeof(Category)))
