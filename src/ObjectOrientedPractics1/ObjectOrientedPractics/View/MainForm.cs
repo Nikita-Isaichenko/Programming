@@ -30,9 +30,7 @@ namespace ObjectOrientedPractics
             InitializeComponent();
 
             MainItemsTab.Items = _store.Items;
-            MainCustomerTab.Customers = _store.Customers;
-            //удали этот коммент, он для коммита
-            //И этот тоже
+            MainCustomersTab.Customers = _store.Customers;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
