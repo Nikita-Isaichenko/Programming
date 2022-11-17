@@ -31,6 +31,8 @@ namespace ObjectOrientedPractics
 
             MainItemsTab.Items = _store.Items;
             MainCustomersTab.Customers = _store.Customers;
+            MainCartsTab.Items = _store.Items;
+            MainCartsTab.Customers = _store.Customers;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)

@@ -32,22 +32,22 @@
             this.ItemsLabel = new System.Windows.Forms.Label();
             this.AddCartButton = new System.Windows.Forms.Button();
             this.CustomerLabel = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.CustomersComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.CartListBox = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.CreatOrderButton = new System.Windows.Forms.Button();
             this.RemoveItemButton = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.ClearCartButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.SumCostLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -89,6 +89,7 @@
             this.AddCartButton.TabIndex = 2;
             this.AddCartButton.Text = "Add To Cart";
             this.AddCartButton.UseVisualStyleBackColor = true;
+            this.AddCartButton.Click += new System.EventHandler(this.AddCartButton_Click);
             // 
             // CustomerLabel
             // 
@@ -104,15 +105,16 @@
             this.CustomerLabel.Text = "Customer";
             this.CustomerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // comboBox1
+            // CustomersComboBox
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.CustomersComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(69, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(380, 21);
-            this.comboBox1.TabIndex = 5;
+            this.CustomersComboBox.FormattingEnabled = true;
+            this.CustomersComboBox.Location = new System.Drawing.Point(69, 3);
+            this.CustomersComboBox.Name = "CustomersComboBox";
+            this.CustomersComboBox.Size = new System.Drawing.Size(380, 21);
+            this.CustomersComboBox.TabIndex = 5;
+            this.CustomersComboBox.SelectedIndexChanged += new System.EventHandler(this.CustomersComboBox_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -124,17 +126,6 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Cart:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(39, 3);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(407, 171);
-            this.textBox1.TabIndex = 7;
             // 
             // tableLayoutPanel1
             // 
@@ -179,7 +170,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Controls.Add(this.CustomerLabel, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.comboBox1, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.CustomersComboBox, 1, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
@@ -212,8 +203,8 @@
             this.tableLayoutPanel5.ColumnCount = 2;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Controls.Add(this.textBox1, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.CartListBox, 1, 0);
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -221,6 +212,15 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(449, 177);
             this.tableLayoutPanel5.TabIndex = 0;
+            // 
+            // CartListBox
+            // 
+            this.CartListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CartListBox.FormattingEnabled = true;
+            this.CartListBox.Location = new System.Drawing.Point(39, 3);
+            this.CartListBox.Name = "CartListBox";
+            this.CartListBox.Size = new System.Drawing.Size(407, 171);
+            this.CartListBox.TabIndex = 7;
             // 
             // tableLayoutPanel7
             // 
@@ -250,7 +250,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel6.Controls.Add(this.CreatOrderButton, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.RemoveItemButton, 2, 0);
-            this.tableLayoutPanel6.Controls.Add(this.button4, 3, 0);
+            this.tableLayoutPanel6.Controls.Add(this.ClearCartButton, 3, 0);
             this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 81);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
@@ -269,6 +269,7 @@
             this.CreatOrderButton.TabIndex = 9;
             this.CreatOrderButton.Text = "Creat Order";
             this.CreatOrderButton.UseVisualStyleBackColor = true;
+            this.CreatOrderButton.Click += new System.EventHandler(this.CreatOrderButton_Click);
             // 
             // RemoveItemButton
             // 
@@ -281,18 +282,20 @@
             this.RemoveItemButton.TabIndex = 10;
             this.RemoveItemButton.Text = "Remove Item";
             this.RemoveItemButton.UseVisualStyleBackColor = true;
+            this.RemoveItemButton.Click += new System.EventHandler(this.RemoveItemButton_Click);
             // 
-            // button4
+            // ClearCartButton
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ClearCartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(311, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(126, 29);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "Clear Cart";
-            this.button4.UseVisualStyleBackColor = true;
+            this.ClearCartButton.Location = new System.Drawing.Point(311, 3);
+            this.ClearCartButton.Name = "ClearCartButton";
+            this.ClearCartButton.Size = new System.Drawing.Size(126, 29);
+            this.ClearCartButton.TabIndex = 11;
+            this.ClearCartButton.Text = "Clear Cart";
+            this.ClearCartButton.UseVisualStyleBackColor = true;
+            this.ClearCartButton.Click += new System.EventHandler(this.ClearCartButton_Click);
             // 
             // tableLayoutPanel8
             // 
@@ -303,7 +306,7 @@
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
             this.tableLayoutPanel8.Controls.Add(this.label2, 1, 0);
-            this.tableLayoutPanel8.Controls.Add(this.label3, 1, 1);
+            this.tableLayoutPanel8.Controls.Add(this.SumCostLabel, 1, 1);
             this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 2;
@@ -324,20 +327,20 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Amount:";
             // 
-            // label3
+            // SumCostLabel
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.SumCostLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(149, 20);
-            this.label3.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(288, 52);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "4990.9";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.SumCostLabel.AutoSize = true;
+            this.SumCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SumCostLabel.Location = new System.Drawing.Point(149, 20);
+            this.SumCostLabel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.SumCostLabel.Name = "SumCostLabel";
+            this.SumCostLabel.Size = new System.Drawing.Size(288, 52);
+            this.SumCostLabel.TabIndex = 1;
+            this.SumCostLabel.Text = "0 руб";
+            this.SumCostLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // CartsTab
             // 
@@ -370,9 +373,8 @@
         private System.Windows.Forms.Label ItemsLabel;
         private System.Windows.Forms.Button AddCartButton;
         private System.Windows.Forms.Label CustomerLabel;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox CustomersComboBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
@@ -382,9 +384,10 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Button CreatOrderButton;
         private System.Windows.Forms.Button RemoveItemButton;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button ClearCartButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label SumCostLabel;
+        private System.Windows.Forms.ListBox CartListBox;
     }
 }

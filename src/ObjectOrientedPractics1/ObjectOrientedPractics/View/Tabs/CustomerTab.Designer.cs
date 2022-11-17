@@ -70,6 +70,7 @@
             // 
             // AddressControl
             // 
+            this.AddressControl.Address = null;
             this.AddressControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AddressControl.AutoSize = true;
@@ -77,7 +78,7 @@
             this.AddressControl.Name = "AddressControl";
             this.AddressControl.Size = new System.Drawing.Size(353, 123);
             this.AddressControl.TabIndex = 5;
-            //
+            // 
             // FullNameTextBox
             // 
             this.FullNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -171,7 +172,6 @@
             // 
             // GenerateButton
             // 
-            this.GenerateButton.Enabled = false;
             this.GenerateButton.Location = new System.Drawing.Point(155, 3);
             this.GenerateButton.Name = "GenerateButton";
             this.GenerateButton.Size = new System.Drawing.Size(70, 51);

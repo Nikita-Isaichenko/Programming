@@ -47,7 +47,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Возвращает и задает адрес доставки заказа.
         /// </summary>
-        public string DeliveryAddress { get; set; }
+        public Address DeliveryAddress { get; set; }
 
         /// <summary>
         /// Возвращает Id заказа.
@@ -91,6 +91,7 @@ namespace ObjectOrientedPractics.Model
         {
             Id = IdGenerator.GetIdNext();
             OrderCreationDate = DateTime.Now.ToString();
+            OrderStatus = OrderStatus.New;
         }
     }
 }

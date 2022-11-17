@@ -25,7 +25,12 @@ namespace ObjectOrientedPractics.View.Controls
             set
             {
                 _address = value;
-                UpdateTextBoxes();
+
+                if (_address != null)
+                {
+                    UpdateTextBoxes();
+                }
+                
             }
         }
 
@@ -40,7 +45,7 @@ namespace ObjectOrientedPractics.View.Controls
             CountryTextBox.Text = _address.Country;
             CityTextBox.Text = _address.City;
             StreetTextBox.Text = _address.Street;
-            BuildingTextBox.Text = _address.Building;
+            BuildingTextBox.Text = _address.House;
             ApartmentTextBox.Text = _address.Apartment;
         }
 
@@ -101,7 +106,7 @@ namespace ObjectOrientedPractics.View.Controls
             try
             {
                 BuildingTextBox.BackColor = AppColor.NormalBackColor;
-                _address.Building = BuildingTextBox.Text;
+                _address.House = BuildingTextBox.Text;
             }
             catch
             {
