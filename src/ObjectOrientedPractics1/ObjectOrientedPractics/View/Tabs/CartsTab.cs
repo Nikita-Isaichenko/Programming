@@ -31,9 +31,9 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Возвращает и задает список товаров.
         /// </summary>
-        //[Browsable(false)]
-        //[EditorBrowsable(EditorBrowsableState.Never)]
-        //[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<Item> Items
         {
             get
@@ -59,9 +59,9 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Возвращает и задает список покупателей.
         /// </summary>
-        //[Browsable(false)]
-        //[EditorBrowsable(EditorBrowsableState.Never)]
-        //[DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<Customer> Customers
         {
             get
@@ -72,7 +72,7 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 _customers = value;
 
-                if (_items != null)
+                if (_customers != null)
                 {
                     foreach (var customer in _customers)
                     {
@@ -122,8 +122,38 @@ namespace ObjectOrientedPractics.View.Tabs
                 CartListBox.Items.Add(item.Name);
             }
 
-            CartListBox.SelectedIndex = -1;
+            CartListBox.SelectedIndex = index;
             SumCostLabel.Text = CurrentCustomer.Cart.AmountToString();
+        }
+
+        public void RefreshData()
+        {
+            if (Items != null)
+            {
+                ItemsListBox.Items.Clear();
+
+                foreach (var item in Items)
+                {
+                    ItemsListBox.Items.Add(item.Name);
+                }
+
+                ItemsListBox.SelectedIndex = -1;
+            }
+
+            if (Customers != null)
+            {
+                CustomersComboBox.Items.Clear();
+                CustomersComboBox.Text = "";
+                CartListBox.Items.Clear();
+                SumCostLabel.Text = "0 руб";
+
+                foreach (var customer in _customers)
+                {
+                    CustomersComboBox.Items.Add(customer.FullName);
+                }
+
+                CustomersComboBox.SelectedIndex = -1;
+            }
         }
 
         private void CustomersComboBox_SelectedIndexChanged(object sender, EventArgs e)

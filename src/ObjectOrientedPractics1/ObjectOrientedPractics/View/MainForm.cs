@@ -39,5 +39,13 @@ namespace ObjectOrientedPractics
         {
             Serializer.SaveToFile("Store", _store);
         }
+
+        private void MainTabControl_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            if (MainTabControl.SelectedTab == CartsTabPage)
+            {
+                MainCartsTab.RefreshData();
+            }
+        }
     }
 }
