@@ -16,7 +16,5 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             InitializeComponent();
         }
-
-
     }
 }
