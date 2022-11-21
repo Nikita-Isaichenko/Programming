@@ -46,9 +46,9 @@
             // CityTextBox
             // 
             this.CityTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CityTextBox.Location = new System.Drawing.Point(260, 48);
+            this.CityTextBox.Location = new System.Drawing.Point(229, 48);
             this.CityTextBox.Name = "CityTextBox";
-            this.CityTextBox.Size = new System.Drawing.Size(79, 20);
+            this.CityTextBox.Size = new System.Drawing.Size(110, 20);
             this.CityTextBox.TabIndex = 10;
             this.CityTextBox.TextChanged += new System.EventHandler(this.CityTextBox_TextChanged);
             // 
@@ -87,7 +87,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PostIndexTextBox.Location = new System.Drawing.Point(69, 22);
             this.PostIndexTextBox.Name = "PostIndexTextBox";
-            this.PostIndexTextBox.Size = new System.Drawing.Size(150, 20);
+            this.PostIndexTextBox.Size = new System.Drawing.Size(121, 20);
             this.PostIndexTextBox.TabIndex = 3;
             this.PostIndexTextBox.TextChanged += new System.EventHandler(this.PostIndexTextBox_TextChanged);
             // 
@@ -97,7 +97,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CountryTextBox.Location = new System.Drawing.Point(69, 48);
             this.CountryTextBox.Name = "CountryTextBox";
-            this.CountryTextBox.Size = new System.Drawing.Size(150, 20);
+            this.CountryTextBox.Size = new System.Drawing.Size(121, 20);
             this.CountryTextBox.TabIndex = 4;
             this.CountryTextBox.TextChanged += new System.EventHandler(this.CountryTextBox_TextChanged);
             // 
@@ -143,7 +143,7 @@
             // 
             this.CityLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CityLabel.AutoSize = true;
-            this.CityLabel.Location = new System.Drawing.Point(227, 51);
+            this.CityLabel.Location = new System.Drawing.Point(196, 51);
             this.CityLabel.Name = "CityLabel";
             this.CityLabel.Size = new System.Drawing.Size(27, 13);
             this.CityLabel.TabIndex = 11;

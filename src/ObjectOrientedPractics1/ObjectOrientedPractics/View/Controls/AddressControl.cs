@@ -19,6 +19,11 @@ namespace ObjectOrientedPractics.View.Controls
         /// </summary>
         private Address _address;
 
+        /// <summary>
+        /// Указывает должен ли контрол быть только на чтение.
+        /// </summary>
+        private bool _readOnly;
+
         public Address Address
         {
             get { return _address; }
@@ -34,13 +39,53 @@ namespace ObjectOrientedPractics.View.Controls
             }
         }
 
+        /// <summary>
+        /// Задает логическое значение для установки режима на только чтение.
+        /// По умолчанию равно false.
+        /// </summary>
+        public bool ReadOnly
+        {
+            set
+            {
+                _readOnly = value;
+
+                PostIndexTextBox.ReadOnly = _readOnly;
+                CountryTextBox.ReadOnly = _readOnly;
+                CityTextBox.ReadOnly = _readOnly;
+                StreetTextBox.ReadOnly = _readOnly;
+                BuildingTextBox.ReadOnly = _readOnly;
+                ApartmentTextBox.ReadOnly = _readOnly;
+            }
+        }
         public AddressControl()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            ReadOnly = false;
+        }
+
+        /// <summary>
+        /// Очищает контрол.
+        /// </summary>
+        public void Clear()
+        {            
+            PostIndexTextBox.Clear();
+            CountryTextBox.Clear();
+            CityTextBox.Clear();
+            StreetTextBox.Clear();
+            BuildingTextBox.Clear();
+            ApartmentTextBox.Clear();
+
+            PostIndexTextBox.BackColor = AppColor.NormalBackColor;
+            CountryTextBox.BackColor = AppColor.NormalBackColor;
+            CityTextBox.BackColor = AppColor.NormalBackColor;
+            StreetTextBox.BackColor = AppColor.NormalBackColor;
+            BuildingTextBox.BackColor = AppColor.NormalBackColor;
+            ApartmentTextBox.BackColor = AppColor.NormalBackColor;
         }
 
         private void UpdateTextBoxes()
         {
+            
             PostIndexTextBox.Text = _address.Index.ToString();
             CountryTextBox.Text = _address.Country;
             CityTextBox.Text = _address.City;
@@ -60,6 +105,7 @@ namespace ObjectOrientedPractics.View.Controls
             {
                 PostIndexTextBox.BackColor = AppColor.ErrorBackColor;
             }
+
         }
 
         private void CountryTextBox_TextChanged(object sender, EventArgs e)

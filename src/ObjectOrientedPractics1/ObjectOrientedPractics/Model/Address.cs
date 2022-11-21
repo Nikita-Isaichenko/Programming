@@ -176,5 +176,14 @@ namespace ObjectOrientedPractics.Model
             House = building;
             Apartment = apartment;
         }
+
+        /// <summary>
+        /// Возвращает адрес в виде строки.
+        /// </summary>
+        /// <returns></returns>
+        public string AddressToString()
+        {
+            return $"{Index} {Country}, {City}, {Street}, {House}, {Apartment}";
+        }
     }
 }

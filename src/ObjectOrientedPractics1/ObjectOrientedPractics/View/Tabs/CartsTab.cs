@@ -154,6 +154,8 @@ namespace ObjectOrientedPractics.View.Tabs
 
                 CustomersComboBox.SelectedIndex = -1;
             }
+
+            CurrentCustomer = null;
         }
 
         private void CustomersComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -204,7 +206,8 @@ namespace ObjectOrientedPractics.View.Tabs
                 return;
 
             Order = new Order();
-            Order.Items = CurrentCustomer.Cart.Items;
+            Order.Items.AddRange(CurrentCustomer.Cart.Items);
+            Order.OrderCreationDate = DateTime.Now.ToString();
             Order.DeliveryAddress = CurrentCustomer.Address;
             CurrentCustomer.Orders.Add(Order);
 
