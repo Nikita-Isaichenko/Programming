@@ -12,10 +12,13 @@ using System.Windows.Forms;
 namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class OrdersTab : UserControl
-    {       
+    {
         /// <summary>
         /// Возвращает и задает список покупателей.
         /// </summary>
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<Customer> Customers { get; set; }
 
         /// <summary>
