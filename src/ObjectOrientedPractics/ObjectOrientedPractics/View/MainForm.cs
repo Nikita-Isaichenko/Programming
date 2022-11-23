@@ -30,12 +30,28 @@ namespace ObjectOrientedPractics
             InitializeComponent();
 
             MainItemsTab.Items = _store.Items;
-            MainCustomerTab.Customers = _store.Customers;
+            MainCustomersTab.Customers = _store.Customers;
+            MainCartsTab.Items = _store.Items;
+            MainCartsTab.Customers = _store.Customers;
+            MainOrdersTab.Customers = _store.Customers;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Serializer.SaveToFile("Store", _store);
+        }
+
+        private void MainTabControl_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            if (MainTabControl.SelectedTab == CartsTabPage)
+            {
+                MainCartsTab.RefreshData();
+            }
+
+            if (MainTabControl.SelectedTab == OrdersTabPage)
+            {
+                MainOrdersTab.RefreshData();
+            }
         }
     }
 }

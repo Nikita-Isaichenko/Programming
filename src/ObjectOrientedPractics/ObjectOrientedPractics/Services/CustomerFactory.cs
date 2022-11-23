@@ -18,7 +18,7 @@ namespace ObjectOrientedPractics.Services
         /// <summary>
         /// Параметры для запроса.
         /// </summary>
-        private string _parameters = "FirstName,LastName,FatherName,Address";
+        private string _parameters = "FirstName,LastName,FatherName,Country,City,Street,House,Apartment";
 
         /// <summary>
         /// Oбъект класса <see cref="DataAPI"/>.
@@ -39,10 +39,14 @@ namespace ObjectOrientedPractics.Services
         /// </summary>
         /// <returns>Экземпляр класса <see cref="Customer"/> </returns>
         public Customer CreatCustomer()
-        {                    
-            _customer = JsonConvert.DeserializeObject<Customer>(dataAPI.GetJsonData());
-           
+        {
+            string json = dataAPI.GetJsonData();
+            _customer = JsonConvert.DeserializeObject<Customer>(json);
+            _customer.Address = JsonConvert.DeserializeObject<Address>(json);
+            
             return _customer;
         }
+
+
     }
 }

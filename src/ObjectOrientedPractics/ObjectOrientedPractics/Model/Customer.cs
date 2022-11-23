@@ -145,6 +145,7 @@ namespace ObjectOrientedPractics.Model
             FullName = fullName;
             Address = address;
             Cart = new Cart();
+            Orders = new List<Order>();
         }
 
         /// <summary>
@@ -156,6 +157,7 @@ namespace ObjectOrientedPractics.Model
             FullName = "None";
             Address = new Address();
             Cart = new Cart();
+            Orders = new List<Order>();
         }
     }
 }

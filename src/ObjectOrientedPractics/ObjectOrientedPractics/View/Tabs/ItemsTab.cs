@@ -2,6 +2,7 @@
 using ObjectOrientedPractics.Services;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UserControl = System.Windows.Forms.UserControl;
 
 
@@ -30,6 +31,9 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Возвращает и задает список товаров.
         /// </summary>
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<Item> Items
         {
             get

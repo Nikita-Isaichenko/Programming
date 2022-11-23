@@ -3,6 +3,7 @@ using ObjectOrientedPractics.Services;
 using ObjectOrientedPractics.View.Controls;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
 
@@ -32,6 +33,9 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Возвращает и задает список покупателей.
         /// </summary>
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<Customer> Customers
         {
             get
@@ -62,9 +66,7 @@ namespace ObjectOrientedPractics.View.Tabs
             InitializeComponent();
 
             _customerFactory = new CustomerFactory();
-
-            
-            
+                       
             CheckingAvailabilityItems();
         }
 

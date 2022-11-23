@@ -20,8 +20,7 @@ namespace ObjectOrientedPractics.Model
 
         /// <summary>
         /// Дата создания заказа.
-        /// </summary>
-        /// TODO: добавить поле с типом дата.
+        /// </summary>        
         private readonly string _orderCreationDate;
 
         /// <summary>
@@ -47,7 +46,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Возвращает и задает адрес доставки заказа.
         /// </summary>
-        public string DeliveryAddress { get; set; }
+        public Address DeliveryAddress { get; set; }
 
         /// <summary>
         /// Возвращает Id заказа.
@@ -57,7 +56,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Возвращает дату создания заказа.
         /// </summary>
-        public string OrderCreationDate { get; }
+        public string OrderCreationDate { get; set; }
 
         /// <summary>
         /// Возвращает и задает список товаров заказа.
@@ -71,7 +70,7 @@ namespace ObjectOrientedPractics.Model
         {
             get
             {
-                double sum = 0.0;
+                double sum = 10.0;
 
                 if (Items.Count == 0)
                 {
@@ -90,7 +89,8 @@ namespace ObjectOrientedPractics.Model
         public Order()
         {
             Id = IdGenerator.GetIdNext();
-            OrderCreationDate = DateTime.Now.ToString();
+            Items = new List<Item>();
+            OrderStatus = OrderStatus.New;
         }
     }
 }
