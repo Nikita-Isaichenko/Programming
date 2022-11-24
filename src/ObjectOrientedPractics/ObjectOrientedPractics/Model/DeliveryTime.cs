@@ -11,5 +11,6 @@
         FromFifteenToSeventeen,
         FromSeventeenToNineteen,
         FromNineteenToTwentyOne,
+        None,
     }
 }

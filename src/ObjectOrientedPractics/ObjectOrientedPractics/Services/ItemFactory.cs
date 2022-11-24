@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using ObjectOrientedPractics.Model;
-
+using System;
 
 namespace ObjectOrientedPractics.Services
 {
@@ -9,6 +9,9 @@ namespace ObjectOrientedPractics.Services
         /// </summary>
         class ItemFactory
         {
+
+            private Random _random;
+
             /// <summary>
             /// товар.
             /// </summary>
@@ -30,6 +33,7 @@ namespace ObjectOrientedPractics.Services
             public ItemFactory()
             {
                 dataAPI = new DataAPI(_parameters);
+                _random = new Random();
             }
 
             /// <summary>
@@ -41,6 +45,7 @@ namespace ObjectOrientedPractics.Services
             {
                 _item = JsonConvert.DeserializeObject<Item>(dataAPI.GetJsonData());
                 _item.Category = Category.Cars;
+                _item.Cost = _random.Next(1, 99999); 
                 return _item;
             }
         }

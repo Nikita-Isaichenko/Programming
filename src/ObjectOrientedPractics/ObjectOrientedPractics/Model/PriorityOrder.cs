@@ -28,6 +28,7 @@ namespace ObjectOrientedPractics.Model
         {
             DesiredDeliveryDate = dateTime;
             DesiredDeliveryTime = deliveryTime;
+            DeliveryAddress = new Address();
         }
     }
 }

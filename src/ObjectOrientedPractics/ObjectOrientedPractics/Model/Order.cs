@@ -70,7 +70,7 @@ namespace ObjectOrientedPractics.Model
         {
             get
             {
-                double sum = 10.0;
+                double sum = 0.0;
 
                 if (Items.Count == 0)
                 {
@@ -91,6 +91,7 @@ namespace ObjectOrientedPractics.Model
             Id = IdGenerator.GetIdNext();
             Items = new List<Item>();
             OrderStatus = OrderStatus.New;
+            OrderCreationDate = DateTime.Now.ToString();
         }
     }
 }

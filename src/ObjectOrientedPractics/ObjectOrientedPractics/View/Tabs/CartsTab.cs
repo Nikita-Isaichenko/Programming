@@ -207,7 +207,6 @@ namespace ObjectOrientedPractics.View.Tabs
 
             Order = new Order();
             Order.Items.AddRange(CurrentCustomer.Cart.Items);
-            Order.OrderCreationDate = DateTime.Now.ToString();
             Order.DeliveryAddress = CurrentCustomer.Address;
             CurrentCustomer.Orders.Add(Order);
 

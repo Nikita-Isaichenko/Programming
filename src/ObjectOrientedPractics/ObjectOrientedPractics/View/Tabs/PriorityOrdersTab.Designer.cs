@@ -36,7 +36,6 @@ namespace ObjectOrientedPractics.View.Tabs
             this.IdTextBox = new System.Windows.Forms.TextBox();
             this.IdLabel = new System.Windows.Forms.Label();
             this.SelectedLabel = new System.Windows.Forms.Label();
-            this.PriorityOrdersTabAddressControl = new ObjectOrientedPractics.View.Controls.AddressControl();
             this.PriorityOptionsLabel = new System.Windows.Forms.Label();
             this.DeliveryTimeLabel = new System.Windows.Forms.Label();
             this.DeliveryTimeComboBox = new System.Windows.Forms.ComboBox();
@@ -49,6 +48,7 @@ namespace ObjectOrientedPractics.View.Tabs
             this.ClearOrderButton = new System.Windows.Forms.Button();
             this.AddItemButton = new System.Windows.Forms.Button();
             this.ButtonsTableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.PriorityOrdersTabAddressControl = new ObjectOrientedPractics.View.Controls.AddressControl();
             this.tableLayoutPanel4.SuspendLayout();
             this.ButtonsTableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +60,7 @@ namespace ObjectOrientedPractics.View.Tabs
             this.StatusComboBox.Name = "StatusComboBox";
             this.StatusComboBox.Size = new System.Drawing.Size(142, 21);
             this.StatusComboBox.TabIndex = 23;
+            this.StatusComboBox.SelectedIndexChanged += new System.EventHandler(this.StatusComboBox_SelectedIndexChanged);
             // 
             // StatusLabel
             // 
@@ -121,16 +122,6 @@ namespace ObjectOrientedPractics.View.Tabs
             this.SelectedLabel.TabIndex = 24;
             this.SelectedLabel.Text = "Selected Order";
             // 
-            // PriorityOrdersTabAddressControl
-            // 
-            this.PriorityOrdersTabAddressControl.Address = null;
-            this.PriorityOrdersTabAddressControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PriorityOrdersTabAddressControl.Location = new System.Drawing.Point(3, 107);
-            this.PriorityOrdersTabAddressControl.Name = "PriorityOrdersTabAddressControl";
-            this.PriorityOrdersTabAddressControl.Size = new System.Drawing.Size(463, 123);
-            this.PriorityOrdersTabAddressControl.TabIndex = 25;
-            // 
             // PriorityOptionsLabel
             // 
             this.PriorityOptionsLabel.AutoSize = true;
@@ -157,6 +148,7 @@ namespace ObjectOrientedPractics.View.Tabs
             this.DeliveryTimeComboBox.Name = "DeliveryTimeComboBox";
             this.DeliveryTimeComboBox.Size = new System.Drawing.Size(139, 21);
             this.DeliveryTimeComboBox.TabIndex = 28;
+            this.DeliveryTimeComboBox.SelectedIndexChanged += new System.EventHandler(this.DeliveryTimeComboBox_SelectedIndexChanged);
             // 
             // ItemsListBox
             // 
@@ -228,6 +220,7 @@ namespace ObjectOrientedPractics.View.Tabs
             this.RemoveItemButton.TabIndex = 33;
             this.RemoveItemButton.Text = "Remove Item";
             this.RemoveItemButton.UseVisualStyleBackColor = true;
+            this.RemoveItemButton.Click += new System.EventHandler(this.RemoveItemButton_Click);
             // 
             // ClearOrderButton
             // 
@@ -238,6 +231,7 @@ namespace ObjectOrientedPractics.View.Tabs
             this.ClearOrderButton.TabIndex = 34;
             this.ClearOrderButton.Text = "Clear Order";
             this.ClearOrderButton.UseVisualStyleBackColor = true;
+            this.ClearOrderButton.Click += new System.EventHandler(this.ClearOrderButton_Click);
             // 
             // AddItemButton
             // 
@@ -248,6 +242,7 @@ namespace ObjectOrientedPractics.View.Tabs
             this.AddItemButton.TabIndex = 35;
             this.AddItemButton.Text = "Add Item";
             this.AddItemButton.UseVisualStyleBackColor = true;
+            this.AddItemButton.Click += new System.EventHandler(this.AddItemButton_Click);
             // 
             // ButtonsTableLayoutPanel1
             // 
@@ -267,6 +262,17 @@ namespace ObjectOrientedPractics.View.Tabs
             this.ButtonsTableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.ButtonsTableLayoutPanel1.Size = new System.Drawing.Size(469, 43);
             this.ButtonsTableLayoutPanel1.TabIndex = 35;
+            // 
+            // PriorityOrdersTabAddressControl
+            // 
+            this.PriorityOrdersTabAddressControl.Address = null;
+            this.PriorityOrdersTabAddressControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PriorityOrdersTabAddressControl.AutoSize = true;
+            this.PriorityOrdersTabAddressControl.Location = new System.Drawing.Point(3, 107);
+            this.PriorityOrdersTabAddressControl.Name = "PriorityOrdersTabAddressControl";
+            this.PriorityOrdersTabAddressControl.Size = new System.Drawing.Size(463, 123);
+            this.PriorityOrdersTabAddressControl.TabIndex = 25;
             // 
             // PriorityOrdersTab
             // 
