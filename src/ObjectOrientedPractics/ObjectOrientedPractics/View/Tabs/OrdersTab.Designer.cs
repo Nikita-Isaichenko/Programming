@@ -39,12 +39,15 @@ namespace ObjectOrientedPractics.View.Tabs
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.PriorityOptionsPanel = new System.Windows.Forms.Panel();
+            this.PriorityOptionsLabel = new System.Windows.Forms.Label();
+            this.DeliveryTimeComboBox = new System.Windows.Forms.ComboBox();
+            this.DeliveryTimeLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.CostLabel = new System.Windows.Forms.Label();
             this.StatusComboBox = new System.Windows.Forms.ComboBox();
             this.AmountLabel = new System.Windows.Forms.Label();
             this.ItemsListBox = new System.Windows.Forms.ListBox();
-            this.addressControl1 = new ObjectOrientedPractics.View.Controls.AddressControl();
             this.StatusLabel = new System.Windows.Forms.Label();
             this.CreatedLabel = new System.Windows.Forms.Label();
             this.OrderItemsLabel = new System.Windows.Forms.Label();
@@ -54,13 +57,19 @@ namespace ObjectOrientedPractics.View.Tabs
             this.OrdersLabel = new System.Windows.Forms.Label();
             this.SelectedLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.addressControl1 = new ObjectOrientedPractics.View.Controls.AddressControl();
             this.storeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.storeBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.PriorityOptionsPanel.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.storeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.storeBindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -150,21 +159,55 @@ namespace ObjectOrientedPractics.View.Tabs
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.tableLayoutPanel3);
             this.panel1.Controls.Add(this.tableLayoutPanel4);
-            this.panel1.Controls.Add(this.StatusComboBox);
             this.panel1.Controls.Add(this.AmountLabel);
             this.panel1.Controls.Add(this.ItemsListBox);
             this.panel1.Controls.Add(this.addressControl1);
-            this.panel1.Controls.Add(this.StatusLabel);
-            this.panel1.Controls.Add(this.CreatedLabel);
             this.panel1.Controls.Add(this.OrderItemsLabel);
-            this.panel1.Controls.Add(this.CreatedTextBox);
-            this.panel1.Controls.Add(this.IdTextBox);
-            this.panel1.Controls.Add(this.IdLabel);
             this.panel1.Location = new System.Drawing.Point(314, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(379, 398);
             this.panel1.TabIndex = 1;
+            // 
+            // PriorityOptionsPanel
+            // 
+            this.PriorityOptionsPanel.Controls.Add(this.PriorityOptionsLabel);
+            this.PriorityOptionsPanel.Controls.Add(this.DeliveryTimeComboBox);
+            this.PriorityOptionsPanel.Controls.Add(this.DeliveryTimeLabel);
+            this.PriorityOptionsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PriorityOptionsPanel.Location = new System.Drawing.Point(201, 3);
+            this.PriorityOptionsPanel.Name = "PriorityOptionsPanel";
+            this.PriorityOptionsPanel.Size = new System.Drawing.Size(175, 83);
+            this.PriorityOptionsPanel.TabIndex = 32;
+            // 
+            // PriorityOptionsLabel
+            // 
+            this.PriorityOptionsLabel.AutoSize = true;
+            this.PriorityOptionsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PriorityOptionsLabel.Location = new System.Drawing.Point(3, 5);
+            this.PriorityOptionsLabel.Name = "PriorityOptionsLabel";
+            this.PriorityOptionsLabel.Size = new System.Drawing.Size(93, 13);
+            this.PriorityOptionsLabel.TabIndex = 29;
+            this.PriorityOptionsLabel.Text = "Priority Options";
+            // 
+            // DeliveryTimeComboBox
+            // 
+            this.DeliveryTimeComboBox.FormattingEnabled = true;
+            this.DeliveryTimeComboBox.Location = new System.Drawing.Point(83, 30);
+            this.DeliveryTimeComboBox.Name = "DeliveryTimeComboBox";
+            this.DeliveryTimeComboBox.Size = new System.Drawing.Size(79, 21);
+            this.DeliveryTimeComboBox.TabIndex = 31;
+            this.DeliveryTimeComboBox.SelectedIndexChanged += new System.EventHandler(this.DeliveryTimeComboBox_SelectedIndexChanged);
+            // 
+            // DeliveryTimeLabel
+            // 
+            this.DeliveryTimeLabel.AutoSize = true;
+            this.DeliveryTimeLabel.Location = new System.Drawing.Point(3, 33);
+            this.DeliveryTimeLabel.Name = "DeliveryTimeLabel";
+            this.DeliveryTimeLabel.Size = new System.Drawing.Size(74, 13);
+            this.DeliveryTimeLabel.TabIndex = 30;
+            this.DeliveryTimeLabel.Text = "Delivery Time:";
             // 
             // tableLayoutPanel4
             // 
@@ -196,9 +239,9 @@ namespace ObjectOrientedPractics.View.Tabs
             // StatusComboBox
             // 
             this.StatusComboBox.FormattingEnabled = true;
-            this.StatusComboBox.Location = new System.Drawing.Point(56, 61);
+            this.StatusComboBox.Location = new System.Drawing.Point(56, 54);
             this.StatusComboBox.Name = "StatusComboBox";
-            this.StatusComboBox.Size = new System.Drawing.Size(142, 21);
+            this.StatusComboBox.Size = new System.Drawing.Size(127, 21);
             this.StatusComboBox.TabIndex = 17;
             this.StatusComboBox.SelectedIndexChanged += new System.EventHandler(this.StatusComboBox_SelectedIndexChanged);
             // 
@@ -224,22 +267,11 @@ namespace ObjectOrientedPractics.View.Tabs
             this.ItemsListBox.Size = new System.Drawing.Size(376, 82);
             this.ItemsListBox.TabIndex = 14;
             // 
-            // addressControl1
-            // 
-            this.addressControl1.Address = null;
-            this.addressControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.addressControl1.AutoSize = true;
-            this.addressControl1.Location = new System.Drawing.Point(0, 87);
-            this.addressControl1.Name = "addressControl1";
-            this.addressControl1.Size = new System.Drawing.Size(379, 123);
-            this.addressControl1.TabIndex = 11;
-            // 
             // StatusLabel
             // 
             this.StatusLabel.AutoSize = true;
             this.StatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.StatusLabel.Location = new System.Drawing.Point(3, 64);
+            this.StatusLabel.Location = new System.Drawing.Point(3, 57);
             this.StatusLabel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.StatusLabel.Name = "StatusLabel";
             this.StatusLabel.Size = new System.Drawing.Size(40, 13);
@@ -250,7 +282,7 @@ namespace ObjectOrientedPractics.View.Tabs
             // 
             this.CreatedLabel.AutoSize = true;
             this.CreatedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CreatedLabel.Location = new System.Drawing.Point(3, 38);
+            this.CreatedLabel.Location = new System.Drawing.Point(3, 31);
             this.CreatedLabel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.CreatedLabel.Name = "CreatedLabel";
             this.CreatedLabel.Size = new System.Drawing.Size(47, 13);
@@ -270,25 +302,25 @@ namespace ObjectOrientedPractics.View.Tabs
             // 
             // CreatedTextBox
             // 
-            this.CreatedTextBox.Location = new System.Drawing.Point(56, 35);
+            this.CreatedTextBox.Location = new System.Drawing.Point(56, 28);
             this.CreatedTextBox.Name = "CreatedTextBox";
             this.CreatedTextBox.ReadOnly = true;
-            this.CreatedTextBox.Size = new System.Drawing.Size(142, 20);
+            this.CreatedTextBox.Size = new System.Drawing.Size(127, 20);
             this.CreatedTextBox.TabIndex = 7;
             // 
             // IdTextBox
             // 
-            this.IdTextBox.Location = new System.Drawing.Point(56, 9);
+            this.IdTextBox.Location = new System.Drawing.Point(56, 2);
             this.IdTextBox.Name = "IdTextBox";
             this.IdTextBox.ReadOnly = true;
-            this.IdTextBox.Size = new System.Drawing.Size(142, 20);
+            this.IdTextBox.Size = new System.Drawing.Size(127, 20);
             this.IdTextBox.TabIndex = 5;
             // 
             // IdLabel
             // 
             this.IdLabel.AutoSize = true;
             this.IdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.IdLabel.Location = new System.Drawing.Point(3, 12);
+            this.IdLabel.Location = new System.Drawing.Point(3, 5);
             this.IdLabel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.IdLabel.Name = "IdLabel";
             this.IdLabel.Size = new System.Drawing.Size(21, 13);
@@ -333,6 +365,47 @@ namespace ObjectOrientedPractics.View.Tabs
             this.tableLayoutPanel2.Size = new System.Drawing.Size(696, 19);
             this.tableLayoutPanel2.TabIndex = 12;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.IdLabel);
+            this.panel2.Controls.Add(this.IdTextBox);
+            this.panel2.Controls.Add(this.CreatedTextBox);
+            this.panel2.Controls.Add(this.StatusComboBox);
+            this.panel2.Controls.Add(this.CreatedLabel);
+            this.panel2.Controls.Add(this.StatusLabel);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(192, 83);
+            this.panel2.TabIndex = 33;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.38095F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.61905F));
+            this.tableLayoutPanel3.Controls.Add(this.panel2, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.PriorityOptionsPanel, 1, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(379, 89);
+            this.tableLayoutPanel3.TabIndex = 34;
+            // 
+            // addressControl1
+            // 
+            this.addressControl1.Address = null;
+            this.addressControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.addressControl1.AutoSize = true;
+            this.addressControl1.Location = new System.Drawing.Point(0, 87);
+            this.addressControl1.Name = "addressControl1";
+            this.addressControl1.Size = new System.Drawing.Size(379, 123);
+            this.addressControl1.TabIndex = 11;
+            // 
             // storeBindingSource
             // 
             this.storeBindingSource.DataSource = typeof(ObjectOrientedPractics.Model.Store);
@@ -353,10 +426,15 @@ namespace ObjectOrientedPractics.View.Tabs
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.PriorityOptionsPanel.ResumeLayout(false);
+            this.PriorityOptionsPanel.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.storeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.storeBindingSource1)).EndInit();
             this.ResumeLayout(false);
@@ -391,5 +469,11 @@ namespace ObjectOrientedPractics.View.Tabs
         private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
         private System.Windows.Forms.ComboBox StatusComboBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.ComboBox DeliveryTimeComboBox;
+        private System.Windows.Forms.Label DeliveryTimeLabel;
+        private System.Windows.Forms.Label PriorityOptionsLabel;
+        private System.Windows.Forms.Panel PriorityOptionsPanel;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Panel panel2;
     }
 }

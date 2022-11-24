@@ -19,12 +19,12 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Возвращает и задает желаемое время доставки.
         /// </summary>
-        public DeliveryTime DesiredDeliveryTime { get; set; }
+        public string DesiredDeliveryTime { get; set; }
 
         /// <summary>
         /// Создает экземпляр класса <see cref="PriorityOrder"/>.
         /// </summary>
-        public PriorityOrder(DateTime dateTime, DeliveryTime deliveryTime) : base()
+        public PriorityOrder(DateTime dateTime, string deliveryTime = "None") : base()
         {
             DesiredDeliveryDate = dateTime;
             DesiredDeliveryTime = deliveryTime;

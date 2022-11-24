@@ -32,8 +32,8 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private List<string> _valueOfString 
             = new List<string> {
-                "9:00-11:00", "11:00-13:00", "13:00-15:00", 
-                "15:00-17:00", "17:00-19:00", "19:00-21:00", "None" 
+                "None", "9:00-11:00", "11:00-13:00", "13:00-15:00", 
+                "15:00-17:00", "17:00-19:00", "19:00-21:00" 
             };
 
         public PriorityOrdersTab()
@@ -42,7 +42,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
             _item = new ItemFactory();
 
-            PriorityOrder = new PriorityOrder(DateTime.Now, DeliveryTime.None);
+            PriorityOrder = new PriorityOrder(DateTime.Now);
 
             foreach(var status in Enum.GetValues(typeof(OrderStatus)))
             {
@@ -66,41 +66,12 @@ namespace ObjectOrientedPractics.View.Tabs
             IdTextBox.Text = PriorityOrder.Id.ToString();
             CreatedTextBox.Text = PriorityOrder.OrderCreationDate;
 
-            DeliveryTimeComboBox.SelectedItem
-                = UpdateDeliveryTimeComboBox(PriorityOrder.DesiredDeliveryTime);
+            DeliveryTimeComboBox.SelectedItem = PriorityOrder.DesiredDeliveryTime;
 
             StatusComboBox.SelectedItem = PriorityOrder.OrderStatus;
             PriorityOrdersTabAddressControl.Address = PriorityOrder.DeliveryAddress;
             ItemsListBox.Items.AddRange(PriorityOrder.Items.ToArray());
             CostLabel.Text = PriorityOrder.TotalCost.ToString();
-        }
-
-        /// <summary>
-        /// Обновляет DeliveryTimeComboBox значениями соотвествующими перечислению.
-        /// </summary>
-        /// <param name="deliveryTime">Значение перечисления.</param>
-        /// <returns>Строковое представление перечисления.</returns>
-        private string UpdateDeliveryTimeComboBox(DeliveryTime deliveryTime)
-        {
-            switch (deliveryTime)
-            {
-                case DeliveryTime.None:
-                    return"None";
-                case DeliveryTime.FromNineToEleven:
-                    return "9:00-11:00";
-                case DeliveryTime.FromElevenToThirteen:
-                    return "11:00-13:00";
-                case DeliveryTime.FromThirteenToFifteen:
-                    return "13:00-15:00";
-                case DeliveryTime.FromFifteenToSeventeen:
-                    return "15:00-17:00";
-                case DeliveryTime.FromSeventeenToNineteen:
-                    return "17:00-19:00";                
-                case DeliveryTime.FromNineteenToTwentyOne:
-                    return "19:00-21:00";
-                default:
-                    return null;
-            }
         }
 
         /// <summary>
@@ -127,7 +98,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             if (DeliveryTimeComboBox.SelectedIndex == -1) return;
 
-            PriorityOrder.DesiredDeliveryTime = (DeliveryTime)DeliveryTimeComboBox.SelectedIndex;
+            PriorityOrder.DesiredDeliveryTime = (string)DeliveryTimeComboBox.SelectedItem;
         }
 
         private void AddItemButton_Click(object sender, EventArgs e)
@@ -160,7 +131,7 @@ namespace ObjectOrientedPractics.View.Tabs
             PriorityOrder = null;
             Clear();
 
-            PriorityOrder = new PriorityOrder(DateTime.Now, DeliveryTime.None);
+            PriorityOrder = new PriorityOrder(DateTime.Now);
             UpdateInfo();
             
         }

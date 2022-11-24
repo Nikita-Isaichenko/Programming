@@ -99,7 +99,9 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         public CartsTab()
         {
-            InitializeComponent();          
+            InitializeComponent();  
+            
+            
         }
 
         public void ClearItemsCart()
@@ -205,7 +207,15 @@ namespace ObjectOrientedPractics.View.Tabs
             if (CurrentCustomer.Cart.Items.Count == 0)
                 return;
 
-            Order = new Order();
+            if (CurrentCustomer.IsPriority)
+            {
+                Order = new PriorityOrder(DateTime.Now);
+            }
+            else
+            {
+                Order = new Order();
+            }
+           
             Order.Items.AddRange(CurrentCustomer.Cart.Items);
             Order.DeliveryAddress = CurrentCustomer.Address;
             CurrentCustomer.Orders.Add(Order);

@@ -17,7 +17,7 @@ namespace ObjectOrientedPractics
         /// Создает экземпляр класса <see cref="MainForm"/>
         /// </summary>
         public MainForm()
-        {           
+        {       
             if (Serializer.IsFile("Store"))
             {
                 _store = Serializer.LoadFromFile("Store");

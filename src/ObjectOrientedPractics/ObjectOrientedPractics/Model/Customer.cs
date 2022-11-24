@@ -135,6 +135,11 @@ namespace ObjectOrientedPractics.Model
         public List<Order> Orders { get; set; }
 
         /// <summary>
+        /// Возвращает и задает приоритетность покупателя.
+        /// </summary>
+        public bool IsPriority { get; set; }
+
+        /// <summary>
         /// Cоздает экземпляр класса <see cref="Customer"/>
         /// </summary>
         /// <param name="fullName">ФИО.</param>
@@ -146,6 +151,7 @@ namespace ObjectOrientedPractics.Model
             Address = address;
             Cart = new Cart();
             Orders = new List<Order>();
+            IsPriority = false;
         }
 
         /// <summary>
@@ -158,6 +164,7 @@ namespace ObjectOrientedPractics.Model
             Address = new Address();
             Cart = new Cart();
             Orders = new List<Order>();
+            IsPriority = false;
         }
     }
 }
