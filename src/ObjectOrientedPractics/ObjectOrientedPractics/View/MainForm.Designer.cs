@@ -48,6 +48,7 @@ namespace ObjectOrientedPractics
             this.MainPriorityOrdersTab = new ObjectOrientedPractics.View.Tabs.PriorityOrdersTab();
             this.MainDiscountTabPage = new System.Windows.Forms.TabPage();
             this.PointerDiscountControl = new ObjectOrientedPractics.View.Controls.PointerDiscountControl();
+            this.PercentDiscountControl = new ObjectOrientedPractics.View.Controls.PercentDiscountControl();
             this.MainTabControl.SuspendLayout();
             this.ItemsTabPage.SuspendLayout();
             this.CustomersTabPage.SuspendLayout();
@@ -172,6 +173,7 @@ namespace ObjectOrientedPractics
             // 
             // MainDiscountTabPage
             // 
+            this.MainDiscountTabPage.Controls.Add(this.PercentDiscountControl);
             this.MainDiscountTabPage.Controls.Add(this.PointerDiscountControl);
             this.MainDiscountTabPage.Location = new System.Drawing.Point(4, 22);
             this.MainDiscountTabPage.Name = "MainDiscountTabPage";
@@ -187,6 +189,13 @@ namespace ObjectOrientedPractics
             this.PointerDiscountControl.Name = "PointerDiscountControl";
             this.PointerDiscountControl.Size = new System.Drawing.Size(666, 113);
             this.PointerDiscountControl.TabIndex = 0;
+            // 
+            // PercentDiscountControl
+            // 
+            this.PercentDiscountControl.Location = new System.Drawing.Point(8, 306);
+            this.PercentDiscountControl.Name = "PercentDiscountControl";
+            this.PercentDiscountControl.Size = new System.Drawing.Size(658, 121);
+            this.PercentDiscountControl.TabIndex = 1;
             // 
             // MainForm
             // 
@@ -225,6 +234,7 @@ namespace ObjectOrientedPractics
         private View.Tabs.OrdersTab MainOrdersTab;
         private TabPage MainDiscountTabPage;
         private View.Controls.PointerDiscountControl PointerDiscountControl;
+        private View.Controls.PercentDiscountControl PercentDiscountControl;
     }
 }
 

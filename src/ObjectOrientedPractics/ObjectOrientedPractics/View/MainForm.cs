@@ -35,6 +35,7 @@ namespace ObjectOrientedPractics
             MainCartsTab.Customers = _store.Customers;
             MainOrdersTab.Customers = _store.Customers;
             PointerDiscountControl.Customers = _store.Customers;
+            PercentDiscountControl.Customers = _store.Customers;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -57,6 +58,7 @@ namespace ObjectOrientedPractics
             if (MainTabControl.SelectedTab == MainDiscountTabPage)
             {
                 PointerDiscountControl.RefreshData();
+                PercentDiscountControl.RefreshData();
             }
         }
     }

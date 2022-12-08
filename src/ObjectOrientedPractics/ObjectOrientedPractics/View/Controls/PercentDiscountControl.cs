@@ -9,12 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace ObjectOrientedPractics.View.Controls
 {
-    public partial class PointerDiscountControl : UserControl
+    public partial class PercentDiscountControl : UserControl
     {
-        private PointsDiscount _pointsDiscount = new PointsDiscount();
+        private PercentDiscount _percentDiscount = new PercentDiscount(Category.Food);
 
         /// <summary>
         /// Возвращате и задает список товаров.
@@ -26,14 +25,12 @@ namespace ObjectOrientedPractics.View.Controls
 
         private Customer _currentCustomer;
 
-        public PointerDiscountControl()
+        public PercentDiscountControl()
         {
             InitializeComponent();
-
-            DiscountLabel.Text = _pointsDiscount.Info;
+            DiscountLabel.Text = _percentDiscount.Info;
             Customers = new List<Customer>();
         }
-
         private void UpdateFields()
         {
             if (Customers.Count == 0)
@@ -51,21 +48,26 @@ namespace ObjectOrientedPractics.View.Controls
             UpdateFields();
         }
 
+
         private void CalculateButton_Click(object sender, EventArgs e)
         {
-            DiscountNumberLabel.Text = _pointsDiscount.Calculate(_currentCustomer.Cart.Items).ToString();
+            DiscountNumberLabel.Text =
+                _percentDiscount.Calculate(_currentCustomer.Cart.Items).ToString();
         }
 
         private void ApplyButton_Click(object sender, EventArgs e)
         {
-            DiscountNumberLabel.Text = _pointsDiscount.Apply(_currentCustomer.Cart.Items).ToString();
-            DiscountLabel.Text = _pointsDiscount.Info;
+            DiscountNumberLabel.Text =
+                _percentDiscount.Apply(_currentCustomer.Cart.Items).ToString();
+
+            PriceLabel.Text = (Convert.ToInt32(PriceLabel.Text) -
+                _percentDiscount.Apply(_currentCustomer.Cart.Items)).ToString();
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
-            _pointsDiscount.Update(_currentCustomer.Cart.Items);
-            DiscountLabel.Text = _pointsDiscount.Info;
+            _percentDiscount.Update(_currentCustomer.Cart.Items);
+            DiscountLabel.Text = _percentDiscount.Info;
         }
     }
 }
