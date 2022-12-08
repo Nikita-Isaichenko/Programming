@@ -1,4 +1,5 @@
-﻿using ObjectOrientedPractics.Services;
+﻿using ObjectOrientedPractics.Model.Intefaces;
+using ObjectOrientedPractics.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace ObjectOrientedPractics.Model
     /// <summary>
     /// Хранит информацию о скидочных баллах.
     /// </summary>
-    class PointsDiscount
+    class PointsDiscount : IDiscount
     {
         /// <summary>
         /// Кол-во скидочных баллов.
@@ -51,7 +52,7 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         /// <param name="items">Список товаров.</param>
         /// <returns>Размер скидки.</returns>
-        public int Calculate(List<Item> items)
+        public double Calculate(List<Item> items)
         {
             if (CountPoints == 0)
             {
@@ -75,7 +76,7 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         /// <param name="items">Список товаров.</param>
         /// <returns>Размер скидки.</returns>
-        public int Apply(List<Item> items)
+        public double Apply(List<Item> items)
         {
             if (CountPoints == 0)
             {
@@ -100,7 +101,7 @@ namespace ObjectOrientedPractics.Model
             else
             {
                 /// TODO: подумать еще.
-                int temp = CountPoints;
+                double temp = CountPoints;
                 CountPoints = 0;
                 return temp;
             }            

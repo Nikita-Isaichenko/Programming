@@ -1,4 +1,5 @@
-﻿using ObjectOrientedPractics.Services;
+﻿using ObjectOrientedPractics.Model.Intefaces;
+using ObjectOrientedPractics.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace ObjectOrientedPractics.Model
     /// <summary>
     /// Хранит инфомацию о скидках на определенные категории.
     /// </summary>
-    class PercentDiscount
+    class PercentDiscount : IDiscount
     {
         private const double _maxDiscount = 0.1;
 
