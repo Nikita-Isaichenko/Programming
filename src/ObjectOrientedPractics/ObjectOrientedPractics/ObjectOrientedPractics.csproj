@@ -70,6 +70,7 @@
     <Compile Include="Model\Item.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\OrderStatus.cs" />
+    <Compile Include="Model\PointsDiscount.cs" />
     <Compile Include="Model\PriorityOrder.cs" />
     <Compile Include="Model\Store.cs" />
     <Compile Include="Services\AppColor.cs" />
@@ -85,6 +86,12 @@
     </Compile>
     <Compile Include="View\Controls\AddressControl.Designer.cs">
       <DependentUpon>AddressControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\PointerDiscountControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Controls\PointerDiscountControl.Designer.cs">
+      <DependentUpon>PointerDiscountControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
@@ -136,6 +143,9 @@
     </Compile>
     <EmbeddedResource Include="View\Controls\AddressControl.resx">
       <DependentUpon>AddressControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Controls\PointerDiscountControl.resx">
+      <DependentUpon>PointerDiscountControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
