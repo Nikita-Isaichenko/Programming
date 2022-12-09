@@ -54,6 +54,7 @@ namespace ObjectOrientedPractics.View.Tabs
                     }
 
                     CustomersListBox.SelectedIndex = 0;
+
                 }
             }
         }
@@ -79,7 +80,7 @@ namespace ObjectOrientedPractics.View.Tabs
             if (Customers.Count == 0)
             {
                 FullNameTextBox.Enabled = false;
-
+                AddressControl.Clear();
                 ClearTextBoxes();
             }
             else
@@ -103,14 +104,24 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <param name="customer"></param>
         private void UpdateTextBoxes(Customer customer)
         {           
+            if (customer == null)
+            {
+                IsPriorityCheckBox.Checked = false;
+                this.DIscountsControl.Discounts = null;
+                return;
+            }
+
             FullNameTextBox.Text = customer.FullName;
             IDTextBox.Text = customer.Id.ToString();
             AddressControl.Address = _currentCustomer.Address;
+            IsPriorityCheckBox.Checked = customer.IsPriority;
+            this.DIscountsControl.Discounts = customer.Discounts;
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
             _currentCustomer = new Customer();
+            _currentCustomer.Discounts.Add(new PointsDiscount());
 
             Customers.Add(_currentCustomer);
             CustomersListBox.Items.Add(_currentCustomer.FullName);
@@ -128,6 +139,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
             CustomersListBox.Items.RemoveAt(index);
             Customers.RemoveAt(index);
+            _currentCustomer = null;
 
             CustomersListBox.SelectedIndex = Customers.Count > 0 ? 0 : -1;
 
@@ -161,6 +173,8 @@ namespace ObjectOrientedPractics.View.Tabs
 
         private void FullNameTextBox_TextChanged(object sender, EventArgs e)
         {
+            if (_currentCustomer == null) return;
+
             try
             {
                 FullNameTextBox.BackColor = AppColor.NormalBackColor;
@@ -177,5 +191,13 @@ namespace ObjectOrientedPractics.View.Tabs
                     FullNameTextBox.BackColor = AppColor.NormalBackColor;
             }
         }
+
+        private void IsPriorityCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_currentCustomer == null) return;
+
+            _currentCustomer.IsPriority = IsPriorityCheckBox.Checked;
+        }
+
     }
 }

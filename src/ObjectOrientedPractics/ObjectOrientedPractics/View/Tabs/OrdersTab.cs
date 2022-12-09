@@ -12,11 +12,15 @@ using System.Windows.Forms;
 namespace ObjectOrientedPractics.View.Tabs
 {
     public partial class OrdersTab : UserControl
-    {       
+    {
         /// <summary>
-        /// Возвращает и задает список покупателей.
+        /// Список доступных диапазонов времени доставки.
         /// </summary>
-        public List<Customer> Customers { get; set; }
+        private List<string> _deliveryTimes
+            = new List<string> {
+                "None", "9:00-11:00", "11:00-13:00", "13:00-15:00",
+                "15:00-17:00", "17:00-19:00", "19:00-21:00"
+            };
 
         /// <summary>
         /// Возвращает и задает список заказов;
@@ -24,9 +28,22 @@ namespace ObjectOrientedPractics.View.Tabs
         private List<Order> Orders { get; set; }
 
         /// <summary>
-        /// текущий выбранный заказ.
+        /// Выбранный приоритетный заказ.
         /// </summary>
-        private Order _currentOrder;
+        private PriorityOrder _selectedPriorityOrder;
+
+        /// <summary>
+        /// Выбранный заказ.
+        /// </summary>
+        private Order _selectedOrder;
+
+        /// <summary>
+        /// Возвращает и задает список покупателей.
+        /// </summary>
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public List<Customer> Customers { get; set; }
 
         /// <summary>
         /// Создает экземпляр класса <see cref="OrdersTab"/>.
@@ -43,6 +60,10 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 StatusComboBox.Items.Add(orderStatus);
             }
+
+            DeliveryTimeComboBox.Items.AddRange(_deliveryTimes.ToArray());
+
+            PriorityOptionsPanel.Visible = false;
         }
 
         /// <summary>
@@ -51,6 +72,7 @@ namespace ObjectOrientedPractics.View.Tabs
         private void UpdateOrders()
         {
             dataGridView1.Rows.Clear();
+            PriorityOptionsPanel.Visible = false;
 
             if (Customers.Count == 0)
             {
@@ -63,7 +85,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 {
                     Orders.Add(order);
                     dataGridView1.Rows.Add(order.Id, order.OrderCreationDate, order.OrderStatus,
-                        customer.FullName, order.DeliveryAddress.AddressToString(), order.TotalCost);
+                        customer.FullName, order.DeliveryAddress.AddressToString(), order.TotalCost, order.Total);
                 }
             }            
         }
@@ -77,10 +99,12 @@ namespace ObjectOrientedPractics.View.Tabs
             CreatedTextBox.Clear();
             addressControl1.Clear();
             StatusComboBox.SelectedIndex = -1;
-            CostLabel.Text = "0 руб";
+            CostLabel.Text = "0";
+            TotalPriceLabel.Text = "0";
+
             ItemsListBox.Items.Clear();
             StatusComboBox.Enabled = false;
-            _currentOrder = null;
+            _selectedOrder = null;
         }
 
         /// <summary>
@@ -90,7 +114,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             ClearSelectedOrder();
             UpdateOrders();
-        }
+        }       
 
         /// <summary>
         /// Обновляет информацию о выбранном заказе.
@@ -99,24 +123,30 @@ namespace ObjectOrientedPractics.View.Tabs
         private void UpdateSelectedOrders(int id)
         {
             ClearSelectedOrder();
-
+           
             StatusComboBox.Enabled = true;
             double sum = 0.0;
 
-            _currentOrder = Orders.Find(order => order.Id == id);
+            _selectedOrder = Orders.Find(order => order.Id == id);
 
-            IdTextBox.Text = _currentOrder.Id.ToString();
-            CreatedTextBox.Text = _currentOrder.OrderCreationDate;
-            StatusComboBox.SelectedItem = _currentOrder.OrderStatus;
-            addressControl1.Address = _currentOrder.DeliveryAddress;
-            
-            foreach (var item in _currentOrder.Items)
+            if (_selectedOrder is PriorityOrder priorityOrder)
             {
-                ItemsListBox.Items.Add(item.Name);
-                sum += item.Cost;
+                _selectedPriorityOrder = priorityOrder;
+                PriorityOptionsPanel.Visible = true;
+                DeliveryTimeComboBox.SelectedItem = _selectedPriorityOrder.DesiredDeliveryTime;
+            }
+            else
+            {
+                _selectedPriorityOrder = null;
+                PriorityOptionsPanel.Visible = false;
             }
 
-            CostLabel.Text = $"{sum} руб";
+            IdTextBox.Text = _selectedOrder.Id.ToString();
+            CreatedTextBox.Text = _selectedOrder.OrderCreationDate;
+            StatusComboBox.SelectedItem = _selectedOrder.OrderStatus;
+            addressControl1.Address = _selectedOrder.DeliveryAddress;
+            CostLabel.Text = _selectedOrder.TotalCost.ToString();
+            TotalPriceLabel.Text = _selectedOrder.Total.ToString();
         }
 
 
@@ -136,8 +166,16 @@ namespace ObjectOrientedPractics.View.Tabs
 
             int index = dataGridView1.CurrentCell.RowIndex;
 
-            _currentOrder.OrderStatus = (OrderStatus)StatusComboBox.SelectedIndex;
+            _selectedOrder.OrderStatus = (OrderStatus)StatusComboBox.SelectedIndex;
             dataGridView1.Rows[index].Cells[2].Value = (OrderStatus)StatusComboBox.SelectedIndex;
         }
+
+        private void DeliveryTimeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DeliveryTimeComboBox.SelectedIndex == -1) return;
+
+            _selectedPriorityOrder.DesiredDeliveryTime = (string)DeliveryTimeComboBox.SelectedItem;
+        }
+
     }
 }

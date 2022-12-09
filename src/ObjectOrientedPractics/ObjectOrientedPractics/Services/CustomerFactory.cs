@@ -43,6 +43,7 @@ namespace ObjectOrientedPractics.Services
             string json = dataAPI.GetJsonData();
             _customer = JsonConvert.DeserializeObject<Customer>(json);
             _customer.Address = JsonConvert.DeserializeObject<Address>(json);
+            _customer.Discounts.Add(new PointsDiscount());
             
             return _customer;
         }

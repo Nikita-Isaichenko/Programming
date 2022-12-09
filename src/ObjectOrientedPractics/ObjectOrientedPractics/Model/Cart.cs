@@ -48,10 +48,5 @@ namespace ObjectOrientedPractics.Model
         {
             Items = new List<Item>();
         }
-
-        public string AmountToString()
-        {
-            return $"{Amount} руб";
-        }
     }
 }

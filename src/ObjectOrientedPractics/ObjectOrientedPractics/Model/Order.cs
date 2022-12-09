@@ -70,7 +70,7 @@ namespace ObjectOrientedPractics.Model
         {
             get
             {
-                double sum = 10.0;
+                double sum = 0.0;
 
                 if (Items.Count == 0)
                 {
@@ -86,11 +86,28 @@ namespace ObjectOrientedPractics.Model
             }
         }
 
+        /// <summary>
+        /// Вoзвращает и задает размер примененной скидки.
+        /// </summary>
+        public double DiscountAmount { get; set; }
+
+        /// <summary>
+        /// Возвращает Конечную стоимость заказа с учетом скидки.
+        /// </summary>
+        public double Total
+        {
+            get
+            {
+                return TotalCost - DiscountAmount;
+            }
+        }
+
         public Order()
         {
             Id = IdGenerator.GetIdNext();
             Items = new List<Item>();
             OrderStatus = OrderStatus.New;
+            OrderCreationDate = DateTime.Now.ToString();
         }
     }
 }

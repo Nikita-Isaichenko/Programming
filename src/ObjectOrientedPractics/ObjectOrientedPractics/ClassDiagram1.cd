@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="ObjectOrientedPractics.Model.Address" Collapsed="true">
+    <Position X="2" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAIAEAiAAAAAAIAAAAAAAMAQCAiAAA=</HashCode>
+      <FileName>Model\Address.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectOrientedPractics.Model.Cart" Collapsed="true">
+    <Position X="3.75" Y="1.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAACAAAAAAAAACAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Cart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectOrientedPractics.Model.Customer" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIECAEAAAEAAAIAAAAEAAAIAAAABAAACAAAAIEAAAAg=</HashCode>
+      <FileName>Model\Customer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectOrientedPractics.Model.Item" Collapsed="true">
+    <Position X="0.5" Y="1.25" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AARCIIAAACAgQAAEAAAAABQAAAAQgAAAAAAAAAAADAA=</HashCode>
+      <FileName>Model\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectOrientedPractics.Model.Order" Collapsed="true">
+    <Position X="0.5" Y="2" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>IAACAAAAAAACCAAFAKBAAAAAABAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Model\Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectOrientedPractics.Model.PriorityOrder">
+    <Position X="0.75" Y="3.25" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\PriorityOrder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectOrientedPractics.Model.Store" Collapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Store.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectOrientedPractics.Program" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectOrientedPractics.MainForm" Collapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACgAACAACAAEgBAAACAAFACAAAQEQAAAAAAAIAgAAA=</HashCode>
+      <FileName>View\MainForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectOrientedPractics.Properties.Resources" Collapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectOrientedPractics.Properties.Settings" Collapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectOrientedPractics.Services.AppColor" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Services\AppColor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectOrientedPractics.Services.CustomerFactory" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAIAAAAAAAAEAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Services\CustomerFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectOrientedPractics.Services.DataAPI" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAACAAQQAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Services\DataAPI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectOrientedPractics.Services.IdGenerator" Collapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Services\IdGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectOrientedPractics.Services.ItemFactory" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAACAABAAAAAABAAAAAAAAAE=</HashCode>
+      <FileName>Services\ItemFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectOrientedPractics.Services.Parser" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABBAAAAQAABAAIAAAAAAoAAAEAIAAEBCAAgU=</HashCode>
+      <FileName>Services\Parser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectOrientedPractics.Services.Serializer" Collapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAACAAAAAAAAAAAAAACAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Services\Serializer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectOrientedPractics.Services.Validator" Collapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACEAAAAAACEAAAA=</HashCode>
+      <FileName>Services\Validator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectOrientedPractics.View.Controls.AddressControl" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQAAAAEACEUIAAAAASAAkgCABAAAEECAAAYQGBAlBA=</HashCode>
+      <FileName>View\Controls\AddressControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectOrientedPractics.View.Tabs.CartsTab" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>hQEAAAAQBCAAiBAAAAGABAICgBBEhFAA4GAAgCAAICQ=</HashCode>
+      <FileName>View\Tabs\CartsTab.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectOrientedPractics.View.Tabs.CustomerTab" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BBEAQAIAACEBAEKAABCAigQaIBAgAGCAAAABAKAAQAA=</HashCode>
+      <FileName>View\Tabs\CustomerTab.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectOrientedPractics.View.Tabs.ItemsTab" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BQAAAABACGEBCJCAIBiIggACwJAgADQCIhABAIAIQBE=</HashCode>
+      <FileName>View\Tabs\ItemsTab.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectOrientedPractics.View.Tabs.OrdersTab" Collapsed="true">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>hQESAKAQAGACAJAIACDAgACCAQgoAwYEgEAcgQEAACA=</HashCode>
+      <FileName>View\Tabs\OrdersTab.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObjectOrientedPractics.View.Tabs.PriorityOrdersTab" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQICAKAAAGAABJAMQAiAgAACARAAFQIAAEBYgQBAIBA=</HashCode>
+      <FileName>View\Tabs\PriorityOrdersTab.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="ObjectOrientedPractics.Model.Category" Collapsed="true">
+    <Position X="5.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAQCCAAAAAIAAAAAAAAAAgAAAAAAAAAAAAgEAAAA=</HashCode>
+      <FileName>Model\Category.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ObjectOrientedPractics.Model.DeliveryTime" Collapsed="true">
+    <Position X="7.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEAAAAAAAQAAAAAAAAACCAAAAABAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Model\DeliveryTime.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ObjectOrientedPractics.Model.OrderStatus">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACCCAAAAAAQAACAAIAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\OrderStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
