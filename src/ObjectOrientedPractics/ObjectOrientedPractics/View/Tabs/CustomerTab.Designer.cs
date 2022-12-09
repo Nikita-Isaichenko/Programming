@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.SelectedICustomersPanel = new System.Windows.Forms.Panel();
+            this.DIscountsControl = new ObjectOrientedPractics.View.Controls.DIscountsControl();
+            this.IsPriorityCheckBox = new System.Windows.Forms.CheckBox();
             this.AddressControl = new ObjectOrientedPractics.View.Controls.AddressControl();
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
             this.IDTextBox = new System.Windows.Forms.TextBox();
@@ -45,7 +47,6 @@
             this.CustomersLabel = new System.Windows.Forms.Label();
             this.FullNameToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.AddressToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.IsPriorityCheckBox = new System.Windows.Forms.CheckBox();
             this.SelectedICustomersPanel.SuspendLayout();
             this.CustomersPanel.SuspendLayout();
             this.TableLayoutPanelButtons.SuspendLayout();
@@ -57,6 +58,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SelectedICustomersPanel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.SelectedICustomersPanel.Controls.Add(this.DIscountsControl);
             this.SelectedICustomersPanel.Controls.Add(this.IsPriorityCheckBox);
             this.SelectedICustomersPanel.Controls.Add(this.AddressControl);
             this.SelectedICustomersPanel.Controls.Add(this.FullNameTextBox);
@@ -69,6 +71,27 @@
             this.SelectedICustomersPanel.Name = "SelectedICustomersPanel";
             this.SelectedICustomersPanel.Size = new System.Drawing.Size(360, 399);
             this.SelectedICustomersPanel.TabIndex = 3;
+            // 
+            // DIscountsControl
+            // 
+            this.DIscountsControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DIscountsControl.Location = new System.Drawing.Point(4, 235);
+            this.DIscountsControl.Name = "DIscountsControl";
+            this.DIscountsControl.Size = new System.Drawing.Size(356, 149);
+            this.DIscountsControl.TabIndex = 7;
+            // 
+            // IsPriorityCheckBox
+            // 
+            this.IsPriorityCheckBox.AutoSize = true;
+            this.IsPriorityCheckBox.Location = new System.Drawing.Point(62, 81);
+            this.IsPriorityCheckBox.Name = "IsPriorityCheckBox";
+            this.IsPriorityCheckBox.Size = new System.Drawing.Size(68, 17);
+            this.IsPriorityCheckBox.TabIndex = 6;
+            this.IsPriorityCheckBox.Text = "Is Priority";
+            this.IsPriorityCheckBox.UseVisualStyleBackColor = true;
+            this.IsPriorityCheckBox.CheckedChanged += new System.EventHandler(this.IsPriorityCheckBox_CheckedChanged);
             // 
             // AddressControl
             // 
@@ -215,17 +238,6 @@
             this.CustomersLabel.TabIndex = 0;
             this.CustomersLabel.Text = "Customers";
             // 
-            // IsPriorityCheckBox
-            // 
-            this.IsPriorityCheckBox.AutoSize = true;
-            this.IsPriorityCheckBox.Location = new System.Drawing.Point(62, 81);
-            this.IsPriorityCheckBox.Name = "IsPriorityCheckBox";
-            this.IsPriorityCheckBox.Size = new System.Drawing.Size(68, 17);
-            this.IsPriorityCheckBox.TabIndex = 6;
-            this.IsPriorityCheckBox.Text = "Is Priority";
-            this.IsPriorityCheckBox.UseVisualStyleBackColor = true;
-            this.IsPriorityCheckBox.CheckedChanged += new System.EventHandler(this.IsPriorityCheckBox_CheckedChanged);
-            // 
             // CustomerTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -262,5 +274,6 @@
         private System.Windows.Forms.Button RemoveButton;
         private Controls.AddressControl AddressControl;
         private System.Windows.Forms.CheckBox IsPriorityCheckBox;
+        private Controls.DIscountsControl DIscountsControl;
     }
 }
