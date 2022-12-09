@@ -77,7 +77,7 @@ namespace ObjectOrientedPractics.View.Tabs
                     foreach (var customer in _customers)
                     {
                         CustomersComboBox.Items.Add(customer.FullName);
-                    }
+                    }                  
 
                     CustomersComboBox.SelectedIndex = -1;
                 } 
@@ -108,7 +108,7 @@ namespace ObjectOrientedPractics.View.Tabs
         {
             CurrentCustomer.Cart.Items.Clear();
             CartListBox.Items.Clear();
-            SumCostLabel.Text = CurrentCustomer.Cart.AmountToString();
+            SumCostLabel.Text = CurrentCustomer.Cart.Amount.ToString();
         }
 
         /// <summary>
@@ -118,16 +118,72 @@ namespace ObjectOrientedPractics.View.Tabs
         private void UpdateCartListBox(int index)
         {
             CartListBox.Items.Clear();
+            DiscountsCheckedBox.Items.Clear();
 
             foreach (var item in CurrentCustomer.Cart.Items)
             {
                 CartListBox.Items.Add(item.Name);
             }
 
+            foreach (var discount in CurrentCustomer.Discounts)
+            {
+                DiscountsCheckedBox.Items.Add(discount.Info);
+                DiscountsCheckedBox.SetItemChecked(DiscountsCheckedBox.Items.IndexOf(discount.Info), true);
+            }
+
+            CalculatedDiscount();
+
             CartListBox.SelectedIndex = index;
-            SumCostLabel.Text = CurrentCustomer.Cart.AmountToString();
+            SumCostLabel.Text = CurrentCustomer.Cart.Amount.ToString();
         }
 
+        /// <summary>
+        /// Подсчитывает скидку и обновляет стоимость в Label.
+        /// </summary>
+        private void CalculatedDiscount()
+        {
+            double value = 0;
+
+            foreach (var discount in CurrentCustomer.Discounts)
+            {
+                int index = DiscountsCheckedBox.Items.IndexOf(discount.Info);
+
+                if (DiscountsCheckedBox.GetItemChecked(index))
+                {
+                    value += discount.Calculate(CurrentCustomer.Cart.Items);
+                }
+            }
+
+            DiscountNumberLabel.Text = value.ToString();
+            TotalPriceLabel.Text = (CurrentCustomer.Cart.Amount - value).ToString();
+        }
+
+        /// <summary>
+        /// Применяет скидку к заказу.
+        /// </summary>
+        /// <returns>возвращает </returns>
+        private double ApplyDiscount()
+        {
+            double value = 0;
+
+            foreach (var discount in CurrentCustomer.Discounts)
+            {
+                int index = DiscountsCheckedBox.Items.IndexOf(discount.Info);
+
+                if (DiscountsCheckedBox.GetItemChecked(index))
+                {
+                    value += discount.Calculate(CurrentCustomer.Cart.Items);
+                }
+
+                discount.Update(CurrentCustomer.Cart.Items);
+            }
+
+            return value;
+        }
+
+        /// <summary>
+        /// Обвновляет данные при переходе на эту вкладку.
+        /// </summary>
         public void RefreshData()
         {
             if (Items != null)
@@ -147,7 +203,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 CustomersComboBox.Items.Clear();
                 CustomersComboBox.Text = "";
                 CartListBox.Items.Clear();
-                SumCostLabel.Text = "0 руб";
+                SumCostLabel.Text = "0";
 
                 foreach (var customer in _customers)
                 {
@@ -179,7 +235,9 @@ namespace ObjectOrientedPractics.View.Tabs
             CurrentItem = Items[ItemsListBox.SelectedIndex];
             CurrentCustomer.Cart.Items.Add(CurrentItem);
             CartListBox.Items.Add(CurrentItem.Name);
-            SumCostLabel.Text = CurrentCustomer.Cart.AmountToString();
+            SumCostLabel.Text = CurrentCustomer.Cart.Amount.ToString();
+
+            UpdateCartListBox(-1);
         }
 
         private void RemoveItemButton_Click(object sender, EventArgs e)
@@ -189,14 +247,17 @@ namespace ObjectOrientedPractics.View.Tabs
 
             CurrentCustomer.Cart.Items.RemoveAt(CartListBox.SelectedIndex);
             CartListBox.Items.RemoveAt(CartListBox.SelectedIndex);
-            SumCostLabel.Text = CurrentCustomer.Cart.AmountToString();
+            SumCostLabel.Text = CurrentCustomer.Cart.Amount.ToString();
 
             CartListBox.SelectedIndex = CartListBox.Items.Count > 0 ? 0 : -1;
+
+            UpdateCartListBox(-1);
         }
 
         private void ClearCartButton_Click(object sender, EventArgs e)
         {
             ClearItemsCart();
+            UpdateCartListBox(-1);
         }
 
         private void CreatOrderButton_Click(object sender, EventArgs e)
@@ -218,9 +279,18 @@ namespace ObjectOrientedPractics.View.Tabs
            
             Order.Items.AddRange(CurrentCustomer.Cart.Items);
             Order.DeliveryAddress = CurrentCustomer.Address;
+            this.Order.DiscountAmount = ApplyDiscount();
             CurrentCustomer.Orders.Add(Order);
 
             ClearItemsCart();
+            UpdateCartListBox(-1);
+        }
+
+        private void DiscountsCheckedBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DiscountsCheckedBox.Items.Count == 0) return;
+
+            CalculatedDiscount();
         }
     }
 }

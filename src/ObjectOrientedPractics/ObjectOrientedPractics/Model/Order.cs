@@ -87,7 +87,7 @@ namespace ObjectOrientedPractics.Model
         }
 
         /// <summary>
-        /// ВОзвращает и задает размер примененной скидки.
+        /// Вoзвращает и задает размер примененной скидки.
         /// </summary>
         public double DiscountAmount { get; set; }
 

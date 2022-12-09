@@ -85,7 +85,7 @@ namespace ObjectOrientedPractics.View.Tabs
                 {
                     Orders.Add(order);
                     dataGridView1.Rows.Add(order.Id, order.OrderCreationDate, order.OrderStatus,
-                        customer.FullName, order.DeliveryAddress.AddressToString(), order.TotalCost);
+                        customer.FullName, order.DeliveryAddress.AddressToString(), order.TotalCost, order.Total);
                 }
             }            
         }
@@ -99,7 +99,9 @@ namespace ObjectOrientedPractics.View.Tabs
             CreatedTextBox.Clear();
             addressControl1.Clear();
             StatusComboBox.SelectedIndex = -1;
-            CostLabel.Text = "0 руб";
+            CostLabel.Text = "0";
+            TotalPriceLabel.Text = "0";
+
             ItemsListBox.Items.Clear();
             StatusComboBox.Enabled = false;
             _selectedOrder = null;
@@ -143,14 +145,8 @@ namespace ObjectOrientedPractics.View.Tabs
             CreatedTextBox.Text = _selectedOrder.OrderCreationDate;
             StatusComboBox.SelectedItem = _selectedOrder.OrderStatus;
             addressControl1.Address = _selectedOrder.DeliveryAddress;
-            
-            foreach (var item in _selectedOrder.Items)
-            {
-                ItemsListBox.Items.Add(item.Name);
-                sum += item.Cost;
-            }
-
-            CostLabel.Text = $"{sum} руб";
+            CostLabel.Text = _selectedOrder.TotalCost.ToString();
+            TotalPriceLabel.Text = _selectedOrder.Total.ToString();
         }
 
 
@@ -180,5 +176,6 @@ namespace ObjectOrientedPractics.View.Tabs
 
             _selectedPriorityOrder.DesiredDeliveryTime = (string)DeliveryTimeComboBox.SelectedItem;
         }
+
     }
 }

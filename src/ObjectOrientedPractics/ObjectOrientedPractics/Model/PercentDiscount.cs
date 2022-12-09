@@ -119,10 +119,10 @@ namespace ObjectOrientedPractics.Model
 
             foreach (var item in items)
             {
-                sumCost += item.Cost;
+                TotalSpent += item.Cost;
             }
 
-            TotalSpent += sumCost;
+            
 
             // TODO: Удалить магические числа.
             if (CurrentDiscount < _maxDiscount)
@@ -131,7 +131,7 @@ namespace ObjectOrientedPractics.Model
 
                 if (_maxDiscount - CurrentDiscount >= discount)
                 {
-                    CurrentDiscount += discount;
+                    CurrentDiscount = discount;
                 }
                 else
                 {
