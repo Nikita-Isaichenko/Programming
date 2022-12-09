@@ -86,6 +86,22 @@ namespace ObjectOrientedPractics.Model
             }
         }
 
+        /// <summary>
+        /// ВОзвращает и задает размер примененной скидки.
+        /// </summary>
+        public double DiscountAmount { get; set; }
+
+        /// <summary>
+        /// Возвращает Конечную стоимость заказа с учетом скидки.
+        /// </summary>
+        public double Total
+        {
+            get
+            {
+                return TotalCost - DiscountAmount;
+            }
+        }
+
         public Order()
         {
             Id = IdGenerator.GetIdNext();

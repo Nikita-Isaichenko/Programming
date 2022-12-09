@@ -44,7 +44,7 @@ namespace ObjectOrientedPractics.Model
         /// </summary>
         public PointsDiscount()
         {
-            CountPoints = 33200;
+            CountPoints = 0;
         }
 
         /// <summary>
