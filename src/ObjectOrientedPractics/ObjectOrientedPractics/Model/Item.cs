@@ -1,5 +1,5 @@
 ﻿using ObjectOrientedPractics.Services;
-
+using System;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -63,9 +63,17 @@ namespace ObjectOrientedPractics.Model
             }
             set
             {
+
                 Validator.AssertEmptyValue(value, nameof(Name));
                 Validator.AssertLengthString(value, 200, nameof(Name));
-                _name = value;
+
+                if (value != _name)
+                {
+                    _name = value;
+                    NameChanged?.Invoke(this, EventArgs.Empty);
+
+                }
+                
             }
         }
 
@@ -87,7 +95,12 @@ namespace ObjectOrientedPractics.Model
             set
             {
                 Validator.AssertLengthString(value, 1000, nameof(Description));
-                _description = value;
+
+                if (value != _description)
+                {
+                    _description = value;
+                    InfoChanged?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
 
@@ -104,7 +117,12 @@ namespace ObjectOrientedPractics.Model
             set
             {
                 Validator.AssertValueInRange(value, 0, 100000, nameof(Cost));
-                _cost = value;
+
+                if (value != _cost)
+                {
+                    _cost = value;
+                    CostChanged?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
 
@@ -204,5 +222,20 @@ namespace ObjectOrientedPractics.Model
             Cost = 0;
             Category = Category.None;
         }
+
+        /// <summary>
+        /// Событие изменения названия.
+        /// </summary>
+        public event EventHandler<EventArgs> NameChanged;
+
+        /// <summary>
+        /// Событие изменения стоимости.
+        /// </summary>
+        public event EventHandler<EventArgs> CostChanged;
+
+        /// <summary>
+        /// Событие изменения информации.
+        /// </summary>
+        public event EventHandler<EventArgs> InfoChanged;
     }
 }

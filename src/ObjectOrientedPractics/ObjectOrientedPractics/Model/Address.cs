@@ -1,4 +1,5 @@
 ﻿using ObjectOrientedPractics.Services;
+using System;
 
 namespace ObjectOrientedPractics.Model
 {
@@ -50,7 +51,11 @@ namespace ObjectOrientedPractics.Model
             set
             {
                 Validator.AssertCountSymbols(value, 6, nameof(Index));
-                _index = value;
+                if(value != _index)
+                {
+                    _index = value;
+                    AddressChanged?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
 
@@ -68,7 +73,12 @@ namespace ObjectOrientedPractics.Model
             {
                 Validator.AssertEmptyValue(value, nameof(Country));
                 Validator.AssertLengthString(value, 50, nameof(Country));
-                _country = value;
+
+                if (value != _country)
+                {
+                    _country = value;
+                    AddressChanged?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
 
@@ -86,7 +96,11 @@ namespace ObjectOrientedPractics.Model
             {
                 Validator.AssertEmptyValue(value, nameof(City));
                 Validator.AssertLengthString(value, 50, nameof(City));
-                _city = value;
+                if (value != _city)
+                {
+                    _city = value;
+                    AddressChanged?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
 
@@ -104,7 +118,11 @@ namespace ObjectOrientedPractics.Model
             {
                 Validator.AssertEmptyValue(value, nameof(Street));
                 Validator.AssertLengthString(value, 100, nameof(Street));
-                _street = value;
+                if (value != _street)
+                {
+                    _street = value;
+                    AddressChanged?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
 
@@ -122,7 +140,11 @@ namespace ObjectOrientedPractics.Model
             {
                 Validator.AssertEmptyValue(value, nameof(House));
                 Validator.AssertLengthString(value, 10, nameof(House));
-                _building = value;
+                if (value != _building)
+                {
+                    _building = value;
+                    AddressChanged?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
 
@@ -140,7 +162,11 @@ namespace ObjectOrientedPractics.Model
             {
                 Validator.AssertEmptyValue(value, nameof(Apartment));
                 Validator.AssertLengthString(value, 50, nameof(Apartment));
-                _apartment = value;
+                if (value != _apartment)
+                {
+                    _apartment = value;
+                    AddressChanged?.Invoke(this, EventArgs.Empty);
+                }
             }
         }
 
@@ -185,5 +211,10 @@ namespace ObjectOrientedPractics.Model
         {
             return $"{Index} {Country}, {City}, {Street}, {House}, {Apartment}";
         }
+
+        /// <summary>
+        /// Событие изменение адреса.
+        /// </summary>
+        public event EventHandler<EventArgs> AddressChanged;
     }
 }
