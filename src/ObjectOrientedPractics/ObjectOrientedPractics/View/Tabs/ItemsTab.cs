@@ -254,6 +254,9 @@ namespace ObjectOrientedPractics.View.Tabs
             }
         }
 
+        /// <summary>
+        /// Событие отслеживающие изменение товаров.
+        /// </summary>
         public event EventHandler<EventArgs> ItemsChanged;
     }
 }
