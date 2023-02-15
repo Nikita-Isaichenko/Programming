@@ -128,6 +128,8 @@ namespace ObjectOrientedPractics.View.Tabs
             Items.Add(_currentItem);
             ItemsListBox.Items.Add(_currentItem.Name);
 
+            ItemsChanged?.Invoke(this, EventArgs.Empty);
+
             ItemsListBox.SelectedIndex = Items.Count - 1;
 
             UpdateTextBoxes(_currentItem);
@@ -141,6 +143,8 @@ namespace ObjectOrientedPractics.View.Tabs
 
             ItemsListBox.Items.RemoveAt(index);
             Items.RemoveAt(index);
+
+            ItemsChanged?.Invoke(this, EventArgs.Empty);
 
             ItemsListBox.SelectedIndex = Items.Count > 0 ? 0 : -1;
             
@@ -194,9 +198,14 @@ namespace ObjectOrientedPractics.View.Tabs
             try
             {
                 NameTextBox.BackColor = AppColor.NormalBackColor;
-                _currentItem.Name = NameTextBox.Text;
-                ItemsListBox.
-                    Items[Items.IndexOf(_currentItem)] = _currentItem.Name;
+
+                if (_currentItem.Name != NameTextBox.Text)
+                {
+                    _currentItem.Name = NameTextBox.Text;
+                    ItemsChanged?.Invoke(this, EventArgs.Empty);
+                    ItemsListBox.
+                        Items[Items.IndexOf(_currentItem)] = _currentItem.Name;
+                }
             }
             catch (Exception ex)
             {
@@ -213,7 +222,12 @@ namespace ObjectOrientedPractics.View.Tabs
             try
             {
                 DescriptionTextBox.BackColor = AppColor.NormalBackColor;
-                _currentItem.Description = DescriptionTextBox.Text;
+
+                if (_currentItem.Description != DescriptionTextBox.Text)
+                {
+                    _currentItem.Description = DescriptionTextBox.Text;
+                    ItemsChanged?.Invoke(this, EventArgs.Empty);
+                }
             }
             catch (Exception ex)
             {
@@ -227,12 +241,22 @@ namespace ObjectOrientedPractics.View.Tabs
             try
             {
                 CategoryComboBox.BackColor = AppColor.NormalBackColor;
-                _currentItem.Category = (Category)CategoryComboBox.SelectedIndex;
+
+                if (_currentItem.Category != (Category)CategoryComboBox.SelectedIndex)
+                {
+                    _currentItem.Category = (Category)CategoryComboBox.SelectedIndex;
+                    ItemsChanged?.Invoke(this, EventArgs.Empty);
+                }              
             }
             catch
             {
                 CategoryComboBox.BackColor = AppColor.ErrorBackColor;
             }
         }
+
+        /// <summary>
+        /// Событие отслеживающие изменение товаров.
+        /// </summary>
+        public event EventHandler<EventArgs> ItemsChanged;
     }
 }

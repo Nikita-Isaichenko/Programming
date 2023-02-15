@@ -1,6 +1,7 @@
 ﻿using ObjectOrientedPractics.Model;
 using ObjectOrientedPractics.Services;
 using ObjectOrientedPractics.View.Tabs;
+using System;
 using System.Windows.Forms;
 
 
@@ -17,7 +18,9 @@ namespace ObjectOrientedPractics
         /// Создает экземпляр класса <see cref="MainForm"/>
         /// </summary>
         public MainForm()
-        {       
+        {
+            
+
             if (Serializer.IsFile("Store"))
             {
                 _store = Serializer.LoadFromFile("Store");
@@ -28,6 +31,8 @@ namespace ObjectOrientedPractics
             }
 
             InitializeComponent();
+
+            MainItemsTab.ItemsChanged += ItemsTab_ItemsChanged;
 
             MainItemsTab.Items = _store.Items;
             MainCustomersTab.Customers = _store.Customers;
@@ -43,23 +48,17 @@ namespace ObjectOrientedPractics
             Serializer.SaveToFile("Store", _store);
         }
 
-        private void MainTabControl_SelectedIndexChanged(object sender, System.EventArgs e)
+        /// <summary>
+        /// Обработчик события изменения товара во вкладке.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ItemsTab_ItemsChanged(object sender, EventArgs e)
         {
-            if (MainTabControl.SelectedTab == CartsTabPage)
-            {
-                MainCartsTab.RefreshData();
-            }
-
-            if (MainTabControl.SelectedTab == OrdersTabPage)
-            {
-                MainOrdersTab.RefreshData();
-            }
-
-            if (MainTabControl.SelectedTab == MainDiscountTabPage)
-            {
-                PointerDiscountControl.RefreshData();
-                PercentDiscountControl.RefreshData();
-            }
+            MainCartsTab.RefreshData();
+            MainOrdersTab.RefreshData();
+            PointerDiscountControl.RefreshData();
+            PercentDiscountControl.RefreshData();
         }
     }
 }
