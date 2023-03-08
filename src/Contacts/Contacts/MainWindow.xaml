@@ -45,9 +45,9 @@
         <StackPanel Grid.Row="1" Grid.Column="1"
                     Orientation="Horizontal" FlowDirection="RightToLeft">
             <Button x:Name="LoadButton" Content="Load" Margin="3" Width="75" Height="25"
-                    Command="{Binding Load}"/>
+                    Command="{Binding LoadCommand}"/>
             <Button x:Name="SaveButton" Content="Save" Margin="3" Width="75" Height="25"
-                    Command="{Binding Save}"/>
+                    Command="{Binding SaveCommand}"/>
         </StackPanel>
     </Grid>
 </Window>

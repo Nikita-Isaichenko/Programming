@@ -69,33 +69,21 @@ namespace View.ViewModel
         /// <summary>
         /// Возвращает команду для загрузки данных из файла.
         /// </summary>
-        public ICommand Load
-        {
-            get
-            {               
-                return new RelayCommand((obj) =>
-                {
-                    var contact = _serializer.Load();
-                    Name = contact.Name;
-                    PhoneNumber = contact.PhoneNumber;
-                    Email = contact.Email;
-                });
-            }
-        }
+        public ICommand LoadCommand { get; }
+
 
         /// <summary>
         /// Возвращает команду для сохранения данных в файл.
         /// </summary>
-        public ICommand Save
+        public ICommand SaveCommand { get; }
+
+        /// <summary>
+        /// Создает экземпляр класса <see cref="MainVM"/>.
+        /// </summary>
+        public MainVM()
         {
-            get
-            {
-                return new RelayCommand((obj) =>
-                {
-                    _serializer.Save(Contact);
-                });
-               
-            }
+            SaveCommand = new RelayCommand(SaveContact);
+            LoadCommand = new RelayCommand(LoadContact);
         }
 
         /// <summary>
@@ -105,6 +93,27 @@ namespace View.ViewModel
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
+
+        /// <summary>
+        /// Загружает данные о контакте из файла.
+        /// </summary>
+        /// <param name="parameter">Параметр.</param>
+        private void LoadContact(object? parameter)
+        {
+            var contact = _serializer.Load();
+            Name = contact.Name;
+            PhoneNumber = contact.PhoneNumber;
+            Email = contact.Email;
+        }
+
+        /// <summary>
+        /// Сохраняет данные о контакте в файл.
+        /// </summary>
+        /// <param name="parameter">Параметр.</param>
+        private void SaveContact(object? parameter)
+        {
+            _serializer.Save(Contact);
         }
 
         /// <summary>
