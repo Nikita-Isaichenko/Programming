@@ -7,18 +7,30 @@ using Newtonsoft.Json;
 
 namespace View.Model.Services
 {
+    /// <summary>
+    /// Представляет реализацию для сериализации. 
+    /// </summary>
     internal class ContactSerializer
     {
-
+        /// <summary>
+        /// Возвращает и задает путь сохранения файла.
+        /// </summary>
         public string Path { get; set; }
             = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
             + @"\contacts.json";          
 
+        /// <summary>
+        /// создает экземпляр класса <see cref="ContactSerializer"/>.
+        /// </summary>
         public ContactSerializer()
         {
 
         }
 
+        /// <summary>
+        /// Загружает данные из файла в приложение.
+        /// </summary>
+        /// <returns>Объект класса <see cref="ContactSerializer"/>.</returns>
         public Contact? Load()
         {
             Contact? contact = new Contact();           
@@ -34,6 +46,10 @@ namespace View.Model.Services
             return contact;
         }
 
+        /// <summary>
+        /// Сохраняет объект в файл.
+        /// </summary>
+        /// <param name="contact">Контакт.</param>
         public void Save(Contact? contact)
         {
             using(StreamWriter wr = new StreamWriter(Path))

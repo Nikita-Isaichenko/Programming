@@ -21,6 +21,9 @@ namespace Contacts
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// Создает экземпляр класса <see cref="MainWindow"/>.
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
