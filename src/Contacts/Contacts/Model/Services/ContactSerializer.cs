@@ -1,5 +1,8 @@
 ﻿using System;
 using System.IO;
+using System.IO.Enumeration;
+using System.Windows;
+using System.Windows.Shapes;
 using Newtonsoft.Json;
 
 namespace View.Model.Services
@@ -8,28 +11,32 @@ namespace View.Model.Services
     {
 
         public string Path { get; set; }
-            = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+            + @"\contacts.json";          
 
         public ContactSerializer()
         {
 
         }
 
-        public Contact? Load(string fileName)
+        public Contact? Load()
         {
-            Contact? contact;
+            Contact? contact = new Contact();           
 
-            using (StreamReader sr = new StreamReader(Path + fileName))
+            if (File.Exists(Path))
             {
-                contact = JsonConvert.DeserializeObject<Contact>(sr.ReadToEnd());
-            }
+                using (StreamReader sr = new StreamReader(Path))
+                {
+                    contact = JsonConvert.DeserializeObject<Contact>(sr.ReadToEnd());
+                }
+            }   
 
             return contact;
         }
 
-        public void Save(string fileName, Contact contact)
+        public void Save(Contact? contact)
         {
-            using(StreamWriter wr = new StreamWriter(Path + fileName))
+            using(StreamWriter wr = new StreamWriter(Path))
             {
                 wr.Write(JsonConvert.SerializeObject(contact));
             }

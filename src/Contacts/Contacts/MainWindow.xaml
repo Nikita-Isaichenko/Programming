@@ -42,9 +42,12 @@
                            Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
         </GroupBox>
-        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Button x:Name="LoadButton" Content="Load" Margin="3" Width="75" Height="25"/>
-            <Button x:Name="SaveButton" Content="Save" Margin="3" Width="75" Height="25"/>
+        <StackPanel Grid.Row="1" Grid.Column="1"
+                    Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Button x:Name="LoadButton" Content="Load" Margin="3" Width="75" Height="25"
+                    Command="{Binding Load}"/>
+            <Button x:Name="SaveButton" Content="Save" Margin="3" Width="75" Height="25"
+                    Command="{Binding Save}"/>
         </StackPanel>
     </Grid>
 </Window>
