@@ -19,27 +19,32 @@
         <GroupBox x:Name="EditContactGroupBox" Grid.Row="0" Grid.Column="0" Header="Edit Contact">
             <StackPanel>
                 <TextBlock Text="Name:" Margin="3px"/>
-                <TextBox Margin="3"/>
+                <TextBox Margin="3"
+                         Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="PhoneNumber:" Margin="3px"/>
-                <TextBox Margin="3"/>
+                <TextBox Margin="3"
+                         Text="{Binding PhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="Email:" Margin="3px"/>
-                <TextBox Margin="3"/>   
+                <TextBox Margin="3"
+                         Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>   
             </StackPanel>
         </GroupBox>
         <GroupBox x:Name="ReadContactGroupBox" Grid.Row="0" Grid.Column="1" Header="Read Contact">
             <StackPanel>
                 <TextBlock Text="Name:" Margin="3px"/>
-                <TextBlock Margin="3" FontWeight="Bold"/>
+                <TextBlock Margin="3" FontWeight="Bold"
+                           Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="PhoneNumber:" Margin="3px"/>
-                <TextBlock Margin="3" FontWeight="Bold"/>
+                <TextBlock Margin="3" FontWeight="Bold"
+                           Text="{Binding PhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Text="Email:" Margin="3px"/>
-                <TextBlock Margin="3" FontWeight="Bold"/>
+                <TextBlock Margin="3" FontWeight="Bold"
+                           Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
         </GroupBox>
         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" FlowDirection="RightToLeft">
             <Button x:Name="LoadButton" Content="Load" Margin="3" Width="75" Height="25"/>
             <Button x:Name="SaveButton" Content="Save" Margin="3" Width="75" Height="25"/>
         </StackPanel>
-        
     </Grid>
 </Window>
