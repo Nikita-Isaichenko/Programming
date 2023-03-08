@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="Contacts" Height="450" Width="450"
         MinHeight="450" MinWidth="450">
-    <Grid Margin="15px">
+    <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="31px"/>
+            <RowDefinition Height="0.1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -18,26 +18,26 @@
         </Grid.ColumnDefinitions>
         <GroupBox x:Name="EditContactGroupBox" Grid.Row="0" Grid.Column="0" Header="Edit Contact">
             <StackPanel>
-                <TextBlock Text="Name:" Margin="3px"/>
+                <TextBlock Text="Name:" Margin="3"/>
                 <TextBox Margin="3"
                          Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBlock Text="PhoneNumber:" Margin="3px"/>
+                <TextBlock Text="PhoneNumber:" Margin="3"/>
                 <TextBox Margin="3"
                          Text="{Binding PhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBlock Text="Email:" Margin="3px"/>
+                <TextBlock Text="Email:" Margin="3"/>
                 <TextBox Margin="3"
-                         Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>   
+                         Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
         </GroupBox>
         <GroupBox x:Name="ReadContactGroupBox" Grid.Row="0" Grid.Column="1" Header="Read Contact">
             <StackPanel>
-                <TextBlock Text="Name:" Margin="3px"/>
+                <TextBlock Text="Name:" Margin="3"/>
                 <TextBlock Margin="3" FontWeight="Bold"
                            Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBlock Text="PhoneNumber:" Margin="3px"/>
+                <TextBlock Text="PhoneNumber:" Margin="3"/>
                 <TextBlock Margin="3" FontWeight="Bold"
                            Text="{Binding PhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBlock Text="Email:" Margin="3px"/>
+                <TextBlock Text="Email:" Margin="3"/>
                 <TextBlock Margin="3" FontWeight="Bold"
                            Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>

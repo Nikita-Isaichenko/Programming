@@ -20,7 +20,7 @@ namespace View.Model.Services
             + @"\contacts.json";          
 
         /// <summary>
-        /// создает экземпляр класса <see cref="ContactSerializer"/>.
+        /// Создает экземпляр класса <see cref="ContactSerializer"/>.
         /// </summary>
         public ContactSerializer()
         {
@@ -33,7 +33,7 @@ namespace View.Model.Services
         /// <returns>Объект класса <see cref="ContactSerializer"/>.</returns>
         public Contact? Load()
         {
-            Contact? contact = new Contact();           
+            var contact = new Contact();           
 
             if (File.Exists(Path))
             {
