@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using View.ViewModel;
 
-namespace Contacts
+namespace Contacts.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
