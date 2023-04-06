@@ -121,4 +121,7 @@
   <data name="contacts_96x96" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\contacts_96x96.ico;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="photo_placeholder_100x100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\photo_placeholder_100x100.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>
