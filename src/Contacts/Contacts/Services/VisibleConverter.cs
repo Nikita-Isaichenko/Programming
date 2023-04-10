@@ -13,18 +13,18 @@ namespace View.Services
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            Visibility returnValue;
+            var returnValue = Visibility.Hidden;
 
-            switch ((bool)value)
+            switch (value)
             {
                 case true:
                 {
-                    returnValue = Visibility.Hidden;
+                    returnValue = Visibility.Visible;
                     break;
                 }
                 case false:
                 {
-                    returnValue = Visibility.Visible;
+                    returnValue = Visibility.Hidden;
                     break;
                 }
             }
@@ -40,17 +40,17 @@ namespace View.Services
             {
                 case Visibility.Visible:
                 {
-                    returnValue = false;
+                    returnValue = true;
                     break; 
                 }
                 case Visibility.Collapsed:
                 {
-                    returnValue = true;
+                    returnValue = false;
                     break;
                 }
                 case Visibility.Hidden:
                 {
-                    returnValue = true;
+                    returnValue = false;
                     break;
                 }
             }

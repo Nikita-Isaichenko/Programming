@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using View.Model;
 using View.Services;
 
 namespace View.ViewModel
@@ -21,6 +22,8 @@ namespace View.ViewModel
         private ContactVM _currentContact;
 
         private bool _isReadOnly = true;
+
+        private bool _isVisible = false;
 
         /// <summary>
         /// Возвращает и задает контакт.
@@ -71,7 +74,18 @@ namespace View.ViewModel
             }
         }
 
-        public bool IsVisible { get; set; }
+        public bool IsVisible
+        {
+            get 
+            {
+                return _isVisible;
+            }
+            private set
+            {
+                _isVisible = value;
+                OnPropertyChanged(nameof(IsVisible));
+            }
+        }
 
         public VisibleConverter VisibleConverter { get; private set; }
 
@@ -123,15 +137,16 @@ namespace View.ViewModel
 
         private void ApplyContact(object parameter)
         {
-
+            Contacts.Add(CurrentContact);
+            IsVisible = false;
+            IsReadOnly = true;
         }
 
         private void AddContact(object parameter)
         {
-            CurrentContact = null;
+            CurrentContact = new ContactVM(new Contact());
             IsReadOnly = false;
-
-            
+            IsVisible = true;
         }
 
         /// <summary>

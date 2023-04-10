@@ -3,10 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Contacts"
+        xmlns:local="clr-namespace:Contacts" xmlns:local1="clr-namespace:View.Services"
         mc:Ignorable="d"
         Title="Contacts" Height="400" Width="650"
         MinHeight="450" MinWidth="450">
+    <Window.Resources>
+        <local1:VisibleConverter x:Key="VisibleConverter" />
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -79,7 +82,9 @@
                         Height="25" HorizontalAlignment="Left"
                         Content="Apply"
                         Command="{Binding Path=ApplyCommand}"
-                        Visibility="{Binding Path=IsVisible, Converter=VisibleConverter}"/>
+                        Visibility="{Binding Path=IsVisible,
+                        Converter={StaticResource VisibleConverter},
+                        UpdateSourceTrigger=PropertyChanged}"/>
                 
             </StackPanel>
         </Grid>
