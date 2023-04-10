@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace View.Model.Services
+namespace View.Services
 {
     /// <summary>
     /// Хранит методы для работы с api сайта для получения данных.

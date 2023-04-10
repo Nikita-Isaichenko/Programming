@@ -31,7 +31,7 @@
                         <Button Grid.Column="1" Height="25" Content="Edit" Margin="3"/>
                         <Button Grid.Column="2" Height="25" Content="Remove" Margin="3"/>
                     </Grid>
-                    <ListBox DockPanel.Dock="Top" Margin="3" DisplayMemberPath="Name"
+                    <ListBox DockPanel.Dock="Top" Margin="3" DisplayMemberPath="FirstName"
                              ItemsSource="{Binding Path=Contacts}"
                              SelectedItem="{Binding Path=CurrentContact,
                              UpdateSourceTrigger=PropertyChanged}">
@@ -57,10 +57,10 @@
             <TextBlock Margin="3" Grid.Column="1" Text="Name:"/>
             <StackPanel Grid.Column="1" Grid.Row="1">
                 <TextBox Margin="3" IsReadOnly="True"
-                         Text="{Binding Path=CurrentContact.Name, UpdateSourceTrigger=PropertyChanged}"/>
+                         Text="{Binding Path=CurrentContact.FirstName, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Margin="3" Text="Phone Number:"/>
                 <TextBox Margin="3" IsReadOnly="True"
-                         Text="{Binding Path=CurrentContact.PhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
+                         Text="{Binding Path=CurrentContact.Phone, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Margin="3" Text="Email:"/>
                 <TextBox Margin="3" IsReadOnly="True"
                          Text="{Binding Path=CurrentContact.Email, UpdateSourceTrigger=PropertyChanged}"/>

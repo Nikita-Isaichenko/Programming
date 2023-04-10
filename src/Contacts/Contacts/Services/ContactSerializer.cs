@@ -1,11 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.IO;
-using System.IO.Enumeration;
-using System.Windows;
-using System.Windows.Shapes;
-using Newtonsoft.Json;
+using View.Model;
 
-namespace View.Model.Services
+namespace View.Services
 {
     /// <summary>
     /// Представляет реализацию для сериализации. 
@@ -17,7 +15,7 @@ namespace View.Model.Services
         /// </summary>
         public string Path { get; set; }
             = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
-            + @"\contacts.json";          
+            + @"\contacts.json";
 
         /// <summary>
         /// Создает экземпляр класса <see cref="ContactSerializer"/>.
@@ -33,7 +31,7 @@ namespace View.Model.Services
         /// <returns>Объект класса <see cref="ContactSerializer"/>.</returns>
         public Contact? Load()
         {
-            var contact = new Contact();           
+            var contact = new Contact();
 
             if (File.Exists(Path))
             {
@@ -41,7 +39,7 @@ namespace View.Model.Services
                 {
                     contact = JsonConvert.DeserializeObject<Contact>(sr.ReadToEnd());
                 }
-            }   
+            }
 
             return contact;
         }
@@ -52,7 +50,7 @@ namespace View.Model.Services
         /// <param name="contact">Контакт.</param>
         public void Save(Contact? contact)
         {
-            using(StreamWriter wr = new StreamWriter(Path))
+            using (StreamWriter wr = new StreamWriter(Path))
             {
                 wr.Write(JsonConvert.SerializeObject(contact));
             }

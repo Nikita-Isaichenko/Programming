@@ -1,39 +1,36 @@
-﻿using Accessibility;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
+using View.Model;
+using View.ViewModel;
 
-namespace View.Model.Services
+namespace View.Services
 {
-    class ContactFactory
-    {     
+    class ContactVMFactory
+    {
         /// <summary>
         /// Параметры для запроса.
         /// </summary>
-        private string _parameters = "FirstName, Phone, Email";
+        private string _parameters = "FirstName,Phone,Email";
 
         /// <summary>
         /// Oбъект класса <see cref="DataAPI"/>.
         /// </summary>
         private DataAPI _dataAPI;
 
-        public ContactFactory()
+        public ContactVMFactory()
         {
             _dataAPI = new DataAPI(_parameters);
         }
 
-        public Contact MakeContact()
+        public ContactVM MakeContactVM()
         {
             var contact = new Contact();
             string json = _dataAPI.GetJsonData();
 
             contact = JsonConvert.DeserializeObject<Contact>(json);
 
-            return contact;
+            var contactVM = new ContactVM(contact);
+
+            return contactVM;
         }
     }
 }

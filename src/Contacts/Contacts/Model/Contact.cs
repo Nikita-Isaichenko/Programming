@@ -1,10 +1,4 @@
-﻿    using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace View.Model
+﻿namespace View.Model
 {
     /// <summary>
     /// Хранит данные о контакте.
@@ -42,8 +36,8 @@ namespace View.Model
         /// <summary>
         /// Создает экзмемпляр класса <see cref="Contact"/>.
         /// </summary>
-        public Contact() 
-        { 
+        public Contact()
+        {
 
         }
     }

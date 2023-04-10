@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.IO;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
-using View.Model;
-using View.Model.Services;
+using View.Services;
 
 namespace View.ViewModel
 {
@@ -23,6 +15,8 @@ namespace View.ViewModel
         /// Сериализатор.
         /// </summary>
         private ContactSerializer _serializer = new ContactSerializer();
+
+        private ContactVMFactory _contactVMFactory = new ContactVMFactory();
 
         private ContactVM _currentContact;
 
@@ -40,7 +34,7 @@ namespace View.ViewModel
         }
 
         public ObservableCollection<ContactVM> Contacts { get; private set; }
-            = new ObservableCollection<ContactVM>();   
+            = new ObservableCollection<ContactVM>();
 
         /// <summary>
         /// Возвращает команду для загрузки данных из файла.
@@ -57,12 +51,14 @@ namespace View.ViewModel
         /// Создает экземпляр класса <see cref="MainVM"/>.
         /// </summary>
         public MainVM()
-        {           
+        {
             SaveCommand = new RelayCommand(SaveContact);
             LoadCommand = new RelayCommand(LoadContact);
 
-            Contacts.Add(new ContactVM(new Contact("Nikita", "2349", "nik@mail")));
-            Contacts.Add(new ContactVM(new Contact("Daniil", "359", "detter@mail")));
+            Contacts.Add(_contactVMFactory.MakeContactVM());
+            Contacts.Add(_contactVMFactory.MakeContactVM());
+            Contacts.Add(_contactVMFactory.MakeContactVM());
+            Contacts.Add(_contactVMFactory.MakeContactVM());
         }
 
         /// <summary>
@@ -80,7 +76,7 @@ namespace View.ViewModel
         /// <param name="parameter">Параметр.</param>
         private void LoadContact(object? parameter)
         {
-            
+
         }
 
         /// <summary>
@@ -89,12 +85,12 @@ namespace View.ViewModel
         /// <param name="parameter">Параметр.</param>
         private void SaveContact(object? parameter)
         {
-            
+
         }
 
         /// <summary>
         /// Событие изменения свойтства.
         /// </summary>
-        public event PropertyChangedEventHandler? PropertyChanged;     
+        public event PropertyChangedEventHandler? PropertyChanged;
     }
 }
