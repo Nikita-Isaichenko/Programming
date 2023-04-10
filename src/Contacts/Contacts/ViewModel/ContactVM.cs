@@ -13,23 +13,23 @@ namespace View.ViewModel
     {
         public Contact Contact { get; set; }
 
-        public string Name
+        public string FirstName
         {
-            get => Contact.Name;
+            get => Contact.FirstName;
             set
             {
-                Contact.Name = value;
-                OnPropertyChanged(nameof(Name));
+                Contact.FirstName = value;
+                OnPropertyChanged(nameof(FirstName));
             }
         }
 
-        public string PhoneNumber
+        public string Phone
         {
-            get => Contact.PhoneNumber;
+            get => Contact.Phone;
             set
             {
-                Contact.PhoneNumber = value;
-                OnPropertyChanged(nameof(PhoneNumber));
+                Contact.Phone = value;
+                OnPropertyChanged(nameof(Phone));
             }
         }
 
@@ -56,7 +56,6 @@ namespace View.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
-
 
         public event PropertyChangedEventHandler? PropertyChanged;
     }
