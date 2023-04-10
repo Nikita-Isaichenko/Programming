@@ -11,6 +11,6 @@ namespace View.Model.Services
         /// <summary>
         /// Параметры для запроса.
         /// </summary>
-        private string _parameters = "FirstName,LastName,FatherName,Country,City,Street,House,Apartment";
+        private string _parameters = "FirstName, Phone, Email";
     }
 }

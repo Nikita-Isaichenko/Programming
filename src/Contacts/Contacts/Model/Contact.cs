@@ -14,12 +14,12 @@ namespace View.Model
         /// <summary>
         /// Имя.
         /// </summary>
-        public string? Name { get; set; }
+        public string? FirstName { get; set; }
 
         /// <summary>
         /// Номер телефона.
         /// </summary>
-        public string? PhoneNumber { get; set; }
+        public string? Phone { get; set; }
 
         /// <summary>
         /// Электронная почта.
@@ -32,10 +32,10 @@ namespace View.Model
         /// <param name="name">Имя.</param>
         /// <param name="phoneNumber">Номер телефона.</param>
         /// <param name="email">Электронная почта.</param>
-        public Contact(string name, string phoneNumber, string email)
+        public Contact(string firstName, string phone, string email)
         {
-            Name = name;
-            PhoneNumber = phoneNumber;
+            FirstName = firstName;
+            Phone = phone;
             Email = email;
         }
 
