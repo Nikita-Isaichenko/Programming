@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using View.Model;
 using View.Model.Services;
@@ -22,49 +24,23 @@ namespace View.ViewModel
         /// </summary>
         private ContactSerializer _serializer = new ContactSerializer();
 
+        private ContactVM _currentContact;
+
         /// <summary>
         /// Возвращает и задает контакт.
         /// </summary>
-        public Contact Contact { get; private set; } = new Contact();
-
-        /// <summary>
-        /// Возвращает и задает имя контакта.
-        /// </summary>
-        public string? Name
+        public ContactVM CurrentContact
         {
-            get => Contact.Name;
+            get => _currentContact;
             set
             {
-                Contact.Name = value;
-                OnPropertyChanged(nameof(Name));
+                _currentContact = value;
+                OnPropertyChanged(nameof(CurrentContact));
             }
         }
 
-        /// <summary>
-        /// Возвращает и задает номер телефона контакта.
-        /// </summary>
-        public string? PhoneNumber
-        {
-            get => Contact.PhoneNumber;
-            set
-            {
-                Contact.PhoneNumber = value;
-                OnPropertyChanged(nameof(PhoneNumber));
-            }
-        }
-
-        /// <summary>
-        /// Возвращает и задает электронную почту контакта.
-        /// </summary>
-        public string? Email
-        {
-            get => Contact.Email;
-            set
-            {
-                Contact.Email = value;
-                OnPropertyChanged(nameof(Email));
-            }
-        }
+        public ObservableCollection<ContactVM> Contacts { get; private set; }
+            = new ObservableCollection<ContactVM>();   
 
         /// <summary>
         /// Возвращает команду для загрузки данных из файла.
@@ -81,9 +57,12 @@ namespace View.ViewModel
         /// Создает экземпляр класса <see cref="MainVM"/>.
         /// </summary>
         public MainVM()
-        {
+        {           
             SaveCommand = new RelayCommand(SaveContact);
             LoadCommand = new RelayCommand(LoadContact);
+
+            Contacts.Add(new ContactVM(new Contact("Nikita", "2349", "nik@mail")));
+            Contacts.Add(new ContactVM(new Contact("Daniil", "359", "detter@mail")));
         }
 
         /// <summary>
@@ -101,10 +80,7 @@ namespace View.ViewModel
         /// <param name="parameter">Параметр.</param>
         private void LoadContact(object? parameter)
         {
-            var contact = _serializer.Load();
-            Name = contact.Name;
-            PhoneNumber = contact.PhoneNumber;
-            Email = contact.Email;
+            
         }
 
         /// <summary>
@@ -113,7 +89,7 @@ namespace View.ViewModel
         /// <param name="parameter">Параметр.</param>
         private void SaveContact(object? parameter)
         {
-            _serializer.Save(Contact);
+            
         }
 
         /// <summary>
