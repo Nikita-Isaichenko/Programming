@@ -13,7 +13,7 @@ namespace View.ViewModel
         /// </summary>
         /// <param name="parameter">Параметр.</param>
         /// <returns>Возвращает истину.</returns>
-        public bool CanExecute(object? parameter)
+        public bool CanExecute(object parameter)
         {
             return true;
         }
@@ -22,7 +22,7 @@ namespace View.ViewModel
         /// Выполняет логику команды.
         /// </summary>
         /// <param name="parameter">Параметр.</param>
-        public void Execute(object? parameter)
+        public void Execute(object parameter)
         {
             _execute(parameter);
         }
@@ -31,7 +31,7 @@ namespace View.ViewModel
         /// Создает экземпляр класса <see cref="RelayCommand"/>.
         /// </summary>
         /// <param name="execute">Делегат для вызова команды.</param>
-        public RelayCommand(Action<object?> execute)
+        public RelayCommand(Action<object> execute)
         {
             _execute = execute;
         }
@@ -48,6 +48,6 @@ namespace View.ViewModel
         /// <summary>
         /// Делегат для вызова команды.
         /// </summary>
-        private Action<object?> _execute;
+        private Action<object> _execute;
     }
 }

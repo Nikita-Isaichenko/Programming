@@ -27,7 +27,9 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Height="25" Content="Add" Margin="3"/>
+                        <Button Grid.Column="0" Height="25"
+                                Content="Add" Margin="3"
+                                Command="{Binding Path=AddCommand}"/>
                         <Button Grid.Column="1" Height="25" Content="Edit" Margin="3"/>
                         <Button Grid.Column="2" Height="25" Content="Remove" Margin="3"/>
                     </Grid>
@@ -56,17 +58,28 @@
                    />
             <TextBlock Margin="3" Grid.Column="1" Text="Name:"/>
             <StackPanel Grid.Column="1" Grid.Row="1">
-                <TextBox Margin="3" IsReadOnly="True"
-                         Text="{Binding Path=CurrentContact.FirstName, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Margin="3"
+                         IsReadOnly="{Binding Path=IsReadOnly,
+                         UpdateSourceTrigger=PropertyChanged}"
+                         Text="{Binding Path=CurrentContact.FirstName,
+                         UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Margin="3" Text="Phone Number:"/>
-                <TextBox Margin="3" IsReadOnly="True"
-                         Text="{Binding Path=CurrentContact.Phone, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Margin="3"
+                         IsReadOnly="{Binding Path=IsReadOnly,
+                         UpdateSourceTrigger=PropertyChanged}"
+                         Text="{Binding Path=CurrentContact.Phone,
+                         UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock Margin="3" Text="Email:"/>
-                <TextBox Margin="3" IsReadOnly="True"
-                         Text="{Binding Path=CurrentContact.Email, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Margin="3" 
+                         IsReadOnly="{Binding Path=IsReadOnly,
+                         UpdateSourceTrigger=PropertyChanged}"
+                         Text="{Binding Path=CurrentContact.Email,
+                         UpdateSourceTrigger=PropertyChanged}"/>
                 <Button Margin="3,50,3,3" Width="75"
                         Height="25" HorizontalAlignment="Left"
-                        Content="Apply" Visibility="Hidden"/>
+                        Content="Apply"
+                        Command="{Binding Path=ApplyCommand}"
+                        Visibility="{Binding Path=IsVisible, Converter=VisibleConverter}"/>
                 
             </StackPanel>
         </Grid>

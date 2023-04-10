@@ -20,6 +20,8 @@ namespace View.ViewModel
 
         private ContactVM _currentContact;
 
+        private bool _isReadOnly = true;
+
         /// <summary>
         /// Возвращает и задает контакт.
         /// </summary>
@@ -29,9 +31,17 @@ namespace View.ViewModel
             set
             {
                 _currentContact = value;
+
+                if (_currentContact != null)
+                {
+                    IsReadOnly = true;
+                }
+
                 OnPropertyChanged(nameof(CurrentContact));
             }
         }
+
+        public ContactVM TempContact { get; set; }
 
         public ObservableCollection<ContactVM> Contacts { get; private set; }
             = new ObservableCollection<ContactVM>();
@@ -47,6 +57,25 @@ namespace View.ViewModel
         /// </summary>
         public ICommand SaveCommand { get; }
 
+        public ICommand AddCommand { get; }
+
+        public ICommand ApplyCommand { get; }
+
+        public bool IsReadOnly
+        {
+            get => _isReadOnly;
+            private set
+            {
+                _isReadOnly = value;
+                OnPropertyChanged(nameof(IsReadOnly));
+            }
+        }
+
+        public bool IsVisible { get; set; }
+
+        public VisibleConverter VisibleConverter { get; private set; }
+
+
         /// <summary>
         /// Создает экземпляр класса <see cref="MainVM"/>.
         /// </summary>
@@ -54,6 +83,10 @@ namespace View.ViewModel
         {
             SaveCommand = new RelayCommand(SaveContact);
             LoadCommand = new RelayCommand(LoadContact);
+            AddCommand = new RelayCommand(AddContact);
+            ApplyCommand = new RelayCommand(ApplyContact);
+
+            VisibleConverter = new VisibleConverter();
 
             Contacts.Add(_contactVMFactory.MakeContactVM());
             Contacts.Add(_contactVMFactory.MakeContactVM());
@@ -74,7 +107,7 @@ namespace View.ViewModel
         /// Загружает данные о контакте из файла.
         /// </summary>
         /// <param name="parameter">Параметр.</param>
-        private void LoadContact(object? parameter)
+        private void LoadContact(object parameter)
         {
 
         }
@@ -83,9 +116,22 @@ namespace View.ViewModel
         /// Сохраняет данные о контакте в файл.
         /// </summary>
         /// <param name="parameter">Параметр.</param>
-        private void SaveContact(object? parameter)
+        private void SaveContact(object parameter)
         {
 
+        }
+
+        private void ApplyContact(object parameter)
+        {
+
+        }
+
+        private void AddContact(object parameter)
+        {
+            CurrentContact = null;
+            IsReadOnly = false;
+
+            
         }
 
         /// <summary>
