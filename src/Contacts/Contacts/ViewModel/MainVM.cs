@@ -138,6 +138,14 @@ namespace View.ViewModel
             SaveCommand = new RelayCommand(SaveContacts);
 
             Contacts = _serializer.Load();
+
+            if (Contacts.Count == 0)
+            {
+                while (Contacts.Count < 10)
+                {
+                    Contacts.Add(_contactVMFactory.MakeContactVM());
+                }
+            }
         }
 
         /// <summary>
