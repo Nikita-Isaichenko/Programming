@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.ObjectModel;
 using System.IO;
 using View.Model;
+using View.ViewModel;
 
 namespace View.Services
 {
@@ -29,30 +31,38 @@ namespace View.Services
         /// Загружает данные из файла в приложение.
         /// </summary>
         /// <returns>Объект класса <see cref="ContactSerializer"/>.</returns>
-        public Contact? Load()
+        public ObservableCollection<ContactVM> Load()
         {
-            var contact = new Contact();
+            var contacts = new ObservableCollection<ContactVM>();
 
             if (File.Exists(Path))
             {
                 using (StreamReader sr = new StreamReader(Path))
                 {
-                    contact = JsonConvert.DeserializeObject<Contact>(sr.ReadToEnd());
+                    contacts
+                        = JsonConvert.
+                        DeserializeObject<ObservableCollection<ContactVM>>
+                        (sr.ReadToEnd());
                 }
             }
 
-            return contact;
+            return contacts;
         }
 
         /// <summary>
         /// Сохраняет объект в файл.
         /// </summary>
         /// <param name="contact">Контакт.</param>
-        public void Save(Contact? contact)
+        public void Save(ObservableCollection<ContactVM> contacts)
         {
+            if (!File.Exists(Path))
+            {
+                File.Create(Path).Close();
+            }
+
             using (StreamWriter wr = new StreamWriter(Path))
             {
-                wr.Write(JsonConvert.SerializeObject(contact));
+                wr.Write(JsonConvert.SerializeObject(contacts));
             }
         }
     }

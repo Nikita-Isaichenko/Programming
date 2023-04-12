@@ -20,17 +20,6 @@ namespace View.ViewModel
 
         private ContactVMFactory _contactVMFactory = new ContactVMFactory();
 
-        public ContactVM TempContact
-        {
-            get => _tc;
-            set
-            {
-                _tc = value;
-                OnPropertyChanged(nameof(TempContact));
-            }
-        }
-        private ContactVM _tc;
-
         private ContactVM _currentContact;
 
         private bool _isReadOnly = true;
@@ -62,6 +51,7 @@ namespace View.ViewModel
                 OnPropertyChanged(nameof(CurrentContact));
             }
         }
+        public ContactVM TempContact { get; set; }
 
         public ObservableCollection<ContactVM> Contacts { get; private set; }
             = new ObservableCollection<ContactVM>();
@@ -110,17 +100,13 @@ namespace View.ViewModel
         /// </summary>
         public MainVM()
         {
-            SaveCommand = new RelayCommand(SaveContact);
-            LoadCommand = new RelayCommand(LoadContact);
             AddCommand = new RelayCommand(AddContact);
             EditCommand = new RelayCommand(EditContact, CanExecuteEdit);
             ApplyCommand = new RelayCommand(ApplyContact);
             RemoveCommand = new RelayCommand(RemoveContact, CanExecuteRemove);
+            SaveCommand = new RelayCommand(SaveContacts);
 
-            Contacts.Add(_contactVMFactory.MakeContactVM());
-            Contacts.Add(_contactVMFactory.MakeContactVM());
-            Contacts.Add(_contactVMFactory.MakeContactVM());
-            Contacts.Add(_contactVMFactory.MakeContactVM());
+            Contacts = _serializer.Load();
         }
 
         /// <summary>
@@ -130,24 +116,6 @@ namespace View.ViewModel
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
-
-        /// <summary>
-        /// Загружает данные о контакте из файла.
-        /// </summary>
-        /// <param name="parameter">Параметр.</param>
-        private void LoadContact(object parameter)
-        {
-
-        }
-
-        /// <summary>
-        /// Сохраняет данные о контакте в файл.
-        /// </summary>
-        /// <param name="parameter">Параметр.</param>
-        private void SaveContact(object parameter)
-        {
-
         }
 
         private void ApplyContact(object parameter)
@@ -209,6 +177,11 @@ namespace View.ViewModel
         private bool CanExecuteRemove(object parameter)
         {
             return Contacts.Count > 0 && CurrentContact != null;
+        }
+
+        private void SaveContacts(object parameter)
+        {
+            _serializer.Save((ObservableCollection<ContactVM>)parameter);
         }
 
         /// <summary>

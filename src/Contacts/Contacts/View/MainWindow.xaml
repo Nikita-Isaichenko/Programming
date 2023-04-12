@@ -3,13 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Contacts" xmlns:local1="clr-namespace:View.Services"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:local="clr-namespace:Contacts" 
+        xmlns:local1="clr-namespace:View.Services"
         mc:Ignorable="d"
         Title="Contacts" Height="400" Width="650"
         MinHeight="450" MinWidth="450">
     <Window.Resources>
         <local1:VisibleConverter x:Key="VisibleConverter" />
     </Window.Resources>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closing">
+            <i:InvokeCommandAction
+                            Command="{Binding SaveCommand}"
+                            CommandParameter="{Binding Path=Contacts}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -32,13 +41,16 @@
                         </Grid.ColumnDefinitions>
                         <Button Grid.Column="0" Height="25"
                                 Content="Add" Margin="3"
-                                Command="{Binding Path=AddCommand}"/>
+                                Command="{Binding Path=AddCommand}"
+                                IsEnabled="{Binding Path=IsReadOnly}"/>
                         <Button Grid.Column="1" Height="25"
                                 Content="Edit" Margin="3"
-                                Command="{Binding Path=EditCommand}"/>
+                                Command="{Binding Path=EditCommand}"
+                                IsEnabled="{Binding Path=IsReadOnly}"/>
                         <Button Grid.Column="2" Height="25"
                                 Content="Remove" Margin="3"
-                                Command="{Binding Path=RemoveCommand}"/>
+                                Command="{Binding Path=RemoveCommand}"
+                                IsEnabled="{Binding Path=IsReadOnly}"/>
                     </Grid>
                     <ListBox DockPanel.Dock="Top" Margin="3" DisplayMemberPath="FirstName"
                              ItemsSource="{Binding Path=Contacts}"
@@ -89,9 +101,6 @@
                         Visibility="{Binding Path=IsVisible,
                         Converter={StaticResource VisibleConverter},
                         UpdateSourceTrigger=PropertyChanged}"/>
-
-                <TextBlock Text="{Binding Path=TempContact.FirstName, UpdateSourceTrigger=PropertyChanged}"/>
-
             </StackPanel>
         </Grid>
     </Grid>
