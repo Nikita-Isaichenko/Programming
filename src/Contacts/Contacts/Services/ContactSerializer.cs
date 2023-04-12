@@ -30,7 +30,7 @@ namespace View.Services
         /// <summary>
         /// Загружает данные из файла в приложение.
         /// </summary>
-        /// <returns>Объект класса <see cref="ContactSerializer"/>.</returns>
+        /// <returns>Список контактов.</returns>
         public ObservableCollection<ContactVM> Load()
         {
             var contacts = new ObservableCollection<ContactVM>();
@@ -50,9 +50,9 @@ namespace View.Services
         }
 
         /// <summary>
-        /// Сохраняет объект в файл.
+        /// Сохраняет список объектов в файл.
         /// </summary>
-        /// <param name="contact">Контакт.</param>
+        /// <param name="contacts">Список контактов.</param>
         public void Save(ObservableCollection<ContactVM> contacts)
         {
             if (!File.Exists(Path))

@@ -5,10 +5,19 @@ using View.Model;
 
 namespace View.ViewModel
 {
+    /// <summary>
+    /// ViewModel, агрегирующий в себе класс <see cref="Model.Contact"/>
+    /// </summary>
     class ContactVM : INotifyPropertyChanged, ICloneable
     {
+        /// <summary>
+        /// Возвращает и получает объект класса <see cref="Model.Contact"/>
+        /// </summary>
         public Contact Contact { get; set; }
 
+        /// <summary>
+        /// Возвращает и получает имя контакта.
+        /// </summary>
         public string FirstName
         {
             get => Contact.FirstName;
@@ -19,6 +28,9 @@ namespace View.ViewModel
             }
         }
 
+        /// <summary>
+        /// Возвращает и получает телефон контакта.
+        /// </summary>
         public string Phone
         {
             get => Contact.Phone;
@@ -29,6 +41,9 @@ namespace View.ViewModel
             }
         }
 
+        /// <summary>
+        /// Возвращает и получает электронную почту контакта.
+        /// </summary>
         public string Email
         {
             get => Contact.Email;
@@ -39,6 +54,10 @@ namespace View.ViewModel
             }
         }
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref="ContactVM"/>.
+        /// </summary>
+        /// <param name="contact">Объект класса <see cref="Model.Contact"/>.</param>
         public ContactVM(Contact contact)
         {
             Contact = contact;
@@ -53,11 +72,18 @@ namespace View.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
 
+        /// <summary>
+        /// Создает клон объект.
+        /// </summary>
+        /// <returns>Объект класса <see cref="ContactVM"/>.</returns>
         public object Clone()
         {
             return new ContactVM((Contact)Contact.Clone());
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
+        /// <summary>
+        /// Событие изменения свойства.
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

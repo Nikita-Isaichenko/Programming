@@ -4,7 +4,7 @@ using System.Net;
 namespace View.Services
 {
     /// <summary>
-    /// Хранит методы для работы с api сайта для получения данных.
+    /// Хранит логику для работы с api сайта для генерации данных.
     /// </summary>
     public class DataAPI
     {
@@ -19,26 +19,26 @@ namespace View.Services
         public string Parameters { get; set; }
 
         /// <summary>
-        /// Отправка запроса к веб ресурсу.
+        /// объект для отправки запроса к веб ресурсу.
         /// </summary>
         private HttpWebRequest _request;
 
         /// <summary>
-        /// Получение ответа от веб ресурса.
+        /// объект для получения ответа от веб ресурса.
         /// </summary>
         private HttpWebResponse _response;
 
         /// <summary>
         /// Создает экземпляр класса <see cref="DataAPI"/>
         /// </summary>
-        /// <param name="parameters"></param>
+        /// <param name="parameters">Поля, которые надо сгенерировать.</param>
         public DataAPI(string parameters)
         {
             Parameters = parameters;
         }
 
         /// <summary>
-        /// Получение данных в json формате.
+        /// Получает данные в json формате.
         /// </summary>
         /// <returns>данные в виде json.</returns>
         public string GetJsonData()

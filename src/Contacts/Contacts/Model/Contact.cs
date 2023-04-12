@@ -43,6 +43,10 @@ namespace View.Model
 
         }
 
+        /// <summary>
+        /// Создает клон объекта.
+        /// </summary>
+        /// <returns>Возвращает новый объект.</returns>
         public object Clone()
         {
             return MemberwiseClone();

@@ -51,6 +51,9 @@ namespace View.ViewModel
         /// </summary>
         private Action<object> _execute;
 
+        /// <summary>
+        /// Делегат для определения возможности выполнения команды.
+        /// </summary>
         private Func<object, bool> _canExecute;
     }
 }

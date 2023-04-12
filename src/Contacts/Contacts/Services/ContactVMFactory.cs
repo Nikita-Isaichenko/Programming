@@ -4,6 +4,9 @@ using View.ViewModel;
 
 namespace View.Services
 {
+    /// <summary>
+    /// Хранит логику для автоматического создания объектов.
+    /// </summary>
     class ContactVMFactory
     {
         /// <summary>
@@ -16,11 +19,18 @@ namespace View.Services
         /// </summary>
         private DataAPI _dataAPI;
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref="ContactVMFactory"/>.
+        /// </summary>
         public ContactVMFactory()
         {
             _dataAPI = new DataAPI(_parameters);
         }
 
+        /// <summary>
+        /// Создает объект на основе сгенерированных данных.
+        /// </summary>
+        /// <returns>Объект класса <see cref="ContactVM"/>.</returns>
         public ContactVM MakeContactVM()
         {
             var contact = new Contact();
