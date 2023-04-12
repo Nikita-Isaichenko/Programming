@@ -20,6 +20,17 @@ namespace View.ViewModel
 
         private ContactVMFactory _contactVMFactory = new ContactVMFactory();
 
+        public ContactVM TempContact
+        {
+            get => _tc;
+            set
+            {
+                _tc = value;
+                OnPropertyChanged(nameof(TempContact));
+            }
+        }
+        private ContactVM _tc;
+
         private ContactVM _currentContact;
 
         private bool _isReadOnly = true;
@@ -34,19 +45,23 @@ namespace View.ViewModel
             get => _currentContact;
             set
             {
-                _currentContact = value;
-
                 if (_currentContact != null)
                 {
                     IsReadOnly = true;
                     IsVisible = false;
                 }
 
+                if (TempContact != null)
+                {
+                    Contacts[Contacts.IndexOf(CurrentContact)] = TempContact;                   
+                    TempContact = null;                                      
+                }
+
+                _currentContact = value;
+
                 OnPropertyChanged(nameof(CurrentContact));
             }
         }
-
-        public ContactVM TempContact { get; set; }
 
         public ObservableCollection<ContactVM> Contacts { get; private set; }
             = new ObservableCollection<ContactVM>();
@@ -82,10 +97,7 @@ namespace View.ViewModel
 
         public bool IsVisible
         {
-            get 
-            {
-                return _isVisible;
-            }
+            get => _isVisible;
             private set
             {
                 _isVisible = value;
@@ -139,14 +151,14 @@ namespace View.ViewModel
         }
 
         private void ApplyContact(object parameter)
-        {           
+        {
             if (!Contacts.Contains(CurrentContact))
             {
                 Contacts.Add(CurrentContact);
             }
             else
             {
-
+                TempContact = null;
             }
 
             IsVisible = false;
@@ -156,12 +168,15 @@ namespace View.ViewModel
         private void AddContact(object parameter)
         {
             CurrentContact = new ContactVM(new Contact());
+
             IsReadOnly = false;
             IsVisible = true;
         }
 
         private void EditContact(object parameter)
-        { 
+        {
+            TempContact = (ContactVM)CurrentContact.Clone();
+
             IsReadOnly = false;
             IsVisible = true;
         }
@@ -188,7 +203,7 @@ namespace View.ViewModel
 
         private bool CanExecuteRemove(object parameter)
         {
-            return Contacts.Count > 0;
+            return Contacts.Count > 0 && CurrentContact != null;
         }
 
         /// <summary>

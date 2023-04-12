@@ -38,8 +38,7 @@
                                 Command="{Binding Path=EditCommand}"/>
                         <Button Grid.Column="2" Height="25"
                                 Content="Remove" Margin="3"
-                                Command="{Binding Path=RemoveCommand}"
-                                CommandParameter="{Binding Path=CurrentContact}"/>
+                                Command="{Binding Path=RemoveCommand}"/>
                     </Grid>
                     <ListBox DockPanel.Dock="Top" Margin="3" DisplayMemberPath="FirstName"
                              ItemsSource="{Binding Path=Contacts}"
@@ -90,7 +89,9 @@
                         Visibility="{Binding Path=IsVisible,
                         Converter={StaticResource VisibleConverter},
                         UpdateSourceTrigger=PropertyChanged}"/>
-                
+
+                <TextBlock Text="{Binding Path=TempContact.FirstName, UpdateSourceTrigger=PropertyChanged}"/>
+
             </StackPanel>
         </Grid>
     </Grid>

@@ -1,10 +1,11 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using View.Model;
 
 namespace View.ViewModel
 {
-    class ContactVM : INotifyPropertyChanged
+    class ContactVM : INotifyPropertyChanged, ICloneable
     {
         public Contact Contact { get; set; }
 
@@ -50,6 +51,11 @@ namespace View.ViewModel
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
+
+        public object Clone()
+        {
+            return new ContactVM((Contact)Contact.Clone());
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
