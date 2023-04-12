@@ -113,7 +113,7 @@ namespace View.ViewModel
             SaveCommand = new RelayCommand(SaveContact);
             LoadCommand = new RelayCommand(LoadContact);
             AddCommand = new RelayCommand(AddContact);
-            EditCommand = new RelayCommand(EditContact);
+            EditCommand = new RelayCommand(EditContact, CanExecuteEdit);
             ApplyCommand = new RelayCommand(ApplyContact);
             RemoveCommand = new RelayCommand(RemoveContact, CanExecuteRemove);
 
@@ -179,6 +179,11 @@ namespace View.ViewModel
 
             IsReadOnly = false;
             IsVisible = true;
+        }
+
+        private bool CanExecuteEdit(object parameter)
+        {
+            return Contacts.Count > 0 && CurrentContact != null;
         }
 
         private void RemoveContact(object parameter)
