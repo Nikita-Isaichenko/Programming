@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using System.Windows.Media.Effects;
 using View.Model;
 using View.Services;
 
@@ -38,6 +39,7 @@ namespace View.ViewModel
                 if (_currentContact != null)
                 {
                     IsReadOnly = true;
+                    IsVisible = false;
                 }
 
                 OnPropertyChanged(nameof(CurrentContact));
@@ -61,6 +63,10 @@ namespace View.ViewModel
         public ICommand SaveCommand { get; }
 
         public ICommand AddCommand { get; }
+
+        public ICommand EditCommand { get; }
+         
+        public ICommand RemoveCommand { get; }
 
         public ICommand ApplyCommand { get; }
 
@@ -87,9 +93,6 @@ namespace View.ViewModel
             }
         }
 
-        public VisibleConverter VisibleConverter { get; private set; }
-
-
         /// <summary>
         /// Создает экземпляр класса <see cref="MainVM"/>.
         /// </summary>
@@ -98,9 +101,9 @@ namespace View.ViewModel
             SaveCommand = new RelayCommand(SaveContact);
             LoadCommand = new RelayCommand(LoadContact);
             AddCommand = new RelayCommand(AddContact);
+            EditCommand = new RelayCommand(EditContact);
             ApplyCommand = new RelayCommand(ApplyContact);
-
-            VisibleConverter = new VisibleConverter();
+            RemoveCommand = new RelayCommand(RemoveContact, CanExecuteRemove);
 
             Contacts.Add(_contactVMFactory.MakeContactVM());
             Contacts.Add(_contactVMFactory.MakeContactVM());
@@ -136,8 +139,16 @@ namespace View.ViewModel
         }
 
         private void ApplyContact(object parameter)
-        {
-            Contacts.Add(CurrentContact);
+        {           
+            if (!Contacts.Contains(CurrentContact))
+            {
+                Contacts.Add(CurrentContact);
+            }
+            else
+            {
+
+            }
+
             IsVisible = false;
             IsReadOnly = true;
         }
@@ -147,6 +158,37 @@ namespace View.ViewModel
             CurrentContact = new ContactVM(new Contact());
             IsReadOnly = false;
             IsVisible = true;
+        }
+
+        private void EditContact(object parameter)
+        { 
+            IsReadOnly = false;
+            IsVisible = true;
+        }
+
+        private void RemoveContact(object parameter)
+        {
+            var contactIndex = Contacts.IndexOf(CurrentContact);
+            
+            if (Contacts.Count == 1)
+            {
+                Contacts.RemoveAt(contactIndex);
+            }
+            else if (contactIndex < Contacts.Count - 1)
+            {
+                Contacts.RemoveAt(contactIndex);
+                CurrentContact = Contacts[contactIndex];
+            }
+            else
+            {
+                Contacts.RemoveAt(contactIndex);
+                CurrentContact = Contacts[contactIndex - 1];
+            }                      
+        }
+
+        private bool CanExecuteRemove(object parameter)
+        {
+            return Contacts.Count > 0;
         }
 
         /// <summary>

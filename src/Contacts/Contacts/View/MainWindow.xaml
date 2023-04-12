@@ -33,8 +33,13 @@
                         <Button Grid.Column="0" Height="25"
                                 Content="Add" Margin="3"
                                 Command="{Binding Path=AddCommand}"/>
-                        <Button Grid.Column="1" Height="25" Content="Edit" Margin="3"/>
-                        <Button Grid.Column="2" Height="25" Content="Remove" Margin="3"/>
+                        <Button Grid.Column="1" Height="25"
+                                Content="Edit" Margin="3"
+                                Command="{Binding Path=EditCommand}"/>
+                        <Button Grid.Column="2" Height="25"
+                                Content="Remove" Margin="3"
+                                Command="{Binding Path=RemoveCommand}"
+                                CommandParameter="{Binding Path=CurrentContact}"/>
                     </Grid>
                     <ListBox DockPanel.Dock="Top" Margin="3" DisplayMemberPath="FirstName"
                              ItemsSource="{Binding Path=Contacts}"

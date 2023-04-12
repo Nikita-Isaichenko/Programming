@@ -15,7 +15,7 @@ namespace View.ViewModel
         /// <returns>Возвращает истину.</returns>
         public bool CanExecute(object parameter)
         {
-            return true;
+            return _canExecute == null || _canExecute(parameter);
         }
 
         /// <summary>
@@ -31,9 +31,10 @@ namespace View.ViewModel
         /// Создает экземпляр класса <see cref="RelayCommand"/>.
         /// </summary>
         /// <param name="execute">Делегат для вызова команды.</param>
-        public RelayCommand(Action<object> execute)
+        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
         {
             _execute = execute;
+            _canExecute = canExecute;
         }
 
         /// <summary>
@@ -49,5 +50,7 @@ namespace View.ViewModel
         /// Делегат для вызова команды.
         /// </summary>
         private Action<object> _execute;
+
+        private Func<object, bool> _canExecute;
     }
 }
