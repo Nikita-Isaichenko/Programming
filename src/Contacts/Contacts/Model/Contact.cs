@@ -5,22 +5,22 @@ namespace View.Model
     /// <summary>
     /// Хранит данные о контакте.
     /// </summary>
-    internal class Contact : ICloneable
+    public class Contact : ICloneable
     {
         /// <summary>
         /// Имя.
         /// </summary>
-        public string? FirstName { get; set; }
+        public string FirstName { get; set; }
 
         /// <summary>
         /// Номер телефона.
         /// </summary>
-        public string? Phone { get; set; }
+        public string Phone { get; set; }
 
         /// <summary>
         /// Электронная почта.
         /// </summary>
-        public string? Email { get; set; }
+        public string Email { get; set; }
 
         /// <summary>
         /// Создает экземпляр класса <see cref="Contact"/>.
@@ -49,7 +49,7 @@ namespace View.Model
         /// <returns>Возвращает новый объект.</returns>
         public object Clone()
         {
-            return MemberwiseClone();
+            return new Contact(FirstName, Phone, Email);
         }
     }
 }

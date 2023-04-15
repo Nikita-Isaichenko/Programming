@@ -8,7 +8,7 @@ namespace View.ViewModel
     /// <summary>
     /// ViewModel, агрегирующий в себе класс <see cref="Model.Contact"/>
     /// </summary>
-    class ContactVM : INotifyPropertyChanged, ICloneable
+    public class ContactVM : INotifyPropertyChanged, ICloneable
     {
         /// <summary>
         /// Возвращает и получает объект класса <see cref="Model.Contact"/>
@@ -64,7 +64,7 @@ namespace View.ViewModel
         }
 
         /// <summary>
-        /// Вызывает событие при вызове.
+        /// Вызывает событие при изменении свойств объекта.
         /// </summary>
         /// <param name="prop">Свойство, вызвавшее событие.</param>
         public void OnPropertyChanged([CallerMemberName] string prop = "")
@@ -73,7 +73,7 @@ namespace View.ViewModel
         }
 
         /// <summary>
-        /// Создает клон объект.
+        /// Создает клон объекта.
         /// </summary>
         /// <returns>Объект класса <see cref="ContactVM"/>.</returns>
         public object Clone()

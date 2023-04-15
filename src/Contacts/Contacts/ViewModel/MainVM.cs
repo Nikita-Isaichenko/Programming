@@ -1,8 +1,10 @@
-﻿using System.Collections.ObjectModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Net;
 using System.Runtime.CompilerServices;
-using System.Windows.Input;
-using System.Windows.Media.Effects;
+using System.Windows;
 using View.Model;
 using View.Services;
 
@@ -11,7 +13,7 @@ namespace View.ViewModel
     /// <summary>
     /// ViewModel для главное окна.
     /// </summary>
-    internal class MainVM : INotifyPropertyChanged
+    public partial class MainVM : ObservableObject
     {
         /// <summary>
         /// Сериализатор.
@@ -26,48 +28,44 @@ namespace View.ViewModel
         /// <summary>
         /// Объект, хранящий текущий контакт.
         /// </summary>
+        [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(EditContactCommand), nameof(RemoveContactCommand))]
         private ContactVM _currentContact;
 
-        /// <summary>
-        /// Переменная, хранящая значение для свойства окна IsReadOnly.
-        /// </summary>
-        private bool _isReadOnly = true;
-
-        /// <summary>
-        /// Переменная, хранящая значение для свойства окна Visibility.
-        /// </summary>
-        private bool _isVisible = false;
-
-        /// <summary>
-        /// Возвращает и задает текущий контакт.
-        /// </summary>
-        public ContactVM CurrentContact
+        partial void OnCurrentContactChanging(ContactVM value)
         {
-            get => _currentContact;
-            set
+            if (!IsEdit && Contacts.Contains(value))
             {
-                if (_currentContact != null)
-                {
-                    IsReadOnly = true;
-                    IsVisible = false;
-                }
+                CurrentIndex = Contacts.IndexOf(value);
+            }
 
-                if (TempContact != null)
-                {
-                    Contacts[Contacts.IndexOf(CurrentContact)] = TempContact;                   
-                    TempContact = null;                                      
-                }
-
-                _currentContact = value;
-
-                OnPropertyChanged(nameof(CurrentContact));
+            if (!IsApply)
+            {
+                IsApply = true;
             }
         }
 
         /// <summary>
-        /// Возвращает и задает временный контакт.
+        /// Поле, хранящее значение для свойства окна IsReadOnly.
         /// </summary>
-        public ContactVM TempContact { get; set; }
+        [ObservableProperty]
+        private bool _isReadOnly = true;
+
+        /// <summary>
+        /// Поле, хранящее значение для свойства окна Visibility.
+        /// </summary>
+        [ObservableProperty]
+        private bool _isVisible = false;
+
+        /// <summary>
+        /// Поле, хранящее значение, которое говорит о том, была ли нажата кнопка Apply.
+        /// </summary>
+        private bool _isApply = false;
+
+        /// <summary>
+        /// Возвращает и задает индекс текущего контакты.
+        /// </summary>
+        public int CurrentIndex { get; set; }
 
         /// <summary>
         /// Возвращает список контактов.
@@ -76,53 +74,31 @@ namespace View.ViewModel
             = new ObservableCollection<ContactVM>();
 
         /// <summary>
-        /// Возвращает команду для сохранения данных в файл.
+        /// Возвращает и задает, включен ли редактор контактов.
         /// </summary>
-        public ICommand SaveCommand { get; }
+        public bool IsEdit { get; set; }
 
         /// <summary>
-        /// Возвращает команду для добавления контакта.
+        /// Возвращает и задает, подтверждены ли изменения.
         /// </summary>
-        public ICommand AddCommand { get; }
-
-        /// <summary>
-        /// Возвращает команду для изменения контакта.
-        /// </summary>
-        public ICommand EditCommand { get; }
-
-        /// <summary>
-        /// Возвращает команду для удаления контакта.
-        /// </summary>
-        public ICommand RemoveCommand { get; }
-
-        /// <summary>
-        /// Возвращает команду для принятия добавления/изменения контакта.
-        /// </summary>
-        public ICommand ApplyCommand { get; }
-
-        /// <summary>
-        /// Возвращает свойство окна IsReadOnly.
-        /// </summary>
-        public bool IsReadOnly
+        public bool IsApply
         {
-            get => _isReadOnly;
-            private set
+            get => _isApply;
+            set
             {
-                _isReadOnly = value;
-                OnPropertyChanged(nameof(IsReadOnly));
-            }
-        }
+                _isApply = value;
 
-        /// <summary>
-        /// Возвращает свойство окна Visibility
-        /// </summary>
-        public bool IsVisible
-        {
-            get => _isVisible;
-            private set
-            {
-                _isVisible = value;
-                OnPropertyChanged(nameof(IsVisible));
+                if (value)
+                {
+                    IsEdit = false;
+                    IsVisible = false;
+                    IsReadOnly = true;
+                }
+                else
+                {
+                    IsVisible = true;
+                    IsReadOnly = false;                  
+                }
             }
         }
 
@@ -131,80 +107,97 @@ namespace View.ViewModel
         /// </summary>
         public MainVM()
         {
-            AddCommand = new RelayCommand(AddContact);
-            EditCommand = new RelayCommand(EditContact, CanExecuteEdit);
-            ApplyCommand = new RelayCommand(ApplyContact);
-            RemoveCommand = new RelayCommand(RemoveContact, CanExecuteRemove);
-            SaveCommand = new RelayCommand(SaveContacts);
-
             Contacts = _serializer.Load();
-
-            if (Contacts.Count == 0)
-            {
-                while (Contacts.Count < 10)
-                {
-                    Contacts.Add(_contactVMFactory.MakeContactVM());
-                }
-            }
         }
 
         /// <summary>
-        /// Вызывает событие при вызове.
+        /// Проверяет, есть ли соединение с интернетом.
         /// </summary>
-        /// <param name="prop">Свойство, вызвавшее событие.</param>
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        /// <returns></returns>
+        public bool CheckForInternetConnection()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+            try
+            {
+                using (var client = new WebClient())
+                using (var stream = client.OpenRead("http://www.google.com"))
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
         /// Принимает добавление/изменение контакта.
         /// </summary>
-        /// <param name="parameter">Параметр.</param>
-        private void ApplyContact(object parameter)
+        [RelayCommand]
+        private void ApplyContact()
         {
-            if (!Contacts.Contains(CurrentContact))
+            if (!IsEdit)
             {
                 Contacts.Add(CurrentContact);
             }
             else
             {
-                TempContact = null;
+                Contacts[CurrentIndex] = CurrentContact;
+                CurrentContact = Contacts[CurrentIndex];
             }
 
-            IsVisible = false;
-            IsReadOnly = true;
+            IsApply = true;       
         }
 
         /// <summary>
         /// Добавляет контакт.
         /// </summary>
-        /// <param name="parameter">Параметр.</param>
-        private void AddContact(object parameter)
+        [RelayCommand]
+        private void AddContact()
         {
             CurrentContact = new ContactVM(new Contact());
 
-            IsReadOnly = false;
-            IsVisible = true;
+            IsApply = false;           
+        }
+
+        /// <summary>
+        /// Генерирует контакты.
+        /// </summary>
+        [RelayCommand]
+        private void AutoGenerationContact()
+        {
+            if (CheckForInternetConnection())
+            {
+                Contacts.Add(_contactVMFactory.MakeContactVM());
+            }
+            else
+            {
+                MessageBox.Show("Соединение с сервером потеряно",
+                                "Ошибка",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+            }           
         }
 
         /// <summary>
         /// Изменяет контакт.
-        /// </summary>
-        /// <param name="parameter">Параметр.</param>
-        private void EditContact(object parameter)
+        /// </summary> 
+        [RelayCommand(CanExecute = nameof(CanExecuteEdit))]
+        private void EditContact()
         {
-            TempContact = (ContactVM)CurrentContact.Clone();
+            IsEdit = true;
 
-            IsReadOnly = false;
-            IsVisible = true;
+            var tempContact = (ContactVM)CurrentContact;
+            CurrentContact = null;
+            CurrentContact = (ContactVM?)tempContact.Clone();
+
+            IsApply = false;
         }
 
         /// <summary>
         /// Определяет возможность выполнения команды <see cref="EditCommand"/>.
         /// </summary>
-        /// <param name="parameter">Параметр.</param>
-        private bool CanExecuteEdit(object parameter)
+        private bool CanExecuteEdit()
         {
             return Contacts.Count > 0 && CurrentContact != null;
         }
@@ -212,32 +205,29 @@ namespace View.ViewModel
         /// <summary>
         /// Удаляет контакт.
         /// </summary>
-        /// <param name="parameter">Параметр.</param>
-        private void RemoveContact(object parameter)
-        {
-            var contactIndex = Contacts.IndexOf(CurrentContact);
-            
+        [RelayCommand(CanExecute = nameof(CanExecuteRemove))]
+        private void RemoveContact()
+        {            
             if (Contacts.Count == 1)
             {
-                Contacts.RemoveAt(contactIndex);
+                Contacts.Remove(CurrentContact);
             }
-            else if (contactIndex < Contacts.Count - 1)
+            else if (CurrentIndex < Contacts.Count - 1)
             {
-                Contacts.RemoveAt(contactIndex);
-                CurrentContact = Contacts[contactIndex];
+                Contacts.Remove(CurrentContact);
+                CurrentContact = Contacts[CurrentIndex];
             }
             else
             {
-                Contacts.RemoveAt(contactIndex);
-                CurrentContact = Contacts[contactIndex - 1];
+                Contacts.Remove(CurrentContact);
+                CurrentContact = Contacts[CurrentIndex - 1];
             }                      
         }
 
         /// <summary>
         /// Определяет возможность выполнения команды <see cref="RemoveCommand"/>.
-        /// </summary>
-        /// <param name="parameter">Параметр.</param>
-        private bool CanExecuteRemove(object parameter)
+        /// </summary
+        private bool CanExecuteRemove()
         {
             return Contacts.Count > 0 && CurrentContact != null;
         }
@@ -245,15 +235,10 @@ namespace View.ViewModel
         /// <summary>
         /// Сохраняет список контактов.
         /// </summary>
-        /// <param name="parameter">Параметр.</param>
-        private void SaveContacts(object parameter)
+        [RelayCommand]
+        private void SaveContacts()
         {
-            _serializer.Save((ObservableCollection<ContactVM>)parameter);
+            _serializer.Save(Contacts);
         }
-
-        /// <summary>
-        /// Событие изменения свойтства.
-        /// </summary>
-        public event PropertyChangedEventHandler? PropertyChanged;
     }
 }

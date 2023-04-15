@@ -19,12 +19,12 @@ namespace View.Services
         public string Parameters { get; set; }
 
         /// <summary>
-        /// объект для отправки запроса к веб ресурсу.
+        /// Объект для отправки запроса к веб ресурсу.
         /// </summary>
         private HttpWebRequest _request;
 
         /// <summary>
-        /// объект для получения ответа от веб ресурса.
+        /// Объект для получения ответа от веб ресурса.
         /// </summary>
         private HttpWebResponse _response;
 
@@ -40,7 +40,7 @@ namespace View.Services
         /// <summary>
         /// Получает данные в json формате.
         /// </summary>
-        /// <returns>данные в виде json.</returns>
+        /// <returns>Данные в виде json.</returns>
         public string GetJsonData()
         {
             string jsonText;

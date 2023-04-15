@@ -15,15 +15,14 @@
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Closing">
             <i:InvokeCommandAction
-                            Command="{Binding SaveCommand}"
-                            CommandParameter="{Binding Path=Contacts}" />
+                            Command="{Binding SaveContactsCommand}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1.8*"/>
         </Grid.ColumnDefinitions>
         <Grid Background="#f8f8f8">
             <DockPanel Margin="8" Grid.Column="0" LastChildFill="True">
@@ -38,18 +37,23 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
+                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <Button Grid.Column="0" Height="25"
                                 Content="Add" Margin="3"
-                                Command="{Binding Path=AddCommand}"
+                                Command="{Binding Path=AddContactCommand}"
                                 IsEnabled="{Binding Path=IsReadOnly}"/>
                         <Button Grid.Column="1" Height="25"
-                                Content="Edit" Margin="3"
-                                Command="{Binding Path=EditCommand}"
+                                Content="Auto" Margin="3"
+                                Command="{Binding Path=AutoGenerationContactCommand}"
                                 IsEnabled="{Binding Path=IsReadOnly}"/>
                         <Button Grid.Column="2" Height="25"
+                                Content="Edit" Margin="3"
+                                Command="{Binding Path=EditContactCommand}"
+                                IsEnabled="{Binding Path=IsReadOnly}"/>
+                        <Button Grid.Column="3" Height="25"
                                 Content="Remove" Margin="3"
-                                Command="{Binding Path=RemoveCommand}"
+                                Command="{Binding Path=RemoveContactCommand}"
                                 IsEnabled="{Binding Path=IsReadOnly}"/>
                     </Grid>
                     <ListBox DockPanel.Dock="Top" Margin="3" DisplayMemberPath="FirstName"
@@ -97,7 +101,7 @@
                 <Button Margin="3,50,3,3" Width="75"
                         Height="25" HorizontalAlignment="Left"
                         Content="Apply"
-                        Command="{Binding Path=ApplyCommand}"
+                        Command="{Binding Path=ApplyContactCommand}"
                         Visibility="{Binding Path=IsVisible,
                         Converter={StaticResource VisibleConverter},
                         UpdateSourceTrigger=PropertyChanged}"/>

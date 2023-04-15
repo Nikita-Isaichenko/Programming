@@ -12,7 +12,7 @@ namespace View.Services
     /// <summary>
     /// Хранит логику для преобразования значений.
     /// </summary>
-    class VisibleConverter : IValueConverter
+    public class VisibleConverter : IValueConverter
     {
         /// <summary>
         /// Конвертирует булевое значение

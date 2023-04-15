@@ -7,7 +7,7 @@ namespace View.Services
     /// <summary>
     /// Хранит логику для автоматического создания объектов.
     /// </summary>
-    class ContactVMFactory
+    public class ContactVMFactory
     {
         /// <summary>
         /// Параметры для запроса.
