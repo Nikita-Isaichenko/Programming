@@ -187,7 +187,8 @@ namespace View.ViewModel
         {
             IsEdit = true;
 
-            var tempContact = (ContactVM)CurrentContact;
+            var tempContact = CurrentContact;
+
             CurrentContact = null;
             CurrentContact = (ContactVM?)tempContact.Clone();
 
