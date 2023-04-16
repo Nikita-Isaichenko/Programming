@@ -1,10 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Net;
-using System.Runtime.CompilerServices;
 using System.Windows;
+using System.Windows.Interop;
 using View.Model;
 using View.Services;
 
@@ -32,7 +31,7 @@ namespace View.ViewModel
         [NotifyCanExecuteChangedFor(nameof(EditContactCommand), nameof(RemoveContactCommand))]
         private ContactVM _currentContact;
 
-        partial void OnCurrentContactChanging(ContactVM value)
+        partial void OnCurrentContactChanged(ContactVM value)
         {
             if (!IsEdit && Contacts.Contains(value))
             {
@@ -139,6 +138,8 @@ namespace View.ViewModel
             if (!IsEdit)
             {
                 Contacts.Add(CurrentContact);
+                CurrentContact = null;
+                CurrentContact = Contacts[Contacts.Count - 1];
             }
             else
             {
@@ -168,7 +169,9 @@ namespace View.ViewModel
         {
             if (CheckForInternetConnection())
             {
-                Contacts.Add(_contactVMFactory.MakeContactVM());
+                var tempContact = _contactVMFactory.MakeContactVM();
+                Contacts.Add(tempContact);
+                CurrentContact = tempContact;
             }
             else
             {
