@@ -5,11 +5,13 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <LangVersion>10.0</LangVersion>
     <ApplicationIcon>contacts_96x96.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Model\Contact.cs~RF2e40846c.TMP" />
+    <None Remove="Resources\photo_placeholder_100x100.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,7 +19,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\photo_placeholder_100x100.png" />
   </ItemGroup>
 
   <ItemGroup>

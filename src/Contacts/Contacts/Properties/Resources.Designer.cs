@@ -69,5 +69,15 @@ namespace View.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] photo_placeholder_100x100 {
+            get {
+                object obj = ResourceManager.GetObject("photo_placeholder_100x100", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
