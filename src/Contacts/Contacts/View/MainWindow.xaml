@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-    xmlns:local1="clr-namespace:View.Services"
+    xmlns:local="clr-namespace:View.Services"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Contacts"
     Width="650"
@@ -13,7 +13,26 @@
     MinHeight="450"
     mc:Ignorable="d">
     <Window.Resources>
-        <local1:VisibleConverter x:Key="VisibleConverter"/>
+        <local:VisibleConverter x:Key="VisibleConverter"/>
+        <DataTemplate x:Key="ContactTemplate">
+            <DockPanel LastChildFill="true">
+                <Image
+                    Width="40"
+                    Height="40"
+                    Margin="3px"
+                    DockPanel.Dock="Left"
+                    Source="/Resources/photo_placeholder_100x100.png"/>
+                <TextBlock
+                    Margin="3"
+                    DockPanel.Dock="Top"
+                    FontWeight="Bold"
+                    Text="{Binding Path=FirstName}"/>
+                <TextBlock
+                    Margin="3"
+                    DockPanel.Dock="Bottom"
+                    Text="{Binding Path=Phone}"/>
+            </DockPanel>
+        </DataTemplate>
     </Window.Resources>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Closing">
@@ -78,8 +97,8 @@
                     </Grid>
                     <ListBox
                         Margin="3"
-                        DisplayMemberPath="FirstName"
                         DockPanel.Dock="Top"
+                        ItemTemplate="{StaticResource ResourceKey=ContactTemplate}"
                         ItemsSource="{Binding Path=Contacts}"
                         SelectedItem="{Binding Path=CurrentContact, UpdateSourceTrigger=PropertyChanged}">
                     </ListBox>
