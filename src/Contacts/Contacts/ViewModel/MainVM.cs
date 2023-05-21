@@ -40,7 +40,7 @@ namespace View.ViewModel
 
             if (!IsApply)
             {
-                IsApply = true;
+                IsApply = true;               
             }
         }
 
@@ -91,12 +91,17 @@ namespace View.ViewModel
                 {
                     IsEdit = false;
                     IsVisible = false;
-                    IsReadOnly = true;
+                    IsReadOnly = true;                    
                 }
                 else
                 {
                     IsVisible = true;
-                    IsReadOnly = false;                  
+                    IsReadOnly = false;
+                }
+
+                if (CurrentContact is not null)
+                {
+                    CurrentContact.IsReadOnly = value;
                 }
             }
         }

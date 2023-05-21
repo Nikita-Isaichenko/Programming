@@ -11,6 +11,11 @@ namespace View.ViewModel
     public class ContactVM : INotifyPropertyChanged, ICloneable
     {
         /// <summary>
+        /// Хранит значение, которое показывает, может ли этот контакт изменяться.
+        /// </summary>
+        private bool _isReadOnly;
+
+        /// <summary>
         /// Возвращает и получает объект класса <see cref="Model.Contact"/>
         /// </summary>
         public Contact Contact { get; set; }
@@ -55,12 +60,27 @@ namespace View.ViewModel
         }
 
         /// <summary>
+        /// Возвращает и получает значение, которое показывает,
+        /// может ли этот контакт изменяться.
+        /// </summary>
+        public bool IsReadOnly
+        {
+            get => _isReadOnly;
+            set
+            {
+                _isReadOnly = value;
+                OnPropertyChanged(nameof(IsReadOnly));
+            }
+        }
+
+        /// <summary>
         /// Создает экземпляр класса <see cref="ContactVM"/>.
         /// </summary>
         /// <param name="contact">Объект класса <see cref="Model.Contact"/>.</param>
         public ContactVM(Contact contact)
         {
             Contact = contact;
+            IsReadOnly = true;
         }
 
         /// <summary>
