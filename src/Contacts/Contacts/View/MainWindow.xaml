@@ -96,13 +96,13 @@
                             Content="Remove"
                             IsEnabled="{Binding Path=IsReadOnly}"/>
                     </Grid>
-                    <ListBox
-                        x:Name="ContactsListBox"
+                    <ListBox                        
                         Margin="3"
                         DockPanel.Dock="Top"
                         ItemTemplate="{StaticResource ResourceKey=ContactTemplate}"
                         ItemsSource="{Binding Path=Contacts}"
-                        SelectedItem="{Binding Path=CurrentContact, UpdateSourceTrigger=PropertyChanged}">
+                        SelectedItem="{Binding Path=CurrentContact, UpdateSourceTrigger=PropertyChanged}"
+                        Validation.ErrorTemplate="{x:Null}">
                     </ListBox>
                 </DockPanel>
             </DockPanel>
@@ -130,6 +130,7 @@
                 DataContext="{Binding Path=CurrentContact, Mode=TwoWay}"
                 />
             <Button
+                IsEnabled="{Binding Path=CurrentContact.HasErrors}"
                 Grid.Row="1"
                 Width="75"
                 Height="25"

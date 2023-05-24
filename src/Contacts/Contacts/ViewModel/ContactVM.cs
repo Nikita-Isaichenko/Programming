@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
 using View.Model;
 
@@ -8,7 +10,7 @@ namespace View.ViewModel
     /// <summary>
     /// ViewModel, агрегирующий в себе класс <see cref="Model.Contact"/>
     /// </summary>
-    public class ContactVM : INotifyPropertyChanged, ICloneable
+    public class ContactVM : ObservableValidator, INotifyPropertyChanged, ICloneable
     {
         /// <summary>
         /// Хранит значение, которое показывает, может ли этот контакт изменяться.
@@ -18,16 +20,22 @@ namespace View.ViewModel
         /// <summary>
         /// Возвращает и получает объект класса <see cref="Model.Contact"/>
         /// </summary>
-        public Contact Contact { get; set; }
+        public Contact Contact;
 
         /// <summary>
         /// Возвращает и получает имя контакта.
         /// </summary>
+        [Required(ErrorMessage = "User name not specified")]
+        [MaxLength(
+            10,
+            ErrorMessage = "The length exceeds 100 characters"
+            )]
         public string FirstName
         {
             get => Contact.FirstName;
             set
             {
+                ValidateProperty(value);
                 Contact.FirstName = value;
                 OnPropertyChanged(nameof(FirstName));
             }
@@ -36,11 +44,21 @@ namespace View.ViewModel
         /// <summary>
         /// Возвращает и получает телефон контакта.
         /// </summary>
+        [Required(ErrorMessage = "Phone not specified")]
+        [RegularExpression(
+            @"^\+[1-9]\(\d{3}\)\d{3}-\d{2}-\d{2}$",
+            ErrorMessage = "Invalid phone format"
+            )]
+        [MaxLength(
+            100,
+            ErrorMessage = "The length exceeds 100 characters"
+            )]
         public string Phone
         {
             get => Contact.Phone;
             set
             {
+                ValidateProperty(value);
                 Contact.Phone = value;
                 OnPropertyChanged(nameof(Phone));
             }
@@ -49,11 +67,18 @@ namespace View.ViewModel
         /// <summary>
         /// Возвращает и получает электронную почту контакта.
         /// </summary>
+        [Required(ErrorMessage = "Email not specified")]
+        [MaxLength(
+            100,
+            ErrorMessage = "The length exceeds 100 characters"
+            )]
+        [EmailAddress(ErrorMessage = "Invalid email format")]
         public string Email
         {
             get => Contact.Email;
             set
             {
+                ValidateProperty(value);
                 Contact.Email = value;
                 OnPropertyChanged(nameof(Email));
             }
@@ -81,6 +106,7 @@ namespace View.ViewModel
         {
             Contact = contact;
             IsReadOnly = true;
+            ValidateAllProperties();
         }
 
         /// <summary>
