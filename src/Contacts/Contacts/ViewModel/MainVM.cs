@@ -34,6 +34,10 @@ namespace View.ViewModel
         [NotifyCanExecuteChangedFor(nameof(EditContactCommand), nameof(RemoveContactCommand))]
         private ContactVM _currentContact;
 
+        /// <summary>
+        /// Содержит логику, которая вызывается при изменении текущего контакта.
+        /// </summary>
+        /// <param name="value">Текущий контакт.</param>
         partial void OnCurrentContactChanged(ContactVM value)
         {
             if (!IsEdit && Contacts.Contains(value))
@@ -100,11 +104,6 @@ namespace View.ViewModel
                 {
                     IsVisible = true;
                     IsReadOnly = false;
-                }
-
-                if (CurrentContact is not null)
-                {
-                    //CurrentContact.IsReadOnly = value;
                 }
             }
         }

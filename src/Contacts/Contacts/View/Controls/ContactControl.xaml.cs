@@ -26,11 +26,19 @@ namespace View.View.Controls
             set => SetValue(SelectedContactProperty, value);
         }
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref="ContactControl"/>.
+        /// </summary>
         public ContactControl()
         {
             InitializeComponent();            
         }
 
+        /// <summary>
+        /// Проводит валидацию данных, которые вводятся в textbox.
+        /// </summary>
+        /// <param name="sender">Объект.</param>
+        /// <param name="e">Аргументы.</param>
         private void TextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
             var pattern = @"[\+\-\(\)\d]";
@@ -38,6 +46,11 @@ namespace View.View.Controls
                 e.Handled = true;
         }
 
+        /// <summary>
+        /// Запрещает копирование в textbox символов, не прошедших проверку.
+        /// </summary>
+        /// <param name="sender">Объект.</param>
+        /// <param name="e">Аргументы.</param>
         private void TextBox_Pasting(object sender, DataObjectPastingEventArgs e)
         {
             if (e.DataObject.GetDataPresent(typeof(string)))

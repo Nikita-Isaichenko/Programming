@@ -9,12 +9,12 @@ using View.Services;
 namespace View.ViewModel
 {
     /// <summary>
-    /// ViewModel, агрегирующий в себе класс <see cref="Model.Contact"/>
+    /// ViewModel, агрегирующий в себе класс <see cref="Model.Contact"/>.
     /// </summary>
     public class ContactVM : ObservableValidator, ICloneable
     {
         /// <summary>
-        /// Возвращает и получает объект класса <see cref="Model.Contact"/>
+        /// Возвращает и получает объект класса <see cref="Model.Contact"/>.
         /// </summary>
         public Contact Contact;
 
