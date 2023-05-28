@@ -1,8 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel.__Internals;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Net;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Interop;
 using View.Model;
 using View.Services;
@@ -101,7 +104,7 @@ namespace View.ViewModel
 
                 if (CurrentContact is not null)
                 {
-                    CurrentContact.IsReadOnly = value;
+                    //CurrentContact.IsReadOnly = value;
                 }
             }
         }

@@ -15,6 +15,7 @@
     mc:Ignorable="d">
     <Window.Resources>
         <local:VisibleConverter x:Key="VisibleConverter"/>
+        <local:BoolInvertedValueConverter x:Key="BoolInvertedValueConverter"/>
         <DataTemplate x:Key="ContactTemplate">
             <DockPanel LastChildFill="true">
                 <Image
@@ -126,19 +127,20 @@
             </Grid.RowDefinitions>
             <uc:ContactControl
                 Grid.Row="0"
-                Grid.RowSpan="2"
-                DataContext="{Binding Path=CurrentContact, Mode=TwoWay}"
+                SelectedContact="{Binding Path=CurrentContact, Mode=TwoWay}"
+                Validation.ErrorTemplate="{x:Null}" 
                 />
             <Button
-                IsEnabled="{Binding Path=CurrentContact.HasErrors}"
+                IsEnabled="{Binding Path=CurrentContact.HasErrors, Converter={StaticResource BoolInvertedValueConverter}}"
                 Grid.Row="1"
                 Width="75"
                 Height="25"
-                Margin="3 50 3 3"
+                Margin="100"
                 HorizontalAlignment="Left"
                 Command="{Binding Path=ApplyContactCommand}"
                 Content="Apply"
-                Visibility="{Binding Path=IsVisible, Converter={StaticResource VisibleConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                Visibility="{Binding Path=IsVisible, Converter={StaticResource VisibleConverter}, UpdateSourceTrigger=PropertyChanged}"
+                />
         </Grid>
     </Grid>
 </Window>

@@ -7,19 +7,18 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="200"
     d:DesignWidth="400"
-    Validation.ErrorTemplate="{x:Null}"
     mc:Ignorable="d">
     <UserControl.Resources>
         <Style TargetType="TextBox">
             <Style.Triggers>
                 <Trigger Property="Validation.HasError" Value="True">
-                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)/ErrorContent}"/>
                     <Setter Property="Background" Value="LightPink"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    <Grid Grid.Column="2" Background="#ffff">
+    <Grid Grid.Column="2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
@@ -44,17 +43,19 @@
             <TextBox
                 Margin="3"
                 IsReadOnly="{Binding Path=IsReadOnly, UpdateSourceTrigger=PropertyChanged}"
-                Text="{Binding Path=FirstName, UpdateSourceTrigger=PropertyChanged}"/>
+                Text="{Binding Path=CurrentContact.FirstName, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBlock Margin="3" Text="Phone Number:"/>
             <TextBox
                 Margin="3"
                 IsReadOnly="{Binding Path=IsReadOnly, UpdateSourceTrigger=PropertyChanged}"
-                Text="{Binding Path=Phone, UpdateSourceTrigger=PropertyChanged}"/>
+                Text="{Binding Path=CurrentContact.Phone, UpdateSourceTrigger=PropertyChanged}"
+                PreviewTextInput="TextBox_PreviewTextInput"
+                DataObject.Pasting="TextBox_Pasting"/>
             <TextBlock Margin="3" Text="Email:"/>
             <TextBox
                 Margin="3"
                 IsReadOnly="{Binding Path=IsReadOnly, UpdateSourceTrigger=PropertyChanged}"
-                Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}"/>
+                Text="{Binding Path=CurrentContact.Email, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
 
     </Grid>

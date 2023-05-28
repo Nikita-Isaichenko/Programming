@@ -4,19 +4,15 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
 using View.Model;
+using View.Services;
 
 namespace View.ViewModel
 {
     /// <summary>
     /// ViewModel, агрегирующий в себе класс <see cref="Model.Contact"/>
     /// </summary>
-    public class ContactVM : ObservableValidator, INotifyPropertyChanged, ICloneable
+    public class ContactVM : ObservableValidator, ICloneable
     {
-        /// <summary>
-        /// Хранит значение, которое показывает, может ли этот контакт изменяться.
-        /// </summary>
-        private bool _isReadOnly;
-
         /// <summary>
         /// Возвращает и получает объект класса <see cref="Model.Contact"/>
         /// </summary>
@@ -27,18 +23,17 @@ namespace View.ViewModel
         /// </summary>
         [Required(ErrorMessage = "User name not specified")]
         [MaxLength(
-            10,
+            100,
             ErrorMessage = "The length exceeds 100 characters"
             )]
         public string FirstName
         {
             get => Contact.FirstName;
-            set
-            {
-                ValidateProperty(value);
-                Contact.FirstName = value;
-                OnPropertyChanged(nameof(FirstName));
-            }
+            set => SetProperty(Contact.FirstName,
+                               value,
+                               Contact,
+                               (contact, firstName) => Contact.FirstName = firstName,
+                               true);
         }
 
         /// <summary>
@@ -46,7 +41,7 @@ namespace View.ViewModel
         /// </summary>
         [Required(ErrorMessage = "Phone not specified")]
         [RegularExpression(
-            @"^\+[1-9]\(\d{3}\)\d{3}-\d{2}-\d{2}$",
+            @"^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$",
             ErrorMessage = "Invalid phone format"
             )]
         [MaxLength(
@@ -56,12 +51,11 @@ namespace View.ViewModel
         public string Phone
         {
             get => Contact.Phone;
-            set
-            {
-                ValidateProperty(value);
-                Contact.Phone = value;
-                OnPropertyChanged(nameof(Phone));
-            }
+            set => SetProperty(Contact.Phone,
+                               value,
+                               Contact,
+                               (contact, phone) => Contact.Phone = phone,
+                               true); 
         }
 
         /// <summary>
@@ -76,26 +70,11 @@ namespace View.ViewModel
         public string Email
         {
             get => Contact.Email;
-            set
-            {
-                ValidateProperty(value);
-                Contact.Email = value;
-                OnPropertyChanged(nameof(Email));
-            }
-        }
-
-        /// <summary>
-        /// Возвращает и получает значение, которое показывает,
-        /// может ли этот контакт изменяться.
-        /// </summary>
-        public bool IsReadOnly
-        {
-            get => _isReadOnly;
-            set
-            {
-                _isReadOnly = value;
-                OnPropertyChanged(nameof(IsReadOnly));
-            }
+            set => SetProperty(Contact.Email,
+                               value,
+                               Contact,
+                               (contact, email) => Contact.Email = email,
+                               true);
         }
 
         /// <summary>
@@ -104,18 +83,7 @@ namespace View.ViewModel
         /// <param name="contact">Объект класса <see cref="Model.Contact"/>.</param>
         public ContactVM(Contact contact)
         {
-            Contact = contact;
-            IsReadOnly = true;
-            ValidateAllProperties();
-        }
-
-        /// <summary>
-        /// Вызывает событие при изменении свойств объекта.
-        /// </summary>
-        /// <param name="prop">Свойство, вызвавшее событие.</param>
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+            Contact = contact;           
         }
 
         /// <summary>
@@ -126,10 +94,5 @@ namespace View.ViewModel
         {
             return new ContactVM((Contact)Contact.Clone());
         }
-
-        /// <summary>
-        /// Событие изменения свойства.
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
