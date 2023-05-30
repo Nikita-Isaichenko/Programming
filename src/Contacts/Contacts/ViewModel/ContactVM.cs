@@ -81,6 +81,7 @@ namespace View.ViewModel
         public ContactVM(Contact contact)
         {
             Contact = contact;
+            ValidateAllProperties();
         }
 
         /// <summary>
