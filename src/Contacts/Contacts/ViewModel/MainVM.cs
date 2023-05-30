@@ -1,12 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.ComponentModel.__Internals;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Net;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Interop;
 using View.Model;
 using View.Services;
 
@@ -47,7 +43,7 @@ namespace View.ViewModel
 
             if (!IsApply)
             {
-                IsApply = true;               
+                IsApply = true;
             }
         }
 
@@ -98,7 +94,7 @@ namespace View.ViewModel
                 {
                     IsEdit = false;
                     IsVisible = false;
-                    IsReadOnly = true;                    
+                    IsReadOnly = true;
                 }
                 else
                 {
@@ -154,7 +150,7 @@ namespace View.ViewModel
                 CurrentContact = Contacts[CurrentIndex];
             }
 
-            IsApply = true;       
+            IsApply = true;
         }
 
         /// <summary>
@@ -165,7 +161,7 @@ namespace View.ViewModel
         {
             CurrentContact = new ContactVM(new Contact());
 
-            IsApply = false;           
+            IsApply = false;
         }
 
         /// <summary>
@@ -186,7 +182,7 @@ namespace View.ViewModel
                                 "Ошибка",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
-            }           
+            }
         }
 
         /// <summary>
@@ -206,7 +202,7 @@ namespace View.ViewModel
         }
 
         /// <summary>
-        /// Определяет возможность выполнения команды <see cref="EditCommand"/>.
+        /// Определяет возможность выполнения команды <see cref="EditContact"/>.
         /// </summary>
         private bool CanExecuteEdit()
         {
@@ -232,12 +228,12 @@ namespace View.ViewModel
             {
                 Contacts.Remove(CurrentContact);
                 CurrentContact = Contacts[CurrentIndex - 1];
-            }                      
+            }
         }
 
         /// <summary>
-        /// Определяет возможность выполнения команды <see cref="RemoveCommand"/>.
-        /// </summary
+        /// Определяет возможность выполнения команды <see cref="RemoveContact"/>.
+        /// </summary>
         private bool CanExecuteRemove()
         {
             return Contacts.Count > 0 && CurrentContact != null;

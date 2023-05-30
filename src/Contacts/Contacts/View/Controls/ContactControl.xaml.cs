@@ -11,19 +11,19 @@ namespace View.View.Controls
     public partial class ContactControl : UserControl
     {
         /// <summary>
-        /// Регистрирует свойство зависимости для SelectedContact.
+        /// Регистрирует свойство зависимости для IsReadOnly.
         /// </summary>
-        public static readonly DependencyProperty SelectedContactProperty =
-            DependencyProperty.Register("SelectedContact", typeof(ContactVM),
+        public static readonly DependencyProperty IsReadOnlyProperty =
+            DependencyProperty.Register("IsReadOnly", typeof(bool),
             typeof(ContactControl), new UIPropertyMetadata(null));
 
         /// <summary>
-        /// Возвращает и задаёт выбранный контакт.
+        /// Возвращает и задаёт возможность редактирование textbox.
         /// </summary>
-        public ContactVM SelectedContact
+        public ContactVM IsReadOnly
         {
-            get => (ContactVM)GetValue(SelectedContactProperty);
-            set => SetValue(SelectedContactProperty, value);
+            get => (ContactVM)GetValue(IsReadOnlyProperty);
+            set => SetValue(IsReadOnlyProperty, value);
         }
 
         /// <summary>
@@ -31,11 +31,11 @@ namespace View.View.Controls
         /// </summary>
         public ContactControl()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
 
         /// <summary>
-        /// Проводит валидацию данных, которые вводятся в textbox.
+        /// Проводит пре форматирование и запрещает ввод недопустимых символов в textbox.
         /// </summary>
         /// <param name="sender">Объект.</param>
         /// <param name="e">Аргументы.</param>
@@ -47,7 +47,7 @@ namespace View.View.Controls
         }
 
         /// <summary>
-        /// Запрещает копирование в textbox символов, не прошедших проверку.
+        /// Запрещает копирование в textbox недопустимых символов.
         /// </summary>
         /// <param name="sender">Объект.</param>
         /// <param name="e">Аргументы.</param>

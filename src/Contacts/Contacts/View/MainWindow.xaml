@@ -38,7 +38,7 @@
     </Window.Resources>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Closing">
-            <i:InvokeCommandAction Command="{Binding SaveContactsCommand}"/>
+            <i:InvokeCommandAction Command="{Binding Path=SaveContactsCommand}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
@@ -97,7 +97,7 @@
                             Content="Remove"
                             IsEnabled="{Binding Path=IsReadOnly}"/>
                     </Grid>
-                    <ListBox                        
+                    <ListBox
                         Margin="3"
                         DockPanel.Dock="Top"
                         ItemTemplate="{StaticResource ResourceKey=ContactTemplate}"
@@ -127,20 +127,19 @@
             </Grid.RowDefinitions>
             <uc:ContactControl
                 Grid.Row="0"
-                SelectedContact="{Binding Path=CurrentContact, Mode=TwoWay}"
-                Validation.ErrorTemplate="{x:Null}" 
-                />
+                DataContext="{Binding Path=CurrentContact, UpdateSourceTrigger=PropertyChanged}"
+                IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.IsReadOnly}"
+                Validation.ErrorTemplate="{x:Null}"/>
             <Button
-                IsEnabled="{Binding Path=CurrentContact.HasErrors, Converter={StaticResource BoolInvertedValueConverter}}"
                 Grid.Row="1"
                 Width="75"
                 Height="25"
-                Margin="100"
+                Margin="109"
                 HorizontalAlignment="Left"
                 Command="{Binding Path=ApplyContactCommand}"
                 Content="Apply"
-                Visibility="{Binding Path=IsVisible, Converter={StaticResource VisibleConverter}, UpdateSourceTrigger=PropertyChanged}"
-                />
+                IsEnabled="{Binding Path=CurrentContact.HasErrors, Converter={StaticResource BoolInvertedValueConverter}}"
+                Visibility="{Binding Path=IsVisible, Converter={StaticResource VisibleConverter}, UpdateSourceTrigger=PropertyChanged}"/>
         </Grid>
     </Grid>
 </Window>

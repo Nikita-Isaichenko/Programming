@@ -1,10 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using System;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Runtime.CompilerServices;
 using View.Model;
-using View.Services;
 
 namespace View.ViewModel
 {
@@ -16,7 +13,7 @@ namespace View.ViewModel
         /// <summary>
         /// Возвращает и получает объект класса <see cref="Model.Contact"/>.
         /// </summary>
-        public Contact Contact;
+        public Contact Contact { get; set; }
 
         /// <summary>
         /// Возвращает и получает имя контакта.
@@ -83,7 +80,7 @@ namespace View.ViewModel
         /// <param name="contact">Объект класса <see cref="Model.Contact"/>.</param>
         public ContactVM(Contact contact)
         {
-            Contact = contact;           
+            Contact = contact;
         }
 
         /// <summary>
