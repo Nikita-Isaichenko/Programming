@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace View.Model
+namespace Model.Model
 {
     /// <summary>
     /// Хранит данные о контакте.

@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using View.ViewModel;
+using ViewModel.ViewModel;
 
 namespace Contacts.View
 {

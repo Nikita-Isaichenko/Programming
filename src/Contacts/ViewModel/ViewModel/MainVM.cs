@@ -1,12 +1,12 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Model.Model;
 using System.Collections.ObjectModel;
 using System.Net;
 using System.Windows;
-using View.Model;
-using View.Services;
+using ViewModel.Services;
 
-namespace View.ViewModel
+namespace ViewModel.ViewModel
 {
     /// <summary>
     /// ViewModel для главное окна.

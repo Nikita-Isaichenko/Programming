@@ -1,7 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using View.ViewModel;
+using ViewModel.ViewModel;
 
 namespace View.View.Controls
 {
