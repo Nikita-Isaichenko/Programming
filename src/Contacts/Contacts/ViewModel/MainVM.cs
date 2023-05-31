@@ -3,7 +3,6 @@ using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using System.Net;
 using System.Windows;
-using System.Windows.Interop;
 using View.Model;
 using View.Services;
 
@@ -31,6 +30,10 @@ namespace View.ViewModel
         [NotifyCanExecuteChangedFor(nameof(EditContactCommand), nameof(RemoveContactCommand))]
         private ContactVM _currentContact;
 
+        /// <summary>
+        /// Содержит логику, которая вызывается при изменении текущего контакта.
+        /// </summary>
+        /// <param name="value">Текущий контакт.</param>
         partial void OnCurrentContactChanged(ContactVM value)
         {
             if (!IsEdit && Contacts.Contains(value))
@@ -96,7 +99,7 @@ namespace View.ViewModel
                 else
                 {
                     IsVisible = true;
-                    IsReadOnly = false;                  
+                    IsReadOnly = false;
                 }
             }
         }
@@ -147,7 +150,7 @@ namespace View.ViewModel
                 CurrentContact = Contacts[CurrentIndex];
             }
 
-            IsApply = true;       
+            IsApply = true;
         }
 
         /// <summary>
@@ -158,7 +161,7 @@ namespace View.ViewModel
         {
             CurrentContact = new ContactVM(new Contact());
 
-            IsApply = false;           
+            IsApply = false;
         }
 
         /// <summary>
@@ -179,7 +182,7 @@ namespace View.ViewModel
                                 "Ошибка",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
-            }           
+            }
         }
 
         /// <summary>
@@ -199,7 +202,7 @@ namespace View.ViewModel
         }
 
         /// <summary>
-        /// Определяет возможность выполнения команды <see cref="EditCommand"/>.
+        /// Определяет возможность выполнения команды <see cref="EditContact"/>.
         /// </summary>
         private bool CanExecuteEdit()
         {
@@ -225,12 +228,12 @@ namespace View.ViewModel
             {
                 Contacts.Remove(CurrentContact);
                 CurrentContact = Contacts[CurrentIndex - 1];
-            }                      
+            }
         }
 
         /// <summary>
-        /// Определяет возможность выполнения команды <see cref="RemoveCommand"/>.
-        /// </summary
+        /// Определяет возможность выполнения команды <see cref="RemoveContact"/>.
+        /// </summary>
         private bool CanExecuteRemove()
         {
             return Contacts.Count > 0 && CurrentContact != null;

@@ -1,57 +1,77 @@
-﻿using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System;
+using System.ComponentModel.DataAnnotations;
 using View.Model;
 
 namespace View.ViewModel
 {
     /// <summary>
-    /// ViewModel, агрегирующий в себе класс <see cref="Model.Contact"/>
+    /// ViewModel, агрегирующий в себе класс <see cref="Model.Contact"/>.
     /// </summary>
-    public class ContactVM : INotifyPropertyChanged, ICloneable
+    public class ContactVM : ObservableValidator, ICloneable
     {
         /// <summary>
-        /// Возвращает и получает объект класса <see cref="Model.Contact"/>
+        /// Возвращает и получает объект класса <see cref="Model.Contact"/>.
         /// </summary>
         public Contact Contact { get; set; }
 
         /// <summary>
         /// Возвращает и получает имя контакта.
         /// </summary>
+        [Required(ErrorMessage = "User name not specified")]
+        [MaxLength(
+            100,
+            ErrorMessage = "The length exceeds 100 characters"
+            )]
         public string FirstName
         {
             get => Contact.FirstName;
-            set
-            {
-                Contact.FirstName = value;
-                OnPropertyChanged(nameof(FirstName));
-            }
+            set => SetProperty(Contact.FirstName,
+                               value,
+                               Contact,
+                               (contact, firstName) => Contact.FirstName = firstName,
+                               true);
         }
 
         /// <summary>
         /// Возвращает и получает телефон контакта.
         /// </summary>
+        [Required(ErrorMessage = "Phone not specified")]
+        [RegularExpression(
+            @"^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$",
+            ErrorMessage = "Invalid phone format"
+            )]
+        [MaxLength(
+            100,
+            ErrorMessage = "The length exceeds 100 characters"
+            )]
         public string Phone
         {
             get => Contact.Phone;
-            set
-            {
-                Contact.Phone = value;
-                OnPropertyChanged(nameof(Phone));
-            }
+            set => SetProperty(Contact.Phone,
+                               value,
+                               Contact,
+                               (contact, phone) => Contact.Phone = phone,
+                               true); 
         }
 
         /// <summary>
         /// Возвращает и получает электронную почту контакта.
         /// </summary>
+        [Required(ErrorMessage = "Email not specified")]
+        [MaxLength(
+            100,
+            ErrorMessage = "The length exceeds 100 characters"
+            )]
+        [EmailAddress(ErrorMessage = "Invalid email format")]
         public string Email
         {
             get => Contact.Email;
-            set
-            {
-                Contact.Email = value;
-                OnPropertyChanged(nameof(Email));
-            }
+            set => SetProperty(Contact.Email,
+                               value,
+                               Contact,
+                               (contact, email) => Contact.Email = email,
+                               true);
         }
 
         /// <summary>
@@ -61,15 +81,7 @@ namespace View.ViewModel
         public ContactVM(Contact contact)
         {
             Contact = contact;
-        }
-
-        /// <summary>
-        /// Вызывает событие при изменении свойств объекта.
-        /// </summary>
-        /// <param name="prop">Свойство, вызвавшее событие.</param>
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+            ValidateAllProperties();
         }
 
         /// <summary>
@@ -80,10 +92,5 @@ namespace View.ViewModel
         {
             return new ContactVM((Contact)Contact.Clone());
         }
-
-        /// <summary>
-        /// Событие изменения свойства.
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

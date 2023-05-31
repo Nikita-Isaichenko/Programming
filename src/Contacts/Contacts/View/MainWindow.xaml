@@ -4,8 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-    xmlns:local1="clr-namespace:View.Services"
+    xmlns:local="clr-namespace:View.Services"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="clr-namespace:View.View.Controls"
     Title="Contacts"
     Width="650"
     Height="400"
@@ -13,11 +14,31 @@
     MinHeight="450"
     mc:Ignorable="d">
     <Window.Resources>
-        <local1:VisibleConverter x:Key="VisibleConverter"/>
+        <local:VisibleConverter x:Key="VisibleConverter"/>
+        <local:BoolInvertedValueConverter x:Key="BoolInvertedValueConverter"/>
+        <DataTemplate x:Key="ContactTemplate">
+            <DockPanel LastChildFill="true">
+                <Image
+                    Width="40"
+                    Height="40"
+                    Margin="3px"
+                    DockPanel.Dock="Left"
+                    Source="/Resources/photo_placeholder_100x100.png"/>
+                <TextBlock
+                    Margin="3"
+                    DockPanel.Dock="Top"
+                    FontWeight="Bold"
+                    Text="{Binding Path=FirstName}"/>
+                <TextBlock
+                    Margin="3"
+                    DockPanel.Dock="Bottom"
+                    Text="{Binding Path=Phone}"/>
+            </DockPanel>
+        </DataTemplate>
     </Window.Resources>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Closing">
-            <i:InvokeCommandAction Command="{Binding SaveContactsCommand}"/>
+            <i:InvokeCommandAction Command="{Binding Path=SaveContactsCommand}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
@@ -78,10 +99,11 @@
                     </Grid>
                     <ListBox
                         Margin="3"
-                        DisplayMemberPath="FirstName"
                         DockPanel.Dock="Top"
+                        ItemTemplate="{StaticResource ResourceKey=ContactTemplate}"
                         ItemsSource="{Binding Path=Contacts}"
-                        SelectedItem="{Binding Path=CurrentContact, UpdateSourceTrigger=PropertyChanged}">
+                        SelectedItem="{Binding Path=CurrentContact, UpdateSourceTrigger=PropertyChanged}"
+                        Validation.ErrorTemplate="{x:Null}">
                     </ListBox>
                 </DockPanel>
             </DockPanel>
@@ -97,49 +119,27 @@
             Margin="8"
             Background="#ffff">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Image
+            <uc:ContactControl
+                Grid.Row="0"
+                DataContext="{Binding Path=CurrentContact, UpdateSourceTrigger=PropertyChanged}"
+                IsReadOnly="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.IsReadOnly}"
+                Validation.ErrorTemplate="{x:Null}"/>
+            <Button
                 Grid.Row="1"
-                Grid.Column="0"
-                Width="100"
-                Height="100"
-                Margin="3"
-                VerticalAlignment="Top"
-                Source="/Resources/photo_placeholder_100x100.png"/>
-            <TextBlock
-                Grid.Column="1"
-                Margin="3"
-                Text="Name:"/>
-            <StackPanel Grid.Row="1" Grid.Column="1">
-                <TextBox
-                    Margin="3"
-                    IsReadOnly="{Binding Path=IsReadOnly, UpdateSourceTrigger=PropertyChanged}"
-                    Text="{Binding Path=CurrentContact.FirstName, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBlock Margin="3" Text="Phone Number:"/>
-                <TextBox
-                    Margin="3"
-                    IsReadOnly="{Binding Path=IsReadOnly, UpdateSourceTrigger=PropertyChanged}"
-                    Text="{Binding Path=CurrentContact.Phone, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBlock Margin="3" Text="Email:"/>
-                <TextBox
-                    Margin="3"
-                    IsReadOnly="{Binding Path=IsReadOnly, UpdateSourceTrigger=PropertyChanged}"
-                    Text="{Binding Path=CurrentContact.Email, UpdateSourceTrigger=PropertyChanged}"/>
-                <Button
-                    Width="75"
-                    Height="25"
-                    Margin="3 50 3 3"
-                    HorizontalAlignment="Left"
-                    Command="{Binding Path=ApplyContactCommand}"
-                    Content="Apply"
-                    Visibility="{Binding Path=IsVisible, Converter={StaticResource VisibleConverter}, UpdateSourceTrigger=PropertyChanged}"/>
-            </StackPanel>
+                Width="75"
+                Height="25"
+                Margin="109"
+                HorizontalAlignment="Left"
+                Command="{Binding Path=ApplyContactCommand}"
+                Content="Apply"
+                IsEnabled="{Binding Path=CurrentContact.HasErrors, Converter={StaticResource BoolInvertedValueConverter}}"
+                Visibility="{Binding Path=IsVisible, Converter={StaticResource VisibleConverter}, UpdateSourceTrigger=PropertyChanged}"/>
         </Grid>
     </Grid>
 </Window>
