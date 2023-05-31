@@ -62,7 +62,27 @@ namespace View.ViewModel
         /// <summary>
         /// Поле, хранящее значение, которое говорит о том, была ли нажата кнопка Apply.
         /// </summary>
+        [ObservableProperty]
         private bool _isApply = false;
+
+        /// <summary>
+        /// Содержит логику, которая вызывается при изменении свойства IsApply.
+        /// </summary>
+        /// <param name="value">Текущий контакт.</param>
+        partial void OnIsApplyChanged(bool value)
+        {
+            if (value)
+            {
+                IsEdit = false;
+                IsVisible = false;
+                IsReadOnly = true;
+            }
+            else
+            {
+                IsVisible = true;
+                IsReadOnly = false;
+            }
+        }
 
         /// <summary>
         /// Возвращает и задает индекс текущего контакты.
@@ -79,7 +99,7 @@ namespace View.ViewModel
         /// Возвращает и задает, включен ли редактор контактов.
         /// </summary>
         public bool IsEdit { get; set; }
-
+/*
         /// <summary>
         /// Возвращает и задает, подтверждены ли изменения.
         /// </summary>
@@ -103,7 +123,7 @@ namespace View.ViewModel
                 }
             }
         }
-
+*/
         /// <summary>
         /// Создает экземпляр класса <see cref="MainVM"/>.
         /// </summary>

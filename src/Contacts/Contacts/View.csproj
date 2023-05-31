@@ -10,7 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Model\Contact.cs~RF2e40846c.TMP" />
     <None Remove="Resources\photo_placeholder_100x100.png" />
   </ItemGroup>
 
