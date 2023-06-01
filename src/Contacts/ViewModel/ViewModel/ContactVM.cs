@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 namespace ViewModel.ViewModel
 {
     /// <summary>
-    /// ViewModel, агрегирующий в себе класс <see cref="Model.Contact"/>.
+    /// ViewModel, агрегирующий в себе класс <see cref="Model.Model.Contact"/>.
     /// </summary>
     public class ContactVM : ObservableValidator, ICloneable
     {
