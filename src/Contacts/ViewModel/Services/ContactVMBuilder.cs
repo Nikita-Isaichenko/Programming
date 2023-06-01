@@ -7,7 +7,7 @@ namespace ViewModel.Services
     /// <summary>
     /// Хранит логику для автоматического создания объектов.
     /// </summary>
-    public class ContactVMFactory
+    public class ContactVMBuilder
     {
         /// <summary>
         /// Параметры для запроса.
@@ -20,9 +20,9 @@ namespace ViewModel.Services
         private DataAPI _dataAPI;
 
         /// <summary>
-        /// Создает экземпляр класса <see cref="ContactVMFactory"/>.
+        /// Создает экземпляр класса <see cref="ContactVMBuilder"/>.
         /// </summary>
-        public ContactVMFactory()
+        public ContactVMBuilder()
         {
             _dataAPI = new DataAPI(_parameters);
         }

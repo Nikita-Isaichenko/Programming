@@ -19,9 +19,9 @@ namespace ViewModel.ViewModel
         private ContactSerializer _serializer = new ContactSerializer();
 
         /// <summary>
-        /// Объект класса <see cref="ContactVMFactory"/>.
+        /// Объект класса <see cref="ContactVMBuilder"/>.
         /// </summary>
-        private ContactVMFactory _contactVMFactory = new ContactVMFactory();
+        private ContactVMBuilder _contactVMFactory = new ContactVMBuilder();
 
         /// <summary>
         /// Объект, хранящий текущий контакт.
@@ -99,31 +99,7 @@ namespace ViewModel.ViewModel
         /// Возвращает и задает, включен ли редактор контактов.
         /// </summary>
         public bool IsEdit { get; set; }
-/*
-        /// <summary>
-        /// Возвращает и задает, подтверждены ли изменения.
-        /// </summary>
-        public bool IsApply
-        {
-            get => _isApply;
-            set
-            {
-                _isApply = value;
 
-                if (value)
-                {
-                    IsEdit = false;
-                    IsVisible = false;
-                    IsReadOnly = true;
-                }
-                else
-                {
-                    IsVisible = true;
-                    IsReadOnly = false;
-                }
-            }
-        }
-*/
         /// <summary>
         /// Создает экземпляр класса <see cref="MainVM"/>.
         /// </summary>
@@ -135,7 +111,8 @@ namespace ViewModel.ViewModel
         /// <summary>
         /// Проверяет, есть ли соединение с интернетом.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>True при успешном подключении к интернету,
+        /// false при отсутствии подклюлчения.</returns>
         public bool CheckForInternetConnection()
         {
             try

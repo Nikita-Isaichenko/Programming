@@ -25,8 +25,8 @@ namespace Model.Model
         /// <summary>
         /// Создает экземпляр класса <see cref="Contact"/>.
         /// </summary>
-        /// <param name="name">Имя.</param>
-        /// <param name="phoneNumber">Номер телефона.</param>
+        /// <param name="firstName">Имя.</param>
+        /// <param name="phone">Номер телефона.</param>
         /// <param name="email">Электронная почта.</param>
         public Contact(string firstName, string phone, string email)
         {

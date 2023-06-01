@@ -14,7 +14,7 @@
     MinHeight="450"
     mc:Ignorable="d">
     <Window.Resources>
-        <local:VisibleConverter x:Key="VisibleConverter"/>
+        <local:VisibilityConverter x:Key="VisibilityConverter"/>
         <local:BoolInvertedValueConverter x:Key="BoolInvertedValueConverter"/>
         <DataTemplate x:Key="ContactTemplate">
             <DockPanel LastChildFill="true">
@@ -139,7 +139,7 @@
                 Command="{Binding Path=ApplyContactCommand}"
                 Content="Apply"
                 IsEnabled="{Binding Path=CurrentContact.HasErrors, Converter={StaticResource BoolInvertedValueConverter}}"
-                Visibility="{Binding Path=IsVisible, Converter={StaticResource VisibleConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                Visibility="{Binding Path=IsVisible, Converter={StaticResource VisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"/>
         </Grid>
     </Grid>
 </Window>
