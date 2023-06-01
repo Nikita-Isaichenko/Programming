@@ -11,7 +11,7 @@ namespace ViewModel.ViewModel
     public class ContactVM : ObservableValidator, ICloneable
     {
         /// <summary>
-        /// Возвращает объект класса <see cref="Model.Contact"/>.
+        /// Возвращает объект класса <see cref="Model.Model.Contact"/>.
         /// </summary>
         public Contact Contact { get; }
 
