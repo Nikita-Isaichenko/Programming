@@ -1,12 +1,12 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Model.Model;
 using System.Collections.ObjectModel;
 using System.Net;
 using System.Windows;
-using View.Model;
-using View.Services;
+using ViewModel.Services;
 
-namespace View.ViewModel
+namespace ViewModel.ViewModel
 {
     /// <summary>
     /// ViewModel для главное окна.
@@ -19,9 +19,9 @@ namespace View.ViewModel
         private ContactSerializer _serializer = new ContactSerializer();
 
         /// <summary>
-        /// Объект класса <see cref="ContactVMFactory"/>.
+        /// Объект класса <see cref="ContactVMBuilder"/>.
         /// </summary>
-        private ContactVMFactory _contactVMFactory = new ContactVMFactory();
+        private ContactVMBuilder _contactVMFactory = new ContactVMBuilder();
 
         /// <summary>
         /// Объект, хранящий текущий контакт.
@@ -62,7 +62,27 @@ namespace View.ViewModel
         /// <summary>
         /// Поле, хранящее значение, которое говорит о том, была ли нажата кнопка Apply.
         /// </summary>
+        [ObservableProperty]
         private bool _isApply = false;
+
+        /// <summary>
+        /// Содержит логику, которая вызывается при изменении свойства IsApply.
+        /// </summary>
+        /// <param name="value">Текущий контакт.</param>
+        partial void OnIsApplyChanged(bool value)
+        {
+            if (value)
+            {
+                IsEdit = false;
+                IsVisible = false;
+                IsReadOnly = true;
+            }
+            else
+            {
+                IsVisible = true;
+                IsReadOnly = false;
+            }
+        }
 
         /// <summary>
         /// Возвращает и задает индекс текущего контакты.
@@ -81,30 +101,6 @@ namespace View.ViewModel
         public bool IsEdit { get; set; }
 
         /// <summary>
-        /// Возвращает и задает, подтверждены ли изменения.
-        /// </summary>
-        public bool IsApply
-        {
-            get => _isApply;
-            set
-            {
-                _isApply = value;
-
-                if (value)
-                {
-                    IsEdit = false;
-                    IsVisible = false;
-                    IsReadOnly = true;
-                }
-                else
-                {
-                    IsVisible = true;
-                    IsReadOnly = false;
-                }
-            }
-        }
-
-        /// <summary>
         /// Создает экземпляр класса <see cref="MainVM"/>.
         /// </summary>
         public MainVM()
@@ -115,7 +111,8 @@ namespace View.ViewModel
         /// <summary>
         /// Проверяет, есть ли соединение с интернетом.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>True при успешном подключении к интернету,
+        /// false при отсутствии подклюлчения.</returns>
         public bool CheckForInternetConnection()
         {
             try

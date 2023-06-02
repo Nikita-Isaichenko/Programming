@@ -1,13 +1,13 @@
-﻿using Newtonsoft.Json;
-using View.Model;
-using View.ViewModel;
+﻿using Model.Model;
+using Newtonsoft.Json;
+using ViewModel.ViewModel;
 
-namespace View.Services
+namespace ViewModel.Services
 {
     /// <summary>
     /// Хранит логику для автоматического создания объектов.
     /// </summary>
-    public class ContactVMFactory
+    public class ContactVMBuilder
     {
         /// <summary>
         /// Параметры для запроса.
@@ -20,9 +20,9 @@ namespace View.Services
         private DataAPI _dataAPI;
 
         /// <summary>
-        /// Создает экземпляр класса <see cref="ContactVMFactory"/>.
+        /// Создает экземпляр класса <see cref="ContactVMBuilder"/>.
         /// </summary>
-        public ContactVMFactory()
+        public ContactVMBuilder()
         {
             _dataAPI = new DataAPI(_parameters);
         }
@@ -33,10 +33,9 @@ namespace View.Services
         /// <returns>Объект класса <see cref="ContactVM"/>.</returns>
         public ContactVM MakeContactVM()
         {
-            var contact = new Contact();
             string json = _dataAPI.GetJsonData();
 
-            contact = JsonConvert.DeserializeObject<Contact>(json);
+            var contact = JsonConvert.DeserializeObject<Contact>(json);
 
             var contactVM = new ContactVM(contact);
 

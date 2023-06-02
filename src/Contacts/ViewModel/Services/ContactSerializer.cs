@@ -2,9 +2,9 @@
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
-using View.ViewModel;
+using ViewModel.ViewModel;
 
-namespace View.Services
+namespace ViewModel.Services
 {
     /// <summary>
     /// Представляет реализацию для сериализации. 

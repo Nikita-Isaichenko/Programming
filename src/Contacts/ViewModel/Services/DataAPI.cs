@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Net;
 
-namespace View.Services
+namespace ViewModel.Services
 {
     /// <summary>
     /// Хранит логику для работы с api сайта для генерации данных.

@@ -3,12 +3,12 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace View.Services
+namespace View.Converters
 {
     /// <summary>
     /// Хранит логику для преобразования значений.
     /// </summary>
-    public class VisibleConverter : IValueConverter
+    public class VisibilityConverter : IValueConverter
     {
         /// <summary>
         /// Конвертирует булевое значение
